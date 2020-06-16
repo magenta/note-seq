@@ -30,14 +30,14 @@ BEAT = music_pb2.NoteSequence.TextAnnotation.BEAT
 CHORD_SYMBOL = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
 
 
-def add_track_to_sequence(note_seq,
+def add_track_to_sequence(note_sequence,
                           instrument,
                           notes,
                           is_drum=False,
                           program=0):
   """Adds instrument track to NoteSequence."""
   for pitch, velocity, start_time, end_time in notes:
-    note = note_seq.notes.add()
+    note = note_sequence.notes.add()
     note.pitch = pitch
     note.velocity = velocity
     note.start_time = start_time
@@ -45,44 +45,45 @@ def add_track_to_sequence(note_seq,
     note.instrument = instrument
     note.is_drum = is_drum
     note.program = program
-    if end_time > note_seq.total_time:
-      note_seq.total_time = end_time
+    if end_time > note_sequence.total_time:
+      note_sequence.total_time = end_time
 
 
-def add_chords_to_sequence(note_seq, chords):
+def add_chords_to_sequence(note_sequence, chords):
   for figure, time in chords:
-    annotation = note_seq.text_annotations.add()
+    annotation = note_sequence.text_annotations.add()
     annotation.time = time
     annotation.text = figure
     annotation.annotation_type = CHORD_SYMBOL
 
 
-def add_key_signatures_to_sequence(note_seq, keys):
+def add_key_signatures_to_sequence(note_sequence, keys):
   for key, time in keys:
-    ks = note_seq.key_signatures.add()
+    ks = note_sequence.key_signatures.add()
     ks.time = time
     ks.key = key
 
 
-def add_beats_to_sequence(note_seq, beats):
+def add_beats_to_sequence(note_sequence, beats):
   for time in beats:
-    annotation = note_seq.text_annotations.add()
+    annotation = note_sequence.text_annotations.add()
     annotation.time = time
     annotation.annotation_type = BEAT
 
 
-def add_control_changes_to_sequence(note_seq, instrument, control_changes):
+def add_control_changes_to_sequence(note_sequence, instrument, control_changes):
   for time, control_number, control_value in control_changes:
-    control_change = note_seq.control_changes.add()
+    control_change = note_sequence.control_changes.add()
     control_change.time = time
     control_change.control_number = control_number
     control_change.control_value = control_value
     control_change.instrument = instrument
 
 
-def add_pitch_bends_to_sequence(note_seq, instrument, program, pitch_bends):
+def add_pitch_bends_to_sequence(
+    note_sequence, instrument, program, pitch_bends):
   for time, bend in pitch_bends:
-    pitch_bend = note_seq.pitch_bends.add()
+    pitch_bend = note_sequence.pitch_bends.add()
     pitch_bend.time = time
     pitch_bend.bend = bend
     pitch_bend.program = program
@@ -163,7 +164,7 @@ class ProtoTestCase(absltest.TestCase):
   def setUp(self):
     self.maxDiff = None  # pylint:disable=invalid-name
     self.steps_per_quarter = 4
-    self.note_seq = parse_test_proto(
+    self.note_sequence = parse_test_proto(
         music_pb2.NoteSequence, """
         time_signatures: {
           numerator: 4

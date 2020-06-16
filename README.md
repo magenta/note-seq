@@ -1,4 +1,4 @@
-<img src="magenta-logo-bg.png" height="75">
+<img src="https://github.com/magenta/magenta/blob/master/magenta-logo-bg.png" height="75">
 
 **[Magenta](https://g.co/magenta)** is a research project exploring the role of machine learning
 in the process of creating art and music.
@@ -13,3 +13,7 @@ utilities for:
 * or converting them to representations useful for model training (e.g., one-hot tensors)
 
 To learn more see the main [magenta repo](https://github.com/magenta/magenta) and have look at the [hello magenta](https://colab.research.google.com/notebooks/magenta/hello_magenta/hello_magenta.ipynb) notebook.
+
+## Installation
+
+`pip install note-seq`

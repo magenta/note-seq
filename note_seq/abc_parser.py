@@ -129,7 +129,7 @@ def parse_abc_tunebook(tunebook):
     except ABCParseError as e:
       exceptions.append(e)
     else:
-      ns = abc_tune.note_seq
+      ns = abc_tune.note_sequence
       if ns.reference_number in tunes:
         raise DuplicateReferenceNumberError(
             'ABC Reference number {} appears more than once in this '
@@ -273,7 +273,7 @@ class ABCTune(object):
       self._ns.total_time = self._ns.notes[-1].end_time
 
   @property
-  def note_seq(self):
+  def note_sequence(self):
     return self._ns
 
   @staticmethod
