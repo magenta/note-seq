@@ -17,8 +17,8 @@
 import os
 
 from absl.testing import absltest
-from magenta.music import musicnet_io
-from magenta.music import testing_lib
+from note_seq import musicnet_io
+from note_seq import testing_lib
 import numpy as np
 
 

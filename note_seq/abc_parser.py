@@ -21,8 +21,8 @@ import fractions
 import re
 
 from absl import logging
-from magenta.music import constants
-from magenta.music.protobuf import music_pb2
+from note_seq import constants
+from note_seq.protobuf import music_pb2
 
 
 Fraction = fractions.Fraction
@@ -129,7 +129,7 @@ def parse_abc_tunebook(tunebook):
     except ABCParseError as e:
       exceptions.append(e)
     else:
-      ns = abc_tune.note_sequence
+      ns = abc_tune.note_seq
       if ns.reference_number in tunes:
         raise DuplicateReferenceNumberError(
             'ABC Reference number {} appears more than once in this '
@@ -273,7 +273,7 @@ class ABCTune(object):
       self._ns.total_time = self._ns.notes[-1].end_time
 
   @property
-  def note_sequence(self):
+  def note_seq(self):
     return self._ns
 
   @staticmethod

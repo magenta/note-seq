@@ -24,9 +24,9 @@ encoding has 49 classes, all 12 major/minor/augmented/diminished triads plus
 "no chord".
 """
 
-from magenta.music import chord_symbols_lib
-from magenta.music import constants
-from magenta.music import encoder_decoder
+from note_seq import chord_symbols_lib
+from note_seq import constants
+from note_seq import encoder_decoder
 
 NOTES_PER_OCTAVE = constants.NOTES_PER_OCTAVE
 NO_CHORD = constants.NO_CHORD
@@ -166,7 +166,7 @@ class PitchChordsEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
     [25, 36]: A one-hot encoding of the chord bass pitch class.
 
     Args:
-      events: A magenta.music.ChordProgression object.
+      events: A note_seq.ChordProgression object.
       position: An integer event position in the chord progression.
 
     Returns:

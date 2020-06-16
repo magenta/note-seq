@@ -46,7 +46,7 @@ encoding includes binary counters for timekeeping.
 import abc
 import numbers
 
-from magenta.music import constants
+from note_seq import constants
 import numpy as np
 
 DEFAULT_STEPS_PER_BAR = constants.DEFAULT_STEPS_PER_BAR

@@ -15,8 +15,8 @@
 """Tests for encoder_decoder."""
 
 from absl.testing import absltest
-from magenta.music import encoder_decoder
-from magenta.music import testing_lib
+from note_seq import encoder_decoder
+from note_seq import testing_lib
 import numpy as np
 
 

@@ -15,8 +15,8 @@
 """Tests for performance controls."""
 
 from absl.testing import absltest
-from magenta.music import performance_controls
-from magenta.music import performance_lib
+from note_seq import performance_controls
+from note_seq import performance_lib
 
 
 class NoteDensityPerformanceControlSignalTest(absltest.TestCase):

@@ -15,9 +15,9 @@
 """Tests for drums_lib."""
 
 from absl.testing import absltest
-from magenta.music import drums_lib
-from magenta.music import sequences_lib
-from magenta.music import testing_lib
+from note_seq import drums_lib
+from note_seq import sequences_lib
+from note_seq import testing_lib
 
 DRUMS = lambda *args: frozenset(args)
 NO_DRUMS = frozenset()

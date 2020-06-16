@@ -19,8 +19,8 @@ import os
 import wave
 
 from absl.testing import absltest
-from magenta.music import audio_io
-from magenta.music import testing_lib
+from note_seq import audio_io
+from note_seq import testing_lib
 import numpy as np
 import scipy
 

@@ -25,9 +25,9 @@ use by melody models.
 
 import collections
 
-from magenta.music import constants
-from magenta.music import encoder_decoder
-from magenta.music import melodies_lib
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq import melodies_lib
 
 NUM_SPECIAL_MELODY_EVENTS = constants.NUM_SPECIAL_MELODY_EVENTS
 MELODY_NOTE_OFF = constants.MELODY_NOTE_OFF
@@ -194,7 +194,7 @@ class KeyMelodyEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
     [50, 61]: The keys the current melody is in.
     [62, 73]: The keys the last 3 notes are in.
     Args:
-      events: A magenta.music.Melody object.
+      events: A note_seq.Melody object.
       position: An integer event position in the melody.
     Returns:
       An input vector, an self.input_size length list of floats.
@@ -297,7 +297,7 @@ class KeyMelodyEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
     39: Repeat second lookback (takes precedence over above values).
 
     Args:
-      events: A magenta.music.Melody object.
+      events: A note_seq.Melody object.
       position: An integer event position in the melody.
     Returns:
       A label, an integer.
@@ -332,9 +332,9 @@ class KeyMelodyEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
 
     Args:
       class_index: An int in the range [0, self.num_classes).
-      events: The magenta.music.Melody events list of the current melody.
+      events: The note_seq.Melody events list of the current melody.
     Returns:
-      A magenta.music.Melody event value.
+      A note_seq.Melody event value.
     """
     # Repeat N bars ago.
     for i, lookback_distance in reversed(

@@ -16,8 +16,8 @@
 
 import bisect
 
-from magenta.music import constants
-from magenta.music import sequences_lib
+from note_seq import constants
+from note_seq import sequences_lib
 import numpy as np
 import scipy.linalg
 

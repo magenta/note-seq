@@ -20,8 +20,8 @@ from absl import app
 from absl import flags
 from absl import logging
 import align_fine_lib
-from magenta.music import audio_io
-from magenta.music import midi_io
+from note_seq import audio_io
+from note_seq import midi_io
 
 FLAGS = flags.FLAGS
 

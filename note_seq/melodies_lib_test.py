@@ -17,10 +17,10 @@
 import os
 
 from absl.testing import absltest
-from magenta.music import constants
-from magenta.music import melodies_lib
-from magenta.music import sequences_lib
-from magenta.music import testing_lib
+from note_seq import constants
+from note_seq import melodies_lib
+from note_seq import sequences_lib
+from note_seq import testing_lib
 
 NOTE_OFF = constants.MELODY_NOTE_OFF
 NO_EVENT = constants.MELODY_NO_EVENT

@@ -15,9 +15,9 @@
 """Tests for melody inference."""
 
 from absl.testing import absltest
-from magenta.music import melody_inference
-from magenta.music import testing_lib
-from magenta.music.protobuf import music_pb2
+from note_seq import melody_inference
+from note_seq import testing_lib
+from note_seq.protobuf import music_pb2
 
 
 class MelodyInferenceTest(absltest.TestCase):

@@ -21,10 +21,10 @@ import tempfile
 import zipfile
 
 from absl.testing import absltest
-from magenta.music import musicxml_parser
-from magenta.music import musicxml_reader
-from magenta.music import testing_lib
-from magenta.music.protobuf import music_pb2
+from note_seq import musicxml_parser
+from note_seq import musicxml_reader
+from note_seq import testing_lib
+from note_seq.protobuf import music_pb2
 
 # Shortcut to CHORD_SYMBOL annotation type.
 CHORD_SYMBOL = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL

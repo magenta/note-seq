@@ -17,7 +17,7 @@
 import copy
 
 from absl.testing import absltest
-from magenta.music import events_lib
+from note_seq import events_lib
 
 
 class EventsLibTest(absltest.TestCase):

@@ -21,7 +21,7 @@ import fractions
 import xml.etree.ElementTree as ET
 import zipfile
 
-from magenta.music import constants
+from note_seq import constants
 
 Fraction = fractions.Fraction
 

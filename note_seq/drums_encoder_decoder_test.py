@@ -15,7 +15,7 @@
 """Tests for drums_encoder_decoder."""
 
 from absl.testing import absltest
-from magenta.music import drums_encoder_decoder
+from note_seq import drums_encoder_decoder
 
 
 DRUMS = lambda *args: frozenset(args)

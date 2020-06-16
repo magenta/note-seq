@@ -27,8 +27,8 @@ import tempfile
 from absl import logging
 import alignment_pb2
 import librosa
-from magenta.music import midi_synth
-from magenta.music import sequences_lib
+from note_seq import midi_synth
+from note_seq import sequences_lib
 import numpy as np
 
 

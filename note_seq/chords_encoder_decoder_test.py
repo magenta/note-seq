@@ -15,8 +15,8 @@
 """Tests for chords_encoder_decoder."""
 
 from absl.testing import absltest
-from magenta.music import chords_encoder_decoder
-from magenta.music import constants
+from note_seq import chords_encoder_decoder
+from note_seq import constants
 
 NO_CHORD = constants.NO_CHORD
 

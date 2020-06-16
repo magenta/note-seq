@@ -44,7 +44,7 @@ degree modifications unchanged.
 import itertools
 import re
 
-from magenta.music import constants
+from note_seq import constants
 
 # Chord quality enum.
 CHORD_QUALITY_MAJOR = 0

@@ -18,9 +18,9 @@ import abc
 import copy
 import numbers
 
-from magenta.music import constants
-from magenta.music import encoder_decoder
-from magenta.music.performance_lib import PerformanceEvent
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq.performance_lib import PerformanceEvent
 
 NOTES_PER_OCTAVE = constants.NOTES_PER_OCTAVE
 DEFAULT_NOTE_DENSITY = 15.0

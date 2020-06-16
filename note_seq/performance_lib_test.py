@@ -15,15 +15,16 @@
 """Tests for performance_lib."""
 
 from absl.testing import absltest
-from magenta.music import performance_lib
-from magenta.music import sequences_lib
-from magenta.music import testing_lib
-from magenta.music.protobuf import music_pb2
+from note_seq import performance_lib
+from note_seq import sequences_lib
+from note_seq import testing_lib
+from note_seq.protobuf import music_pb2
 
 
 class PerformanceLibTest(absltest.TestCase):
 
   def setUp(self):
+    super().setUp()
     self.maxDiff = None  # pylint:disable=invalid-name
 
     self.note_sequence = music_pb2.NoteSequence()

@@ -15,10 +15,10 @@
 """Tests for melody_encoder_decoder."""
 
 from absl.testing import absltest
-from magenta.music import constants
-from magenta.music import encoder_decoder
-from magenta.music import melodies_lib
-from magenta.music import melody_encoder_decoder
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq import melodies_lib
+from note_seq import melody_encoder_decoder
 
 NOTE_OFF = constants.MELODY_NOTE_OFF
 NO_EVENT = constants.MELODY_NO_EVENT

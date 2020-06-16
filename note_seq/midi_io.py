@@ -24,8 +24,8 @@ import shutil
 import sys
 import tempfile
 
-from magenta.music import constants
-from magenta.music.protobuf import music_pb2
+from note_seq import constants
+from note_seq.protobuf import music_pb2
 import pretty_midi
 
 copyfile = shutil.copyfile

@@ -14,7 +14,7 @@
 
 """Classes for converting between pianoroll input and model input/output."""
 
-from magenta.music import encoder_decoder
+from note_seq import encoder_decoder
 import numpy as np
 
 

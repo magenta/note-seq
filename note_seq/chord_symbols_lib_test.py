@@ -15,7 +15,7 @@
 """Tests for chord_symbols_lib."""
 
 from absl.testing import absltest
-from magenta.music import chord_symbols_lib
+from note_seq import chord_symbols_lib
 
 CHORD_QUALITY_MAJOR = chord_symbols_lib.CHORD_QUALITY_MAJOR
 CHORD_QUALITY_MINOR = chord_symbols_lib.CHORD_QUALITY_MINOR

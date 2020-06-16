@@ -17,12 +17,12 @@
 import math
 
 from absl.testing import absltest
-from magenta.music import performance_encoder_decoder
-from magenta.music import performance_lib
-from magenta.music.performance_encoder_decoder import ModuloPerformanceEventSequenceEncoderDecoder
-from magenta.music.performance_encoder_decoder import NotePerformanceEventSequenceEncoderDecoder
-from magenta.music.performance_encoder_decoder import PerformanceModuloEncoding
-from magenta.music.performance_lib import PerformanceEvent
+from note_seq import performance_encoder_decoder
+from note_seq import performance_lib
+from note_seq.performance_encoder_decoder import ModuloPerformanceEventSequenceEncoderDecoder
+from note_seq.performance_encoder_decoder import NotePerformanceEventSequenceEncoderDecoder
+from note_seq.performance_encoder_decoder import PerformanceModuloEncoding
+from note_seq.performance_lib import PerformanceEvent
 
 cos = math.cos
 sin = math.sin

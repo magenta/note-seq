@@ -21,11 +21,11 @@ Use Melody.to_sequence to write a melody to a NoteSequence proto. Then use
 midi_io.sequence_proto_to_midi_file to write that NoteSequence to a midi file.
 """
 
-from magenta.music import constants
-from magenta.music import events_lib
-from magenta.music import midi_io
-from magenta.music import sequences_lib
-from magenta.music.protobuf import music_pb2
+from note_seq import constants
+from note_seq import events_lib
+from note_seq import midi_io
+from note_seq import sequences_lib
+from note_seq.protobuf import music_pb2
 import numpy as np
 
 MELODY_NOTE_OFF = constants.MELODY_NOTE_OFF
@@ -531,7 +531,7 @@ def midi_file_to_melody(midi_file, steps_per_quarter=4, qpm=None,
     steps_per_quarter: Quantization of Melody. For example, 4 = 16th notes.
     qpm: Tempo in quarters per a minute. If not set, tries to use the first
         tempo of the midi track and defaults to
-        magenta.music.DEFAULT_QUARTERS_PER_MINUTE if fails.
+        note_seq.DEFAULT_QUARTERS_PER_MINUTE if fails.
     ignore_polyphonic_notes: Only use the highest simultaneous note if True.
 
   Returns:

@@ -22,7 +22,7 @@ interface.
 import abc
 import copy
 
-from magenta.music import constants
+from note_seq import constants
 
 DEFAULT_STEPS_PER_BAR = constants.DEFAULT_STEPS_PER_BAR
 DEFAULT_STEPS_PER_QUARTER = constants.DEFAULT_STEPS_PER_QUARTER

@@ -15,7 +15,7 @@
 """Tests for pianoroll_encoder_decoder."""
 
 from absl.testing import absltest
-from magenta.music import pianoroll_encoder_decoder
+from note_seq import pianoroll_encoder_decoder
 import numpy as np
 
 

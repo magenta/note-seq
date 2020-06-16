@@ -24,11 +24,11 @@ NoteSequence proto, encoding the chords as text annotations.
 import abc
 import bisect
 
-from magenta.music import chord_symbols_lib
-from magenta.music import constants
-from magenta.music import events_lib
-from magenta.music import sequences_lib
-from magenta.music.protobuf import music_pb2
+from note_seq import chord_symbols_lib
+from note_seq import constants
+from note_seq import events_lib
+from note_seq import sequences_lib
+from note_seq.protobuf import music_pb2
 
 STANDARD_PPQ = constants.STANDARD_PPQ
 NOTES_PER_OCTAVE = constants.NOTES_PER_OCTAVE

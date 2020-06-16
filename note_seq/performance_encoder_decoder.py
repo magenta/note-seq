@@ -16,10 +16,10 @@
 
 import math
 
-from magenta.music import encoder_decoder
-from magenta.music import performance_lib
-from magenta.music.encoder_decoder import EventSequenceEncoderDecoder
-from magenta.music.performance_lib import PerformanceEvent
+from note_seq import encoder_decoder
+from note_seq import performance_lib
+from note_seq.encoder_decoder import EventSequenceEncoderDecoder
+from note_seq.performance_lib import PerformanceEvent
 import numpy as np
 
 # Number of floats used to encode NOTE_ON and NOTE_OFF events, using modulo-12

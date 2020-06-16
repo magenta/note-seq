@@ -22,9 +22,9 @@ import operator
 import random
 
 from absl import logging
-from magenta.music import chord_symbols_lib
-from magenta.music import constants
-from magenta.music.protobuf import music_pb2
+from note_seq import chord_symbols_lib
+from note_seq import constants
+from note_seq.protobuf import music_pb2
 import numpy as np
 
 # Set the quantization cutoff.
@@ -1649,7 +1649,7 @@ def infer_dense_chords_for_sequence(sequence,
   If `sequence` is quantized, simultaneity will be determined by quantized steps
   instead of time.
 
-  Not to be confused with the chord inference in magenta.music.chord_inference
+  Not to be confused with the chord inference in note_sequence.chord_inference
   that attempts to infer a more natural chord sequence with changes at regular
   metric intervals.
 

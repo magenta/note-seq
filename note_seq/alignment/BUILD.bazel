@@ -1,10 +1,8 @@
 # Alignment tools.
 
+load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library", "py_proto_library")
+
 licenses(["notice"])  # Apache 2.0
-
-load("@com_google_protobuf//:protobuf.bzl", "cc_proto_library")
-load("@com_google_protobuf//:protobuf.bzl", "py_proto_library")
-
 
 cc_library(
     name = "align_utils",
@@ -55,10 +53,10 @@ cc_binary(
     name = "align",
     srcs = ["align.cc"],
     deps = [
-        ":alignment_proto",
         ":align_utils",
-        "@eigen_repo//:eigen",
+        ":alignment_proto",
         "@com_google_protobuf//:protobuf",
+        "@eigen_repo//:eigen",
     ],
 )
 

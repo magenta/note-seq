@@ -14,7 +14,7 @@
 
 """Classes for converting between drum tracks and models inputs/outputs."""
 
-from magenta.music import encoder_decoder
+from note_seq import encoder_decoder
 
 # Default list of 9 drum types, where each type is represented by a list of
 # MIDI pitches for drum sounds belonging to that type. This default list
