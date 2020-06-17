@@ -31,7 +31,7 @@ msg-template={msg_id}:{line:3} {obj}: {msg} [{symbol}]
 enable=indexing-exception,old-raise-syntax
 
 # List of checkers and warnings to disable.
-disable=design,similarities,no-self-use,attribute-defined-outside-init,locally-disabled,star-args,pointless-except,bad-option-value,global-statement,fixme,suppressed-message,useless-suppression,locally-enabled,file-ignored,multiple-imports,c-extension-no-member,trailing-newlines,unsubscriptable-object,misplaced-comparison-constant,no-member,abstract-method,no-else-return,inconsistent-return-statements,invalid-unary-operand-type,no-name-in-module,arguments-differ,consider-using-enumerate,missing-docstring,too-many-nested-blocks,unnecessary-pass,useless-object-inheritance,not-context-manager,wrong-import-order,import-error,no-init
+disable=abstract-method,arguments-differ,attribute-defined-outside-init,bad-option-value,c-extension-no-member,consider-using-enumerate,design,file-ignored,fixme,global-statement,import-error,import-outside-toplevel,inconsistent-return-statements,invalid-unary-operand-type,locally-disabled,locally-enabled,misplaced-comparison-constant,missing-docstring,multiple-imports,no-else-break,no-else-continue,no-else-raise,no-else-return,no-init,no-member,no-name-in-module,no-self-use,not-context-manager,pointless-except,similarities,star-args,suppressed-message,too-many-nested-blocks,trailing-newlines,unexpected-keyword-arg,unnecessary-pass,unsubscriptable-object,unused-import,useless-object-inheritance,useless-suppression,wrong-import-order
 
 [BASIC]
 

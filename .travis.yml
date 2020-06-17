@@ -3,8 +3,9 @@ python:
   - "3.7"
 # command to install dependencies
 install:
+  - pip install pylint
   - pip install -e .
 # command to run tests
 script:
-  - pylint ddsp
+  - pylint note_seq
   - pytest
