@@ -22,6 +22,7 @@ with open('note_seq/version.py') as in_file:
 
 REQUIRED_PACKAGES = [
     'absl-py',
+    'attrs',
     'bokeh >= 0.12.0',
     'intervaltree >= 2.1.0',
     'IPython',
