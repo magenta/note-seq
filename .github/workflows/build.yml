@@ -13,8 +13,9 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-      pip install pylint
-      pip install -e .
+        sudo apt-get -y install ffmpeg
+        pip install pylint pytest
+        pip install -e .
     - name: Test with pytest
       run: pytest
     - name: Lint with pylint
