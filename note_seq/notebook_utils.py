@@ -51,7 +51,7 @@ def colab_play(array_of_floats, sample_rate, ephemeral=True, autoplay=False):
     autoplay: If True, automatically start playing the sound when the
       widget is rendered.
   """
-  from google.colab.output import _js_builder as js  # pylint:disable=g-import-not-at-top,protected-access,import-error
+  from google.colab.output import _js_builder as js  # pylint:disable=import-outside-toplevel,g-import-not-at-top,protected-access
 
   normalizer = float(np.iinfo(np.int16).max)
   array_of_ints = np.array(
@@ -98,7 +98,7 @@ def play_sequence(sequence,
   array_of_floats = synth(sequence, sample_rate=sample_rate, **synth_args)
 
   try:
-    import google.colab  # pylint: disable=unused-import,unused-variable,g-import-not-at-top
+    import google.colab  # pylint:disable=import-outside-toplevel,g-import-not-at-top,unused-import
     colab_play(array_of_floats, sample_rate, colab_ephemeral)
   except ImportError:
     display.display(display.Audio(array_of_floats, rate=sample_rate))

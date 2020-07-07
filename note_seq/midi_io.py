@@ -18,7 +18,6 @@ Input and output wrappers for converting between MIDI and other formats.
 """
 
 import collections
-import functools
 import io
 import shutil
 import sys
