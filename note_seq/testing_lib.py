@@ -64,11 +64,13 @@ def add_key_signatures_to_sequence(note_sequence, keys):
     ks.key = key
 
 
-def add_beats_to_sequence(note_sequence, beats):
-  for time in beats:
+def add_beats_to_sequence(note_sequence, beats, beats_per_bar=None):
+  for i, time in enumerate(beats):
     annotation = note_sequence.text_annotations.add()
     annotation.time = time
     annotation.annotation_type = BEAT
+    if beats_per_bar:
+      annotation.text = str((i % beats_per_bar) + 1)
 
 
 def add_control_changes_to_sequence(note_sequence, instrument, control_changes):

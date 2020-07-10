@@ -13,6 +13,7 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
+        sudo apt-get update
         sudo apt-get -y install ffmpeg
         pip install pylint pytest
         pip install -e .
