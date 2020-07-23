@@ -17,6 +17,8 @@
 from note_seq.abc_parser import parse_abc_tunebook
 from note_seq.abc_parser import parse_abc_tunebook_file
 
+import note_seq.audio_io
+
 from note_seq.chord_inference import ChordInferenceError
 from note_seq.chord_inference import infer_chords_for_sequence
 
@@ -77,6 +79,8 @@ from note_seq.midi_io import sequence_proto_to_pretty_midi
 
 from note_seq.midi_synth import fluidsynth
 from note_seq.midi_synth import synthesize
+
+import note_seq.musicnet_io
 
 from note_seq.musicxml_parser import MusicXMLDocument
 from note_seq.musicxml_parser import MusicXMLParseError
