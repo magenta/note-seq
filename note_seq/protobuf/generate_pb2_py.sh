@@ -23,16 +23,16 @@ if [[ $(protoc --version) != 'libprotoc 3.6.1' ]]; then
 fi
 
 # Make it possible to run script from project root dir:
-cd `dirname $0`
+cd "$(dirname $0)/../.."
 
 function gen_proto {
   echo "gen_proto $1..."
-  protoc $1.proto --python_out=.
+  protoc $1.proto --python_out=note_seq/protobuf
   # We don't want pylint to run on this file, so we prepend directives.
   printf "%s\n%s" "# pylint: skip-file" "$(cat $1_pb2.py)" > \
     $1_pb2.py
   echo "done"
 }
 
-gen_proto generator
-gen_proto music
+gen_proto note_seq/protobuf/generator
+gen_proto note_seq/protobuf/music
