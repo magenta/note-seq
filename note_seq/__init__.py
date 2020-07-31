@@ -129,3 +129,5 @@ from note_seq.sequences_lib import steps_per_bar_in_quantized_sequence
 from note_seq.sequences_lib import steps_per_quarter_to_steps_per_second
 from note_seq.sequences_lib import trim_note_sequence
 
+import note_seq.version
+from note_seq.version import __version__
