@@ -19,15 +19,11 @@ Input and output wrappers for converting between MIDI and other formats.
 
 import collections
 import io
-import shutil
 import sys
-import tempfile
 
 from note_seq import constants
 from note_seq.protobuf import music_pb2
 import pretty_midi
-
-copyfile = shutil.copyfile
 
 
 # Allow pretty_midi to read MIDI files with absurdly high tick rates.
@@ -208,13 +204,7 @@ def note_sequence_to_midi_file(sequence, output_file,
   """
   pretty_midi_object = note_sequence_to_pretty_midi(
       sequence, drop_events_n_seconds_after_last_note)
-  with tempfile.NamedTemporaryFile() as temp_file:
-    pretty_midi_object.write(temp_file)
-    # Before copying the file, flush any contents
-    temp_file.flush()
-    # And back the file position to top (not need for Copy but for certainty)
-    temp_file.seek(0)
-    copyfile(temp_file.name, output_file)
+  pretty_midi_object.write(open(output_file, 'wb'))
 
 
 def note_sequence_to_pretty_midi(
