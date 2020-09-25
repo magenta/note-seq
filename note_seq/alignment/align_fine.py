@@ -38,35 +38,35 @@ flags.DEFINE_string(
 
 
 def main(unused_argv):
-    logging.set_verbosity(FLAGS.log)
-    if not os.path.exists(FLAGS.output_dir):
-        os.makedirs(FLAGS.output_dir)
-    for input_file in sorted(os.listdir(FLAGS.input_dir)):
-        if not input_file.endswith('.wav'):
-            continue
-        wav_filename = input_file
-        midi_filename = input_file.replace('.wav', '.mid')
-        logging.info('Aligning %s to %s', midi_filename, wav_filename)
+  logging.set_verbosity(FLAGS.log)
+  if not os.path.exists(FLAGS.output_dir):
+    os.makedirs(FLAGS.output_dir)
+  for input_file in sorted(os.listdir(FLAGS.input_dir)):
+    if not input_file.endswith('.wav'):
+      continue
+    wav_filename = input_file
+    midi_filename = input_file.replace('.wav', '.mid')
+    logging.info('Aligning %s to %s', midi_filename, wav_filename)
 
-        samples = audio_io.load_audio(
-            os.path.join(FLAGS.input_dir, wav_filename), align_fine_lib.SAMPLE_RATE)
-        ns = midi_io.midi_file_to_sequence_proto(
-            os.path.join(FLAGS.input_dir, midi_filename))
+    samples = audio_io.load_audio(
+        os.path.join(FLAGS.input_dir, wav_filename), align_fine_lib.SAMPLE_RATE)
+    ns = midi_io.midi_file_to_sequence_proto(
+        os.path.join(FLAGS.input_dir, midi_filename))
 
-        aligned_ns, unused_stats = align_fine_lib.align_cpp(
-            samples,
-            align_fine_lib.SAMPLE_RATE,
-            ns,
-            align_fine_lib.CQT_HOP_LENGTH_FINE,
-            sf2_path=FLAGS.sf2_path,
-            penalty_mul=FLAGS.penalty_mul)
+    aligned_ns, unused_stats = align_fine_lib.align_cpp(
+        samples,
+        align_fine_lib.SAMPLE_RATE,
+        ns,
+        align_fine_lib.CQT_HOP_LENGTH_FINE,
+        sf2_path=FLAGS.sf2_path,
+        penalty_mul=FLAGS.penalty_mul)
 
-        midi_io.sequence_proto_to_midi_file(
-            aligned_ns, os.path.join(FLAGS.output_dir, midi_filename))
+    midi_io.sequence_proto_to_midi_file(
+        aligned_ns, os.path.join(FLAGS.output_dir, midi_filename))
 
-    logging.info('Done')
+  logging.info('Done')
 
 
 if __name__ == '__main__':
-    flags.mark_flags_as_required(['input_dir', 'output_dir'])
-    app.run(main)
+  flags.mark_flags_as_required(['input_dir', 'output_dir'])
+  app.run(main)
