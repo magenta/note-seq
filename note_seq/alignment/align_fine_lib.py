@@ -129,14 +129,14 @@ def align_cpp(samples,
   # Write to file.
   fh, temp_path = tempfile.mkstemp(suffix='.proto')
   os.close(fh)
-  with open(temp_path, 'w') as f:
+  with open(temp_path, 'wb') as f:
     f.write(alignment_task.SerializeToString())
 
   # Align with C++ program.
   subprocess.check_call([ALIGN_BINARY, temp_path])
 
   # Read file.
-  with open(temp_path + '.result') as f:
+  with open(temp_path + '.result', 'rb') as f:
     result = alignment_pb2.AlignmentResult.FromString(f.read())
 
   # Clean up.
@@ -163,7 +163,7 @@ def align_cpp(samples,
       'time_diff_min_s': np.min(time_diffs),
   }
 
-  for name, value in sorted(stats.iteritems()):
+  for name, value in sorted(stats.items()):
     logging.info('%s: %f', name, value)
 
   aligned_ns, skipped_notes = sequences_lib.adjust_notesequence_times(

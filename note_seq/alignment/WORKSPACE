@@ -20,10 +20,9 @@ http_archive(
 http_archive(
     name = "eigen_repo",
     build_file = "//:eigen.BUILD",
-    sha256 = "7e84ef87a07702b54ab3306e77cea474f56a40afa1c0ab245bb11725d006d0da",
-    strip_prefix = "eigen-eigen-323c052e1731",
+    strip_prefix = "eigen-3.3.7",
     urls = [
-        "https://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz",
+        "https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.zip",
     ],
 )
 
@@ -47,9 +46,8 @@ http_archive(
 
 http_archive(
     name = "bazel_skylib",
-    sha256 = "bbccf674aa441c266df9894182d80de104cabd19be98be002f6d478aaa31574d",
-    strip_prefix = "bazel-skylib-2169ae1c374aab4a09aa90e65efe1a3aad4e279b",
-    urls = ["https://github.com/bazelbuild/bazel-skylib/archive/2169ae1c374aab4a09aa90e65efe1a3aad4e279b.tar.gz"],
+    strip_prefix = "bazel-skylib-master",
+    urls = ["https://github.com/bazelbuild/bazel-skylib/archive/master.zip"],
 )
 
 
