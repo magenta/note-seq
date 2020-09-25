@@ -136,7 +136,7 @@ def align_cpp(samples,
   subprocess.check_call([ALIGN_BINARY, temp_path])
 
   # Read file.
-  with open(temp_path + '.result', "rb") as f:
+  with open(temp_path + '.result', 'rb') as f:
     result = alignment_pb2.AlignmentResult.FromString(f.read())
 
   # Clean up.
