@@ -20,6 +20,7 @@ import tempfile
 
 import librosa
 import numpy as np
+import pydub
 import scipy
 
 
@@ -47,6 +48,49 @@ def float_samples_to_int16(y):
   if not issubclass(y.dtype.type, np.floating):
     raise ValueError('input samples not floating-point')
   return (y * np.iinfo(np.int16).max).astype(np.int16)
+
+
+def wav_data_to_samples_pydub(wav_data: bytes,
+                              sample_rate: int,
+                              remove_dc_bias: bool = False,
+                              num_channels: int = None,
+                              normalize_db: float = None):
+  """Convert audio file data (in bytes) into a numpy array using Pydub.
+
+  Args:
+    wav_data: A byte stream of audio data.
+    sample_rate: Resample recorded audio to this sample rate.
+    remove_dc_bias: If true, will remove DC bias from audio.
+    num_channels: If not specified, output shape will be based on the contents
+      of wav_data. Otherwise, will force to be 1 or 2 channels.
+    normalize_db: Normalize the audio to this many decibels. Set to None to skip
+      normalization step.
+
+  Returns:
+    An array of the recorded audio at sample_rate. If mono, will be shape
+    [samples], otherwise [channels, samples].
+  """
+  # Parse and normalize the audio.
+  aseg = pydub.AudioSegment.from_file(io.BytesIO(wav_data))
+  if num_channels:
+    aseg = aseg.set_channels(num_channels)
+  if remove_dc_bias:
+    aseg = aseg.remove_dc_offset()
+  if normalize_db is not None:
+    aseg.normalize(headroom=normalize_db)
+  aseg = aseg.set_frame_rate(sample_rate)
+
+  # Convert to numpy array.
+  channel_asegs = aseg.split_to_mono()
+  samples = [s.get_array_of_samples() for s in channel_asegs]
+  fp_arr = np.array(samples).astype(np.float32)
+  fp_arr /= np.iinfo(samples[0].typecode).max
+
+  # If only 1 channel, remove extra dim.
+  if fp_arr.shape[0] == 1:
+    fp_arr = fp_arr[0]
+
+  return fp_arr
 
 
 def wav_data_to_samples(wav_data, sample_rate):
