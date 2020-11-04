@@ -32,7 +32,6 @@ REQUIRED_PACKAGES = [
     'pandas >= 0.18.1',
     'pretty_midi >= 0.2.6',
     'protobuf >= 3.6.1',
-    'scikit-image',
     'scipy >= 0.18.1',
 ]
 
