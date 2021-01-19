@@ -1,4 +1,4 @@
-# Copyright 2020 The Magenta Authors.
+# Copyright 2021 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -2268,6 +2268,18 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
     expected_active[10:11, 0] = 1
     expected_active[12:13, 0] = 1
     np.testing.assert_equal(expected_active, rolls.active)
+
+  def testSequenceToValuedIntervals(self):
+    sequence = music_pb2.NoteSequence()
+    sequence.notes.add(pitch=69, start_time=1.0, end_time=2.0, velocity=80)
+    # Should be dropped because it is 0 duration.
+    sequence.notes.add(pitch=60, start_time=3.0, end_time=3.0, velocity=90)
+
+    intervals, pitches, velocities = sequences_lib.sequence_to_valued_intervals(
+        sequence)
+    np.testing.assert_array_equal([[1., 2.]], intervals)
+    np.testing.assert_array_equal([440.0], pitches)
+    np.testing.assert_array_equal([80], velocities)
 
 
 if __name__ == '__main__':
