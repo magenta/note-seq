@@ -21,3 +21,7 @@ To learn more see the main [magenta repo](https://github.com/magenta/magenta) an
 ## Installation
 
 `pip install note-seq`
+
+## Notes
+
+Importing `note-seq` increases the value of `pretty_midi.pretty_midi.MAX_TICK` to `1e10`. This may change the expected behavior of `pretty_midi` when using it alongside of `note-seq`. For example, loading corrupted MIDI files with `pretty_midi` may result in out of memory errors.
