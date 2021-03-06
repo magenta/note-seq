@@ -115,7 +115,7 @@ def parse_abc_tunebook(tunebook):
   # The first section is a header if it does not contain an X information field.
   header = []
   if len(sections) > 1 and not any(
-      [line.startswith('X:') for line in sections[0]]):
+      line.startswith('X:') for line in sections[0]):
     header = sections.pop(0)
 
   tunes = {}
