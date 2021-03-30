@@ -1935,7 +1935,7 @@ def pianoroll_to_note_sequence(frames,
   """Convert frames (with optional onsets, offsets, velocities) to NoteSequence.
 
   Args:
-    frames: Numpy array of active frames.
+    frames: Numpy array of active frames. Expected shape is (time, pitch).
     frames_per_second: Frames per second.
     min_duration_ms: Notes active for less than this duration will be ignored.
     velocity: Default note velocity if velocity_values is not provided.
@@ -1961,7 +1961,7 @@ def pianoroll_to_note_sequence(frames,
   sequence.ticks_per_quarter = constants.STANDARD_PPQ
 
   pitch_start_step = {}
-  onset_velocities = np.zeros(constants.MAX_MIDI_PITCH, dtype=np.int32)
+  onset_velocities = np.zeros(constants.MAX_MIDI_PITCH+1, dtype=np.int32)
 
   # Add silent frame at the end so we can do a final loop and terminate any
   # notes that are still active.

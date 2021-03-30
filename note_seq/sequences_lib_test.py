@@ -2004,6 +2004,20 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
                      sequence.notes[0].start_time)
     self.assertEqual(75 / DEFAULT_FRAMES_PER_SECOND, sequence.notes[0].end_time)
 
+  def testPianorollToNoteSequenceAllNotes(self):
+    # Test all 128 notes
+    frames = np.eye(MIDI_PITCHES, dtype=np.bool)  # diagonal identity matrix
+    sequence = sequences_lib.pianoroll_to_note_sequence(
+        frames, frames_per_second=DEFAULT_FRAMES_PER_SECOND, min_duration_ms=0)
+
+    self.assertLen(sequence.notes, MIDI_PITCHES)
+    for i in range(MIDI_PITCHES):
+      self.assertEqual(i, sequence.notes[i].pitch)
+      self.assertAlmostEqual(i / DEFAULT_FRAMES_PER_SECOND,
+                             sequence.notes[i].start_time)
+      self.assertAlmostEqual((i+1) / DEFAULT_FRAMES_PER_SECOND,
+                             sequence.notes[i].end_time)
+
   def testPianorollToNoteSequenceWithOnsets(self):
     # 100 frames of notes and onsets.
     frames = np.zeros((100, MIDI_PITCHES), np.bool)
