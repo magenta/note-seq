@@ -198,7 +198,7 @@ class PianorollSequence(events_lib.EventSequence):
         piano_roll[note_start_offset - 1, note_pitch_offset] = 0
       piano_roll[note_start_offset:note_end_offset, note_pitch_offset] = 1
 
-    events = [tuple(np.where(frame)[0]) for frame in piano_roll]
+    events = [tuple(map(int,np.where(frame)[0])) for frame in piano_roll]
 
     return events
 
