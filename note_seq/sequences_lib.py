@@ -1735,9 +1735,9 @@ def sequence_to_pianoroll(
     min_pitch,
     max_pitch,
     # pylint: disable=unused-argument
-    min_velocity=constants.MIN_MIDI_PITCH,
+    min_velocity=constants.MIN_MIDI_VELOCITY,
     # pylint: enable=unused-argument
-    max_velocity=constants.MAX_MIDI_PITCH,
+    max_velocity=constants.MAX_MIDI_VELOCITY,
     add_blank_frame_before_onset=False,
     onset_upweight=ONSET_UPWEIGHT,
     onset_window=ONSET_WINDOW,
