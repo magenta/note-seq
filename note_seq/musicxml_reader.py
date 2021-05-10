@@ -105,8 +105,7 @@ def musicxml_to_sequence_proto(musicxml_document):
           note.start_time = musicxml_note.note_duration.time_position
 
           # Fix negative time errors from incorrect MusicXML
-          if note.start_time < 0:
-            note.start_time = 0
+          note.start_time = max(note.start_time, 0)
 
           note.end_time = note.start_time + musicxml_note.note_duration.seconds
           note.pitch = musicxml_note.pitch[1]  # Index 1 = MIDI pitch number
