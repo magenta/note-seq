@@ -1,4 +1,4 @@
-<img src="https://github.com/magenta/magenta/blob/master/magenta-logo-bg.png" height="75">
+<img src="https://github.com/magenta/magenta/blob/main/magenta-logo-bg.png" height="75">
 
 [![Build Status](https://github.com/magenta/note-seq/workflows/build/badge.svg)](https://github.com/magenta/note-seq/actions?query=workflow%3Abuild)
  [![PyPI version](https://badge.fury.io/py/note-seq.svg)](https://badge.fury.io/py/note-seq)
