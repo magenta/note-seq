@@ -33,7 +33,7 @@ import numpy as np
 
 
 # Constants based on craffel's example alignment script:
-# https://github.com/craffel/pretty-midi/blob/master/examples/align_midi.py
+# https://github.com/craffel/pretty-midi/blob/main/examples/align_midi.py
 
 SAMPLE_RATE = 22050
 CQT_HOP_LENGTH_FINE = 64  # ~3ms
