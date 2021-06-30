@@ -55,15 +55,18 @@ class EventSequence(object):
   """
   __metaclass__ = abc.ABCMeta
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def start_step(self):
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def end_step(self):
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def steps(self):
     pass
 

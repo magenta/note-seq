@@ -139,7 +139,8 @@ class TrivialOneHotEncoding(encoder_decoder.OneHotEncoding):
   def encode_event(self, event):
     return event
 
-  def decode_event(self, event):
+  def decode_event(self, index):
+    event = index
     return event
 
   def event_to_num_steps(self, event):

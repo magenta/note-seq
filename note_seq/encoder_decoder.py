@@ -57,7 +57,8 @@ class OneHotEncoding(object):
   """An interface for specifying a one-hot encoding of individual events."""
   __metaclass__ = abc.ABCMeta
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def num_classes(self):
     """The number of distinct event encodings.
 
@@ -66,7 +67,8 @@ class OneHotEncoding(object):
     """
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def default_event(self):
     """An event value to use as a default.
 
@@ -144,7 +146,8 @@ class EventSequenceEncoderDecoder(object):
 
   __metaclass__ = abc.ABCMeta
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def input_size(self):
     """The size of the input vector used by this model.
 
@@ -153,7 +156,8 @@ class EventSequenceEncoderDecoder(object):
     """
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def num_classes(self):
     """The range of labels used by this model.
 
@@ -163,7 +167,8 @@ class EventSequenceEncoderDecoder(object):
     """
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def default_event_label(self):
     """The class label that represents a default event.
 

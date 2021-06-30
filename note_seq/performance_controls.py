@@ -37,12 +37,14 @@ class PerformanceControlSignal(object):
   """
   __metaclass__ = abc.ABCMeta
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def name(self):
     """Name of the control signal."""
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def description(self):
     """Description of the control signal."""
     pass
@@ -52,12 +54,14 @@ class PerformanceControlSignal(object):
     """Validate a control signal value."""
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def default_value(self):
     """Default value of the (unencoded) control signal."""
     pass
 
-  @abc.abstractproperty
+  @property
+  @abc.abstractmethod
   def encoder(self):
     """Instantiated encoder object for the control signal."""
     pass

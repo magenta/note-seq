@@ -105,17 +105,20 @@ class PianorollEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
     assert class_index == 0
     return tuple(event)
 
-  def extend_event_sequences(self, pianoroll_seqs, samples):
+  def extend_event_sequences(self, event_sequences, softmax):
     """Extends the event sequences by adding the new samples.
 
     Args:
-      pianoroll_seqs: A collection of PianorollSequences to append `samples` to.
-      samples: A collection of binary arrays with active pitches set to 1 and
+      event_sequences: A collection of PianorollSequences to append `samples`
+         to.
+      softmax: A collection of binary arrays with active pitches set to 1 and
          inactive pitches set to 0, which will be added to the corresponding
          `pianoroll_seqs`.
     Raises:
       ValueError: if inputs are not of equal length.
     """
+    pianoroll_seqs = event_sequences
+    samples = softmax
     if len(pianoroll_seqs) != len(samples):
       raise ValueError(
           '`pianoroll_seqs` and `samples` must have equal lengths.')

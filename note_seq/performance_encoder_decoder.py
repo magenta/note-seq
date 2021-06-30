@@ -424,7 +424,8 @@ class NotePerformanceEventSequenceEncoderDecoder(
 
     return self._encode_event(event)
 
-  def class_index_to_event(self, class_indices, events):
+  def class_index_to_event(self, class_index, events):
+    class_indices = class_index
     time_shift = (class_indices[0] * self._shift_steps_per_segment +
                   class_indices[1])
     pitch = class_indices[2] + self._min_pitch
