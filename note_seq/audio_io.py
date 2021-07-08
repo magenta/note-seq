@@ -21,7 +21,7 @@ import tempfile
 import librosa
 import numpy as np
 import pydub
-import scipy
+import scipy.io.wavfile
 
 
 class AudioIOError(BaseException):  # pylint:disable=g-bad-exception-name
