@@ -1,0 +1,2198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.melody_encoder_decoder_test API documentation</title>
+<meta name="description" content="Tests for melody_encoder_decoder." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.melody_encoder_decoder_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Tests for melody_encoder_decoder.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Tests for melody_encoder_decoder.&#34;&#34;&#34;
+
+from absl.testing import absltest
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq import melodies_lib
+from note_seq import melody_encoder_decoder
+
+NOTE_OFF = constants.MELODY_NOTE_OFF
+NO_EVENT = constants.MELODY_NO_EVENT
+
+
+class MelodyOneHotEncodingTest(absltest.TestCase):
+
+  def testInit(self):
+    melody_encoder_decoder.MelodyOneHotEncoding(0, 128)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(-1, 12)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(60, 129)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(72, 72)
+
+  def testNumClasses(self):
+    self.assertEqual(
+        14, melody_encoder_decoder.MelodyOneHotEncoding(60, 72).num_classes)
+    self.assertEqual(
+        130, melody_encoder_decoder.MelodyOneHotEncoding(0, 128).num_classes)
+    self.assertEqual(
+        3, melody_encoder_decoder.MelodyOneHotEncoding(60, 61).num_classes)
+
+  def testDefaultEvent(self):
+    self.assertEqual(
+        NO_EVENT,
+        melody_encoder_decoder.MelodyOneHotEncoding(60, 72).default_event)
+
+  def testEncodeEvent(self):
+    enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+    self.assertEqual(2, enc.encode_event(60))
+    self.assertEqual(13, enc.encode_event(71))
+    self.assertEqual(0, enc.encode_event(NO_EVENT))
+    self.assertEqual(1, enc.encode_event(NOTE_OFF))
+    with self.assertRaises(ValueError):
+      enc.encode_event(-3)
+    with self.assertRaises(ValueError):
+      enc.encode_event(59)
+    with self.assertRaises(ValueError):
+      enc.encode_event(72)
+
+  def testDecodeEvent(self):
+    enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+    self.assertEqual(63, enc.decode_event(5))
+    self.assertEqual(60, enc.decode_event(2))
+    self.assertEqual(71, enc.decode_event(13))
+    self.assertEqual(NO_EVENT, enc.decode_event(0))
+    self.assertEqual(NOTE_OFF, enc.decode_event(1))
+
+
+class MelodyOneHotEventSequenceEncoderDecoderTest(absltest.TestCase):
+
+  def setUp(self):
+    super().setUp()
+    self.min_note = 60
+    self.max_note = 72
+    self.transpose_to_key = 0
+    self.med = encoder_decoder.OneHotEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(self.min_note,
+                                                    self.max_note))
+
+  def testInitValues(self):
+    self.assertEqual(self.med.input_size, 14)
+    self.assertEqual(self.med.num_classes, 14)
+    self.assertEqual(self.med.default_event_label, 0)
+
+  def testEncode(self):
+    events = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+    melody = melodies_lib.Melody(events)
+    melody.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    inputs, labels = self.med.encode(melody)
+    expected_inputs = [
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_labels = [2, 9, 13, 0, 13, 2, 1, 0]
+    self.assertEqual(inputs, expected_inputs)
+    self.assertEqual(labels, expected_labels)
+
+  def testGetInputsBatch(self):
+    events1 = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+    melody1 = melodies_lib.Melody(events1)
+    events2 = [9, 10, 12, 14, 15, 17, 19, 21, 22]
+    melody2 = melodies_lib.Melody(events2)
+    melody1.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    melody2.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    melodies = [melody1, melody2]
+    expected_inputs1 = [
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_inputs2 = [
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_full_length_inputs_batch = [expected_inputs1, expected_inputs2]
+    expected_last_event_inputs_batch = [expected_inputs1[-1:],
+                                        expected_inputs2[-1:]]
+    self.assertListEqual(
+        expected_full_length_inputs_batch,
+        self.med.get_inputs_batch(melodies, True))
+    self.assertListEqual(
+        expected_last_event_inputs_batch,
+        self.med.get_inputs_batch(melodies))
+
+  def testExtendMelodies(self):
+    melody1 = melodies_lib.Melody([60])
+    melody2 = melodies_lib.Melody([60])
+    melody3 = melodies_lib.Melody([60])
+    melody4 = melodies_lib.Melody([60])
+    melodies = [melody1, melody2, melody3, melody4]
+    softmax = [[
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ], [
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+    ], [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ], [
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ]]
+    self.med.extend_event_sequences(melodies, softmax)
+    self.assertListEqual(list(melody1), [60, 60])
+    self.assertListEqual(list(melody2), [60, 71])
+    self.assertListEqual(list(melody3), [60, NO_EVENT])
+    self.assertListEqual(list(melody4), [60, NOTE_OFF])
+
+
+class MelodyLookbackEventSequenceEncoderDecoderTest(absltest.TestCase):
+
+  def testDefaultRange(self):
+    med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(48, 84))
+    self.assertEqual(med.input_size, 121)
+    self.assertEqual(med.num_classes, 40)
+
+    melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [48, NOTE_OFF, 49, 82])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        # 48, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+        [1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 49, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 83, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # 48, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+        # NOTE_OFF, lookbacks = (49, NO_EVENT)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+        # 48, lookbacks = (NOTE_OFF, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, 49)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+        # 49, lookbacks = (NO_EVENT, 83)
+        [0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+        # 82, lookbacks = (NO_EVENT, NOTE_OFF)
+        [0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+    ]
+    expected_labels = [2, 39, 3, 37, 1, 38, 1, 39, 38, 39, 36]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      print(i)
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+  def testCustomRange(self):
+    med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(min_note=24, max_note=36))
+
+    self.assertEqual(med.input_size, 49)
+    self.assertEqual(med.num_classes, 16)
+
+    melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [24, NOTE_OFF, 25, 34])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        # 24, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 25, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 35, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # 24, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+        # NOTE_OFF, lookbacks = (25, NO_EVENT)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+        # 24, lookbacks = (NOTE_OFF, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, 25)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+        # 25, lookbacks = (NO_EVENT, 35)
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+        # 34, lookbacks = (NO_EVENT, NOTE_OFF)
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+    ]
+    expected_labels = [2, 15, 3, 13, 1, 14, 1, 15, 14, 15, 12]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+
+class KeyMelodyEncoderDecoderTest(absltest.TestCase):
+
+  def testDefaultRange(self):
+    med = melody_encoder_decoder.KeyMelodyEncoderDecoder(48, 84)
+    self.assertEqual(med.input_size, 74)
+    self.assertEqual(med.num_classes, 40)
+
+    melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [48, NOTE_OFF, 49, 82])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 1.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 1.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0]
+    ]
+    expected_labels = [0, 39, 1, 35, 37, 39, 38, 37, 39, 38, 39, 34]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+  def testCustomRange(self):
+    med = melody_encoder_decoder.KeyMelodyEncoderDecoder(min_note=24,
+                                                         max_note=36)
+
+    self.assertEqual(med.input_size, 50)
+    self.assertEqual(med.num_classes, 16)
+
+    melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [24, NOTE_OFF, 25, 34])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         0.0, 1.0, 0.0, 0.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, -1.0, 1.0, 0.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, -1.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, -1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, -1.0, 1.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+    ]
+    expected_labels = [0, 15, 1, 11, 13, 15, 14, 13, 15, 14, 15, 10]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+
+if __name__ == &#39;__main__&#39;:
+  absltest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest"><code class="flex name class">
+<span>class <span class="ident">KeyMelodyEncoderDecoderTest</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extension of unittest.TestCase providing more power.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeyMelodyEncoderDecoderTest(absltest.TestCase):
+
+  def testDefaultRange(self):
+    med = melody_encoder_decoder.KeyMelodyEncoderDecoder(48, 84)
+    self.assertEqual(med.input_size, 74)
+    self.assertEqual(med.num_classes, 40)
+
+    melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [48, NOTE_OFF, 49, 82])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+         0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 1.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 1.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+         1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0]
+    ]
+    expected_labels = [0, 39, 1, 35, 37, 39, 38, 37, 39, 38, 39, 34]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+  def testCustomRange(self):
+    med = melody_encoder_decoder.KeyMelodyEncoderDecoder(min_note=24,
+                                                         max_note=36)
+
+    self.assertEqual(med.input_size, 50)
+    self.assertEqual(med.num_classes, 16)
+
+    melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [24, NOTE_OFF, 25, 34])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         0.0, 1.0, 0.0, 0.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0,
+         1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, -1.0, 1.0, 0.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, -1.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, -1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, -1.0, 1.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+         0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+         1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+    ]
+    expected_labels = [0, 15, 1, 11, 13, 15, 14, 13, 15, 14, 15, 10]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>absl.testing.absltest.TestCase</li>
+<li>absl.third_party.unittest3_backport.case.TestCase</li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testCustomRange"><code class="name flex">
+<span>def <span class="ident">testCustomRange</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCustomRange(self):
+  med = melody_encoder_decoder.KeyMelodyEncoderDecoder(min_note=24,
+                                                       max_note=36)
+
+  self.assertEqual(med.input_size, 50)
+  self.assertEqual(med.num_classes, 16)
+
+  melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                   [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                   [24, NOTE_OFF, 25, 34])
+  melody = melodies_lib.Melody(melody_events)
+
+  melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+  expected_inputs = [
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+       1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0,
+       1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 0.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       0.0, 1.0, 0.0, 0.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0,
+       1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, -1.0, 1.0, 0.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, -1.0, 0.0, 0.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, -1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, -1.0, 1.0, 0.0, -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
+       0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+  ]
+  expected_labels = [0, 15, 1, 11, 13, 15, 14, 13, 15, 14, 15, 10]
+  melodies = [melody, melody]
+  full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+  for i, melody_index in enumerate(melody_indices):
+    partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+    self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                         expected_inputs[i])
+    self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                         expected_inputs[i])
+    softmax = [[[0.0] * med.num_classes]]
+    softmax[0][0][expected_labels[i]] = 1.0
+    med.extend_event_sequences([partial_melody], softmax)
+    self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+  self.assertListEqual(
+      [expected_inputs[-1:], expected_inputs[-1:]],
+      med.get_inputs_batch(melodies))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testDefaultRange"><code class="name flex">
+<span>def <span class="ident">testDefaultRange</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDefaultRange(self):
+  med = melody_encoder_decoder.KeyMelodyEncoderDecoder(48, 84)
+  self.assertEqual(med.input_size, 74)
+  self.assertEqual(med.num_classes, 40)
+
+  melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                   [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                   [48, NOTE_OFF, 49, 82])
+  melody = melodies_lib.Melody(melody_events)
+
+  melody_indices = [0, 1, 2, 3, 4, 15, 16, 17, 32, 33, 34, 35]
+  expected_inputs = [
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+       1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 1.0, 0.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0,
+       1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0,
+       1.0, 1.0, 0.0, 1.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+       0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0,
+       1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+       0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0,
+       -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0,
+       0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, -1.0, 1.0, 1.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 1.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+       1.0, 1.0, 1.0, 0.0, 1.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0]
+  ]
+  expected_labels = [0, 39, 1, 35, 37, 39, 38, 37, 39, 38, 39, 34]
+  melodies = [melody, melody]
+  full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+  for i, melody_index in enumerate(melody_indices):
+    partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+    self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                         expected_inputs[i])
+    self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                         expected_inputs[i])
+    softmax = [[[0.0] * med.num_classes]]
+    softmax[0][0][expected_labels[i]] = 1.0
+    med.extend_event_sequences([partial_melody], softmax)
+    self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+  self.assertListEqual(
+      [expected_inputs[-1:], expected_inputs[-1:]],
+      med.get_inputs_batch(melodies))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest"><code class="flex name class">
+<span>class <span class="ident">MelodyLookbackEventSequenceEncoderDecoderTest</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extension of unittest.TestCase providing more power.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MelodyLookbackEventSequenceEncoderDecoderTest(absltest.TestCase):
+
+  def testDefaultRange(self):
+    med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(48, 84))
+    self.assertEqual(med.input_size, 121)
+    self.assertEqual(med.num_classes, 40)
+
+    melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [48, NOTE_OFF, 49, 82])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        # 48, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+        [1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 49, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 83, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # 48, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+        # NOTE_OFF, lookbacks = (49, NO_EVENT)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+        # 48, lookbacks = (NOTE_OFF, NO_EVENT)
+        [0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, 49)
+        [0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+        # 49, lookbacks = (NO_EVENT, 83)
+        [0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+        # 82, lookbacks = (NO_EVENT, NOTE_OFF)
+        [0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+    ]
+    expected_labels = [2, 39, 3, 37, 1, 38, 1, 39, 38, 39, 36]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      print(i)
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))
+
+  def testCustomRange(self):
+    med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(min_note=24, max_note=36))
+
+    self.assertEqual(med.input_size, 49)
+    self.assertEqual(med.num_classes, 16)
+
+    melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                     [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                     [24, NOTE_OFF, 25, 34])
+    melody = melodies_lib.Melody(melody_events)
+
+    melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+    expected_inputs = [
+        # 24, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 25, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+        # 35, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+        # 24, lookbacks = (NO_EVENT, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+        # NOTE_OFF, lookbacks = (25, NO_EVENT)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+        # 24, lookbacks = (NOTE_OFF, NO_EVENT)
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+        # NOTE_OFF, lookbacks = (NO_EVENT, 25)
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+        # 25, lookbacks = (NO_EVENT, 35)
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+         1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+        # 34, lookbacks = (NO_EVENT, NOTE_OFF)
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+         1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+         -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+    ]
+    expected_labels = [2, 15, 3, 13, 1, 14, 1, 15, 14, 15, 12]
+    melodies = [melody, melody]
+    full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+    for i, melody_index in enumerate(melody_indices):
+      partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+      self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                           expected_inputs[i])
+      self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                           expected_inputs[i])
+      softmax = [[[0.0] * med.num_classes]]
+      softmax[0][0][expected_labels[i]] = 1.0
+      med.extend_event_sequences([partial_melody], softmax)
+      self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+    self.assertListEqual(
+        [expected_inputs[-1:], expected_inputs[-1:]],
+        med.get_inputs_batch(melodies))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>absl.testing.absltest.TestCase</li>
+<li>absl.third_party.unittest3_backport.case.TestCase</li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testCustomRange"><code class="name flex">
+<span>def <span class="ident">testCustomRange</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testCustomRange(self):
+  med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+      melody_encoder_decoder.MelodyOneHotEncoding(min_note=24, max_note=36))
+
+  self.assertEqual(med.input_size, 49)
+  self.assertEqual(med.num_classes, 16)
+
+  melody_events = ([24, NO_EVENT, 25, 35, NOTE_OFF] + [NO_EVENT] * 11 +
+                   [24, NOTE_OFF] + [NO_EVENT] * 14 +
+                   [24, NOTE_OFF, 25, 34])
+  melody = melodies_lib.Melody(melody_events)
+
+  melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+  expected_inputs = [
+      # 24, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # 25, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # 35, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+      # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+      # 24, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+      # NOTE_OFF, lookbacks = (25, NO_EVENT)
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+      # 24, lookbacks = (NOTE_OFF, NO_EVENT)
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+      # NOTE_OFF, lookbacks = (NO_EVENT, 25)
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+      # 25, lookbacks = (NO_EVENT, 35)
+      [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+      # 34, lookbacks = (NO_EVENT, NOTE_OFF)
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+  ]
+  expected_labels = [2, 15, 3, 13, 1, 14, 1, 15, 14, 15, 12]
+  melodies = [melody, melody]
+  full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+  for i, melody_index in enumerate(melody_indices):
+    partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+    self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                         expected_inputs[i])
+    self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                         expected_inputs[i])
+    softmax = [[[0.0] * med.num_classes]]
+    softmax[0][0][expected_labels[i]] = 1.0
+    med.extend_event_sequences([partial_melody], softmax)
+    self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+  self.assertListEqual(
+      [expected_inputs[-1:], expected_inputs[-1:]],
+      med.get_inputs_batch(melodies))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testDefaultRange"><code class="name flex">
+<span>def <span class="ident">testDefaultRange</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDefaultRange(self):
+  med = encoder_decoder.LookbackEventSequenceEncoderDecoder(
+      melody_encoder_decoder.MelodyOneHotEncoding(48, 84))
+  self.assertEqual(med.input_size, 121)
+  self.assertEqual(med.num_classes, 40)
+
+  melody_events = ([48, NO_EVENT, 49, 83, NOTE_OFF] + [NO_EVENT] * 11 +
+                   [48, NOTE_OFF] + [NO_EVENT] * 14 +
+                   [48, NOTE_OFF, 49, 82])
+  melody = melodies_lib.Melody(melody_events)
+
+  melody_indices = [0, 1, 2, 3, 4, 16, 17, 32, 33, 34, 35]
+  expected_inputs = [
+      # 48, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # NO_EVENT, lookbacks = (NO_EVENT, NO_EVENT)
+      [1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # 49, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 0.0],
+      # 83, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+      # NOTE_OFF, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 1.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0],
+      # 48, lookbacks = (NO_EVENT, NO_EVENT)
+      [0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 0.0],
+      # NOTE_OFF, lookbacks = (49, NO_EVENT)
+      [0.0, 1.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, 1.0, 0.0, 0.0],
+      # 48, lookbacks = (NOTE_OFF, NO_EVENT)
+      [0.0, 0.0,
+       1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0],
+      # NOTE_OFF, lookbacks = (NO_EVENT, 49)
+      [0.0, 1.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 0.0],
+      # 49, lookbacks = (NO_EVENT, 83)
+      [0.0, 0.0,
+       0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0,
+       1.0, 1.0, -1.0, -1.0, -1.0, 0.0, 1.0],
+      # 82, lookbacks = (NO_EVENT, NOTE_OFF)
+      [0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
+       1.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 1.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+       -1.0, -1.0, 1.0, -1.0, -1.0, 0.0, 0.0]
+  ]
+  expected_labels = [2, 39, 3, 37, 1, 38, 1, 39, 38, 39, 36]
+  melodies = [melody, melody]
+  full_length_inputs_batch = med.get_inputs_batch(melodies, True)
+
+  for i, melody_index in enumerate(melody_indices):
+    print(i)
+    partial_melody = melodies_lib.Melody(melody_events[:melody_index])
+    self.assertListEqual(full_length_inputs_batch[0][melody_index],
+                         expected_inputs[i])
+    self.assertListEqual(full_length_inputs_batch[1][melody_index],
+                         expected_inputs[i])
+    softmax = [[[0.0] * med.num_classes]]
+    softmax[0][0][expected_labels[i]] = 1.0
+    med.extend_event_sequences([partial_melody], softmax)
+    self.assertEqual(list(partial_melody)[-1], melody_events[melody_index])
+
+  self.assertListEqual(
+      [expected_inputs[-1:], expected_inputs[-1:]],
+      med.get_inputs_batch(melodies))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest"><code class="flex name class">
+<span>class <span class="ident">MelodyOneHotEncodingTest</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extension of unittest.TestCase providing more power.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MelodyOneHotEncodingTest(absltest.TestCase):
+
+  def testInit(self):
+    melody_encoder_decoder.MelodyOneHotEncoding(0, 128)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(-1, 12)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(60, 129)
+    with self.assertRaises(ValueError):
+      melody_encoder_decoder.MelodyOneHotEncoding(72, 72)
+
+  def testNumClasses(self):
+    self.assertEqual(
+        14, melody_encoder_decoder.MelodyOneHotEncoding(60, 72).num_classes)
+    self.assertEqual(
+        130, melody_encoder_decoder.MelodyOneHotEncoding(0, 128).num_classes)
+    self.assertEqual(
+        3, melody_encoder_decoder.MelodyOneHotEncoding(60, 61).num_classes)
+
+  def testDefaultEvent(self):
+    self.assertEqual(
+        NO_EVENT,
+        melody_encoder_decoder.MelodyOneHotEncoding(60, 72).default_event)
+
+  def testEncodeEvent(self):
+    enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+    self.assertEqual(2, enc.encode_event(60))
+    self.assertEqual(13, enc.encode_event(71))
+    self.assertEqual(0, enc.encode_event(NO_EVENT))
+    self.assertEqual(1, enc.encode_event(NOTE_OFF))
+    with self.assertRaises(ValueError):
+      enc.encode_event(-3)
+    with self.assertRaises(ValueError):
+      enc.encode_event(59)
+    with self.assertRaises(ValueError):
+      enc.encode_event(72)
+
+  def testDecodeEvent(self):
+    enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+    self.assertEqual(63, enc.decode_event(5))
+    self.assertEqual(60, enc.decode_event(2))
+    self.assertEqual(71, enc.decode_event(13))
+    self.assertEqual(NO_EVENT, enc.decode_event(0))
+    self.assertEqual(NOTE_OFF, enc.decode_event(1))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>absl.testing.absltest.TestCase</li>
+<li>absl.third_party.unittest3_backport.case.TestCase</li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDecodeEvent"><code class="name flex">
+<span>def <span class="ident">testDecodeEvent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDecodeEvent(self):
+  enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+  self.assertEqual(63, enc.decode_event(5))
+  self.assertEqual(60, enc.decode_event(2))
+  self.assertEqual(71, enc.decode_event(13))
+  self.assertEqual(NO_EVENT, enc.decode_event(0))
+  self.assertEqual(NOTE_OFF, enc.decode_event(1))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDefaultEvent"><code class="name flex">
+<span>def <span class="ident">testDefaultEvent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testDefaultEvent(self):
+  self.assertEqual(
+      NO_EVENT,
+      melody_encoder_decoder.MelodyOneHotEncoding(60, 72).default_event)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testEncodeEvent"><code class="name flex">
+<span>def <span class="ident">testEncodeEvent</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEncodeEvent(self):
+  enc = melody_encoder_decoder.MelodyOneHotEncoding(60, 72)
+  self.assertEqual(2, enc.encode_event(60))
+  self.assertEqual(13, enc.encode_event(71))
+  self.assertEqual(0, enc.encode_event(NO_EVENT))
+  self.assertEqual(1, enc.encode_event(NOTE_OFF))
+  with self.assertRaises(ValueError):
+    enc.encode_event(-3)
+  with self.assertRaises(ValueError):
+    enc.encode_event(59)
+  with self.assertRaises(ValueError):
+    enc.encode_event(72)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testInit"><code class="name flex">
+<span>def <span class="ident">testInit</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testInit(self):
+  melody_encoder_decoder.MelodyOneHotEncoding(0, 128)
+  with self.assertRaises(ValueError):
+    melody_encoder_decoder.MelodyOneHotEncoding(-1, 12)
+  with self.assertRaises(ValueError):
+    melody_encoder_decoder.MelodyOneHotEncoding(60, 129)
+  with self.assertRaises(ValueError):
+    melody_encoder_decoder.MelodyOneHotEncoding(72, 72)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testNumClasses"><code class="name flex">
+<span>def <span class="ident">testNumClasses</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testNumClasses(self):
+  self.assertEqual(
+      14, melody_encoder_decoder.MelodyOneHotEncoding(60, 72).num_classes)
+  self.assertEqual(
+      130, melody_encoder_decoder.MelodyOneHotEncoding(0, 128).num_classes)
+  self.assertEqual(
+      3, melody_encoder_decoder.MelodyOneHotEncoding(60, 61).num_classes)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest"><code class="flex name class">
+<span>class <span class="ident">MelodyOneHotEventSequenceEncoderDecoderTest</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extension of unittest.TestCase providing more power.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MelodyOneHotEventSequenceEncoderDecoderTest(absltest.TestCase):
+
+  def setUp(self):
+    super().setUp()
+    self.min_note = 60
+    self.max_note = 72
+    self.transpose_to_key = 0
+    self.med = encoder_decoder.OneHotEventSequenceEncoderDecoder(
+        melody_encoder_decoder.MelodyOneHotEncoding(self.min_note,
+                                                    self.max_note))
+
+  def testInitValues(self):
+    self.assertEqual(self.med.input_size, 14)
+    self.assertEqual(self.med.num_classes, 14)
+    self.assertEqual(self.med.default_event_label, 0)
+
+  def testEncode(self):
+    events = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+    melody = melodies_lib.Melody(events)
+    melody.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    inputs, labels = self.med.encode(melody)
+    expected_inputs = [
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_labels = [2, 9, 13, 0, 13, 2, 1, 0]
+    self.assertEqual(inputs, expected_inputs)
+    self.assertEqual(labels, expected_labels)
+
+  def testGetInputsBatch(self):
+    events1 = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+    melody1 = melodies_lib.Melody(events1)
+    events2 = [9, 10, 12, 14, 15, 17, 19, 21, 22]
+    melody2 = melodies_lib.Melody(events2)
+    melody1.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    melody2.squash(
+        self.min_note,
+        self.max_note,
+        self.transpose_to_key)
+    melodies = [melody1, melody2]
+    expected_inputs1 = [
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_inputs2 = [
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+    expected_full_length_inputs_batch = [expected_inputs1, expected_inputs2]
+    expected_last_event_inputs_batch = [expected_inputs1[-1:],
+                                        expected_inputs2[-1:]]
+    self.assertListEqual(
+        expected_full_length_inputs_batch,
+        self.med.get_inputs_batch(melodies, True))
+    self.assertListEqual(
+        expected_last_event_inputs_batch,
+        self.med.get_inputs_batch(melodies))
+
+  def testExtendMelodies(self):
+    melody1 = melodies_lib.Melody([60])
+    melody2 = melodies_lib.Melody([60])
+    melody3 = melodies_lib.Melody([60])
+    melody4 = melodies_lib.Melody([60])
+    melodies = [melody1, melody2, melody3, melody4]
+    softmax = [[
+        [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ], [
+        [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+    ], [
+        [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ], [
+        [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ]]
+    self.med.extend_event_sequences(melodies, softmax)
+    self.assertListEqual(list(melody1), [60, 60])
+    self.assertListEqual(list(melody2), [60, 71])
+    self.assertListEqual(list(melody3), [60, NO_EVENT])
+    self.assertListEqual(list(melody4), [60, NOTE_OFF])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>absl.testing.absltest.TestCase</li>
+<li>absl.third_party.unittest3_backport.case.TestCase</li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.setUp"><code class="name flex">
+<span>def <span class="ident">setUp</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Hook method for setting up the test fixture before exercising it.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setUp(self):
+  super().setUp()
+  self.min_note = 60
+  self.max_note = 72
+  self.transpose_to_key = 0
+  self.med = encoder_decoder.OneHotEventSequenceEncoderDecoder(
+      melody_encoder_decoder.MelodyOneHotEncoding(self.min_note,
+                                                  self.max_note))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testEncode"><code class="name flex">
+<span>def <span class="ident">testEncode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testEncode(self):
+  events = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+  melody = melodies_lib.Melody(events)
+  melody.squash(
+      self.min_note,
+      self.max_note,
+      self.transpose_to_key)
+  inputs, labels = self.med.encode(melody)
+  expected_inputs = [
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+  expected_labels = [2, 9, 13, 0, 13, 2, 1, 0]
+  self.assertEqual(inputs, expected_inputs)
+  self.assertEqual(labels, expected_labels)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testExtendMelodies"><code class="name flex">
+<span>def <span class="ident">testExtendMelodies</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testExtendMelodies(self):
+  melody1 = melodies_lib.Melody([60])
+  melody2 = melodies_lib.Melody([60])
+  melody3 = melodies_lib.Melody([60])
+  melody4 = melodies_lib.Melody([60])
+  melodies = [melody1, melody2, melody3, melody4]
+  softmax = [[
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  ], [
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+  ], [
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  ], [
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+  ]]
+  self.med.extend_event_sequences(melodies, softmax)
+  self.assertListEqual(list(melody1), [60, 60])
+  self.assertListEqual(list(melody2), [60, 71])
+  self.assertListEqual(list(melody3), [60, NO_EVENT])
+  self.assertListEqual(list(melody4), [60, NOTE_OFF])</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testGetInputsBatch"><code class="name flex">
+<span>def <span class="ident">testGetInputsBatch</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testGetInputsBatch(self):
+  events1 = [100, 100, 107, 111, NO_EVENT, 99, 112, NOTE_OFF, NO_EVENT]
+  melody1 = melodies_lib.Melody(events1)
+  events2 = [9, 10, 12, 14, 15, 17, 19, 21, 22]
+  melody2 = melodies_lib.Melody(events2)
+  melody1.squash(
+      self.min_note,
+      self.max_note,
+      self.transpose_to_key)
+  melody2.squash(
+      self.min_note,
+      self.max_note,
+      self.transpose_to_key)
+  melodies = [melody1, melody2]
+  expected_inputs1 = [
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+  expected_inputs2 = [
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0],
+      [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
+  expected_full_length_inputs_batch = [expected_inputs1, expected_inputs2]
+  expected_last_event_inputs_batch = [expected_inputs1[-1:],
+                                      expected_inputs2[-1:]]
+  self.assertListEqual(
+      expected_full_length_inputs_batch,
+      self.med.get_inputs_batch(melodies, True))
+  self.assertListEqual(
+      expected_last_event_inputs_batch,
+      self.med.get_inputs_batch(melodies))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testInitValues"><code class="name flex">
+<span>def <span class="ident">testInitValues</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testInitValues(self):
+  self.assertEqual(self.med.input_size, 14)
+  self.assertEqual(self.med.num_classes, 14)
+  self.assertEqual(self.med.default_event_label, 0)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest" href="#note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest">KeyMelodyEncoderDecoderTest</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testCustomRange" href="#note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testCustomRange">testCustomRange</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testDefaultRange" href="#note_seq.melody_encoder_decoder_test.KeyMelodyEncoderDecoderTest.testDefaultRange">testDefaultRange</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest" href="#note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest">MelodyLookbackEventSequenceEncoderDecoderTest</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testCustomRange" href="#note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testCustomRange">testCustomRange</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testDefaultRange" href="#note_seq.melody_encoder_decoder_test.MelodyLookbackEventSequenceEncoderDecoderTest.testDefaultRange">testDefaultRange</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest">MelodyOneHotEncodingTest</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDecodeEvent" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDecodeEvent">testDecodeEvent</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDefaultEvent" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testDefaultEvent">testDefaultEvent</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testEncodeEvent" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testEncodeEvent">testEncodeEvent</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testInit" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testInit">testInit</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testNumClasses" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEncodingTest.testNumClasses">testNumClasses</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest">MelodyOneHotEventSequenceEncoderDecoderTest</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.setUp" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.setUp">setUp</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testEncode" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testEncode">testEncode</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testExtendMelodies" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testExtendMelodies">testExtendMelodies</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testGetInputsBatch" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testGetInputsBatch">testGetInputsBatch</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testInitValues" href="#note_seq.melody_encoder_decoder_test.MelodyOneHotEventSequenceEncoderDecoderTest.testInitValues">testInitValues</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

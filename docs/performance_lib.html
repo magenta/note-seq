@@ -1,0 +1,2662 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.performance_lib API documentation</title>
+<meta name="description" content="Utility functions for working with polyphonic performances." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.performance_lib</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions for working with polyphonic performances.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Utility functions for working with polyphonic performances.&#34;&#34;&#34;
+
+import abc
+import collections
+import math
+
+from absl import logging
+import attr
+from note_seq import constants
+from note_seq import events_lib
+from note_seq import sequences_lib
+from note_seq.protobuf import music_pb2
+
+MAX_MIDI_PITCH = constants.MAX_MIDI_PITCH
+MIN_MIDI_PITCH = constants.MIN_MIDI_PITCH
+
+MAX_MIDI_VELOCITY = constants.MAX_MIDI_VELOCITY
+MIN_MIDI_VELOCITY = constants.MIN_MIDI_VELOCITY
+MAX_NUM_VELOCITY_BINS = MAX_MIDI_VELOCITY - MIN_MIDI_VELOCITY + 1
+
+STANDARD_PPQ = constants.STANDARD_PPQ
+
+DEFAULT_MAX_SHIFT_STEPS = 100
+DEFAULT_MAX_SHIFT_QUARTERS = 4
+
+DEFAULT_PROGRAM = 0
+
+
+@attr.s(frozen=True)
+class PerformanceEvent(object):
+  &#34;&#34;&#34;Class for storing events in a performance.&#34;&#34;&#34;
+  event_type = attr.ib()
+  event_value = attr.ib()
+
+  # Start of a new note.
+  NOTE_ON = 1
+  # End of a note.
+  NOTE_OFF = 2
+  # Shift time forward.
+  TIME_SHIFT = 3
+  # Change current velocity.
+  VELOCITY = 4
+  # Duration of preceding NOTE_ON.
+  # For Note-based encoding, used instead of NOTE_OFF events.
+  DURATION = 5
+
+  @event_type.validator
+  def _check_event(self, attribute, value):
+    &#34;&#34;&#34;Validate event contents.&#34;&#34;&#34;
+    del attribute, value  # This checks the whole object.
+    if self.event_type in (PerformanceEvent.NOTE_ON, PerformanceEvent.NOTE_OFF):
+      if not MIN_MIDI_PITCH &lt;= self.event_value &lt;= MAX_MIDI_PITCH:
+        raise ValueError(&#39;Invalid pitch value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.TIME_SHIFT:
+      if not 0 &lt;= self.event_value:
+        raise ValueError(&#39;Invalid time shift value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.DURATION:
+      if not 1 &lt;= self.event_value:
+        raise ValueError(&#39;Invalid duration value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.VELOCITY:
+      if not 1 &lt;= self.event_value &lt;= MAX_NUM_VELOCITY_BINS:
+        raise ValueError(&#39;Invalid velocity value: %s&#39; % self.event_value)
+    else:
+      raise ValueError(&#39;Invalid event type: %s&#39; % self.event_type)
+
+
+def _velocity_bin_size(num_velocity_bins):
+  return int(math.ceil(
+      (MAX_MIDI_VELOCITY - MIN_MIDI_VELOCITY + 1) / num_velocity_bins))
+
+
+def velocity_to_bin(velocity, num_velocity_bins):
+  return ((velocity - MIN_MIDI_VELOCITY) //
+          _velocity_bin_size(num_velocity_bins) + 1)
+
+
+def velocity_bin_to_velocity(velocity_bin, num_velocity_bins):
+  return (
+      MIN_MIDI_VELOCITY + (velocity_bin - 1) *
+      _velocity_bin_size(num_velocity_bins))
+
+
+def _program_and_is_drum_from_sequence(sequence, instrument=None):
+  &#34;&#34;&#34;Get MIDI program and is_drum from sequence and (optional) instrument.
+
+  Args:
+    sequence: The NoteSequence from which MIDI program and is_drum will be
+        extracted.
+    instrument: The instrument in `sequence` from which MIDI program and
+        is_drum will be extracted, or None to consider all instruments.
+
+  Returns:
+    A tuple containing program and is_drum for the sequence and optional
+    instrument. If multiple programs are found (or if is_drum is True),
+    program will be None. If multiple values of is_drum are found, is_drum
+    will be None.
+  &#34;&#34;&#34;
+  notes = [note for note in sequence.notes
+           if instrument is None or note.instrument == instrument]
+  # Only set program for non-drum tracks.
+  if all(note.is_drum for note in notes):
+    is_drum = True
+    program = None
+  elif all(not note.is_drum for note in notes):
+    is_drum = False
+    programs = set(note.program for note in notes)
+    program = programs.pop() if len(programs) == 1 else None
+  else:
+    is_drum = None
+    program = None
+  return program, is_drum
+
+
+class BasePerformance(events_lib.EventSequence):
+  &#34;&#34;&#34;Stores a polyphonic sequence as a stream of performance events.
+
+  Events are PerformanceEvent objects that encode event type and value.
+  &#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  def __init__(self, start_step, num_velocity_bins, max_shift_steps,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a BasePerformance.
+
+    Args:
+      start_step: The offset of this sequence relative to the beginning of the
+          source sequence.
+      num_velocity_bins: Number of velocity bins to use.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      program: MIDI program used for this performance, or None if not specified.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified.
+
+    Raises:
+      ValueError: If `num_velocity_bins` is larger than the number of MIDI
+          velocity values.
+    &#34;&#34;&#34;
+    if num_velocity_bins &gt; MAX_MIDI_VELOCITY - MIN_MIDI_VELOCITY + 1:
+      raise ValueError(
+          &#39;Number of velocity bins is too large: %d&#39; % num_velocity_bins)
+
+    self._start_step = start_step
+    self._num_velocity_bins = num_velocity_bins
+    self._max_shift_steps = max_shift_steps
+    self._program = program
+    self._is_drum = is_drum
+
+  @property
+  def start_step(self):
+    return self._start_step
+
+  @property
+  def max_shift_steps(self):
+    return self._max_shift_steps
+
+  @property
+  def program(self):
+    return self._program
+
+  @property
+  def is_drum(self):
+    return self._is_drum
+
+  def _append_steps(self, num_steps):
+    &#34;&#34;&#34;Adds steps to the end of the sequence.&#34;&#34;&#34;
+    if (self._events and
+        self._events[-1].event_type == PerformanceEvent.TIME_SHIFT and
+        self._events[-1].event_value &lt; self._max_shift_steps):
+      # Last event is already non-maximal time shift. Increase its duration.
+      added_steps = min(num_steps,
+                        self._max_shift_steps - self._events[-1].event_value)
+      self._events[-1] = PerformanceEvent(
+          PerformanceEvent.TIME_SHIFT,
+          self._events[-1].event_value + added_steps)
+      num_steps -= added_steps
+
+    while num_steps &gt;= self._max_shift_steps:
+      self._events.append(
+          PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                           event_value=self._max_shift_steps))
+      num_steps -= self._max_shift_steps
+
+    if num_steps &gt; 0:
+      self._events.append(
+          PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                           event_value=num_steps))
+
+  def _trim_steps(self, num_steps):
+    &#34;&#34;&#34;Trims a given number of steps from the end of the sequence.&#34;&#34;&#34;
+    steps_trimmed = 0
+    while self._events and steps_trimmed &lt; num_steps:
+      if self._events[-1].event_type == PerformanceEvent.TIME_SHIFT:
+        if steps_trimmed + self._events[-1].event_value &gt; num_steps:
+          self._events[-1] = PerformanceEvent(
+              event_type=PerformanceEvent.TIME_SHIFT,
+              event_value=(self._events[-1].event_value -
+                           num_steps + steps_trimmed))
+          steps_trimmed = num_steps
+        else:
+          steps_trimmed += self._events[-1].event_value
+          self._events.pop()
+      else:
+        self._events.pop()
+
+  def set_length(self, steps, from_left=False):
+    &#34;&#34;&#34;Sets the length of the sequence to the specified number of steps.
+
+    If the event sequence is not long enough, pads with time shifts to make the
+    sequence the specified length. If it is too long, it will be truncated to
+    the requested length.
+
+    Args:
+      steps: How many quantized steps long the event sequence should be.
+      from_left: Whether to add/remove from the left instead of right.
+    &#34;&#34;&#34;
+    if from_left:
+      raise NotImplementedError(&#39;from_left is not supported&#39;)
+
+    if self.num_steps &lt; steps:
+      self._append_steps(steps - self.num_steps)
+    elif self.num_steps &gt; steps:
+      self._trim_steps(self.num_steps - steps)
+
+    assert self.num_steps == steps
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+    Args:
+      event: The performance event to append to the end.
+
+    Raises:
+      ValueError: If `event` is not a valid performance event.
+    &#34;&#34;&#34;
+    if not isinstance(event, PerformanceEvent):
+      raise ValueError(&#39;Invalid performance event: %s&#39; % event)
+    self._events.append(event)
+
+  def truncate(self, num_events):
+    &#34;&#34;&#34;Truncates this Performance to the specified number of events.
+
+    Args:
+      num_events: The number of events to which this performance will be
+          truncated.
+    &#34;&#34;&#34;
+    self._events = self._events[:num_events]
+
+  def __len__(self):
+    &#34;&#34;&#34;How many events are in this sequence.
+
+    Returns:
+      Number of events as an integer.
+    &#34;&#34;&#34;
+    return len(self._events)
+
+  def __getitem__(self, i):
+    &#34;&#34;&#34;Returns the event at the given index.&#34;&#34;&#34;
+    return self._events[i]
+
+  def __iter__(self):
+    &#34;&#34;&#34;Return an iterator over the events in this sequence.&#34;&#34;&#34;
+    return iter(self._events)
+
+  def __str__(self):
+    strs = []
+    for event in self:
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        strs.append(&#39;(%s, ON)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        strs.append(&#39;(%s, OFF)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.TIME_SHIFT:
+        strs.append(&#39;(%s, SHIFT)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.VELOCITY:
+        strs.append(&#39;(%s, VELOCITY)&#39; % event.event_value)
+      else:
+        raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+    return &#39;\n&#39;.join(strs)
+
+  @property
+  def end_step(self):
+    return self.start_step + self.num_steps
+
+  @property
+  def num_steps(self):
+    &#34;&#34;&#34;Returns how many steps long this sequence is.
+
+    Returns:
+      Length of the sequence in quantized steps.
+    &#34;&#34;&#34;
+    steps = 0
+    for event in self:
+      if event.event_type == PerformanceEvent.TIME_SHIFT:
+        steps += event.event_value
+    return steps
+
+  @property
+  def steps(self):
+    &#34;&#34;&#34;Return a Python list of the time step at each event in this sequence.&#34;&#34;&#34;
+    step = self.start_step
+    result = []
+    for event in self:
+      result.append(step)
+      if event.event_type == PerformanceEvent.TIME_SHIFT:
+        step += event.event_value
+    return result
+
+  @staticmethod
+  def _from_quantized_sequence(quantized_sequence, start_step,
+                               num_velocity_bins, max_shift_steps,
+                               instrument=None):
+    &#34;&#34;&#34;Extract a list of events from the given quantized NoteSequence object.
+
+    Within a step, new pitches are started with NOTE_ON and existing pitches are
+    ended with NOTE_OFF. TIME_SHIFT shifts the current step forward in time.
+    VELOCITY changes the current velocity value that will be applied to all
+    NOTE_ON events.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      start_step: Start converting the sequence at this time step.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      instrument: If not None, extract only the specified instrument. Otherwise,
+          extract all instruments into a single event list.
+
+    Returns:
+      A list of events.
+    &#34;&#34;&#34;
+    notes = [note for note in quantized_sequence.notes
+             if note.quantized_start_step &gt;= start_step
+             and (instrument is None or note.instrument == instrument)]
+    sorted_notes = sorted(notes, key=lambda note: (note.start_time, note.pitch))
+
+    # Sort all note start and end events.
+    onsets = [(note.quantized_start_step, idx, False)
+              for idx, note in enumerate(sorted_notes)]
+    offsets = [(note.quantized_end_step, idx, True)
+               for idx, note in enumerate(sorted_notes)]
+    note_events = sorted(onsets + offsets)
+
+    current_step = start_step
+    current_velocity_bin = 0
+    performance_events = []
+
+    for step, idx, is_offset in note_events:
+      if step &gt; current_step:
+        # Shift time forward from the current step to this event.
+        while step &gt; current_step + max_shift_steps:
+          # We need to move further than the maximum shift size.
+          performance_events.append(
+              PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                               event_value=max_shift_steps))
+          current_step += max_shift_steps
+        performance_events.append(
+            PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                             event_value=int(step - current_step)))
+        current_step = step
+
+      # If we&#39;re using velocity and this note&#39;s velocity is different from the
+      # current velocity, change the current velocity.
+      if num_velocity_bins:
+        velocity_bin = velocity_to_bin(
+            sorted_notes[idx].velocity, num_velocity_bins)
+        if not is_offset and velocity_bin != current_velocity_bin:
+          current_velocity_bin = velocity_bin
+          performance_events.append(
+              PerformanceEvent(event_type=PerformanceEvent.VELOCITY,
+                               event_value=current_velocity_bin))
+
+      # Add a performance event for this note on/off.
+      event_type = (
+          PerformanceEvent.NOTE_OFF if is_offset else PerformanceEvent.NOTE_ON)
+      performance_events.append(
+          PerformanceEvent(event_type=event_type,
+                           event_value=sorted_notes[idx].pitch))
+
+    return performance_events
+
+  @abc.abstractmethod
+  def to_sequence(self, velocity, instrument, program, max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    pass
+
+  def _to_sequence(self, seconds_per_step, velocity, instrument, program,
+                   max_note_duration=None):
+    sequence_start_time = self.start_step * seconds_per_step
+
+    sequence = music_pb2.NoteSequence()
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    step = 0
+
+    if program is None:
+      # Use program associated with the performance (or default program).
+      program = self.program if self.program is not None else DEFAULT_PROGRAM
+    is_drum = self.is_drum if self.is_drum is not None else False
+
+    # Map pitch to list because one pitch may be active multiple times.
+    pitch_start_steps_and_velocities = collections.defaultdict(list)
+    for i, event in enumerate(self):
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        pitch_start_steps_and_velocities[event.event_value].append(
+            (step, velocity))
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        if not pitch_start_steps_and_velocities[event.event_value]:
+          logging.debug(
+              &#39;Ignoring NOTE_OFF at position %d with no previous NOTE_ON&#39;, i)
+        else:
+          # Create a note for the pitch that is now ending.
+          pitch_start_step, pitch_velocity = pitch_start_steps_and_velocities[
+              event.event_value][0]
+          pitch_start_steps_and_velocities[event.event_value] = (
+              pitch_start_steps_and_velocities[event.event_value][1:])
+          if step == pitch_start_step:
+            logging.debug(
+                &#39;Ignoring note with zero duration at step %d&#39;, step)
+            continue
+          note = sequence.notes.add()
+          note.start_time = (pitch_start_step * seconds_per_step +
+                             sequence_start_time)
+          note.end_time = step * seconds_per_step + sequence_start_time
+          if (max_note_duration and
+              note.end_time - note.start_time &gt; max_note_duration):
+            note.end_time = note.start_time + max_note_duration
+          note.pitch = event.event_value
+          note.velocity = pitch_velocity
+          note.instrument = instrument
+          note.program = program
+          note.is_drum = is_drum
+          if note.end_time &gt; sequence.total_time:
+            sequence.total_time = note.end_time
+      elif event.event_type == PerformanceEvent.TIME_SHIFT:
+        step += event.event_value
+      elif event.event_type == PerformanceEvent.VELOCITY:
+        assert self._num_velocity_bins
+        velocity = velocity_bin_to_velocity(
+            event.event_value, self._num_velocity_bins)
+      else:
+        raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+    # There could be remaining pitches that were never ended. End them now
+    # and create notes.
+    for pitch in pitch_start_steps_and_velocities:
+      for pitch_start_step, pitch_velocity in pitch_start_steps_and_velocities[
+          pitch]:
+        if step == pitch_start_step:
+          logging.debug(&#39;Ignoring note with zero duration at step %d&#39;, step)
+          continue
+        note = sequence.notes.add()
+        note.start_time = (pitch_start_step * seconds_per_step +
+                           sequence_start_time)
+        note.end_time = step * seconds_per_step + sequence_start_time
+        if (max_note_duration and
+            note.end_time - note.start_time &gt; max_note_duration):
+          note.end_time = note.start_time + max_note_duration
+        note.pitch = pitch
+        note.velocity = pitch_velocity
+        note.instrument = instrument
+        note.program = program
+        note.is_drum = is_drum
+        if note.end_time &gt; sequence.total_time:
+          sequence.total_time = note.end_time
+
+    return sequence
+
+
+class Performance(BasePerformance):
+  &#34;&#34;&#34;Performance with absolute timing and unknown meter.&#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence=None, steps_per_second=None,
+               start_step=0, num_velocity_bins=0,
+               max_shift_steps=DEFAULT_MAX_SHIFT_STEPS, instrument=None,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a Performance.
+
+    Either quantized_sequence or steps_per_second should be supplied.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      steps_per_second: Number of quantized time steps per second, if using
+          absolute quantization.
+      start_step: The offset of this sequence relative to the
+          beginning of the source sequence. If a quantized sequence is used as
+          input, only notes starting after this step will be considered.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      program: MIDI program used for this performance, or None if not specified.
+          Ignored if `quantized_sequence` is provided.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified. Ignored if `quantized_sequence` is provided.
+
+    Raises:
+      ValueError: If both or neither of `quantized_sequence` or
+          `steps_per_second` is specified.
+    &#34;&#34;&#34;
+    if (quantized_sequence, steps_per_second).count(None) != 1:
+      raise ValueError(
+          &#39;Must specify exactly one of quantized_sequence or steps_per_second&#39;)
+
+    if quantized_sequence:
+      sequences_lib.assert_is_absolute_quantized_sequence(quantized_sequence)
+      self._steps_per_second = (
+          quantized_sequence.quantization_info.steps_per_second)
+      self._events = self._from_quantized_sequence(
+          quantized_sequence, start_step, num_velocity_bins,
+          max_shift_steps=max_shift_steps, instrument=instrument)
+      program, is_drum = _program_and_is_drum_from_sequence(
+          quantized_sequence, instrument)
+
+    else:
+      self._steps_per_second = steps_per_second
+      self._events = []
+
+    super(Performance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=max_shift_steps,
+        program=program,
+        is_drum=is_drum)
+
+  @property
+  def steps_per_second(self):
+    return self._steps_per_second
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=0,
+                  program=None,
+                  max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 1.0 / self.steps_per_second
+    return self._to_sequence(
+        seconds_per_step=seconds_per_step,
+        velocity=velocity,
+        instrument=instrument,
+        program=program,
+        max_note_duration=max_note_duration)
+
+
+class MetricPerformance(BasePerformance):
+  &#34;&#34;&#34;Performance with quarter-note relative timing.&#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence=None, steps_per_quarter=None,
+               start_step=0, num_velocity_bins=0,
+               max_shift_quarters=DEFAULT_MAX_SHIFT_QUARTERS, instrument=None,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a MetricPerformance.
+
+    Either quantized_sequence or steps_per_quarter should be supplied.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      steps_per_quarter: Number of quantized time steps per quarter note, if
+          using metric quantization.
+      start_step: The offset of this sequence relative to the
+          beginning of the source sequence. If a quantized sequence is used as
+          input, only notes starting after this step will be considered.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_quarters: Maximum number of quarter notes for a single time-
+          shift event.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      program: MIDI program used for this performance, or None if not specified.
+          Ignored if `quantized_sequence` is provided.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified. Ignored if `quantized_sequence` is provided.
+
+    Raises:
+      ValueError: If both or neither of `quantized_sequence` or
+          `steps_per_quarter` is specified.
+    &#34;&#34;&#34;
+    if (quantized_sequence, steps_per_quarter).count(None) != 1:
+      raise ValueError(
+          &#39;Must specify exactly one of quantized_sequence or steps_per_quarter&#39;)
+
+    if quantized_sequence:
+      sequences_lib.assert_is_relative_quantized_sequence(quantized_sequence)
+      self._steps_per_quarter = (
+          quantized_sequence.quantization_info.steps_per_quarter)
+      self._events = self._from_quantized_sequence(
+          quantized_sequence, start_step, num_velocity_bins,
+          max_shift_steps=self._steps_per_quarter * max_shift_quarters,
+          instrument=instrument)
+      program, is_drum = _program_and_is_drum_from_sequence(
+          quantized_sequence, instrument)
+
+    else:
+      self._steps_per_quarter = steps_per_quarter
+      self._events = []
+
+    super(MetricPerformance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=self._steps_per_quarter * max_shift_quarters,
+        program=program,
+        is_drum=is_drum)
+
+  @property
+  def steps_per_quarter(self):
+    return self._steps_per_quarter
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=0,
+                  program=None,
+                  max_note_duration=None,
+                  qpm=120.0):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+      qpm: The tempo to use, in quarter notes per minute.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 60.0 / (self.steps_per_quarter * qpm)
+    sequence = self._to_sequence(
+        seconds_per_step=seconds_per_step,
+        velocity=velocity,
+        instrument=instrument,
+        program=program,
+        max_note_duration=max_note_duration)
+    sequence.tempos.add(qpm=qpm)
+    return sequence
+
+
+class NotePerformanceError(Exception):
+  pass
+
+
+class TooManyTimeShiftStepsError(NotePerformanceError):
+  pass
+
+
+class TooManyDurationStepsError(NotePerformanceError):
+  pass
+
+
+class NotePerformance(BasePerformance):
+  &#34;&#34;&#34;Stores a polyphonic sequence as a stream of performance events.
+
+  Events are PerformanceEvent objects that encode event type and value.
+  In this version, the performance is encoded in 4-event tuples:
+  TIME_SHIFT, NOTE_ON, VELOCITY, DURATION.
+  &#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence, num_velocity_bins, instrument=0,
+               start_step=0, max_shift_steps=1000, max_duration_steps=1000):
+    &#34;&#34;&#34;Construct a NotePerformance.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      num_velocity_bins: Number of velocity bins to use.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      start_step: The offset of this sequence relative to the beginning of the
+          source sequence.
+      max_shift_steps: Maximum number of steps for a time-shift event.
+      max_duration_steps: Maximum number of steps for a duration event.
+
+    Raises:
+      ValueError: If `num_velocity_bins` is larger than the number of MIDI
+          velocity values.
+    &#34;&#34;&#34;
+    program, is_drum = _program_and_is_drum_from_sequence(
+        quantized_sequence, instrument)
+
+    super(NotePerformance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=max_shift_steps,
+        program=program,
+        is_drum=is_drum)
+
+    self._max_duration_steps = max_duration_steps
+
+    sequences_lib.assert_is_absolute_quantized_sequence(quantized_sequence)
+    self._steps_per_second = (
+        quantized_sequence.quantization_info.steps_per_second)
+    self._events = self._from_quantized_sequence(
+        quantized_sequence, instrument)
+
+  @property
+  def steps_per_second(self):
+    return self._steps_per_second
+
+  def set_length(self, steps, from_left=False):
+    # This is not actually implemented, but to avoid raising exceptions during
+    # generation just return instead of raising NotImplementedError.
+    # TODO(fjord): Implement this.
+    return
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+    Args:
+      event: The performance event tuple to append to the end.
+
+    Raises:
+      ValueError: If `event` is not a valid performance event tuple.
+    &#34;&#34;&#34;
+    if not isinstance(event, tuple):
+      raise ValueError(&#39;Invalid performance event tuple: %s&#39; % event)
+    self._events.append(event)
+
+  def __str__(self):
+    strs = []
+    for event in self:
+      strs.append(&#39;TIME_SHIFT&lt;%s&gt;, NOTE_ON&lt;%s&gt;, VELOCITY&lt;%s&gt;, DURATION&lt;%s&gt;&#39; % (
+          event[0].event_value, event[1].event_value, event[2].event_value,
+          event[3].event_value))
+    return &#39;\n&#39;.join(strs)
+
+  @property
+  def num_steps(self):
+    &#34;&#34;&#34;Returns how many steps long this sequence is.
+
+    Returns:
+      Length of the sequence in quantized steps.
+    &#34;&#34;&#34;
+    steps = 0
+    for event in self._events:
+      steps += event[0].event_value
+    if self._events:
+      steps += self._events[-1][3].event_value
+    return steps
+
+  @property
+  def steps(self):
+    &#34;&#34;&#34;Return a Python list of the time step at each event in this sequence.&#34;&#34;&#34;
+    step = self.start_step
+    result = []
+    for event in self:
+      step += event[0].event_value
+      result.append(step)
+    return result
+
+  def _from_quantized_sequence(self, quantized_sequence, instrument):
+    &#34;&#34;&#34;Extract a list of events from the given quantized NoteSequence object.
+
+    Within a step, new pitches are started with NOTE_ON and existing pitches are
+    ended with NOTE_OFF. TIME_SHIFT shifts the current step forward in time.
+    VELOCITY changes the current velocity value that will be applied to all
+    NOTE_ON events.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      instrument: If not None, extract only the specified instrument. Otherwise,
+          extract all instruments into a single event list.
+
+    Returns:
+      A list of events.
+
+    Raises:
+      TooManyTimeShiftStepsError: If the maximum number of time
+        shift steps is exceeded.
+      TooManyDurationStepsError: If the maximum number of duration
+        shift steps is exceeded.
+    &#34;&#34;&#34;
+    notes = [note for note in quantized_sequence.notes
+             if note.quantized_start_step &gt;= self.start_step
+             and (instrument is None or note.instrument == instrument)]
+    sorted_notes = sorted(notes, key=lambda note: (note.start_time, note.pitch))
+
+    current_step = self.start_step
+    performance_events = []
+
+    for note in sorted_notes:
+      sub_events = []
+
+      # TIME_SHIFT
+      time_shift_steps = note.quantized_start_step - current_step
+      if time_shift_steps &gt; self._max_shift_steps:
+        raise TooManyTimeShiftStepsError(
+            &#39;Too many steps for timeshift: %d&#39; % time_shift_steps)
+      else:
+        sub_events.append(
+            PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                             event_value=time_shift_steps))
+      current_step = note.quantized_start_step
+
+      # NOTE_ON
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.NOTE_ON,
+                           event_value=note.pitch))
+
+      # VELOCITY
+      velocity_bin = velocity_to_bin(note.velocity, self._num_velocity_bins)
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.VELOCITY,
+                           event_value=velocity_bin))
+
+      # DURATION
+      duration_steps = note.quantized_end_step - note.quantized_start_step
+      if duration_steps &gt; self._max_duration_steps:
+        raise TooManyDurationStepsError(
+            &#39;Too many steps for duration: %s&#39; % note)
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.DURATION,
+                           event_value=duration_steps))
+
+      performance_events.append(tuple(sub_events))
+
+    return performance_events
+
+  def to_sequence(self, instrument=0, program=None, max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Not used in this implementation.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 1.0 / self.steps_per_second
+    sequence_start_time = self.start_step * seconds_per_step
+
+    sequence = music_pb2.NoteSequence()
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    step = 0
+
+    if program is None:
+      # Use program associated with the performance (or default program).
+      program = self.program if self.program is not None else DEFAULT_PROGRAM
+    is_drum = self.is_drum if self.is_drum is not None else False
+
+    for event in self:
+      step += event[0].event_value
+
+      note = sequence.notes.add()
+      note.start_time = step * seconds_per_step + sequence_start_time
+      note.end_time = ((step + event[3].event_value) * seconds_per_step +
+                       sequence_start_time)
+      note.pitch = event[1].event_value
+      note.velocity = velocity_bin_to_velocity(
+          event[2].event_value, self._num_velocity_bins)
+      note.instrument = instrument
+      note.program = program
+      note.is_drum = is_drum
+
+      if note.end_time &gt; sequence.total_time:
+        sequence.total_time = note.end_time
+
+    return sequence</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="note_seq.performance_lib.velocity_bin_to_velocity"><code class="name flex">
+<span>def <span class="ident">velocity_bin_to_velocity</span></span>(<span>velocity_bin, num_velocity_bins)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def velocity_bin_to_velocity(velocity_bin, num_velocity_bins):
+  return (
+      MIN_MIDI_VELOCITY + (velocity_bin - 1) *
+      _velocity_bin_size(num_velocity_bins))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.velocity_to_bin"><code class="name flex">
+<span>def <span class="ident">velocity_to_bin</span></span>(<span>velocity, num_velocity_bins)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def velocity_to_bin(velocity, num_velocity_bins):
+  return ((velocity - MIN_MIDI_VELOCITY) //
+          _velocity_bin_size(num_velocity_bins) + 1)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.performance_lib.BasePerformance"><code class="flex name class">
+<span>class <span class="ident">BasePerformance</span></span>
+<span>(</span><span>start_step, num_velocity_bins, max_shift_steps, program=None, is_drum=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stores a polyphonic sequence as a stream of performance events.</p>
+<p>Events are PerformanceEvent objects that encode event type and value.</p>
+<p>Construct a BasePerformance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_step</code></strong></dt>
+<dd>The offset of this sequence relative to the beginning of the
+source sequence.</dd>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins to use.</dd>
+<dt><strong><code>max_shift_steps</code></strong></dt>
+<dd>Maximum number of steps for a single time-shift event.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program used for this performance, or None if not specified.</dd>
+<dt><strong><code>is_drum</code></strong></dt>
+<dd>Whether or not this performance consists of drums, or None if not
+specified.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>num_velocity_bins</code> is larger than the number of MIDI
+velocity values.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BasePerformance(events_lib.EventSequence):
+  &#34;&#34;&#34;Stores a polyphonic sequence as a stream of performance events.
+
+  Events are PerformanceEvent objects that encode event type and value.
+  &#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  def __init__(self, start_step, num_velocity_bins, max_shift_steps,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a BasePerformance.
+
+    Args:
+      start_step: The offset of this sequence relative to the beginning of the
+          source sequence.
+      num_velocity_bins: Number of velocity bins to use.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      program: MIDI program used for this performance, or None if not specified.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified.
+
+    Raises:
+      ValueError: If `num_velocity_bins` is larger than the number of MIDI
+          velocity values.
+    &#34;&#34;&#34;
+    if num_velocity_bins &gt; MAX_MIDI_VELOCITY - MIN_MIDI_VELOCITY + 1:
+      raise ValueError(
+          &#39;Number of velocity bins is too large: %d&#39; % num_velocity_bins)
+
+    self._start_step = start_step
+    self._num_velocity_bins = num_velocity_bins
+    self._max_shift_steps = max_shift_steps
+    self._program = program
+    self._is_drum = is_drum
+
+  @property
+  def start_step(self):
+    return self._start_step
+
+  @property
+  def max_shift_steps(self):
+    return self._max_shift_steps
+
+  @property
+  def program(self):
+    return self._program
+
+  @property
+  def is_drum(self):
+    return self._is_drum
+
+  def _append_steps(self, num_steps):
+    &#34;&#34;&#34;Adds steps to the end of the sequence.&#34;&#34;&#34;
+    if (self._events and
+        self._events[-1].event_type == PerformanceEvent.TIME_SHIFT and
+        self._events[-1].event_value &lt; self._max_shift_steps):
+      # Last event is already non-maximal time shift. Increase its duration.
+      added_steps = min(num_steps,
+                        self._max_shift_steps - self._events[-1].event_value)
+      self._events[-1] = PerformanceEvent(
+          PerformanceEvent.TIME_SHIFT,
+          self._events[-1].event_value + added_steps)
+      num_steps -= added_steps
+
+    while num_steps &gt;= self._max_shift_steps:
+      self._events.append(
+          PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                           event_value=self._max_shift_steps))
+      num_steps -= self._max_shift_steps
+
+    if num_steps &gt; 0:
+      self._events.append(
+          PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                           event_value=num_steps))
+
+  def _trim_steps(self, num_steps):
+    &#34;&#34;&#34;Trims a given number of steps from the end of the sequence.&#34;&#34;&#34;
+    steps_trimmed = 0
+    while self._events and steps_trimmed &lt; num_steps:
+      if self._events[-1].event_type == PerformanceEvent.TIME_SHIFT:
+        if steps_trimmed + self._events[-1].event_value &gt; num_steps:
+          self._events[-1] = PerformanceEvent(
+              event_type=PerformanceEvent.TIME_SHIFT,
+              event_value=(self._events[-1].event_value -
+                           num_steps + steps_trimmed))
+          steps_trimmed = num_steps
+        else:
+          steps_trimmed += self._events[-1].event_value
+          self._events.pop()
+      else:
+        self._events.pop()
+
+  def set_length(self, steps, from_left=False):
+    &#34;&#34;&#34;Sets the length of the sequence to the specified number of steps.
+
+    If the event sequence is not long enough, pads with time shifts to make the
+    sequence the specified length. If it is too long, it will be truncated to
+    the requested length.
+
+    Args:
+      steps: How many quantized steps long the event sequence should be.
+      from_left: Whether to add/remove from the left instead of right.
+    &#34;&#34;&#34;
+    if from_left:
+      raise NotImplementedError(&#39;from_left is not supported&#39;)
+
+    if self.num_steps &lt; steps:
+      self._append_steps(steps - self.num_steps)
+    elif self.num_steps &gt; steps:
+      self._trim_steps(self.num_steps - steps)
+
+    assert self.num_steps == steps
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+    Args:
+      event: The performance event to append to the end.
+
+    Raises:
+      ValueError: If `event` is not a valid performance event.
+    &#34;&#34;&#34;
+    if not isinstance(event, PerformanceEvent):
+      raise ValueError(&#39;Invalid performance event: %s&#39; % event)
+    self._events.append(event)
+
+  def truncate(self, num_events):
+    &#34;&#34;&#34;Truncates this Performance to the specified number of events.
+
+    Args:
+      num_events: The number of events to which this performance will be
+          truncated.
+    &#34;&#34;&#34;
+    self._events = self._events[:num_events]
+
+  def __len__(self):
+    &#34;&#34;&#34;How many events are in this sequence.
+
+    Returns:
+      Number of events as an integer.
+    &#34;&#34;&#34;
+    return len(self._events)
+
+  def __getitem__(self, i):
+    &#34;&#34;&#34;Returns the event at the given index.&#34;&#34;&#34;
+    return self._events[i]
+
+  def __iter__(self):
+    &#34;&#34;&#34;Return an iterator over the events in this sequence.&#34;&#34;&#34;
+    return iter(self._events)
+
+  def __str__(self):
+    strs = []
+    for event in self:
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        strs.append(&#39;(%s, ON)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        strs.append(&#39;(%s, OFF)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.TIME_SHIFT:
+        strs.append(&#39;(%s, SHIFT)&#39; % event.event_value)
+      elif event.event_type == PerformanceEvent.VELOCITY:
+        strs.append(&#39;(%s, VELOCITY)&#39; % event.event_value)
+      else:
+        raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+    return &#39;\n&#39;.join(strs)
+
+  @property
+  def end_step(self):
+    return self.start_step + self.num_steps
+
+  @property
+  def num_steps(self):
+    &#34;&#34;&#34;Returns how many steps long this sequence is.
+
+    Returns:
+      Length of the sequence in quantized steps.
+    &#34;&#34;&#34;
+    steps = 0
+    for event in self:
+      if event.event_type == PerformanceEvent.TIME_SHIFT:
+        steps += event.event_value
+    return steps
+
+  @property
+  def steps(self):
+    &#34;&#34;&#34;Return a Python list of the time step at each event in this sequence.&#34;&#34;&#34;
+    step = self.start_step
+    result = []
+    for event in self:
+      result.append(step)
+      if event.event_type == PerformanceEvent.TIME_SHIFT:
+        step += event.event_value
+    return result
+
+  @staticmethod
+  def _from_quantized_sequence(quantized_sequence, start_step,
+                               num_velocity_bins, max_shift_steps,
+                               instrument=None):
+    &#34;&#34;&#34;Extract a list of events from the given quantized NoteSequence object.
+
+    Within a step, new pitches are started with NOTE_ON and existing pitches are
+    ended with NOTE_OFF. TIME_SHIFT shifts the current step forward in time.
+    VELOCITY changes the current velocity value that will be applied to all
+    NOTE_ON events.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      start_step: Start converting the sequence at this time step.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      instrument: If not None, extract only the specified instrument. Otherwise,
+          extract all instruments into a single event list.
+
+    Returns:
+      A list of events.
+    &#34;&#34;&#34;
+    notes = [note for note in quantized_sequence.notes
+             if note.quantized_start_step &gt;= start_step
+             and (instrument is None or note.instrument == instrument)]
+    sorted_notes = sorted(notes, key=lambda note: (note.start_time, note.pitch))
+
+    # Sort all note start and end events.
+    onsets = [(note.quantized_start_step, idx, False)
+              for idx, note in enumerate(sorted_notes)]
+    offsets = [(note.quantized_end_step, idx, True)
+               for idx, note in enumerate(sorted_notes)]
+    note_events = sorted(onsets + offsets)
+
+    current_step = start_step
+    current_velocity_bin = 0
+    performance_events = []
+
+    for step, idx, is_offset in note_events:
+      if step &gt; current_step:
+        # Shift time forward from the current step to this event.
+        while step &gt; current_step + max_shift_steps:
+          # We need to move further than the maximum shift size.
+          performance_events.append(
+              PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                               event_value=max_shift_steps))
+          current_step += max_shift_steps
+        performance_events.append(
+            PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                             event_value=int(step - current_step)))
+        current_step = step
+
+      # If we&#39;re using velocity and this note&#39;s velocity is different from the
+      # current velocity, change the current velocity.
+      if num_velocity_bins:
+        velocity_bin = velocity_to_bin(
+            sorted_notes[idx].velocity, num_velocity_bins)
+        if not is_offset and velocity_bin != current_velocity_bin:
+          current_velocity_bin = velocity_bin
+          performance_events.append(
+              PerformanceEvent(event_type=PerformanceEvent.VELOCITY,
+                               event_value=current_velocity_bin))
+
+      # Add a performance event for this note on/off.
+      event_type = (
+          PerformanceEvent.NOTE_OFF if is_offset else PerformanceEvent.NOTE_ON)
+      performance_events.append(
+          PerformanceEvent(event_type=event_type,
+                           event_value=sorted_notes[idx].pitch))
+
+    return performance_events
+
+  @abc.abstractmethod
+  def to_sequence(self, velocity, instrument, program, max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    pass
+
+  def _to_sequence(self, seconds_per_step, velocity, instrument, program,
+                   max_note_duration=None):
+    sequence_start_time = self.start_step * seconds_per_step
+
+    sequence = music_pb2.NoteSequence()
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    step = 0
+
+    if program is None:
+      # Use program associated with the performance (or default program).
+      program = self.program if self.program is not None else DEFAULT_PROGRAM
+    is_drum = self.is_drum if self.is_drum is not None else False
+
+    # Map pitch to list because one pitch may be active multiple times.
+    pitch_start_steps_and_velocities = collections.defaultdict(list)
+    for i, event in enumerate(self):
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        pitch_start_steps_and_velocities[event.event_value].append(
+            (step, velocity))
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        if not pitch_start_steps_and_velocities[event.event_value]:
+          logging.debug(
+              &#39;Ignoring NOTE_OFF at position %d with no previous NOTE_ON&#39;, i)
+        else:
+          # Create a note for the pitch that is now ending.
+          pitch_start_step, pitch_velocity = pitch_start_steps_and_velocities[
+              event.event_value][0]
+          pitch_start_steps_and_velocities[event.event_value] = (
+              pitch_start_steps_and_velocities[event.event_value][1:])
+          if step == pitch_start_step:
+            logging.debug(
+                &#39;Ignoring note with zero duration at step %d&#39;, step)
+            continue
+          note = sequence.notes.add()
+          note.start_time = (pitch_start_step * seconds_per_step +
+                             sequence_start_time)
+          note.end_time = step * seconds_per_step + sequence_start_time
+          if (max_note_duration and
+              note.end_time - note.start_time &gt; max_note_duration):
+            note.end_time = note.start_time + max_note_duration
+          note.pitch = event.event_value
+          note.velocity = pitch_velocity
+          note.instrument = instrument
+          note.program = program
+          note.is_drum = is_drum
+          if note.end_time &gt; sequence.total_time:
+            sequence.total_time = note.end_time
+      elif event.event_type == PerformanceEvent.TIME_SHIFT:
+        step += event.event_value
+      elif event.event_type == PerformanceEvent.VELOCITY:
+        assert self._num_velocity_bins
+        velocity = velocity_bin_to_velocity(
+            event.event_value, self._num_velocity_bins)
+      else:
+        raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+    # There could be remaining pitches that were never ended. End them now
+    # and create notes.
+    for pitch in pitch_start_steps_and_velocities:
+      for pitch_start_step, pitch_velocity in pitch_start_steps_and_velocities[
+          pitch]:
+        if step == pitch_start_step:
+          logging.debug(&#39;Ignoring note with zero duration at step %d&#39;, step)
+          continue
+        note = sequence.notes.add()
+        note.start_time = (pitch_start_step * seconds_per_step +
+                           sequence_start_time)
+        note.end_time = step * seconds_per_step + sequence_start_time
+        if (max_note_duration and
+            note.end_time - note.start_time &gt; max_note_duration):
+          note.end_time = note.start_time + max_note_duration
+        note.pitch = pitch
+        note.velocity = pitch_velocity
+        note.instrument = instrument
+        note.program = program
+        note.is_drum = is_drum
+        if note.end_time &gt; sequence.total_time:
+          sequence.total_time = note.end_time
+
+    return sequence</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.events_lib.EventSequence" href="events_lib.html#note_seq.events_lib.EventSequence">EventSequence</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.MetricPerformance" href="#note_seq.performance_lib.MetricPerformance">MetricPerformance</a></li>
+<li><a title="note_seq.performance_lib.NotePerformance" href="#note_seq.performance_lib.NotePerformance">NotePerformance</a></li>
+<li><a title="note_seq.performance_lib.Performance" href="#note_seq.performance_lib.Performance">Performance</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_lib.BasePerformance.end_step"><code class="name">var <span class="ident">end_step</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def end_step(self):
+  return self.start_step + self.num_steps</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.is_drum"><code class="name">var <span class="ident">is_drum</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_drum(self):
+  return self._is_drum</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.max_shift_steps"><code class="name">var <span class="ident">max_shift_steps</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def max_shift_steps(self):
+  return self._max_shift_steps</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.num_steps"><code class="name">var <span class="ident">num_steps</span></code></dt>
+<dd>
+<div class="desc"><p>Returns how many steps long this sequence is.</p>
+<h2 id="returns">Returns</h2>
+<p>Length of the sequence in quantized steps.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def num_steps(self):
+  &#34;&#34;&#34;Returns how many steps long this sequence is.
+
+  Returns:
+    Length of the sequence in quantized steps.
+  &#34;&#34;&#34;
+  steps = 0
+  for event in self:
+    if event.event_type == PerformanceEvent.TIME_SHIFT:
+      steps += event.event_value
+  return steps</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.program"><code class="name">var <span class="ident">program</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def program(self):
+  return self._program</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.start_step"><code class="name">var <span class="ident">start_step</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def start_step(self):
+  return self._start_step</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.steps"><code class="name">var <span class="ident">steps</span></code></dt>
+<dd>
+<div class="desc"><p>Return a Python list of the time step at each event in this sequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def steps(self):
+  &#34;&#34;&#34;Return a Python list of the time step at each event in this sequence.&#34;&#34;&#34;
+  step = self.start_step
+  result = []
+  for event in self:
+    result.append(step)
+    if event.event_type == PerformanceEvent.TIME_SHIFT:
+      step += event.event_value
+  return result</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_lib.BasePerformance.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appends the event to the end of the sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>The performance event to append to the end.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>event</code> is not a valid performance event.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, event):
+  &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+  Args:
+    event: The performance event to append to the end.
+
+  Raises:
+    ValueError: If `event` is not a valid performance event.
+  &#34;&#34;&#34;
+  if not isinstance(event, PerformanceEvent):
+    raise ValueError(&#39;Invalid performance event: %s&#39; % event)
+  self._events.append(event)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.set_length"><code class="name flex">
+<span>def <span class="ident">set_length</span></span>(<span>self, steps, from_left=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sets the length of the sequence to the specified number of steps.</p>
+<p>If the event sequence is not long enough, pads with time shifts to make the
+sequence the specified length. If it is too long, it will be truncated to
+the requested length.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>steps</code></strong></dt>
+<dd>How many quantized steps long the event sequence should be.</dd>
+<dt><strong><code>from_left</code></strong></dt>
+<dd>Whether to add/remove from the left instead of right.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_length(self, steps, from_left=False):
+  &#34;&#34;&#34;Sets the length of the sequence to the specified number of steps.
+
+  If the event sequence is not long enough, pads with time shifts to make the
+  sequence the specified length. If it is too long, it will be truncated to
+  the requested length.
+
+  Args:
+    steps: How many quantized steps long the event sequence should be.
+    from_left: Whether to add/remove from the left instead of right.
+  &#34;&#34;&#34;
+  if from_left:
+    raise NotImplementedError(&#39;from_left is not supported&#39;)
+
+  if self.num_steps &lt; steps:
+    self._append_steps(steps - self.num_steps)
+  elif self.num_steps &gt; steps:
+    self._trim_steps(self.num_steps - steps)
+
+  assert self.num_steps == steps</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.to_sequence"><code class="name flex">
+<span>def <span class="ident">to_sequence</span></span>(<span>self, velocity, instrument, program, max_note_duration=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts the Performance to NoteSequence proto.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>velocity</code></strong></dt>
+<dd>MIDI velocity to give each note. Between 1 and 127 (inclusive).
+If the performance contains velocity events, those will be used
+instead.</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>MIDI instrument to give each note.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program to give each note, or None to use the program
+associated with the Performance (or the default program if none
+exists).</dd>
+<dt><strong><code>max_note_duration</code></strong></dt>
+<dd>Maximum note duration in seconds to allow. Notes longer
+than this will be truncated. If None, notes can be any length.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A NoteSequence proto.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def to_sequence(self, velocity, instrument, program, max_note_duration=None):
+  &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+  Args:
+    velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+        If the performance contains velocity events, those will be used
+        instead.
+    instrument: MIDI instrument to give each note.
+    program: MIDI program to give each note, or None to use the program
+        associated with the Performance (or the default program if none
+        exists).
+    max_note_duration: Maximum note duration in seconds to allow. Notes longer
+        than this will be truncated. If None, notes can be any length.
+
+  Returns:
+    A NoteSequence proto.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.BasePerformance.truncate"><code class="name flex">
+<span>def <span class="ident">truncate</span></span>(<span>self, num_events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Truncates this Performance to the specified number of events.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_events</code></strong></dt>
+<dd>The number of events to which this performance will be
+truncated.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def truncate(self, num_events):
+  &#34;&#34;&#34;Truncates this Performance to the specified number of events.
+
+  Args:
+    num_events: The number of events to which this performance will be
+        truncated.
+  &#34;&#34;&#34;
+  self._events = self._events[:num_events]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.performance_lib.MetricPerformance"><code class="flex name class">
+<span>class <span class="ident">MetricPerformance</span></span>
+<span>(</span><span>quantized_sequence=None, steps_per_quarter=None, start_step=0, num_velocity_bins=0, max_shift_quarters=4, instrument=None, program=None, is_drum=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performance with quarter-note relative timing.</p>
+<p>Construct a MetricPerformance.</p>
+<p>Either quantized_sequence or steps_per_quarter should be supplied.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>quantized_sequence</code></strong></dt>
+<dd>A quantized NoteSequence proto.</dd>
+<dt><strong><code>steps_per_quarter</code></strong></dt>
+<dd>Number of quantized time steps per quarter note, if
+using metric quantization.</dd>
+<dt><strong><code>start_step</code></strong></dt>
+<dd>The offset of this sequence relative to the
+beginning of the source sequence. If a quantized sequence is used as
+input, only notes starting after this step will be considered.</dd>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins to use. If 0, velocity events
+will not be included at all.</dd>
+<dt><strong><code>max_shift_quarters</code></strong></dt>
+<dd>Maximum number of quarter notes for a single time-
+shift event.</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>If not None, extract only the specified instrument from
+<code>quantized_sequence</code>. Otherwise, extract all instruments.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program used for this performance, or None if not specified.
+Ignored if <code>quantized_sequence</code> is provided.</dd>
+<dt><strong><code>is_drum</code></strong></dt>
+<dd>Whether or not this performance consists of drums, or None if not
+specified. Ignored if <code>quantized_sequence</code> is provided.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If both or neither of <code>quantized_sequence</code> or
+<code>steps_per_quarter</code> is specified.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MetricPerformance(BasePerformance):
+  &#34;&#34;&#34;Performance with quarter-note relative timing.&#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence=None, steps_per_quarter=None,
+               start_step=0, num_velocity_bins=0,
+               max_shift_quarters=DEFAULT_MAX_SHIFT_QUARTERS, instrument=None,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a MetricPerformance.
+
+    Either quantized_sequence or steps_per_quarter should be supplied.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      steps_per_quarter: Number of quantized time steps per quarter note, if
+          using metric quantization.
+      start_step: The offset of this sequence relative to the
+          beginning of the source sequence. If a quantized sequence is used as
+          input, only notes starting after this step will be considered.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_quarters: Maximum number of quarter notes for a single time-
+          shift event.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      program: MIDI program used for this performance, or None if not specified.
+          Ignored if `quantized_sequence` is provided.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified. Ignored if `quantized_sequence` is provided.
+
+    Raises:
+      ValueError: If both or neither of `quantized_sequence` or
+          `steps_per_quarter` is specified.
+    &#34;&#34;&#34;
+    if (quantized_sequence, steps_per_quarter).count(None) != 1:
+      raise ValueError(
+          &#39;Must specify exactly one of quantized_sequence or steps_per_quarter&#39;)
+
+    if quantized_sequence:
+      sequences_lib.assert_is_relative_quantized_sequence(quantized_sequence)
+      self._steps_per_quarter = (
+          quantized_sequence.quantization_info.steps_per_quarter)
+      self._events = self._from_quantized_sequence(
+          quantized_sequence, start_step, num_velocity_bins,
+          max_shift_steps=self._steps_per_quarter * max_shift_quarters,
+          instrument=instrument)
+      program, is_drum = _program_and_is_drum_from_sequence(
+          quantized_sequence, instrument)
+
+    else:
+      self._steps_per_quarter = steps_per_quarter
+      self._events = []
+
+    super(MetricPerformance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=self._steps_per_quarter * max_shift_quarters,
+        program=program,
+        is_drum=is_drum)
+
+  @property
+  def steps_per_quarter(self):
+    return self._steps_per_quarter
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=0,
+                  program=None,
+                  max_note_duration=None,
+                  qpm=120.0):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+      qpm: The tempo to use, in quarter notes per minute.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 60.0 / (self.steps_per_quarter * qpm)
+    sequence = self._to_sequence(
+        seconds_per_step=seconds_per_step,
+        velocity=velocity,
+        instrument=instrument,
+        program=program,
+        max_note_duration=max_note_duration)
+    sequence.tempos.add(qpm=qpm)
+    return sequence</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></li>
+<li><a title="note_seq.events_lib.EventSequence" href="events_lib.html#note_seq.events_lib.EventSequence">EventSequence</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_lib.MetricPerformance.steps_per_quarter"><code class="name">var <span class="ident">steps_per_quarter</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def steps_per_quarter(self):
+  return self._steps_per_quarter</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_lib.MetricPerformance.to_sequence"><code class="name flex">
+<span>def <span class="ident">to_sequence</span></span>(<span>self, velocity=100, instrument=0, program=None, max_note_duration=None, qpm=120.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts the Performance to NoteSequence proto.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>velocity</code></strong></dt>
+<dd>MIDI velocity to give each note. Between 1 and 127 (inclusive).
+If the performance contains velocity events, those will be used
+instead.</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>MIDI instrument to give each note.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program to give each note, or None to use the program
+associated with the Performance (or the default program if none
+exists).</dd>
+<dt><strong><code>max_note_duration</code></strong></dt>
+<dd>Maximum note duration in seconds to allow. Notes longer
+than this will be truncated. If None, notes can be any length.</dd>
+<dt><strong><code>qpm</code></strong></dt>
+<dd>The tempo to use, in quarter notes per minute.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A NoteSequence proto.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_sequence(self,
+                velocity=100,
+                instrument=0,
+                program=None,
+                max_note_duration=None,
+                qpm=120.0):
+  &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+  Args:
+    velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+        If the performance contains velocity events, those will be used
+        instead.
+    instrument: MIDI instrument to give each note.
+    program: MIDI program to give each note, or None to use the program
+        associated with the Performance (or the default program if none
+        exists).
+    max_note_duration: Maximum note duration in seconds to allow. Notes longer
+        than this will be truncated. If None, notes can be any length.
+    qpm: The tempo to use, in quarter notes per minute.
+
+  Returns:
+    A NoteSequence proto.
+  &#34;&#34;&#34;
+  seconds_per_step = 60.0 / (self.steps_per_quarter * qpm)
+  sequence = self._to_sequence(
+      seconds_per_step=seconds_per_step,
+      velocity=velocity,
+      instrument=instrument,
+      program=program,
+      max_note_duration=max_note_duration)
+  sequence.tempos.add(qpm=qpm)
+  return sequence</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.performance_lib.BasePerformance.append" href="#note_seq.performance_lib.BasePerformance.append">append</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.num_steps" href="#note_seq.performance_lib.BasePerformance.num_steps">num_steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.set_length" href="#note_seq.performance_lib.BasePerformance.set_length">set_length</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.steps" href="#note_seq.performance_lib.BasePerformance.steps">steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.truncate" href="#note_seq.performance_lib.BasePerformance.truncate">truncate</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_lib.NotePerformance"><code class="flex name class">
+<span>class <span class="ident">NotePerformance</span></span>
+<span>(</span><span>quantized_sequence, num_velocity_bins, instrument=0, start_step=0, max_shift_steps=1000, max_duration_steps=1000)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stores a polyphonic sequence as a stream of performance events.</p>
+<p>Events are PerformanceEvent objects that encode event type and value.
+In this version, the performance is encoded in 4-event tuples:
+TIME_SHIFT, NOTE_ON, VELOCITY, DURATION.</p>
+<p>Construct a NotePerformance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>quantized_sequence</code></strong></dt>
+<dd>A quantized NoteSequence proto.</dd>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins to use.</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>If not None, extract only the specified instrument from
+<code>quantized_sequence</code>. Otherwise, extract all instruments.</dd>
+<dt><strong><code>start_step</code></strong></dt>
+<dd>The offset of this sequence relative to the beginning of the
+source sequence.</dd>
+<dt><strong><code>max_shift_steps</code></strong></dt>
+<dd>Maximum number of steps for a time-shift event.</dd>
+<dt><strong><code>max_duration_steps</code></strong></dt>
+<dd>Maximum number of steps for a duration event.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>num_velocity_bins</code> is larger than the number of MIDI
+velocity values.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotePerformance(BasePerformance):
+  &#34;&#34;&#34;Stores a polyphonic sequence as a stream of performance events.
+
+  Events are PerformanceEvent objects that encode event type and value.
+  In this version, the performance is encoded in 4-event tuples:
+  TIME_SHIFT, NOTE_ON, VELOCITY, DURATION.
+  &#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence, num_velocity_bins, instrument=0,
+               start_step=0, max_shift_steps=1000, max_duration_steps=1000):
+    &#34;&#34;&#34;Construct a NotePerformance.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      num_velocity_bins: Number of velocity bins to use.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      start_step: The offset of this sequence relative to the beginning of the
+          source sequence.
+      max_shift_steps: Maximum number of steps for a time-shift event.
+      max_duration_steps: Maximum number of steps for a duration event.
+
+    Raises:
+      ValueError: If `num_velocity_bins` is larger than the number of MIDI
+          velocity values.
+    &#34;&#34;&#34;
+    program, is_drum = _program_and_is_drum_from_sequence(
+        quantized_sequence, instrument)
+
+    super(NotePerformance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=max_shift_steps,
+        program=program,
+        is_drum=is_drum)
+
+    self._max_duration_steps = max_duration_steps
+
+    sequences_lib.assert_is_absolute_quantized_sequence(quantized_sequence)
+    self._steps_per_second = (
+        quantized_sequence.quantization_info.steps_per_second)
+    self._events = self._from_quantized_sequence(
+        quantized_sequence, instrument)
+
+  @property
+  def steps_per_second(self):
+    return self._steps_per_second
+
+  def set_length(self, steps, from_left=False):
+    # This is not actually implemented, but to avoid raising exceptions during
+    # generation just return instead of raising NotImplementedError.
+    # TODO(fjord): Implement this.
+    return
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+    Args:
+      event: The performance event tuple to append to the end.
+
+    Raises:
+      ValueError: If `event` is not a valid performance event tuple.
+    &#34;&#34;&#34;
+    if not isinstance(event, tuple):
+      raise ValueError(&#39;Invalid performance event tuple: %s&#39; % event)
+    self._events.append(event)
+
+  def __str__(self):
+    strs = []
+    for event in self:
+      strs.append(&#39;TIME_SHIFT&lt;%s&gt;, NOTE_ON&lt;%s&gt;, VELOCITY&lt;%s&gt;, DURATION&lt;%s&gt;&#39; % (
+          event[0].event_value, event[1].event_value, event[2].event_value,
+          event[3].event_value))
+    return &#39;\n&#39;.join(strs)
+
+  @property
+  def num_steps(self):
+    &#34;&#34;&#34;Returns how many steps long this sequence is.
+
+    Returns:
+      Length of the sequence in quantized steps.
+    &#34;&#34;&#34;
+    steps = 0
+    for event in self._events:
+      steps += event[0].event_value
+    if self._events:
+      steps += self._events[-1][3].event_value
+    return steps
+
+  @property
+  def steps(self):
+    &#34;&#34;&#34;Return a Python list of the time step at each event in this sequence.&#34;&#34;&#34;
+    step = self.start_step
+    result = []
+    for event in self:
+      step += event[0].event_value
+      result.append(step)
+    return result
+
+  def _from_quantized_sequence(self, quantized_sequence, instrument):
+    &#34;&#34;&#34;Extract a list of events from the given quantized NoteSequence object.
+
+    Within a step, new pitches are started with NOTE_ON and existing pitches are
+    ended with NOTE_OFF. TIME_SHIFT shifts the current step forward in time.
+    VELOCITY changes the current velocity value that will be applied to all
+    NOTE_ON events.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      instrument: If not None, extract only the specified instrument. Otherwise,
+          extract all instruments into a single event list.
+
+    Returns:
+      A list of events.
+
+    Raises:
+      TooManyTimeShiftStepsError: If the maximum number of time
+        shift steps is exceeded.
+      TooManyDurationStepsError: If the maximum number of duration
+        shift steps is exceeded.
+    &#34;&#34;&#34;
+    notes = [note for note in quantized_sequence.notes
+             if note.quantized_start_step &gt;= self.start_step
+             and (instrument is None or note.instrument == instrument)]
+    sorted_notes = sorted(notes, key=lambda note: (note.start_time, note.pitch))
+
+    current_step = self.start_step
+    performance_events = []
+
+    for note in sorted_notes:
+      sub_events = []
+
+      # TIME_SHIFT
+      time_shift_steps = note.quantized_start_step - current_step
+      if time_shift_steps &gt; self._max_shift_steps:
+        raise TooManyTimeShiftStepsError(
+            &#39;Too many steps for timeshift: %d&#39; % time_shift_steps)
+      else:
+        sub_events.append(
+            PerformanceEvent(event_type=PerformanceEvent.TIME_SHIFT,
+                             event_value=time_shift_steps))
+      current_step = note.quantized_start_step
+
+      # NOTE_ON
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.NOTE_ON,
+                           event_value=note.pitch))
+
+      # VELOCITY
+      velocity_bin = velocity_to_bin(note.velocity, self._num_velocity_bins)
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.VELOCITY,
+                           event_value=velocity_bin))
+
+      # DURATION
+      duration_steps = note.quantized_end_step - note.quantized_start_step
+      if duration_steps &gt; self._max_duration_steps:
+        raise TooManyDurationStepsError(
+            &#39;Too many steps for duration: %s&#39; % note)
+      sub_events.append(
+          PerformanceEvent(event_type=PerformanceEvent.DURATION,
+                           event_value=duration_steps))
+
+      performance_events.append(tuple(sub_events))
+
+    return performance_events
+
+  def to_sequence(self, instrument=0, program=None, max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Not used in this implementation.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 1.0 / self.steps_per_second
+    sequence_start_time = self.start_step * seconds_per_step
+
+    sequence = music_pb2.NoteSequence()
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    step = 0
+
+    if program is None:
+      # Use program associated with the performance (or default program).
+      program = self.program if self.program is not None else DEFAULT_PROGRAM
+    is_drum = self.is_drum if self.is_drum is not None else False
+
+    for event in self:
+      step += event[0].event_value
+
+      note = sequence.notes.add()
+      note.start_time = step * seconds_per_step + sequence_start_time
+      note.end_time = ((step + event[3].event_value) * seconds_per_step +
+                       sequence_start_time)
+      note.pitch = event[1].event_value
+      note.velocity = velocity_bin_to_velocity(
+          event[2].event_value, self._num_velocity_bins)
+      note.instrument = instrument
+      note.program = program
+      note.is_drum = is_drum
+
+      if note.end_time &gt; sequence.total_time:
+        sequence.total_time = note.end_time
+
+    return sequence</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></li>
+<li><a title="note_seq.events_lib.EventSequence" href="events_lib.html#note_seq.events_lib.EventSequence">EventSequence</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_lib.NotePerformance.steps_per_second"><code class="name">var <span class="ident">steps_per_second</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def steps_per_second(self):
+  return self._steps_per_second</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_lib.NotePerformance.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appends the event to the end of the sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>The performance event tuple to append to the end.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>event</code> is not a valid performance event tuple.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, event):
+  &#34;&#34;&#34;Appends the event to the end of the sequence.
+
+  Args:
+    event: The performance event tuple to append to the end.
+
+  Raises:
+    ValueError: If `event` is not a valid performance event tuple.
+  &#34;&#34;&#34;
+  if not isinstance(event, tuple):
+    raise ValueError(&#39;Invalid performance event tuple: %s&#39; % event)
+  self._events.append(event)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_lib.NotePerformance.to_sequence"><code class="name flex">
+<span>def <span class="ident">to_sequence</span></span>(<span>self, instrument=0, program=None, max_note_duration=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts the Performance to NoteSequence proto.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>MIDI instrument to give each note.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program to give each note, or None to use the program
+associated with the Performance (or the default program if none
+exists).</dd>
+<dt><strong><code>max_note_duration</code></strong></dt>
+<dd>Not used in this implementation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A NoteSequence proto.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_sequence(self, instrument=0, program=None, max_note_duration=None):
+  &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+  Args:
+    instrument: MIDI instrument to give each note.
+    program: MIDI program to give each note, or None to use the program
+        associated with the Performance (or the default program if none
+        exists).
+    max_note_duration: Not used in this implementation.
+
+  Returns:
+    A NoteSequence proto.
+  &#34;&#34;&#34;
+  seconds_per_step = 1.0 / self.steps_per_second
+  sequence_start_time = self.start_step * seconds_per_step
+
+  sequence = music_pb2.NoteSequence()
+  sequence.ticks_per_quarter = STANDARD_PPQ
+
+  step = 0
+
+  if program is None:
+    # Use program associated with the performance (or default program).
+    program = self.program if self.program is not None else DEFAULT_PROGRAM
+  is_drum = self.is_drum if self.is_drum is not None else False
+
+  for event in self:
+    step += event[0].event_value
+
+    note = sequence.notes.add()
+    note.start_time = step * seconds_per_step + sequence_start_time
+    note.end_time = ((step + event[3].event_value) * seconds_per_step +
+                     sequence_start_time)
+    note.pitch = event[1].event_value
+    note.velocity = velocity_bin_to_velocity(
+        event[2].event_value, self._num_velocity_bins)
+    note.instrument = instrument
+    note.program = program
+    note.is_drum = is_drum
+
+    if note.end_time &gt; sequence.total_time:
+      sequence.total_time = note.end_time
+
+  return sequence</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.performance_lib.BasePerformance.num_steps" href="#note_seq.performance_lib.BasePerformance.num_steps">num_steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.set_length" href="#note_seq.performance_lib.BasePerformance.set_length">set_length</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.steps" href="#note_seq.performance_lib.BasePerformance.steps">steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.truncate" href="#note_seq.performance_lib.BasePerformance.truncate">truncate</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_lib.NotePerformanceError"><code class="flex name class">
+<span>class <span class="ident">NotePerformanceError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotePerformanceError(Exception):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.TooManyDurationStepsError" href="#note_seq.performance_lib.TooManyDurationStepsError">TooManyDurationStepsError</a></li>
+<li><a title="note_seq.performance_lib.TooManyTimeShiftStepsError" href="#note_seq.performance_lib.TooManyTimeShiftStepsError">TooManyTimeShiftStepsError</a></li>
+</ul>
+</dd>
+<dt id="note_seq.performance_lib.Performance"><code class="flex name class">
+<span>class <span class="ident">Performance</span></span>
+<span>(</span><span>quantized_sequence=None, steps_per_second=None, start_step=0, num_velocity_bins=0, max_shift_steps=100, instrument=None, program=None, is_drum=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performance with absolute timing and unknown meter.</p>
+<p>Construct a Performance.</p>
+<p>Either quantized_sequence or steps_per_second should be supplied.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>quantized_sequence</code></strong></dt>
+<dd>A quantized NoteSequence proto.</dd>
+<dt><strong><code>steps_per_second</code></strong></dt>
+<dd>Number of quantized time steps per second, if using
+absolute quantization.</dd>
+<dt><strong><code>start_step</code></strong></dt>
+<dd>The offset of this sequence relative to the
+beginning of the source sequence. If a quantized sequence is used as
+input, only notes starting after this step will be considered.</dd>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins to use. If 0, velocity events
+will not be included at all.</dd>
+<dt><strong><code>max_shift_steps</code></strong></dt>
+<dd>Maximum number of steps for a single time-shift event.</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>If not None, extract only the specified instrument from
+<code>quantized_sequence</code>. Otherwise, extract all instruments.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>MIDI program used for this performance, or None if not specified.
+Ignored if <code>quantized_sequence</code> is provided.</dd>
+<dt><strong><code>is_drum</code></strong></dt>
+<dd>Whether or not this performance consists of drums, or None if not
+specified. Ignored if <code>quantized_sequence</code> is provided.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If both or neither of <code>quantized_sequence</code> or
+<code>steps_per_second</code> is specified.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Performance(BasePerformance):
+  &#34;&#34;&#34;Performance with absolute timing and unknown meter.&#34;&#34;&#34;
+
+  def __init__(self, quantized_sequence=None, steps_per_second=None,
+               start_step=0, num_velocity_bins=0,
+               max_shift_steps=DEFAULT_MAX_SHIFT_STEPS, instrument=None,
+               program=None, is_drum=None):
+    &#34;&#34;&#34;Construct a Performance.
+
+    Either quantized_sequence or steps_per_second should be supplied.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence proto.
+      steps_per_second: Number of quantized time steps per second, if using
+          absolute quantization.
+      start_step: The offset of this sequence relative to the
+          beginning of the source sequence. If a quantized sequence is used as
+          input, only notes starting after this step will be considered.
+      num_velocity_bins: Number of velocity bins to use. If 0, velocity events
+          will not be included at all.
+      max_shift_steps: Maximum number of steps for a single time-shift event.
+      instrument: If not None, extract only the specified instrument from
+          `quantized_sequence`. Otherwise, extract all instruments.
+      program: MIDI program used for this performance, or None if not specified.
+          Ignored if `quantized_sequence` is provided.
+      is_drum: Whether or not this performance consists of drums, or None if not
+          specified. Ignored if `quantized_sequence` is provided.
+
+    Raises:
+      ValueError: If both or neither of `quantized_sequence` or
+          `steps_per_second` is specified.
+    &#34;&#34;&#34;
+    if (quantized_sequence, steps_per_second).count(None) != 1:
+      raise ValueError(
+          &#39;Must specify exactly one of quantized_sequence or steps_per_second&#39;)
+
+    if quantized_sequence:
+      sequences_lib.assert_is_absolute_quantized_sequence(quantized_sequence)
+      self._steps_per_second = (
+          quantized_sequence.quantization_info.steps_per_second)
+      self._events = self._from_quantized_sequence(
+          quantized_sequence, start_step, num_velocity_bins,
+          max_shift_steps=max_shift_steps, instrument=instrument)
+      program, is_drum = _program_and_is_drum_from_sequence(
+          quantized_sequence, instrument)
+
+    else:
+      self._steps_per_second = steps_per_second
+      self._events = []
+
+    super(Performance, self).__init__(
+        start_step=start_step,
+        num_velocity_bins=num_velocity_bins,
+        max_shift_steps=max_shift_steps,
+        program=program,
+        is_drum=is_drum)
+
+  @property
+  def steps_per_second(self):
+    return self._steps_per_second
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=0,
+                  program=None,
+                  max_note_duration=None):
+    &#34;&#34;&#34;Converts the Performance to NoteSequence proto.
+
+    Args:
+      velocity: MIDI velocity to give each note. Between 1 and 127 (inclusive).
+          If the performance contains velocity events, those will be used
+          instead.
+      instrument: MIDI instrument to give each note.
+      program: MIDI program to give each note, or None to use the program
+          associated with the Performance (or the default program if none
+          exists).
+      max_note_duration: Maximum note duration in seconds to allow. Notes longer
+          than this will be truncated. If None, notes can be any length.
+
+    Returns:
+      A NoteSequence proto.
+    &#34;&#34;&#34;
+    seconds_per_step = 1.0 / self.steps_per_second
+    return self._to_sequence(
+        seconds_per_step=seconds_per_step,
+        velocity=velocity,
+        instrument=instrument,
+        program=program,
+        max_note_duration=max_note_duration)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></li>
+<li><a title="note_seq.events_lib.EventSequence" href="events_lib.html#note_seq.events_lib.EventSequence">EventSequence</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_lib.Performance.steps_per_second"><code class="name">var <span class="ident">steps_per_second</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def steps_per_second(self):
+  return self._steps_per_second</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.performance_lib.BasePerformance.append" href="#note_seq.performance_lib.BasePerformance.append">append</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.num_steps" href="#note_seq.performance_lib.BasePerformance.num_steps">num_steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.set_length" href="#note_seq.performance_lib.BasePerformance.set_length">set_length</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.steps" href="#note_seq.performance_lib.BasePerformance.steps">steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.to_sequence" href="#note_seq.performance_lib.BasePerformance.to_sequence">to_sequence</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.truncate" href="#note_seq.performance_lib.BasePerformance.truncate">truncate</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_lib.PerformanceEvent"><code class="flex name class">
+<span>class <span class="ident">PerformanceEvent</span></span>
+<span>(</span><span>event_type, event_value)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for storing events in a performance.</p>
+<p>Method generated by attrs for class PerformanceEvent.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PerformanceEvent(object):
+  &#34;&#34;&#34;Class for storing events in a performance.&#34;&#34;&#34;
+  event_type = attr.ib()
+  event_value = attr.ib()
+
+  # Start of a new note.
+  NOTE_ON = 1
+  # End of a note.
+  NOTE_OFF = 2
+  # Shift time forward.
+  TIME_SHIFT = 3
+  # Change current velocity.
+  VELOCITY = 4
+  # Duration of preceding NOTE_ON.
+  # For Note-based encoding, used instead of NOTE_OFF events.
+  DURATION = 5
+
+  @event_type.validator
+  def _check_event(self, attribute, value):
+    &#34;&#34;&#34;Validate event contents.&#34;&#34;&#34;
+    del attribute, value  # This checks the whole object.
+    if self.event_type in (PerformanceEvent.NOTE_ON, PerformanceEvent.NOTE_OFF):
+      if not MIN_MIDI_PITCH &lt;= self.event_value &lt;= MAX_MIDI_PITCH:
+        raise ValueError(&#39;Invalid pitch value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.TIME_SHIFT:
+      if not 0 &lt;= self.event_value:
+        raise ValueError(&#39;Invalid time shift value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.DURATION:
+      if not 1 &lt;= self.event_value:
+        raise ValueError(&#39;Invalid duration value: %s&#39; % self.event_value)
+    elif self.event_type == PerformanceEvent.VELOCITY:
+      if not 1 &lt;= self.event_value &lt;= MAX_NUM_VELOCITY_BINS:
+        raise ValueError(&#39;Invalid velocity value: %s&#39; % self.event_value)
+    else:
+      raise ValueError(&#39;Invalid event type: %s&#39; % self.event_type)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.performance_lib.PerformanceEvent.DURATION"><code class="name">var <span class="ident">DURATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.performance_lib.PerformanceEvent.NOTE_OFF"><code class="name">var <span class="ident">NOTE_OFF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.performance_lib.PerformanceEvent.NOTE_ON"><code class="name">var <span class="ident">NOTE_ON</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.performance_lib.PerformanceEvent.TIME_SHIFT"><code class="name">var <span class="ident">TIME_SHIFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.performance_lib.PerformanceEvent.VELOCITY"><code class="name">var <span class="ident">VELOCITY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.performance_lib.TooManyDurationStepsError"><code class="flex name class">
+<span>class <span class="ident">TooManyDurationStepsError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TooManyDurationStepsError(NotePerformanceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.NotePerformanceError" href="#note_seq.performance_lib.NotePerformanceError">NotePerformanceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_lib.TooManyTimeShiftStepsError"><code class="flex name class">
+<span>class <span class="ident">TooManyTimeShiftStepsError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TooManyTimeShiftStepsError(NotePerformanceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_lib.NotePerformanceError" href="#note_seq.performance_lib.NotePerformanceError">NotePerformanceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="note_seq.performance_lib.velocity_bin_to_velocity" href="#note_seq.performance_lib.velocity_bin_to_velocity">velocity_bin_to_velocity</a></code></li>
+<li><code><a title="note_seq.performance_lib.velocity_to_bin" href="#note_seq.performance_lib.velocity_to_bin">velocity_to_bin</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.performance_lib.BasePerformance" href="#note_seq.performance_lib.BasePerformance">BasePerformance</a></code></h4>
+<ul class="two-column">
+<li><code><a title="note_seq.performance_lib.BasePerformance.append" href="#note_seq.performance_lib.BasePerformance.append">append</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.end_step" href="#note_seq.performance_lib.BasePerformance.end_step">end_step</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.is_drum" href="#note_seq.performance_lib.BasePerformance.is_drum">is_drum</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.max_shift_steps" href="#note_seq.performance_lib.BasePerformance.max_shift_steps">max_shift_steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.num_steps" href="#note_seq.performance_lib.BasePerformance.num_steps">num_steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.program" href="#note_seq.performance_lib.BasePerformance.program">program</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.set_length" href="#note_seq.performance_lib.BasePerformance.set_length">set_length</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.start_step" href="#note_seq.performance_lib.BasePerformance.start_step">start_step</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.steps" href="#note_seq.performance_lib.BasePerformance.steps">steps</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.to_sequence" href="#note_seq.performance_lib.BasePerformance.to_sequence">to_sequence</a></code></li>
+<li><code><a title="note_seq.performance_lib.BasePerformance.truncate" href="#note_seq.performance_lib.BasePerformance.truncate">truncate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.MetricPerformance" href="#note_seq.performance_lib.MetricPerformance">MetricPerformance</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_lib.MetricPerformance.steps_per_quarter" href="#note_seq.performance_lib.MetricPerformance.steps_per_quarter">steps_per_quarter</a></code></li>
+<li><code><a title="note_seq.performance_lib.MetricPerformance.to_sequence" href="#note_seq.performance_lib.MetricPerformance.to_sequence">to_sequence</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.NotePerformance" href="#note_seq.performance_lib.NotePerformance">NotePerformance</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_lib.NotePerformance.append" href="#note_seq.performance_lib.NotePerformance.append">append</a></code></li>
+<li><code><a title="note_seq.performance_lib.NotePerformance.steps_per_second" href="#note_seq.performance_lib.NotePerformance.steps_per_second">steps_per_second</a></code></li>
+<li><code><a title="note_seq.performance_lib.NotePerformance.to_sequence" href="#note_seq.performance_lib.NotePerformance.to_sequence">to_sequence</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.NotePerformanceError" href="#note_seq.performance_lib.NotePerformanceError">NotePerformanceError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.Performance" href="#note_seq.performance_lib.Performance">Performance</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_lib.Performance.steps_per_second" href="#note_seq.performance_lib.Performance.steps_per_second">steps_per_second</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.PerformanceEvent" href="#note_seq.performance_lib.PerformanceEvent">PerformanceEvent</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_lib.PerformanceEvent.DURATION" href="#note_seq.performance_lib.PerformanceEvent.DURATION">DURATION</a></code></li>
+<li><code><a title="note_seq.performance_lib.PerformanceEvent.NOTE_OFF" href="#note_seq.performance_lib.PerformanceEvent.NOTE_OFF">NOTE_OFF</a></code></li>
+<li><code><a title="note_seq.performance_lib.PerformanceEvent.NOTE_ON" href="#note_seq.performance_lib.PerformanceEvent.NOTE_ON">NOTE_ON</a></code></li>
+<li><code><a title="note_seq.performance_lib.PerformanceEvent.TIME_SHIFT" href="#note_seq.performance_lib.PerformanceEvent.TIME_SHIFT">TIME_SHIFT</a></code></li>
+<li><code><a title="note_seq.performance_lib.PerformanceEvent.VELOCITY" href="#note_seq.performance_lib.PerformanceEvent.VELOCITY">VELOCITY</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.TooManyDurationStepsError" href="#note_seq.performance_lib.TooManyDurationStepsError">TooManyDurationStepsError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_lib.TooManyTimeShiftStepsError" href="#note_seq.performance_lib.TooManyTimeShiftStepsError">TooManyTimeShiftStepsError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
