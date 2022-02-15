@@ -1,4 +1,4 @@
-# Copyright 2021 The Magenta Authors.
+# Copyright 2022 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -133,7 +133,7 @@ def wav_data_to_samples(wav_data, sample_rate):
       y = y.T
       y = librosa.to_mono(y)
     if native_sr != sample_rate:
-      y = librosa.resample(y, native_sr, sample_rate)
+      y = librosa.resample(y, orig_sr=native_sr, target_sr=sample_rate)
   except Exception as e:  # pylint: disable=broad-except
     raise AudioIOError(e)
   return y

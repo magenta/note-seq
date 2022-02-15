@@ -65,6 +65,8 @@ disable=abstract-method,
         buffer-builtin,
         c-extension-no-member,
         consider-using-enumerate,
+        consider-using-f-string,  # added
+        consider-using-in,  # added
         consider-using-with,  # added
         cmp-builtin,
         cmp-method,
