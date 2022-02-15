@@ -1621,6 +1621,27 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
         sequence_durations=[2, 1.5, 2])
     self.assertProtoEquals(expected_sequence, cat_seq)
 
+  def testMergeSequences(self):
+    sequence1 = copy.copy(self.note_sequence)
+    testing_lib.add_track_to_sequence(
+        sequence1, 0,
+        [(60, 100, 0.0, 1.0), (72, 100, 0.5, 1.5)])
+    sequence2 = copy.copy(self.note_sequence)
+    testing_lib.add_track_to_sequence(
+        sequence2, 0,
+        [(59, 100, 0.25, 1.0), (71, 100, 0.75, 1.5)])
+
+    expected_sequence = copy.copy(self.note_sequence)
+    testing_lib.add_track_to_sequence(
+        expected_sequence, 0,
+        [(60, 100, 0.0, 1.0), (72, 100, 0.5, 1.5),
+         (59, 100, 0.25, 1.0), (71, 100, 0.75, 1.5)])
+
+    merged_seq = sequences_lib.merge_sequences([sequence1, sequence2])
+    self.assertProtoEquals(expected_sequence, merged_seq)
+    empty_subsequence_info = music_pb2.NoteSequence.SubsequenceInfo()
+    self.assertProtoEquals(empty_subsequence_info, merged_seq.subsequence_info)
+
   def testRepeatSequenceToDuration(self):
     sequence = copy.copy(self.note_sequence)
     testing_lib.add_track_to_sequence(

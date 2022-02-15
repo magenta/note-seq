@@ -519,6 +519,34 @@ def concatenate_sequences(sequences, sequence_durations=None):
   return remove_redundant_data(cat_seq)
 
 
+def merge_sequences(sequences):
+  """Merge a series of NoteSequences together.
+
+  This creates a single NoteSequence containing all of the notes from the
+  input sequences, with timing preserved. Individual sequences are merged
+  together using the protobuf MergeFrom method. This means that any global
+  values (e.g., ticks_per_quarter) will be overwritten by each sequence and
+  only the final value will be used. After this, redundant data will be
+  removed with remove_redundant_data.
+
+  Args:
+    sequences: A list of sequences to merge.
+
+  Returns:
+    A new sequence that is the result of merging *sequences.
+
+  """
+
+  cat_seq = music_pb2.NoteSequence()
+
+  for seq in sequences:
+    cat_seq.MergeFrom(seq)
+
+  # Delete subsequence_info because we've joined several subsequences.
+  cat_seq.ClearField('subsequence_info')
+  return remove_redundant_data(cat_seq)
+
+
 def repeat_sequence_to_duration(sequence, duration, sequence_duration=None):
   """Repeat a sequence until it is a given duration, trimming any extra.
 
