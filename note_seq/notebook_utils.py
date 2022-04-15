@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Lint as: python3
 """Python functions which run only within a Jupyter or Colab notebook."""
 
 import base64
