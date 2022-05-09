@@ -320,7 +320,8 @@ def note_sequence_to_pretty_midi(
   for (instr_id, prog_id, is_drum) in sorted(instrument_events.keys()):
     # For instr_id 0 append to the instrument created above.
     if instr_id > 0:
-      instrument = pretty_midi.Instrument(prog_id, is_drum)
+      name = 'Drums' if is_drum else pretty_midi.program_to_instrument_name(prog_id)
+      instrument = pretty_midi.Instrument(prog_id, is_drum, name)
       pm.instruments.append(instrument)
     else:
       instrument.is_drum = is_drum
