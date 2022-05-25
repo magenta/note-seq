@@ -12,9 +12,15 @@ Install the proto compiler (version 3.6.1):
 
 Install dev dependencies for stub files generation
 
-```bash
-pip3 install -r requirements-dev.txt
-```
+- protobuf==3.6.1
+- grpc-stubs>=1.24.9
+- mypy-protobuf==3.2.0
+- types-protobuf>=3.19.12
+- grpcio>=1.44.0
+- grpcio-tools>=1.44.0
+- grpc-stubs>=1.24.9
+- mypy
+- pytest
 
 Re-generate the python file:
 
