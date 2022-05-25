@@ -10,6 +10,12 @@ Install the proto compiler (version 3.6.1):
 ./install_protoc.sh <linux|osx>
 ```
 
+Install dev dependencies for stub files generation
+
+```bash
+pip3 install -r requirements-dev.txt
+```
+
 Re-generate the python file:
 
 ```bash

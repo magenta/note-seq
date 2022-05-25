@@ -27,7 +27,8 @@ cd "$(dirname $0)/../.."
 
 function gen_proto {
   echo "gen_proto $1..."
-  protoc $1.proto --python_out=note_seq/protobuf
+  # protoc $1.proto --python_out=note_seq/protobuf
+  protoc $1.proto --python_out=note_seq/protobuf --mypy_out=note_seq/protobuf
   # We don't want pylint to run on this file, so we prepend directives.
   printf "%s\n%s" "# pylint: skip-file" "$(cat $1_pb2.py)" > \
     $1_pb2.py
