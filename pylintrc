@@ -66,6 +66,7 @@ disable=abstract-method,
         c-extension-no-member,
         consider-using-enumerate,
         consider-using-f-string,  # added
+        consider-using-generator,  # added
         consider-using-in,  # added
         consider-using-with,  # added
         cmp-builtin,
@@ -148,6 +149,7 @@ disable=abstract-method,
         unichr-builtin,
         unicode-builtin,
         unnecessary-pass,
+        unnecessary-lambda-assignment,  # added
         unpacking-in-except,
         unspecified-encoding,
         useless-else-on-loop,
@@ -165,12 +167,6 @@ disable=abstract-method,
 # (visual studio) and html. You can also give a reporter class, eg
 # mypackage.mymodule.MyReporterClass.
 output-format=text
-
-# Put messages in a separate file for each module / package specified on the
-# command line instead of printing them on stdout. Reports (if any) will be
-# written in a file name "pylint_global.[txt|html]". This option is deprecated
-# and it will be removed in Pylint 2.0.
-files-output=no
 
 # Tells whether to display a full report or only the messages
 reports=no
@@ -289,12 +285,6 @@ ignore-long-lines=(?x)(
 # Allow the body of an if to be on the same line as the test if there is no
 # else.
 single-line-if-stmt=yes
-
-# List of optional constructs for which whitespace checking is disabled. `dict-
-# separator` is used to allow tabulation in dicts, etc.: {1  : 1,\n222: 2}.
-# `trailing-comma` allows a space between comma and closing bracket: (a, ).
-# `empty-line` allows space-only lines.
-no-space-check=
 
 # Maximum number of lines in a module
 max-module-lines=99999
