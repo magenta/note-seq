@@ -58,6 +58,7 @@ setup(
     ],
     keywords='note_seq note sequences',
     packages=find_packages(),
+    package_data={'note_seq': ['*.pyi', '**/*.pyi']},
     install_requires=REQUIRED_PACKAGES,
     setup_requires=['pytest-runner', 'pytest-pylint'],
     tests_require=[
