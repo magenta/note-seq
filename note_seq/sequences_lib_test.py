@@ -2013,7 +2013,7 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequence(self):
     # 100 frames of notes.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
     # Activate key 39 for the middle 50 frames.
     frames[25:75, 39] = True
     sequence = sequences_lib.pianoroll_to_note_sequence(
@@ -2027,7 +2027,7 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceAllNotes(self):
     # Test all 128 notes
-    frames = np.eye(MIDI_PITCHES, dtype=np.bool)  # diagonal identity matrix
+    frames = np.eye(MIDI_PITCHES, dtype=bool)  # diagonal identity matrix
     sequence = sequences_lib.pianoroll_to_note_sequence(
         frames, frames_per_second=DEFAULT_FRAMES_PER_SECOND, min_duration_ms=0)
 
@@ -2041,8 +2041,8 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceWithOnsets(self):
     # 100 frames of notes and onsets.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
-    onsets = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
+    onsets = np.zeros((100, MIDI_PITCHES), bool)
     # Activate key 39 for the middle 50 frames and last 10 frames.
     frames[25:75, 39] = True
     frames[90:100, 39] = True
@@ -2069,8 +2069,8 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceWithOnsetsAndVelocity(self):
     # 100 frames of notes and onsets.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
-    onsets = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
+    onsets = np.zeros((100, MIDI_PITCHES), bool)
     velocity_values = np.zeros((100, MIDI_PITCHES), np.float32)
     # Activate key 39 for the middle 50 frames and last 10 frames.
     frames[25:75, 39] = True
@@ -2096,8 +2096,8 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceWithOnsetsAndFullScaleVelocity(self):
     # 100 frames of notes and onsets.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
-    onsets = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
+    onsets = np.zeros((100, MIDI_PITCHES), bool)
     velocity_values = np.zeros((100, MIDI_PITCHES), np.float32)
     # Activate key 39 for the middle 50 frames and last 10 frames.
     frames[25:75, 39] = True
@@ -2123,8 +2123,8 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceWithOnsetsDefaultVelocity(self):
     # 100 frames of notes and onsets.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
-    onsets = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
+    onsets = np.zeros((100, MIDI_PITCHES), bool)
     # Activate key 39 for the middle 50 frames and last 10 frames.
     frames[25:75, 39] = True
     frames[90:100, 39] = True
@@ -2145,8 +2145,8 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
 
   def testPianorollToNoteSequenceWithOnsetsOverlappingFrames(self):
     # 100 frames of notes and onsets.
-    frames = np.zeros((100, MIDI_PITCHES), np.bool)
-    onsets = np.zeros((100, MIDI_PITCHES), np.bool)
+    frames = np.zeros((100, MIDI_PITCHES), bool)
+    onsets = np.zeros((100, MIDI_PITCHES), bool)
     # Activate key 39 for the middle 50 frames.
     frames[25:75, 39] = True
     # Add multiple onsets within those frames.
@@ -2178,7 +2178,7 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
     self.assertEqual(75 / DEFAULT_FRAMES_PER_SECOND, sequence.notes[2].end_time)
 
   def testPianorollOnsetsToNoteSequence(self):
-    onsets = np.zeros((10, 2), np.bool)
+    onsets = np.zeros((10, 2), bool)
     velocity_values = np.zeros_like(onsets, np.float32)
     onsets[0:2, 0] = True
     velocity_values[0:2, 0] = .5
@@ -2206,7 +2206,7 @@ class SequencesLibTest(testing_lib.ProtoTestCase):
     self.assertEqual(90, sequence.notes[2].velocity)
 
   def testPianorollOnsetsToNoteSequenceFullVelocityScale(self):
-    onsets = np.zeros((10, 2), np.bool)
+    onsets = np.zeros((10, 2), bool)
     velocity_values = np.zeros_like(onsets, np.float32)
     onsets[0:2, 0] = True
     velocity_values[0:2, 0] = .5

@@ -32,7 +32,7 @@ class PianorollEncodingTest(absltest.TestCase):
   def testEncodeInput(self):
     events = [(), (1, 2), (2,)]
     self.assertTrue(np.array_equal(
-        np.zeros(5, np.bool), self.enc.events_to_input(events, 0)))
+        np.zeros(5, bool), self.enc.events_to_input(events, 0)))
     self.assertTrue(np.array_equal(
         [0, 1, 1, 0, 0], self.enc.events_to_input(events, 1)))
     self.assertTrue(np.array_equal(

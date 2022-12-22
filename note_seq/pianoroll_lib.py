@@ -183,7 +183,7 @@ class PianorollSequence(events_lib.EventSequence):
     """
     piano_roll = np.zeros(
         (quantized_sequence.total_quantized_steps - start_step,
-         max_pitch - min_pitch + 1), np.bool)
+         max_pitch - min_pitch + 1), bool)
 
     for note in quantized_sequence.notes:
       if note.quantized_start_step < start_step:
