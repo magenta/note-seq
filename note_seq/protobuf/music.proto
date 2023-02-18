@@ -23,7 +23,7 @@ package magenta;
 // For details see https://www.midi.org/specifications.
 // Note that repeated fields in this proto are not guaranteed to be sorted
 // by time.
-// Next tag: 22
+// Next tag: 24
 message NoteSequence {
   // Unique id.
   string id = 1;
@@ -99,6 +99,13 @@ message NoteSequence {
 
   // information about instrument type.
   repeated InstrumentInfo instrument_infos = 23;
+
+  // Fingering related information.
+  // Right hand fingering: 0 for thumb, 1 for index finger, 2 for middle finger,
+  // 3 for ring finger, 4 for pinky.
+  // Left hand fingering: 5 for thumb, 6 for index finger, 7 for middle finger,
+  // 8 for ring finger, 9 for pinky.
+  int32 fingering = 24;
 
   // Next tag: 15
   message Note {
