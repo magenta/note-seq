@@ -143,8 +143,8 @@ def plot_sequence(sequence, show_figure=True):
   # by updating the figure if need be.
   fig = bokeh.plotting.figure(
       tools='hover,pan,box_zoom,reset,save')
-  fig.plot_width = 500
-  fig.plot_height = 200
+  fig.width = 500
+  fig.height = 200
   fig.xaxis.axis_label = 'time (sec)'
   fig.yaxis.axis_label = 'pitch (MIDI)'
   fig.yaxis.ticker = bokeh.models.SingleIntervalTicker(interval=12)
