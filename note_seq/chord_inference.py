@@ -1,4 +1,4 @@
-# Copyright 2022 The Magenta Authors.
+# Copyright 2023 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -104,7 +104,7 @@ def _key_chord_transition_distribution(
       if key_1 != key_2:
         # Key change. Chord probability depends only on key and not previous
         # chord.
-        mat[i, j] = (key_change_prob / 11)
+        mat[i, j] = key_change_prob / 11
         mat[i, j] *= key_chord_distribution[key_2, chord_index_2]
 
       else:

@@ -1,4 +1,4 @@
-# Copyright 2022 The Magenta Authors.
+# Copyright 2023 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -224,7 +224,7 @@ class MelodiesLibTest(testing_lib.ProtoTestCase):
     melody.from_quantized_sequence(quantized_sequence,
                                    search_start_step=0, instrument=0,
                                    ignore_polyphonic_notes=True)
-    expected = ([19] + [NO_EVENT] * 3 + [19] + [NO_EVENT] * 11)
+    expected = [19] + [NO_EVENT] * 3 + [19] + [NO_EVENT] * 11
 
     self.assertEqual(expected, list(melody))
     self.assertEqual(16, melody.steps_per_bar)

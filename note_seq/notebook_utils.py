@@ -1,4 +1,4 @@
-# Copyright 2022 The Magenta Authors.
+# Copyright 2023 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -164,7 +164,7 @@ def plot_sequence(sequence, show_figure=True):
     fig.quad(top='top', bottom='bottom', left='start_time', right='end_time',
              line_color='black', fill_color=color,
              fill_alpha='fill_alpha', source=source)
-  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = (
+  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = (  # pylint: disable=use-dict-literal
       {'pitch': '@pitch',
        'program': '@program',
        'velo': '@velocity',

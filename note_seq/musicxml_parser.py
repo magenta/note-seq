@@ -1,4 +1,4 @@
-# Copyright 2022 The Magenta Authors.
+# Copyright 2023 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -738,7 +738,7 @@ class Note(object):
 
     # Check if this is a semitone alter (i.e. an integer) or microtonal (float)
     alter_semitones = int(alter)  # Number of semitones
-    is_microtonal_alter = (alter != alter_semitones)
+    is_microtonal_alter = alter != alter_semitones
 
     # Visual pitch representation
     alter_string = ''
@@ -851,7 +851,7 @@ class NoteDuration(object):
     self.midi_ticks = self.duration
     self.midi_ticks *= (constants.STANDARD_PPQ / self.state.divisions)
 
-    self.seconds = (self.midi_ticks / constants.STANDARD_PPQ)
+    self.seconds = self.midi_ticks / constants.STANDARD_PPQ
     self.seconds *= self.state.seconds_per_quarter
 
     self.time_position = self.state.time_position

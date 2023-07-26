@@ -1,4 +1,4 @@
-# Copyright 2022 The Magenta Authors.
+# Copyright 2023 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -1834,7 +1834,7 @@ def sequence_to_pianoroll(
     """Converts start/end times to start/end frames."""
     # Will round down because note may start or end in the middle of the frame.
     start_frame = int(start_time * frames_per_second)
-    start_frame_occupancy = (start_frame + 1 - start_time * frames_per_second)
+    start_frame_occupancy = start_frame + 1 - start_time * frames_per_second
     # check for > 0.0 to avoid possible numerical issues
     if (min_frame_occupancy_for_label > 0.0 and
         start_frame_occupancy < min_frame_occupancy_for_label):
