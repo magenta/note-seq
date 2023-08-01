@@ -14,8 +14,7 @@
 
 """A setuptools based setup module for note-seq."""
 
-from setuptools import find_packages
-from setuptools import setup
+import setuptools
 
 with open('note_seq/version.py') as in_file:
   exec(in_file.read())  # pylint: disable=exec-used
@@ -23,7 +22,7 @@ with open('note_seq/version.py') as in_file:
 REQUIRED_PACKAGES = [
     'absl-py',
     'attrs',
-    'bokeh >= 0.12.0',
+    'bokeh >= 3.0.3',
     'intervaltree >= 2.1.0',
     'IPython',
     'librosa >= 0.6.2',
@@ -35,7 +34,7 @@ REQUIRED_PACKAGES = [
     'scipy >= 0.18.1',
 ]
 
-setup(
+setuptools.setup(
     name='note-seq',
     version=__version__,  # pylint: disable=undefined-variable
     description='Use machine learning to create art and music',
@@ -57,7 +56,7 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     keywords='note_seq note sequences',
-    packages=find_packages(),
+    packages=setuptools.find_packages(),
     package_data={'note_seq': ['*.pyi', '**/*.pyi']},
     install_requires=REQUIRED_PACKAGES,
     setup_requires=['pytest-runner', 'pytest-pylint'],

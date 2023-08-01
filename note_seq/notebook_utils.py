@@ -25,6 +25,7 @@ import bokeh
 import bokeh.plotting
 from IPython import display
 from note_seq import midi_synth
+from note_seq.protobuf import music_pb2
 import numpy as np
 import pandas as pd
 from scipy.io import wavfile
@@ -34,6 +35,8 @@ makedirs = functools.partial(os.makedirs, exist_ok=True)
 
 _DEFAULT_SAMPLE_RATE = 44100
 _play_id = 0  # Used for ephemeral colab_play.
+
+_CHORD_SYMBOL = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
 
 
 def colab_play(array_of_floats, sample_rate, ephemeral=True, autoplay=False):
@@ -103,16 +106,23 @@ def play_sequence(sequence,
     display.display(display.Audio(array_of_floats, rate=sample_rate))
 
 
-def plot_sequence(sequence, show_figure=True):
+def plot_sequence(sequence,
+                  show_figure=True,
+                  width=1000,
+                  height=400,
+                  show_chords=False):
   """Creates an interactive pianoroll for a NoteSequence.
 
   Example usage: plot a random melody.
     sequence = mm.Melody(np.random.randint(36, 72, 30)).to_sequence()
-    bokeh_pianoroll(sequence)
+    plot_sequence(sequence)
 
   Args:
      sequence: A NoteSequence.
      show_figure: A boolean indicating whether or not to show the figure.
+     width: An int indicating plot width in pixels. Default is 1000.
+     height: An int indicating plot height in pixels. Default is 400.
+     show_chords: If True, show chord changes on the x-axis.  Default is False.
 
   Returns:
      If show_figure is False, a Bokeh figure; otherwise None.
@@ -139,18 +149,31 @@ def plot_sequence(sequence, show_figure=True):
 
     return pd.DataFrame(pd_dict)
 
-  # These are hard-coded reasonable values, but the user can override them
-  # by updating the figure if need be.
-  fig = bokeh.plotting.figure(
-      tools='hover,pan,box_zoom,reset,save')
-  fig.plot_width = 500
-  fig.plot_height = 200
-  fig.xaxis.axis_label = 'time (sec)'
-  fig.yaxis.axis_label = 'pitch (MIDI)'
+  fig = bokeh.plotting.figure(tools='hover,pan,box_zoom,reset,previewsave')
+  if width:
+    fig.width = width
+  if height:
+    fig.height = height
+  fig.xaxis.axis_label = sequence.id
+  fig.yaxis.axis_label = 'pitch'
   fig.yaxis.ticker = bokeh.models.SingleIntervalTicker(interval=12)
   fig.ygrid.ticker = bokeh.models.SingleIntervalTicker(interval=12)
   # Pick indexes that are maximally different in Spectral8 colormap.
   spectral_color_indexes = [7, 0, 6, 1, 5, 2, 3]
+
+  if show_chords:
+    chords = [
+        (ta.time, str(ta.text))
+        for ta in sequence.text_annotations
+        if ta.annotation_type == _CHORD_SYMBOL
+    ]
+    fig.xaxis.ticker = bokeh.models.FixedTicker(
+        ticks=[time for time, _ in chords]
+    )
+    fig.xaxis.formatter = bokeh.models.CustomJSTickFormatter(code="""
+        var chords = %s;
+        return chords[tick];
+    """ % dict(chords))
 
   # Create a Pandas dataframe and group it by instrument.
   dataframe = _sequence_to_pandas_dataframe(sequence)
@@ -162,22 +185,21 @@ def plot_sequence(sequence, show_figure=True):
     color = bokeh.palettes.Spectral8[color_idx]
     source = bokeh.plotting.ColumnDataSource(instrument_df)
     fig.quad(top='top', bottom='bottom', left='start_time', right='end_time',
-             line_color='black', fill_color=color,
-             fill_alpha='fill_alpha', source=source)
-  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = (  # pylint: disable=use-dict-literal
-      {'pitch': '@pitch',
-       'program': '@program',
-       'velo': '@velocity',
-       'duration': '@duration',
-       'start_time': '@start_time',
-       'end_time': '@end_time',
-       'velocity': '@velocity',
-       'fill_alpha': '@fill_alpha'})
+             line_color=color, fill_color=color, source=source)
+  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = {   # pylint: disable=use-dict-literal
+      'pitch': '@pitch',
+      'program': '@program',
+      'velo': '@velocity',
+      'duration': '@duration',
+      'start_time': '@start_time',
+      'end_time': '@end_time'
+  }
 
   if show_figure:
     bokeh.plotting.output_notebook()
     bokeh.plotting.show(fig)
     return None
+
   return fig
 
 
