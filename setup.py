@@ -24,7 +24,7 @@ REQUIRED_PACKAGES = [
     'attrs',
     'bokeh >= 3.0.3',
     'intervaltree >= 2.1.0',
-    'IPython',
+    'IPython == 8.12.0',
     'librosa >= 0.6.2',
     'numpy',
     'pandas >= 0.18.1',
