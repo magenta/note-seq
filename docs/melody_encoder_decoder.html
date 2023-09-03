@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.melody_encoder_decoder API documentation</title>
+<meta name="description" content="Classes for converting between Melody objects and models inputs/outputs …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.melody_encoder_decoder</code></h1>
+</header>
+<section id="section-intro">
+<p>Classes for converting between Melody objects and models inputs/outputs.</p>
+<p>MelodyOneHotEncoding is an encoder_decoder.OneHotEncoding that specifies a one-
+hot encoding for Melody events, i.e. MIDI pitch values plus note-off and no-
+event.</p>
+<p>KeyMelodyEncoderDecoder is an encoder_decoder.EventSequenceEncoderDecoder that
+specifies an encoding of Melody objects into input vectors and output labels for
+use by melody models.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Classes for converting between Melody objects and models inputs/outputs.
+
+MelodyOneHotEncoding is an encoder_decoder.OneHotEncoding that specifies a one-
+hot encoding for Melody events, i.e. MIDI pitch values plus note-off and no-
+event.
+
+KeyMelodyEncoderDecoder is an encoder_decoder.EventSequenceEncoderDecoder that
+specifies an encoding of Melody objects into input vectors and output labels for
+use by melody models.
+&#34;&#34;&#34;
+
+import collections
+
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq import melodies_lib
+
+NUM_SPECIAL_MELODY_EVENTS = constants.NUM_SPECIAL_MELODY_EVENTS
+MELODY_NOTE_OFF = constants.MELODY_NOTE_OFF
+MELODY_NO_EVENT = constants.MELODY_NO_EVENT
+MIN_MIDI_PITCH = constants.MIN_MIDI_PITCH
+MAX_MIDI_PITCH = constants.MAX_MIDI_PITCH
+NOTES_PER_OCTAVE = constants.NOTES_PER_OCTAVE
+DEFAULT_STEPS_PER_BAR = constants.DEFAULT_STEPS_PER_BAR
+
+DEFAULT_LOOKBACK_DISTANCES = encoder_decoder.DEFAULT_LOOKBACK_DISTANCES
+
+
+class MelodyOneHotEncoding(encoder_decoder.OneHotEncoding):
+  &#34;&#34;&#34;Basic one hot encoding for melody events.
+
+  Encodes melody events as follows:
+    0 = no event,
+    1 = note-off event,
+    [2, self.num_classes) = note-on event for that pitch relative to the
+        [self._min_note, self._max_note) range.
+  &#34;&#34;&#34;
+
+  def __init__(self, min_note, max_note):
+    &#34;&#34;&#34;Initializes a MelodyOneHotEncoding object.
+
+    Args:
+      min_note: The minimum midi pitch the encoded melody events can have.
+      max_note: The maximum midi pitch (exclusive) the encoded melody events
+          can have.
+
+    Raises:
+      ValueError: If `min_note` or `max_note` are outside the midi range, or if
+          `max_note` is not greater than `min_note`.
+    &#34;&#34;&#34;
+    if min_note &lt; MIN_MIDI_PITCH:
+      raise ValueError(&#39;min_note must be &gt;= 0. min_note is %d.&#39; % min_note)
+    if max_note &gt; MAX_MIDI_PITCH + 1:
+      raise ValueError(&#39;max_note must be &lt;= 128. max_note is %d.&#39; % max_note)
+    if max_note &lt;= min_note:
+      raise ValueError(&#39;max_note must be greater than min_note&#39;)
+
+    self._min_note = min_note
+    self._max_note = max_note
+
+  @property
+  def num_classes(self):
+    return self._max_note - self._min_note + NUM_SPECIAL_MELODY_EVENTS
+
+  @property
+  def default_event(self):
+    return MELODY_NO_EVENT
+
+  def encode_event(self, event):
+    &#34;&#34;&#34;Collapses a melody event value into a zero-based index range.
+
+    Args:
+      event: A Melody event value. -2 = no event, -1 = note-off event,
+          [0, 127] = note-on event for that midi pitch.
+
+    Returns:
+      An int in the range [0, self.num_classes). 0 = no event,
+      1 = note-off event, [2, self.num_classes) = note-on event for
+      that pitch relative to the [self._min_note, self._max_note) range.
+
+    Raises:
+      ValueError: If `event` is a MIDI note not between self._min_note and
+          self._max_note, or an invalid special event value.
+    &#34;&#34;&#34;
+    if event &lt; -NUM_SPECIAL_MELODY_EVENTS:
+      raise ValueError(&#39;invalid melody event value: %d&#39; % event)
+    if 0 &lt;= event &lt; self._min_note:
+      raise ValueError(&#39;melody event less than min note: %d &lt; %d&#39; % (
+          event, self._min_note))
+    if event &gt;= self._max_note:
+      raise ValueError(&#39;melody event greater than max note: %d &gt;= %d&#39; % (
+          event, self._max_note))
+
+    if event &lt; 0:
+      return event + NUM_SPECIAL_MELODY_EVENTS
+    return event - self._min_note + NUM_SPECIAL_MELODY_EVENTS
+
+  def decode_event(self, index):
+    &#34;&#34;&#34;Expands a zero-based index value to its equivalent melody event value.
+
+    Args:
+      index: An int in the range [0, self._num_model_events).
+          0 = no event, 1 = note-off event,
+          [2, self._num_model_events) = note-on event for that pitch relative
+          to the [self._min_note, self._max_note) range.
+
+    Returns:
+      A Melody event value. -2 = no event, -1 = note-off event,
+      [0, 127] = note-on event for that midi pitch.
+    &#34;&#34;&#34;
+    if index &lt; NUM_SPECIAL_MELODY_EVENTS:
+      return index - NUM_SPECIAL_MELODY_EVENTS
+    return index - NUM_SPECIAL_MELODY_EVENTS + self._min_note
+
+
+class KeyMelodyEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;A MelodyEncoderDecoder that encodes repeated events, time, and key.&#34;&#34;&#34;
+
+  def __init__(self, min_note, max_note, lookback_distances=None,
+               binary_counter_bits=7):
+    &#34;&#34;&#34;Initializes the KeyMelodyEncoderDecoder.
+
+    Args:
+      min_note: The minimum midi pitch the encoded melody events can have.
+      max_note: The maximum midi pitch (exclusive) the encoded melody events can
+          have.
+      lookback_distances: A list of step intervals to look back in history to
+          encode both the following event and whether the current step is a
+          repeat. If None, use default lookback distances.
+      binary_counter_bits: The number of input bits to use as a counter for the
+          metric position of the next note.
+    &#34;&#34;&#34;
+    if lookback_distances is None:
+      self._lookback_distances = DEFAULT_LOOKBACK_DISTANCES
+    else:
+      self._lookback_distances = lookback_distances
+    self._binary_counter_bits = binary_counter_bits
+    self._min_note = min_note
+    self._note_range = max_note - min_note
+
+  @property
+  def input_size(self):
+    return (self._note_range +                # current note
+            2 +                               # note vs. silence
+            1 +                               # attack or not
+            1 +                               # ascending or not
+            len(self._lookback_distances) +   # whether note matches lookbacks
+            self._binary_counter_bits +       # binary counters
+            1 +                               # start of bar or not
+            NOTES_PER_OCTAVE +                # total key estimate
+            NOTES_PER_OCTAVE)                 # recent key estimate
+
+  @property
+  def num_classes(self):
+    return (self._note_range + NUM_SPECIAL_MELODY_EVENTS +
+            len(self._lookback_distances))
+
+  @property
+  def default_event_label(self):
+    return self._note_range
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the melody.
+
+    Returns a self.input_size length list of floats. Assuming
+    self._min_note = 48, self._note_range = 36, two lookback distances, and
+    seven binary counters, then self.input_size = 74. Each index represents a
+    different input signal to the model.
+
+    Indices [0, 73]:
+    [0, 35]: A note is playing at that pitch [48, 84).
+    36: Any note is playing.
+    37: Silence is playing.
+    38: The current event is the note-on event of the currently playing note.
+    39: Whether the melody is currently ascending or descending.
+    40: The last event is repeating (first lookback distance).
+    41: The last event is repeating (second lookback distance).
+    [42, 48]: Time keeping toggles.
+    49: The next event is the start of a bar.
+    [50, 61]: The keys the current melody is in.
+    [62, 73]: The keys the last 3 notes are in.
+    Args:
+      events: A note_seq.Melody object.
+      position: An integer event position in the melody.
+    Returns:
+      An input vector, an self.input_size length list of floats.
+    &#34;&#34;&#34;
+    current_note = None
+    is_attack = False
+    is_ascending = None
+    last_3_notes = collections.deque(maxlen=3)
+    sub_melody = melodies_lib.Melody(events[:position + 1])
+    for note in sub_melody:
+      if note == MELODY_NO_EVENT:
+        is_attack = False
+      elif note == MELODY_NOTE_OFF:
+        current_note = None
+      else:
+        is_attack = True
+        current_note = note
+        if last_3_notes:
+          if note &gt; last_3_notes[-1]:
+            is_ascending = True
+          if note &lt; last_3_notes[-1]:
+            is_ascending = False
+        if note in last_3_notes:
+          last_3_notes.remove(note)
+        last_3_notes.append(note)
+
+    input_ = [0.0] * self.input_size
+    offset = 0
+    if current_note:
+      # The pitch of current note if a note is playing.
+      input_[offset + current_note - self._min_note] = 1.0
+      # A note is playing.
+      input_[offset + self._note_range] = 1.0
+    else:
+      # Silence is playing.
+      input_[offset + self._note_range + 1] = 1.0
+    offset += self._note_range + 2
+
+    # The current event is the note-on event of the currently playing note.
+    if is_attack:
+      input_[offset] = 1.0
+    offset += 1
+
+    # Whether the melody is currently ascending or descending.
+    if is_ascending is not None:
+      input_[offset] = 1.0 if is_ascending else -1.0
+    offset += 1
+
+    # Last event is repeating N bars ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        input_[offset] = 1.0
+      offset += 1
+
+    # Binary time counter giving the metric location of the *next* note.
+    n = len(sub_melody)
+    for i in range(self._binary_counter_bits):
+      input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+      offset += 1
+
+    # The next event is the start of a bar.
+    if len(sub_melody) % DEFAULT_STEPS_PER_BAR == 0:
+      input_[offset] = 1.0
+    offset += 1
+
+    # The keys the current melody is in.
+    key_histogram = sub_melody.get_major_key_histogram()
+    max_val = max(key_histogram)
+    for i, key_val in enumerate(key_histogram):
+      if key_val == max_val:
+        input_[offset] = 1.0
+      offset += 1
+
+    # The keys the last 3 notes are in.
+    last_3_note_melody = melodies_lib.Melody(list(last_3_notes))
+    key_histogram = last_3_note_melody.get_major_key_histogram()
+    max_val = max(key_histogram)
+    for i, key_val in enumerate(key_histogram):
+      if key_val == max_val:
+        input_[offset] = 1.0
+      offset += 1
+
+    assert offset == self.input_size
+
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the melody.
+
+    Returns an int in the range [0, self.num_classes). Assuming
+    self._min_note = 48, self._note_range = 36, and two lookback distances,
+    then self.num_classes = 40.
+    Values [0, 39]:
+    [0, 35]: Note-on event for midi pitch [48, 84).
+    36: No event.
+    37: Note-off event.
+    38: Repeat first lookback (takes precedence over above values).
+    39: Repeat second lookback (takes precedence over above values).
+
+    Args:
+      events: A note_seq.Melody object.
+      position: An integer event position in the melody.
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    if (position &lt; self._lookback_distances[-1] and
+        events[position] == MELODY_NO_EVENT):
+      return self._note_range + len(self._lookback_distances) + 1
+
+    # If the last event repeated N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        return self._note_range + 2 + i
+
+    # If last event was a note-off event.
+    if events[position] == MELODY_NOTE_OFF:
+      return self._note_range + 1
+
+    # If last event was a no event.
+    if events[position] == MELODY_NO_EVENT:
+      return self._note_range
+
+    # If last event was a note-on event, the pitch of that note.
+    return events[position] - self._min_note
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the melody event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An int in the range [0, self.num_classes).
+      events: The note_seq.Melody events list of the current melody.
+    Returns:
+      A note_seq.Melody event value.
+    &#34;&#34;&#34;
+    # Repeat N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      if class_index == self._note_range + 2 + i:
+        if len(events) &lt; lookback_distance:
+          return MELODY_NO_EVENT
+        return events[-lookback_distance]
+
+    # Note-off event.
+    if class_index == self._note_range + 1:
+      return MELODY_NOTE_OFF
+
+    # No event:
+    if class_index == self._note_range:
+      return MELODY_NO_EVENT
+
+    # Note-on event for that midi pitch.
+    return self._min_note + class_index</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">KeyMelodyEncoderDecoder</span></span>
+<span>(</span><span>min_note, max_note, lookback_distances=None, binary_counter_bits=7)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A MelodyEncoderDecoder that encodes repeated events, time, and key.</p>
+<p>Initializes the KeyMelodyEncoderDecoder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>min_note</code></strong></dt>
+<dd>The minimum midi pitch the encoded melody events can have.</dd>
+<dt><strong><code>max_note</code></strong></dt>
+<dd>The maximum midi pitch (exclusive) the encoded melody events can
+have.</dd>
+<dt><strong><code>lookback_distances</code></strong></dt>
+<dd>A list of step intervals to look back in history to
+encode both the following event and whether the current step is a
+repeat. If None, use default lookback distances.</dd>
+<dt><strong><code>binary_counter_bits</code></strong></dt>
+<dd>The number of input bits to use as a counter for the
+metric position of the next note.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeyMelodyEncoderDecoder(encoder_decoder.EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;A MelodyEncoderDecoder that encodes repeated events, time, and key.&#34;&#34;&#34;
+
+  def __init__(self, min_note, max_note, lookback_distances=None,
+               binary_counter_bits=7):
+    &#34;&#34;&#34;Initializes the KeyMelodyEncoderDecoder.
+
+    Args:
+      min_note: The minimum midi pitch the encoded melody events can have.
+      max_note: The maximum midi pitch (exclusive) the encoded melody events can
+          have.
+      lookback_distances: A list of step intervals to look back in history to
+          encode both the following event and whether the current step is a
+          repeat. If None, use default lookback distances.
+      binary_counter_bits: The number of input bits to use as a counter for the
+          metric position of the next note.
+    &#34;&#34;&#34;
+    if lookback_distances is None:
+      self._lookback_distances = DEFAULT_LOOKBACK_DISTANCES
+    else:
+      self._lookback_distances = lookback_distances
+    self._binary_counter_bits = binary_counter_bits
+    self._min_note = min_note
+    self._note_range = max_note - min_note
+
+  @property
+  def input_size(self):
+    return (self._note_range +                # current note
+            2 +                               # note vs. silence
+            1 +                               # attack or not
+            1 +                               # ascending or not
+            len(self._lookback_distances) +   # whether note matches lookbacks
+            self._binary_counter_bits +       # binary counters
+            1 +                               # start of bar or not
+            NOTES_PER_OCTAVE +                # total key estimate
+            NOTES_PER_OCTAVE)                 # recent key estimate
+
+  @property
+  def num_classes(self):
+    return (self._note_range + NUM_SPECIAL_MELODY_EVENTS +
+            len(self._lookback_distances))
+
+  @property
+  def default_event_label(self):
+    return self._note_range
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the melody.
+
+    Returns a self.input_size length list of floats. Assuming
+    self._min_note = 48, self._note_range = 36, two lookback distances, and
+    seven binary counters, then self.input_size = 74. Each index represents a
+    different input signal to the model.
+
+    Indices [0, 73]:
+    [0, 35]: A note is playing at that pitch [48, 84).
+    36: Any note is playing.
+    37: Silence is playing.
+    38: The current event is the note-on event of the currently playing note.
+    39: Whether the melody is currently ascending or descending.
+    40: The last event is repeating (first lookback distance).
+    41: The last event is repeating (second lookback distance).
+    [42, 48]: Time keeping toggles.
+    49: The next event is the start of a bar.
+    [50, 61]: The keys the current melody is in.
+    [62, 73]: The keys the last 3 notes are in.
+    Args:
+      events: A note_seq.Melody object.
+      position: An integer event position in the melody.
+    Returns:
+      An input vector, an self.input_size length list of floats.
+    &#34;&#34;&#34;
+    current_note = None
+    is_attack = False
+    is_ascending = None
+    last_3_notes = collections.deque(maxlen=3)
+    sub_melody = melodies_lib.Melody(events[:position + 1])
+    for note in sub_melody:
+      if note == MELODY_NO_EVENT:
+        is_attack = False
+      elif note == MELODY_NOTE_OFF:
+        current_note = None
+      else:
+        is_attack = True
+        current_note = note
+        if last_3_notes:
+          if note &gt; last_3_notes[-1]:
+            is_ascending = True
+          if note &lt; last_3_notes[-1]:
+            is_ascending = False
+        if note in last_3_notes:
+          last_3_notes.remove(note)
+        last_3_notes.append(note)
+
+    input_ = [0.0] * self.input_size
+    offset = 0
+    if current_note:
+      # The pitch of current note if a note is playing.
+      input_[offset + current_note - self._min_note] = 1.0
+      # A note is playing.
+      input_[offset + self._note_range] = 1.0
+    else:
+      # Silence is playing.
+      input_[offset + self._note_range + 1] = 1.0
+    offset += self._note_range + 2
+
+    # The current event is the note-on event of the currently playing note.
+    if is_attack:
+      input_[offset] = 1.0
+    offset += 1
+
+    # Whether the melody is currently ascending or descending.
+    if is_ascending is not None:
+      input_[offset] = 1.0 if is_ascending else -1.0
+    offset += 1
+
+    # Last event is repeating N bars ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        input_[offset] = 1.0
+      offset += 1
+
+    # Binary time counter giving the metric location of the *next* note.
+    n = len(sub_melody)
+    for i in range(self._binary_counter_bits):
+      input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+      offset += 1
+
+    # The next event is the start of a bar.
+    if len(sub_melody) % DEFAULT_STEPS_PER_BAR == 0:
+      input_[offset] = 1.0
+    offset += 1
+
+    # The keys the current melody is in.
+    key_histogram = sub_melody.get_major_key_histogram()
+    max_val = max(key_histogram)
+    for i, key_val in enumerate(key_histogram):
+      if key_val == max_val:
+        input_[offset] = 1.0
+      offset += 1
+
+    # The keys the last 3 notes are in.
+    last_3_note_melody = melodies_lib.Melody(list(last_3_notes))
+    key_histogram = last_3_note_melody.get_major_key_histogram()
+    max_val = max(key_histogram)
+    for i, key_val in enumerate(key_histogram):
+      if key_val == max_val:
+        input_[offset] = 1.0
+      offset += 1
+
+    assert offset == self.input_size
+
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the melody.
+
+    Returns an int in the range [0, self.num_classes). Assuming
+    self._min_note = 48, self._note_range = 36, and two lookback distances,
+    then self.num_classes = 40.
+    Values [0, 39]:
+    [0, 35]: Note-on event for midi pitch [48, 84).
+    36: No event.
+    37: Note-off event.
+    38: Repeat first lookback (takes precedence over above values).
+    39: Repeat second lookback (takes precedence over above values).
+
+    Args:
+      events: A note_seq.Melody object.
+      position: An integer event position in the melody.
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    if (position &lt; self._lookback_distances[-1] and
+        events[position] == MELODY_NO_EVENT):
+      return self._note_range + len(self._lookback_distances) + 1
+
+    # If the last event repeated N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        return self._note_range + 2 + i
+
+    # If last event was a note-off event.
+    if events[position] == MELODY_NOTE_OFF:
+      return self._note_range + 1
+
+    # If last event was a no event.
+    if events[position] == MELODY_NO_EVENT:
+      return self._note_range
+
+    # If last event was a note-on event, the pitch of that note.
+    return events[position] - self._min_note
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the melody event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An int in the range [0, self.num_classes).
+      events: The note_seq.Melody events list of the current melody.
+    Returns:
+      A note_seq.Melody event value.
+    &#34;&#34;&#34;
+    # Repeat N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      if class_index == self._note_range + 2 + i:
+        if len(events) &lt; lookback_distance:
+          return MELODY_NO_EVENT
+        return events[-lookback_distance]
+
+    # Note-off event.
+    if class_index == self._note_range + 1:
+      return MELODY_NOTE_OFF
+
+    # No event:
+    if class_index == self._note_range:
+      return MELODY_NO_EVENT
+
+    # Note-on event for that midi pitch.
+    return self._min_note + class_index</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the melody event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An int in the range [0, self.num_classes).</dd>
+<dt><strong><code>events</code></strong></dt>
+<dd>The note_seq.Melody events list of the current melody.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A note_seq.Melody event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_index_to_event(self, class_index, events):
+  &#34;&#34;&#34;Returns the melody event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An int in the range [0, self.num_classes).
+    events: The note_seq.Melody events list of the current melody.
+  Returns:
+    A note_seq.Melody event value.
+  &#34;&#34;&#34;
+  # Repeat N bars ago.
+  for i, lookback_distance in reversed(
+      list(enumerate(self._lookback_distances))):
+    if class_index == self._note_range + 2 + i:
+      if len(events) &lt; lookback_distance:
+        return MELODY_NO_EVENT
+      return events[-lookback_distance]
+
+  # Note-off event.
+  if class_index == self._note_range + 1:
+    return MELODY_NOTE_OFF
+
+  # No event:
+  if class_index == self._note_range:
+    return MELODY_NO_EVENT
+
+  # Note-on event for that midi pitch.
+  return self._min_note + class_index</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the given position in the melody.</p>
+<p>Returns a self.input_size length list of floats. Assuming
+self._min_note = 48, self._note_range = 36, two lookback distances, and
+seven binary counters, then self.input_size = 74. Each index represents a
+different input signal to the model.</p>
+<p>Indices [0, 73]:
+[0, 35]: A note is playing at that pitch [48, 84).
+36: Any note is playing.
+37: Silence is playing.
+38: The current event is the note-on event of the currently playing note.
+39: Whether the melody is currently ascending or descending.
+40: The last event is repeating (first lookback distance).
+41: The last event is repeating (second lookback distance).
+[42, 48]: Time keeping toggles.
+49: The next event is the start of a bar.
+[50, 61]: The keys the current melody is in.
+[62, 73]: The keys the last 3 notes are in.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A note_seq.Melody object.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the melody.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, an self.input_size length list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the input vector for the given position in the melody.
+
+  Returns a self.input_size length list of floats. Assuming
+  self._min_note = 48, self._note_range = 36, two lookback distances, and
+  seven binary counters, then self.input_size = 74. Each index represents a
+  different input signal to the model.
+
+  Indices [0, 73]:
+  [0, 35]: A note is playing at that pitch [48, 84).
+  36: Any note is playing.
+  37: Silence is playing.
+  38: The current event is the note-on event of the currently playing note.
+  39: Whether the melody is currently ascending or descending.
+  40: The last event is repeating (first lookback distance).
+  41: The last event is repeating (second lookback distance).
+  [42, 48]: Time keeping toggles.
+  49: The next event is the start of a bar.
+  [50, 61]: The keys the current melody is in.
+  [62, 73]: The keys the last 3 notes are in.
+  Args:
+    events: A note_seq.Melody object.
+    position: An integer event position in the melody.
+  Returns:
+    An input vector, an self.input_size length list of floats.
+  &#34;&#34;&#34;
+  current_note = None
+  is_attack = False
+  is_ascending = None
+  last_3_notes = collections.deque(maxlen=3)
+  sub_melody = melodies_lib.Melody(events[:position + 1])
+  for note in sub_melody:
+    if note == MELODY_NO_EVENT:
+      is_attack = False
+    elif note == MELODY_NOTE_OFF:
+      current_note = None
+    else:
+      is_attack = True
+      current_note = note
+      if last_3_notes:
+        if note &gt; last_3_notes[-1]:
+          is_ascending = True
+        if note &lt; last_3_notes[-1]:
+          is_ascending = False
+      if note in last_3_notes:
+        last_3_notes.remove(note)
+      last_3_notes.append(note)
+
+  input_ = [0.0] * self.input_size
+  offset = 0
+  if current_note:
+    # The pitch of current note if a note is playing.
+    input_[offset + current_note - self._min_note] = 1.0
+    # A note is playing.
+    input_[offset + self._note_range] = 1.0
+  else:
+    # Silence is playing.
+    input_[offset + self._note_range + 1] = 1.0
+  offset += self._note_range + 2
+
+  # The current event is the note-on event of the currently playing note.
+  if is_attack:
+    input_[offset] = 1.0
+  offset += 1
+
+  # Whether the melody is currently ascending or descending.
+  if is_ascending is not None:
+    input_[offset] = 1.0 if is_ascending else -1.0
+  offset += 1
+
+  # Last event is repeating N bars ago.
+  for i, lookback_distance in enumerate(self._lookback_distances):
+    lookback_position = position - lookback_distance
+    if (lookback_position &gt;= 0 and
+        events[position] == events[lookback_position]):
+      input_[offset] = 1.0
+    offset += 1
+
+  # Binary time counter giving the metric location of the *next* note.
+  n = len(sub_melody)
+  for i in range(self._binary_counter_bits):
+    input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+    offset += 1
+
+  # The next event is the start of a bar.
+  if len(sub_melody) % DEFAULT_STEPS_PER_BAR == 0:
+    input_[offset] = 1.0
+  offset += 1
+
+  # The keys the current melody is in.
+  key_histogram = sub_melody.get_major_key_histogram()
+  max_val = max(key_histogram)
+  for i, key_val in enumerate(key_histogram):
+    if key_val == max_val:
+      input_[offset] = 1.0
+    offset += 1
+
+  # The keys the last 3 notes are in.
+  last_3_note_melody = melodies_lib.Melody(list(last_3_notes))
+  key_histogram = last_3_note_melody.get_major_key_histogram()
+  max_val = max(key_histogram)
+  for i, key_val in enumerate(key_histogram):
+    if key_val == max_val:
+      input_[offset] = 1.0
+    offset += 1
+
+  assert offset == self.input_size
+
+  return input_</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the given position in the melody.</p>
+<p>Returns an int in the range [0, self.num_classes). Assuming
+self._min_note = 48, self._note_range = 36, and two lookback distances,
+then self.num_classes = 40.
+Values [0, 39]:
+[0, 35]: Note-on event for midi pitch [48, 84).
+36: No event.
+37: Note-off event.
+38: Repeat first lookback (takes precedence over above values).
+39: Repeat second lookback (takes precedence over above values).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A note_seq.Melody object.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the melody.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_label(self, events, position):
+  &#34;&#34;&#34;Returns the label for the given position in the melody.
+
+  Returns an int in the range [0, self.num_classes). Assuming
+  self._min_note = 48, self._note_range = 36, and two lookback distances,
+  then self.num_classes = 40.
+  Values [0, 39]:
+  [0, 35]: Note-on event for midi pitch [48, 84).
+  36: No event.
+  37: Note-off event.
+  38: Repeat first lookback (takes precedence over above values).
+  39: Repeat second lookback (takes precedence over above values).
+
+  Args:
+    events: A note_seq.Melody object.
+    position: An integer event position in the melody.
+  Returns:
+    A label, an integer.
+  &#34;&#34;&#34;
+  if (position &lt; self._lookback_distances[-1] and
+      events[position] == MELODY_NO_EVENT):
+    return self._note_range + len(self._lookback_distances) + 1
+
+  # If the last event repeated N bars ago.
+  for i, lookback_distance in reversed(
+      list(enumerate(self._lookback_distances))):
+    lookback_position = position - lookback_distance
+    if (lookback_position &gt;= 0 and
+        events[position] == events[lookback_position]):
+      return self._note_range + 2 + i
+
+  # If last event was a note-off event.
+  if events[position] == MELODY_NOTE_OFF:
+    return self._note_range + 1
+
+  # If last event was a no event.
+  if events[position] == MELODY_NO_EVENT:
+    return self._note_range
+
+  # If last event was a note-on event, the pitch of that note.
+  return events[position] - self._min_note</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.melody_encoder_decoder.MelodyOneHotEncoding"><code class="flex name class">
+<span>class <span class="ident">MelodyOneHotEncoding</span></span>
+<span>(</span><span>min_note, max_note)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Basic one hot encoding for melody events.</p>
+<p>Encodes melody events as follows:
+0 = no event,
+1 = note-off event,
+[2, self.num_classes) = note-on event for that pitch relative to the
+[self._min_note, self._max_note) range.</p>
+<p>Initializes a MelodyOneHotEncoding object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>min_note</code></strong></dt>
+<dd>The minimum midi pitch the encoded melody events can have.</dd>
+<dt><strong><code>max_note</code></strong></dt>
+<dd>The maximum midi pitch (exclusive) the encoded melody events
+can have.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>min_note</code> or <code>max_note</code> are outside the midi range, or if
+<code>max_note</code> is not greater than <code>min_note</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MelodyOneHotEncoding(encoder_decoder.OneHotEncoding):
+  &#34;&#34;&#34;Basic one hot encoding for melody events.
+
+  Encodes melody events as follows:
+    0 = no event,
+    1 = note-off event,
+    [2, self.num_classes) = note-on event for that pitch relative to the
+        [self._min_note, self._max_note) range.
+  &#34;&#34;&#34;
+
+  def __init__(self, min_note, max_note):
+    &#34;&#34;&#34;Initializes a MelodyOneHotEncoding object.
+
+    Args:
+      min_note: The minimum midi pitch the encoded melody events can have.
+      max_note: The maximum midi pitch (exclusive) the encoded melody events
+          can have.
+
+    Raises:
+      ValueError: If `min_note` or `max_note` are outside the midi range, or if
+          `max_note` is not greater than `min_note`.
+    &#34;&#34;&#34;
+    if min_note &lt; MIN_MIDI_PITCH:
+      raise ValueError(&#39;min_note must be &gt;= 0. min_note is %d.&#39; % min_note)
+    if max_note &gt; MAX_MIDI_PITCH + 1:
+      raise ValueError(&#39;max_note must be &lt;= 128. max_note is %d.&#39; % max_note)
+    if max_note &lt;= min_note:
+      raise ValueError(&#39;max_note must be greater than min_note&#39;)
+
+    self._min_note = min_note
+    self._max_note = max_note
+
+  @property
+  def num_classes(self):
+    return self._max_note - self._min_note + NUM_SPECIAL_MELODY_EVENTS
+
+  @property
+  def default_event(self):
+    return MELODY_NO_EVENT
+
+  def encode_event(self, event):
+    &#34;&#34;&#34;Collapses a melody event value into a zero-based index range.
+
+    Args:
+      event: A Melody event value. -2 = no event, -1 = note-off event,
+          [0, 127] = note-on event for that midi pitch.
+
+    Returns:
+      An int in the range [0, self.num_classes). 0 = no event,
+      1 = note-off event, [2, self.num_classes) = note-on event for
+      that pitch relative to the [self._min_note, self._max_note) range.
+
+    Raises:
+      ValueError: If `event` is a MIDI note not between self._min_note and
+          self._max_note, or an invalid special event value.
+    &#34;&#34;&#34;
+    if event &lt; -NUM_SPECIAL_MELODY_EVENTS:
+      raise ValueError(&#39;invalid melody event value: %d&#39; % event)
+    if 0 &lt;= event &lt; self._min_note:
+      raise ValueError(&#39;melody event less than min note: %d &lt; %d&#39; % (
+          event, self._min_note))
+    if event &gt;= self._max_note:
+      raise ValueError(&#39;melody event greater than max note: %d &gt;= %d&#39; % (
+          event, self._max_note))
+
+    if event &lt; 0:
+      return event + NUM_SPECIAL_MELODY_EVENTS
+    return event - self._min_note + NUM_SPECIAL_MELODY_EVENTS
+
+  def decode_event(self, index):
+    &#34;&#34;&#34;Expands a zero-based index value to its equivalent melody event value.
+
+    Args:
+      index: An int in the range [0, self._num_model_events).
+          0 = no event, 1 = note-off event,
+          [2, self._num_model_events) = note-on event for that pitch relative
+          to the [self._min_note, self._max_note) range.
+
+    Returns:
+      A Melody event value. -2 = no event, -1 = note-off event,
+      [0, 127] = note-on event for that midi pitch.
+    &#34;&#34;&#34;
+    if index &lt; NUM_SPECIAL_MELODY_EVENTS:
+      return index - NUM_SPECIAL_MELODY_EVENTS
+    return index - NUM_SPECIAL_MELODY_EVENTS + self._min_note</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.OneHotEncoding" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding">OneHotEncoding</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.melody_encoder_decoder.MelodyOneHotEncoding.decode_event"><code class="name flex">
+<span>def <span class="ident">decode_event</span></span>(<span>self, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Expands a zero-based index value to its equivalent melody event value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>index</code></strong></dt>
+<dd>An int in the range [0, self._num_model_events).
+0 = no event, 1 = note-off event,
+[2, self._num_model_events) = note-on event for that pitch relative
+to the [self._min_note, self._max_note) range.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Melody event value. -2 = no event, -1 = note-off event,
+[0, 127] = note-on event for that midi pitch.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decode_event(self, index):
+  &#34;&#34;&#34;Expands a zero-based index value to its equivalent melody event value.
+
+  Args:
+    index: An int in the range [0, self._num_model_events).
+        0 = no event, 1 = note-off event,
+        [2, self._num_model_events) = note-on event for that pitch relative
+        to the [self._min_note, self._max_note) range.
+
+  Returns:
+    A Melody event value. -2 = no event, -1 = note-off event,
+    [0, 127] = note-on event for that midi pitch.
+  &#34;&#34;&#34;
+  if index &lt; NUM_SPECIAL_MELODY_EVENTS:
+    return index - NUM_SPECIAL_MELODY_EVENTS
+  return index - NUM_SPECIAL_MELODY_EVENTS + self._min_note</code></pre>
+</details>
+</dd>
+<dt id="note_seq.melody_encoder_decoder.MelodyOneHotEncoding.encode_event"><code class="name flex">
+<span>def <span class="ident">encode_event</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Collapses a melody event value into a zero-based index range.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>A Melody event value. -2 = no event, -1 = note-off event,
+[0, 127] = note-on event for that midi pitch.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An int in the range [0, self.num_classes). 0 = no event,
+1 = note-off event, [2, self.num_classes) = note-on event for
+that pitch relative to the [self._min_note, self._max_note) range.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>event</code> is a MIDI note not between self._min_note and
+self._max_note, or an invalid special event value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode_event(self, event):
+  &#34;&#34;&#34;Collapses a melody event value into a zero-based index range.
+
+  Args:
+    event: A Melody event value. -2 = no event, -1 = note-off event,
+        [0, 127] = note-on event for that midi pitch.
+
+  Returns:
+    An int in the range [0, self.num_classes). 0 = no event,
+    1 = note-off event, [2, self.num_classes) = note-on event for
+    that pitch relative to the [self._min_note, self._max_note) range.
+
+  Raises:
+    ValueError: If `event` is a MIDI note not between self._min_note and
+        self._max_note, or an invalid special event value.
+  &#34;&#34;&#34;
+  if event &lt; -NUM_SPECIAL_MELODY_EVENTS:
+    raise ValueError(&#39;invalid melody event value: %d&#39; % event)
+  if 0 &lt;= event &lt; self._min_note:
+    raise ValueError(&#39;melody event less than min note: %d &lt; %d&#39; % (
+        event, self._min_note))
+  if event &gt;= self._max_note:
+    raise ValueError(&#39;melody event greater than max note: %d &gt;= %d&#39; % (
+        event, self._max_note))
+
+  if event &lt; 0:
+    return event + NUM_SPECIAL_MELODY_EVENTS
+  return event - self._min_note + NUM_SPECIAL_MELODY_EVENTS</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.OneHotEncoding" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding">OneHotEncoding</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.default_event" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.default_event">default_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps">event_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.num_classes" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder" href="#note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder">KeyMelodyEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.class_index_to_event" href="#note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_input" href="#note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_label" href="#note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder.events_to_label">events_to_label</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.melody_encoder_decoder.MelodyOneHotEncoding" href="#note_seq.melody_encoder_decoder.MelodyOneHotEncoding">MelodyOneHotEncoding</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.melody_encoder_decoder.MelodyOneHotEncoding.decode_event" href="#note_seq.melody_encoder_decoder.MelodyOneHotEncoding.decode_event">decode_event</a></code></li>
+<li><code><a title="note_seq.melody_encoder_decoder.MelodyOneHotEncoding.encode_event" href="#note_seq.melody_encoder_decoder.MelodyOneHotEncoding.encode_event">encode_event</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

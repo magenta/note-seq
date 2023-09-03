@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.protobuf.generator_pb2 API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.protobuf.generator_pb2</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# pylint: skip-file
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: note_seq/protobuf/generator.proto
+
+import sys
+_b=sys.version_info[0]&lt;3 and (lambda x:x) or (lambda x:x.encode(&#39;latin1&#39;))
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;note_seq/protobuf/generator.proto&#39;,
+  package=&#39;magenta&#39;,
+  syntax=&#39;proto3&#39;,
+  serialized_options=None,
+  serialized_pb=_b(&#39;\n!note_seq/protobuf/generator.proto\x12\x07magenta\&#34;3\n\x10GeneratorDetails\x12\n\n\x02id\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\&#34;\xdd\x03\n\x10GeneratorOptions\x12\x41\n\x0einput_sections\x18\x01 \x03(\x0b\x32).magenta.GeneratorOptions.SequenceSection\x12\x44\n\x11generate_sections\x18\x02 \x03(\x0b\x32).magenta.GeneratorOptions.SequenceSection\x12\x31\n\x04\x61rgs\x18\x03 \x03(\x0b\x32#.magenta.GeneratorOptions.ArgsEntry\x1a\x37\n\x0fSequenceSection\x12\x12\n\nstart_time\x18\x01 \x01(\x01\x12\x10\n\x08\x65nd_time\x18\x02 \x01(\x01\x1a\x82\x01\n\x08\x41rgValue\x12\x14\n\nbyte_value\x18\x01 \x01(\x0cH\x00\x12\x13\n\tint_value\x18\x02 \x01(\x05H\x00\x12\x15\n\x0b\x66loat_value\x18\x03 \x01(\x01H\x00\x12\x14\n\nbool_value\x18\x04 \x01(\x08H\x00\x12\x16\n\x0cstring_value\x18\x05 \x01(\tH\x00\x42\x06\n\x04kind\x1aO\n\tArgsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\&#34;.magenta.GeneratorOptions.ArgValue:\x02\x38\x01\&#34;\xde\x01\n\x0fGeneratorBundle\x12\x34\n\x11generator_details\x18\x01 \x01(\x0b\x32\x19.magenta.GeneratorDetails\x12&gt;\n\x0e\x62undle_details\x18\x04 \x01(\x0b\x32&amp;.magenta.GeneratorBundle.BundleDetails\x12\x17\n\x0f\x63heckpoint_file\x18\x02 \x03(\x0c\x12\x16\n\x0emetagraph_file\x18\x03 \x01(\x0c\x1a$\n\rBundleDetails\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\tb\x06proto3&#39;)
+)
+
+
+
+
+_GENERATORDETAILS = _descriptor.Descriptor(
+  name=&#39;GeneratorDetails&#39;,
+  full_name=&#39;magenta.GeneratorDetails&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;id&#39;, full_name=&#39;magenta.GeneratorDetails.id&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;description&#39;, full_name=&#39;magenta.GeneratorDetails.description&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=46,
+  serialized_end=97,
+)
+
+
+_GENERATOROPTIONS_SEQUENCESECTION = _descriptor.Descriptor(
+  name=&#39;SequenceSection&#39;,
+  full_name=&#39;magenta.GeneratorOptions.SequenceSection&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;start_time&#39;, full_name=&#39;magenta.GeneratorOptions.SequenceSection.start_time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;end_time&#39;, full_name=&#39;magenta.GeneratorOptions.SequenceSection.end_time&#39;, index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=308,
+  serialized_end=363,
+)
+
+_GENERATOROPTIONS_ARGVALUE = _descriptor.Descriptor(
+  name=&#39;ArgValue&#39;,
+  full_name=&#39;magenta.GeneratorOptions.ArgValue&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;byte_value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.byte_value&#39;, index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;int_value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.int_value&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;float_value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.float_value&#39;, index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;bool_value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.bool_value&#39;, index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;string_value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.string_value&#39;, index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name=&#39;kind&#39;, full_name=&#39;magenta.GeneratorOptions.ArgValue.kind&#39;,
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=366,
+  serialized_end=496,
+)
+
+_GENERATOROPTIONS_ARGSENTRY = _descriptor.Descriptor(
+  name=&#39;ArgsEntry&#39;,
+  full_name=&#39;magenta.GeneratorOptions.ArgsEntry&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;key&#39;, full_name=&#39;magenta.GeneratorOptions.ArgsEntry.key&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;value&#39;, full_name=&#39;magenta.GeneratorOptions.ArgsEntry.value&#39;, index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b(&#39;8\001&#39;),
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=498,
+  serialized_end=577,
+)
+
+_GENERATOROPTIONS = _descriptor.Descriptor(
+  name=&#39;GeneratorOptions&#39;,
+  full_name=&#39;magenta.GeneratorOptions&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;input_sections&#39;, full_name=&#39;magenta.GeneratorOptions.input_sections&#39;, index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;generate_sections&#39;, full_name=&#39;magenta.GeneratorOptions.generate_sections&#39;, index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;args&#39;, full_name=&#39;magenta.GeneratorOptions.args&#39;, index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GENERATOROPTIONS_SEQUENCESECTION, _GENERATOROPTIONS_ARGVALUE, _GENERATOROPTIONS_ARGSENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=100,
+  serialized_end=577,
+)
+
+
+_GENERATORBUNDLE_BUNDLEDETAILS = _descriptor.Descriptor(
+  name=&#39;BundleDetails&#39;,
+  full_name=&#39;magenta.GeneratorBundle.BundleDetails&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;description&#39;, full_name=&#39;magenta.GeneratorBundle.BundleDetails.description&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=766,
+  serialized_end=802,
+)
+
+_GENERATORBUNDLE = _descriptor.Descriptor(
+  name=&#39;GeneratorBundle&#39;,
+  full_name=&#39;magenta.GeneratorBundle&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;generator_details&#39;, full_name=&#39;magenta.GeneratorBundle.generator_details&#39;, index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;bundle_details&#39;, full_name=&#39;magenta.GeneratorBundle.bundle_details&#39;, index=1,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;checkpoint_file&#39;, full_name=&#39;magenta.GeneratorBundle.checkpoint_file&#39;, index=2,
+      number=2, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;metagraph_file&#39;, full_name=&#39;magenta.GeneratorBundle.metagraph_file&#39;, index=3,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GENERATORBUNDLE_BUNDLEDETAILS, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=580,
+  serialized_end=802,
+)
+
+_GENERATOROPTIONS_SEQUENCESECTION.containing_type = _GENERATOROPTIONS
+_GENERATOROPTIONS_ARGVALUE.containing_type = _GENERATOROPTIONS
+_GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;].fields.append(
+  _GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;byte_value&#39;])
+_GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;byte_value&#39;].containing_oneof = _GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;]
+_GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;].fields.append(
+  _GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;int_value&#39;])
+_GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;int_value&#39;].containing_oneof = _GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;]
+_GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;].fields.append(
+  _GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;float_value&#39;])
+_GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;float_value&#39;].containing_oneof = _GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;]
+_GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;].fields.append(
+  _GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;bool_value&#39;])
+_GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;bool_value&#39;].containing_oneof = _GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;]
+_GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;].fields.append(
+  _GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;string_value&#39;])
+_GENERATOROPTIONS_ARGVALUE.fields_by_name[&#39;string_value&#39;].containing_oneof = _GENERATOROPTIONS_ARGVALUE.oneofs_by_name[&#39;kind&#39;]
+_GENERATOROPTIONS_ARGSENTRY.fields_by_name[&#39;value&#39;].message_type = _GENERATOROPTIONS_ARGVALUE
+_GENERATOROPTIONS_ARGSENTRY.containing_type = _GENERATOROPTIONS
+_GENERATOROPTIONS.fields_by_name[&#39;input_sections&#39;].message_type = _GENERATOROPTIONS_SEQUENCESECTION
+_GENERATOROPTIONS.fields_by_name[&#39;generate_sections&#39;].message_type = _GENERATOROPTIONS_SEQUENCESECTION
+_GENERATOROPTIONS.fields_by_name[&#39;args&#39;].message_type = _GENERATOROPTIONS_ARGSENTRY
+_GENERATORBUNDLE_BUNDLEDETAILS.containing_type = _GENERATORBUNDLE
+_GENERATORBUNDLE.fields_by_name[&#39;generator_details&#39;].message_type = _GENERATORDETAILS
+_GENERATORBUNDLE.fields_by_name[&#39;bundle_details&#39;].message_type = _GENERATORBUNDLE_BUNDLEDETAILS
+DESCRIPTOR.message_types_by_name[&#39;GeneratorDetails&#39;] = _GENERATORDETAILS
+DESCRIPTOR.message_types_by_name[&#39;GeneratorOptions&#39;] = _GENERATOROPTIONS
+DESCRIPTOR.message_types_by_name[&#39;GeneratorBundle&#39;] = _GENERATORBUNDLE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+GeneratorDetails = _reflection.GeneratedProtocolMessageType(&#39;GeneratorDetails&#39;, (_message.Message,), dict(
+  DESCRIPTOR = _GENERATORDETAILS,
+  __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.GeneratorDetails)
+  ))
+_sym_db.RegisterMessage(GeneratorDetails)
+
+GeneratorOptions = _reflection.GeneratedProtocolMessageType(&#39;GeneratorOptions&#39;, (_message.Message,), dict(
+
+  SequenceSection = _reflection.GeneratedProtocolMessageType(&#39;SequenceSection&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _GENERATOROPTIONS_SEQUENCESECTION,
+    __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.GeneratorOptions.SequenceSection)
+    ))
+  ,
+
+  ArgValue = _reflection.GeneratedProtocolMessageType(&#39;ArgValue&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _GENERATOROPTIONS_ARGVALUE,
+    __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.GeneratorOptions.ArgValue)
+    ))
+  ,
+
+  ArgsEntry = _reflection.GeneratedProtocolMessageType(&#39;ArgsEntry&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _GENERATOROPTIONS_ARGSENTRY,
+    __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.GeneratorOptions.ArgsEntry)
+    ))
+  ,
+  DESCRIPTOR = _GENERATOROPTIONS,
+  __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.GeneratorOptions)
+  ))
+_sym_db.RegisterMessage(GeneratorOptions)
+_sym_db.RegisterMessage(GeneratorOptions.SequenceSection)
+_sym_db.RegisterMessage(GeneratorOptions.ArgValue)
+_sym_db.RegisterMessage(GeneratorOptions.ArgsEntry)
+
+GeneratorBundle = _reflection.GeneratedProtocolMessageType(&#39;GeneratorBundle&#39;, (_message.Message,), dict(
+
+  BundleDetails = _reflection.GeneratedProtocolMessageType(&#39;BundleDetails&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _GENERATORBUNDLE_BUNDLEDETAILS,
+    __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.GeneratorBundle.BundleDetails)
+    ))
+  ,
+  DESCRIPTOR = _GENERATORBUNDLE,
+  __module__ = &#39;note_seq.protobuf.generator_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.GeneratorBundle)
+  ))
+_sym_db.RegisterMessage(GeneratorBundle)
+_sym_db.RegisterMessage(GeneratorBundle.BundleDetails)
+
+
+_GENERATOROPTIONS_ARGSENTRY._options = None
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle"><code class="flex name class">
+<span>class <span class="ident">GeneratorBundle</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.BundleDetails"><code class="name">var <span class="ident">BundleDetails</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.bundle_details"><code class="name">var <span class="ident">bundle_details</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorBundle.bundle_details</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.checkpoint_file"><code class="name">var <span class="ident">checkpoint_file</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorBundle.checkpoint_file</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.generator_details"><code class="name">var <span class="ident">generator_details</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorBundle.generator_details</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorBundle.metagraph_file"><code class="name">var <span class="ident">metagraph_file</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorBundle.metagraph_file</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorDetails"><code class="flex name class">
+<span>class <span class="ident">GeneratorDetails</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorDetails.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorDetails.description"><code class="name">var <span class="ident">description</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorDetails.description</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorDetails.id"><code class="name">var <span class="ident">id</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorDetails.id</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions"><code class="flex name class">
+<span>class <span class="ident">GeneratorOptions</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.ArgValue"><code class="name">var <span class="ident">ArgValue</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.ArgsEntry"><code class="name">var <span class="ident">ArgsEntry</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.SequenceSection"><code class="name">var <span class="ident">SequenceSection</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.args"><code class="name">var <span class="ident">args</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorOptions.args</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.generate_sections"><code class="name">var <span class="ident">generate_sections</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorOptions.generate_sections</p></div>
+</dd>
+<dt id="note_seq.protobuf.generator_pb2.GeneratorOptions.input_sections"><code class="name">var <span class="ident">input_sections</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.GeneratorOptions.input_sections</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq.protobuf" href="index.html">note_seq.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle" href="#note_seq.protobuf.generator_pb2.GeneratorBundle">GeneratorBundle</a></code></h4>
+<ul class="two-column">
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.BundleDetails" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.BundleDetails">BundleDetails</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.DESCRIPTOR" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.bundle_details" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.bundle_details">bundle_details</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.checkpoint_file" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.checkpoint_file">checkpoint_file</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.generator_details" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.generator_details">generator_details</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorBundle.metagraph_file" href="#note_seq.protobuf.generator_pb2.GeneratorBundle.metagraph_file">metagraph_file</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.protobuf.generator_pb2.GeneratorDetails" href="#note_seq.protobuf.generator_pb2.GeneratorDetails">GeneratorDetails</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorDetails.DESCRIPTOR" href="#note_seq.protobuf.generator_pb2.GeneratorDetails.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorDetails.description" href="#note_seq.protobuf.generator_pb2.GeneratorDetails.description">description</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorDetails.id" href="#note_seq.protobuf.generator_pb2.GeneratorDetails.id">id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions" href="#note_seq.protobuf.generator_pb2.GeneratorOptions">GeneratorOptions</a></code></h4>
+<ul class="two-column">
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.ArgValue" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.ArgValue">ArgValue</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.ArgsEntry" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.ArgsEntry">ArgsEntry</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.DESCRIPTOR" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.SequenceSection" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.SequenceSection">SequenceSection</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.args" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.args">args</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.generate_sections" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.generate_sections">generate_sections</a></code></li>
+<li><code><a title="note_seq.protobuf.generator_pb2.GeneratorOptions.input_sections" href="#note_seq.protobuf.generator_pb2.GeneratorOptions.input_sections">input_sections</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
