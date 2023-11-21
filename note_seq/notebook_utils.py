@@ -149,7 +149,7 @@ def plot_sequence(sequence,
 
     return pd.DataFrame(pd_dict)
 
-  fig = bokeh.plotting.figure(tools='hover,pan,box_zoom,reset,previewsave')
+  fig = bokeh.plotting.figure(tools='hover,pan,box_zoom,reset,save')
   if width:
     fig.width = width
   if height:
