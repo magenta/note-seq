@@ -102,6 +102,7 @@ class NoteSequence(_message.Message):
         start_time: float
         velocity: int
         voice: int
+        # chord field should be a one hot encoding of the notes in the chord. 
         chord: [int]
         def __init__(self, pitch: _Optional[int] = ..., pitch_name: _Optional[_Union[NoteSequence.PitchName, str]] = ..., velocity: _Optional[int] = ..., start_time: _Optional[float] = ..., quantized_start_step: _Optional[int] = ..., end_time: _Optional[float] = ..., quantized_end_step: _Optional[int] = ..., numerator: _Optional[int] = ..., denominator: _Optional[int] = ..., instrument: _Optional[int] = ..., program: _Optional[int] = ..., is_drum: bool = ..., part: _Optional[int] = ..., voice: _Optional[int] = ...) -> None: ...
     class PartInfo(_message.Message):

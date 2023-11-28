@@ -40,6 +40,163 @@ class MIDIConversionError(Exception):
   pass
 
 
+def midi_to_note_sequence_with_chords(midi_data, chord_midi_data):
+  """Convert MIDI file contents to a NoteSequence, with chords as a one hot encoded vector for each note
+  Args:
+    midi_data: A string containing the contents of a MIDI file or populated
+        pretty_midi.PrettyMIDI object.
+    chord_midi_data: A string containing the contents of a MIDI file or populated pretty_midi.PrettyMIDI object. 
+    This midi file should contain only chords.
+
+  Returns:
+    A NoteSequence.
+
+  Raises:
+    MIDIConversionError: An improper MIDI mode was supplied.
+  """
+  # In practice many MIDI files cannot be decoded with pretty_midi. Catch all
+  # errors here and try to log a meaningful message. So many different
+  # exceptions are raised in pretty_midi.PrettyMidi that it is cumbersome to
+  # catch them all only for the purpose of error logging.
+  # pylint: disable=bare-except
+  if isinstance(midi_data, pretty_midi.PrettyMIDI):
+    midi = midi_data
+  else:
+    try:
+      midi = pretty_midi.PrettyMIDI(io.BytesIO(midi_data))
+    except:
+      raise MIDIConversionError('Midi decoding error %s: %s' %
+                                (sys.exc_info()[0], sys.exc_info()[1]))
+  # pylint: enable=bare-except
+
+  sequence = music_pb2.NoteSequence()
+
+  # Populate header.
+  sequence.ticks_per_quarter = midi.resolution
+  sequence.source_info.parser = music_pb2.NoteSequence.SourceInfo.PRETTY_MIDI
+  sequence.source_info.encoding_type = (
+      music_pb2.NoteSequence.SourceInfo.MIDI)
+
+  # Populate time signatures.
+  for midi_time in midi.time_signature_changes:
+    time_signature = sequence.time_signatures.add()
+    time_signature.time = midi_time.time
+    time_signature.numerator = midi_time.numerator
+    try:
+      # Denominator can be too large for int32.
+      time_signature.denominator = midi_time.denominator
+    except ValueError:
+      raise MIDIConversionError('Invalid time signature denominator %d' %
+                                midi_time.denominator)
+
+  # Populate key signatures.
+  for midi_key in midi.key_signature_changes:
+    key_signature = sequence.key_signatures.add()
+    key_signature.time = midi_key.time
+    key_signature.key = midi_key.key_number % 12
+    midi_mode = midi_key.key_number // 12
+    if midi_mode == 0:
+      key_signature.mode = key_signature.MAJOR
+    elif midi_mode == 1:
+      key_signature.mode = key_signature.MINOR
+    else:
+      raise MIDIConversionError('Invalid midi_mode %i' % midi_mode)
+
+  # Populate tempo changes.
+  tempo_times, tempo_qpms = midi.get_tempo_changes()
+  for time_in_seconds, tempo_in_qpm in zip(tempo_times, tempo_qpms):
+    tempo = sequence.tempos.add()
+    tempo.time = time_in_seconds
+    tempo.qpm = tempo_in_qpm
+
+  # Populate notes by gathering them all from the midi's instruments.
+  # Also set the sequence.total_time as the max end time in the notes.
+  # midi notes is a 4-tuple (program, instrument, is_drum, midi_note)
+  # need to change this to a 5-tuple (program, instrument, is_drum, midi_note, chord) 
+  midi_notes = []
+  midi_pitch_bends = []
+  midi_control_changes = []
+  for num_instrument, midi_instrument in enumerate(midi.instruments):
+    # Populate instrument name from the midi's instruments
+    if midi_instrument.name:
+      instrument_info = sequence.instrument_infos.add()
+      instrument_info.name = midi_instrument.name
+      instrument_info.instrument = num_instrument
+
+    # find the chord in the chord midi file that corresponds to the time this note is being played
+    
+    current_index = 0
+    
+    for midi_note in midi_instrument.notes:
+      chord = [0] * 12
+      # need current_chord to be an array that contains a one hot encoding where the index of the 1 
+      # is the note in the chord that is being played at the same time as the current midi note
+      # if no note is being played at the same time, then current_chord is an array of 0s
+      while current_index < len(chord_midi_data.instruments[0].notes) and chord_midi_data.instruments[0].notes[current_index].end < midi_note.start:
+        current_index += 1
+      
+      # after ^ this loop, current_index is the index of the first note in the chord that is being played at the same time as the current midi note
+
+      i = current_index
+      while i < len(chord_midi_data.instruments[0].notes) and chord_midi_data.instruments[0].notes[i].start < midi_note.end:
+        # if the note is in the chord, then set the corresponding index to 1
+        if chord_midi_data.instruments[0].notes[i].pitch in midi_instrument.notes:
+          chord[chord_midi_data.instruments[0].notes[i].pitch % 12] = 1
+        i += 1
+
+
+      # while chord_midi_data.instruments[0].notes[current_index].end < midi_note.start:
+      #   current_index += 1
+
+
+      if not sequence.total_time or midi_note.end > sequence.total_time:
+        sequence.total_time = midi_note.end
+      midi_notes.append((midi_instrument.program, num_instrument,
+                         midi_instrument.is_drum, midi_note, chord))
+      
+    
+    for midi_pitch_bend in midi_instrument.pitch_bends:
+      midi_pitch_bends.append(
+          (midi_instrument.program, num_instrument,
+           midi_instrument.is_drum, midi_pitch_bend))
+    for midi_control_change in midi_instrument.control_changes:
+      midi_control_changes.append(
+          (midi_instrument.program, num_instrument,
+           midi_instrument.is_drum, midi_control_change))
+
+  for program, instrument, is_drum, midi_note, chord in midi_notes:
+    note = sequence.notes.add()
+    note.instrument = instrument
+    note.program = program
+    note.start_time = midi_note.start
+    note.end_time = midi_note.end
+    note.pitch = midi_note.pitch
+    note.velocity = midi_note.velocity
+    note.is_drum = is_drum
+    note.chord = chord
+
+  for program, instrument, is_drum, midi_pitch_bend in midi_pitch_bends:
+    pitch_bend = sequence.pitch_bends.add()
+    pitch_bend.instrument = instrument
+    pitch_bend.program = program
+    pitch_bend.time = midi_pitch_bend.time
+    pitch_bend.bend = midi_pitch_bend.pitch
+    pitch_bend.is_drum = is_drum
+
+  for program, instrument, is_drum, midi_control_change in midi_control_changes:
+    control_change = sequence.control_changes.add()
+    control_change.instrument = instrument
+    control_change.program = program
+    control_change.time = midi_control_change.time
+    control_change.control_number = midi_control_change.number
+    control_change.control_value = midi_control_change.value
+    control_change.is_drum = is_drum
+
+  # TODO(douglaseck): Estimate note type (e.g. quarter note) and populate
+  # note.numerator and note.denominator.
+
+  return sequence
+
 def midi_to_note_sequence(midi_data):
   """Convert MIDI file contents to a NoteSequence.
 
@@ -172,7 +329,7 @@ def midi_to_note_sequence(midi_data):
 
 def midi_file_to_note_sequence(midi_file):
   """Converts MIDI file to a NoteSequence.
-
+    calls midi_to_note_sequence, need to change this to call new function that takes in 2 midis, one with the notes and the other the chords and combines them
   Args:
     midi_file: A string path to a MIDI file.
 
