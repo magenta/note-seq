@@ -327,6 +327,24 @@ def midi_to_note_sequence(midi_data):
   return sequence
 
 
+def midi_file_to_note_sequence_with_chords(midi_file, chord_midi_file):
+  """Converts MIDI file to a NoteSequence.
+    calls midi_to_note_sequence, need to change this to call new function that takes in 2 midis, one with the notes and the other the chords and combines them
+  Args:
+    midi_file: A string path to a MIDI file.
+
+  Returns:
+    A NoteSequence.
+
+  Raises:
+    MIDIConversionError: Invalid midi_file.
+  """
+  with open(midi_file, 'rb') as f:
+    with open(chord_midi_file, 'rb') as g:
+      midi_as_string = f.read()
+      chord_midi_as_string = g.read()
+      return midi_to_note_sequence_with_chords(midi_as_string, chord_midi_as_string)
+
 def midi_file_to_note_sequence(midi_file):
   """Converts MIDI file to a NoteSequence.
     calls midi_to_note_sequence, need to change this to call new function that takes in 2 midis, one with the notes and the other the chords and combines them
