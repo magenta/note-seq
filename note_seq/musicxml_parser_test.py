@@ -1,4 +1,4 @@
-# Copyright 2023 The Magenta Authors.
+# Copyright 2024 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -159,7 +159,7 @@ class MusicXMLParserTest(testing_lib.ProtoTestCase):
       music_proto_keys = [11, 6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6, 1]
       key = music_proto_keys[musicxml_key.key + 7]
       self.assertEqual(key, sequence_key.key)
-      self.assertEqual(mode, sequence_key.mode)
+      self.assertEqual(mode, sequence_key.mode)  # pylint: disable=possibly-used-before-assignment
       self.assertAlmostEqual(musicxml_key.time_position, sequence_key.time)
 
     # Test tempos.

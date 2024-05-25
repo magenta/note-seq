@@ -1,4 +1,4 @@
-# Copyright 2023 The Magenta Authors.
+# Copyright 2024 The Magenta Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -374,7 +374,7 @@ def infer_chords_for_sequence(sequence,
   # observing those pitch vectors under each possible chord.
   note_pitch_vectors = sequence_note_pitch_vectors(
       sequence,
-      seconds_per_chord if chords_per_bar is not None else sorted_beat_times)
+      seconds_per_chord if chords_per_bar is not None else sorted_beat_times)  # pylint: disable=possibly-used-before-assignment
   chord_frame_loglik = _chord_frame_log_likelihood(
       note_pitch_vectors, chord_note_concentration)
 
@@ -432,7 +432,7 @@ def infer_chords_for_sequence(sequence,
         if chords_per_bar is not None:
           ta.quantized_step = frame * steps_per_chord
         else:
-          ta.quantized_step = 0 if frame == 0 else sorted_beat_steps[frame - 1]
+          ta.quantized_step = 0 if frame == 0 else sorted_beat_steps[frame - 1]  # pylint: disable=used-before-assignment
       ta.text = figure
       ta.annotation_type = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
       current_chord_name = figure
