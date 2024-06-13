@@ -1,0 +1,1397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.performance_encoder_decoder API documentation</title>
+<meta name="description" content="Classes for converting between performance input and model input/output." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.performance_encoder_decoder</code></h1>
+</header>
+<section id="section-intro">
+<p>Classes for converting between performance input and model input/output.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Classes for converting between performance input and model input/output.&#34;&#34;&#34;
+
+import math
+
+from note_seq import encoder_decoder
+from note_seq import performance_lib
+from note_seq.encoder_decoder import EventSequenceEncoderDecoder
+from note_seq.performance_lib import PerformanceEvent
+import numpy as np
+
+# Number of floats used to encode NOTE_ON and NOTE_OFF events, using modulo-12
+# encoding. 5 floats for: valid, octave_cos, octave_sin, note_cos, note_sin.
+MODULO_PITCH_ENCODER_WIDTH = 5
+
+# Number of floats used to encode TIME_SHIFT and VELOCITY events using
+# module-bins encoding. 3 floats for: valid, event_cos, event_sin.
+MODULO_VELOCITY_ENCODER_WIDTH = 3
+MODULO_TIME_SHIFT_ENCODER_WIDTH = 3
+
+MODULO_EVENT_RANGES = [
+    (PerformanceEvent.NOTE_ON, performance_lib.MIN_MIDI_PITCH,
+     performance_lib.MAX_MIDI_PITCH, MODULO_PITCH_ENCODER_WIDTH),
+    (PerformanceEvent.NOTE_OFF, performance_lib.MIN_MIDI_PITCH,
+     performance_lib.MAX_MIDI_PITCH, MODULO_PITCH_ENCODER_WIDTH),
+]
+
+
+class PerformanceModuloEncoding(object):
+  &#34;&#34;&#34;Modulo encoding for performance events.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS):
+    &#34;&#34;&#34;Initiaizer for PerformanceModuloEncoding.
+
+    Args:
+      num_velocity_bins: Number of velocity bins.
+      max_shift_steps: Maximum number of shift steps supported.
+    &#34;&#34;&#34;
+
+    self._event_ranges = MODULO_EVENT_RANGES + [
+        (PerformanceEvent.TIME_SHIFT, 1, max_shift_steps,
+         MODULO_TIME_SHIFT_ENCODER_WIDTH)
+    ]
+    if num_velocity_bins &gt; 0:
+      self._event_ranges.append(
+          (PerformanceEvent.VELOCITY, 1, num_velocity_bins,
+           MODULO_VELOCITY_ENCODER_WIDTH))
+    self._max_shift_steps = max_shift_steps
+    self._num_velocity_bins = num_velocity_bins
+
+    # Create a lookup table for modulo-12 encoding of pitch classes.
+    # Possible values for semitone_steps are 1 and 7. A value of 1 corresponds
+    # to placing notes consecutively on the unit circle. A value of 7
+    # corresponds to following each note with one that is 7 semitones above it.
+    # semitone_steps = 1 seems to produce better results, and is the recommended
+    # value. Moreover, unit tests are provided only for semitone_steps = 1. If
+    # in the future you plan to enable support for semitone_steps = 7, then
+    # please make semitone_steps a parameter of this method, and add unit tests
+    # for it.
+    semitone_steps = 1
+    self._pitch_class_table = np.zeros((12, 2))
+    for i in range(12):
+      row = (i * semitone_steps) % 12
+      angle = (float(row) * math.pi) / 6.0
+      self._pitch_class_table[row] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-144 encoding of notes. Encode each note
+    # on a unit circle of 144 notes, spanning 12 octaves. Since there are only
+    # 128 midi notes, the last 16 positions on the unit circle will not be used.
+    self._note_table = np.zeros((144, 2))
+    for i in range(144):
+      angle = (float(i) * math.pi) / 72.0
+      self._note_table[i] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-bins encoding of time_shifts.
+    self._time_shift_table = np.zeros((max_shift_steps, 2))
+    for i in range(max_shift_steps):
+      angle = (float(i) * 2.0 * math.pi) / float(max_shift_steps)
+      self._time_shift_table[i] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-bins encoding of velocities.
+    if num_velocity_bins &gt; 0:
+      self._velocity_table = np.zeros((num_velocity_bins, 2))
+      for i in range(num_velocity_bins):
+        angle = (float(i) * 2.0 * math.pi) / float(num_velocity_bins)
+        self._velocity_table[i] = [math.cos(angle), math.sin(angle)]
+
+  @property
+  def input_size(self):
+    total = 0
+    for _, _, _, encoder_width in self._event_ranges:
+      total += encoder_width
+    return total
+
+  def encode_modulo_event(self, event):
+    offset = 0
+    for event_type, min_value, _, encoder_width in self._event_ranges:
+      if event.event_type == event_type:
+        value = event.event_value - min_value
+        return offset, event_type, value
+      offset += encoder_width
+
+    raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+  def embed_pitch_class(self, value):
+    if value &lt; 0 or value &gt;= 12:
+      raise ValueError(&#39;Unexpected pitch class value: %s&#39; % value)
+    return self._pitch_class_table[value]
+
+  def embed_note(self, value):
+    if value &lt; 0 or value &gt;= 144:
+      raise ValueError(&#39;Unexpected note value: %s&#39; % value)
+    return self._note_table[value]
+
+  def embed_time_shift(self, value):
+    if value &lt; 0 or value &gt;= self._max_shift_steps:
+      raise ValueError(&#39;Unexpected time shift value: %s&#39; % value)
+    return self._time_shift_table[value]
+
+  def embed_velocity(self, value):
+    if value &lt; 0 or value &gt;= self._num_velocity_bins:
+      raise ValueError(&#39;Unexpected velocity value: %s&#39; % value)
+    return self._velocity_table[value]
+
+
+class ModuloPerformanceEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder for modulo encoding performance events.
+
+  ModuloPerformanceEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder
+  that uses modulo/circular encoding for encoding performance input events, and
+  otherwise uses one hot encoding for encoding and decoding of labels.
+  &#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS):
+    &#34;&#34;&#34;Initialize a ModuloPerformanceEventSequenceEncoderDecoder object.
+
+    Args:
+      num_velocity_bins: Number of velocity bins.
+      max_shift_steps: Maximum number of shift steps supported.
+    &#34;&#34;&#34;
+
+    self._modulo_encoding = PerformanceModuloEncoding(
+        num_velocity_bins=num_velocity_bins, max_shift_steps=max_shift_steps)
+    self._one_hot_encoding = PerformanceOneHotEncoding(
+        num_velocity_bins=num_velocity_bins, max_shift_steps=max_shift_steps)
+
+  @property
+  def input_size(self):
+    return self._modulo_encoding.input_size
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a modulo/circular encoding for the given position in the performance
+      event sequence.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    offset, event_type, value = (self._modulo_encoding
+                                 .encode_modulo_event(events[position]))
+    input_[offset] = 1.0  # valid bit for the event
+    offset += 1
+    if event_type in (performance_lib.PerformanceEvent.NOTE_ON,
+                      performance_lib.PerformanceEvent.NOTE_OFF):
+
+      # Encode the note on a circle of 144 notes, covering 12 octaves.
+      cosine_sine_pair = self._modulo_encoding.embed_note(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+      offset += 2
+
+      # Encode the note&#39;s pitch class, using the encoder&#39;s lookup table.
+      value %= 12
+      cosine_sine_pair = self._modulo_encoding.embed_pitch_class(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+    else:
+      # This must be a velocity, or a time-shift event. Encode it using
+      # modulo-bins embedding.
+      if event_type == performance_lib.PerformanceEvent.TIME_SHIFT:
+        cosine_sine_pair = self._modulo_encoding.embed_time_shift(value)
+      else:
+        cosine_sine_pair = self._modulo_encoding.embed_velocity(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns the zero-based index value for the given position in the event
+    sequence, as determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events. This object is not used in this
+          implementation.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)
+
+
+class PerformanceOneHotEncoding(encoder_decoder.OneHotEncoding):
+  &#34;&#34;&#34;One-hot encoding for performance events.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS,
+               min_pitch=performance_lib.MIN_MIDI_PITCH,
+               max_pitch=performance_lib.MAX_MIDI_PITCH):
+    self._event_ranges = [
+        (PerformanceEvent.NOTE_ON, min_pitch, max_pitch),
+        (PerformanceEvent.NOTE_OFF, min_pitch, max_pitch),
+        (PerformanceEvent.TIME_SHIFT, 1, max_shift_steps)
+    ]
+    if num_velocity_bins &gt; 0:
+      self._event_ranges.append(
+          (PerformanceEvent.VELOCITY, 1, num_velocity_bins))
+    self._max_shift_steps = max_shift_steps
+
+  @property
+  def num_classes(self):
+    return sum(max_value - min_value + 1
+               for event_type, min_value, max_value in self._event_ranges)
+
+  @property
+  def default_event(self):
+    return PerformanceEvent(
+        event_type=PerformanceEvent.TIME_SHIFT,
+        event_value=self._max_shift_steps)
+
+  def encode_event(self, event):
+    offset = 0
+    for event_type, min_value, max_value in self._event_ranges:
+      if event.event_type == event_type:
+        return offset + event.event_value - min_value
+      offset += max_value - min_value + 1
+
+    raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+  def decode_event(self, index):
+    offset = 0
+    for event_type, min_value, max_value in self._event_ranges:
+      if offset &lt;= index &lt;= offset + max_value - min_value:
+        return PerformanceEvent(
+            event_type=event_type, event_value=min_value + index - offset)
+      offset += max_value - min_value + 1
+
+    raise ValueError(&#39;Unknown event index: %s&#39; % index)
+
+  def event_to_num_steps(self, event):
+    if event.event_type == PerformanceEvent.TIME_SHIFT:
+      return event.event_value
+    else:
+      return 0
+
+
+class NotePerformanceEventSequenceEncoderDecoder(
+    EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;Multiple one-hot encoding for event tuples.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins, max_shift_steps=1000,
+               max_duration_steps=1000,
+               min_pitch=performance_lib.MIN_MIDI_PITCH,
+               max_pitch=performance_lib.MAX_MIDI_PITCH):
+    self._min_pitch = min_pitch
+
+    def optimal_num_segments(steps):
+      segments_indices = [(i, i + steps / i) for i in range(1, steps)
+                          if steps % i == 0]
+      return min(segments_indices, key=lambda v: v[1])[0]
+
+    # Add 1 because we need to represent 0 time shifts.
+    self._shift_steps_segments = optimal_num_segments(max_shift_steps + 1)
+    assert self._shift_steps_segments &gt; 1
+    self._shift_steps_per_segment = (
+        (max_shift_steps + 1) // self._shift_steps_segments)
+
+    self._max_duration_steps = max_duration_steps
+    self._duration_steps_segments = optimal_num_segments(max_duration_steps)
+    assert self._duration_steps_segments &gt; 1
+    self._duration_steps_per_segment = (
+        max_duration_steps // self._duration_steps_segments)
+
+    self._num_classes = [
+        # TIME_SHIFT major
+        self._shift_steps_segments,
+        # TIME_SHIFT minor
+        self._shift_steps_per_segment,
+        # NOTE_ON
+        max_pitch - min_pitch + 1,
+        # VELOCITY
+        num_velocity_bins,
+        # DURATION major
+        self._duration_steps_segments,
+        # DURATION minor
+        self._duration_steps_per_segment,
+    ]
+
+  @property
+  def input_size(self):
+    return sum(self._num_classes)
+
+  @property
+  def num_classes(self):
+    return self._num_classes
+
+  @property
+  def shift_steps_segments(self):
+    return self._shift_steps_segments
+
+  @property
+  def duration_steps_segments(self):
+    return self._duration_steps_segments
+
+  @property
+  def shift_steps_per_segment(self):
+    return self._shift_steps_per_segment
+
+  @property
+  def duration_steps_per_segment(self):
+    return self._duration_steps_per_segment
+
+  @property
+  def default_event_label(self):
+    return self._encode_event(
+        (PerformanceEvent(PerformanceEvent.TIME_SHIFT, 0),
+         PerformanceEvent(PerformanceEvent.NOTE_ON, 60),
+         PerformanceEvent(PerformanceEvent.VELOCITY, 1),
+         PerformanceEvent(PerformanceEvent.DURATION, 1)))
+
+  def _encode_event(self, event):
+    time_shift_major = event[0].event_value // self._shift_steps_per_segment
+    time_shift_minor = event[0].event_value % self._shift_steps_per_segment
+
+    note_on = event[1].event_value - self._min_pitch
+
+    velocity = event[2].event_value - 1
+
+    # Don&#39;t need to represent 0 duration, so subtract 1.
+    duration_value = event[3].event_value - 1
+    duration_major = duration_value // self._duration_steps_per_segment
+    duration_minor = duration_value % self._duration_steps_per_segment
+
+    return (time_shift_major, time_shift_minor, note_on, velocity,
+            duration_major, duration_minor)
+
+  def events_to_input(self, events, position):
+    event = events[position]
+    encoded = self._encode_event(event)
+
+    one_hots = []
+    for i, encoded_sub_event in enumerate(encoded):
+      one_hot = [0.0] * self._num_classes[i]
+      one_hot[encoded_sub_event] = 1.0
+      one_hots.append(one_hot)
+
+    return np.hstack(one_hots)
+
+  def events_to_label(self, events, position):
+    event = events[position]
+
+    return self._encode_event(event)
+
+  def class_index_to_event(self, class_index, events):
+    class_indices = class_index
+    time_shift = (class_indices[0] * self._shift_steps_per_segment +
+                  class_indices[1])
+    pitch = class_indices[2] + self._min_pitch
+    velocity = class_indices[3] + 1
+    duration = (class_indices[4] * self._duration_steps_per_segment +
+                class_indices[5]) + 1
+
+    return (PerformanceEvent(PerformanceEvent.TIME_SHIFT, time_shift),
+            PerformanceEvent(PerformanceEvent.NOTE_ON, pitch),
+            PerformanceEvent(PerformanceEvent.VELOCITY, velocity),
+            PerformanceEvent(PerformanceEvent.DURATION, duration))
+
+  def labels_to_num_steps(self, labels):
+    steps = 0
+    for label in labels:
+      event = self.class_index_to_event(label, None)
+      steps += event[0].event_value
+    if event:
+      steps += event[3].event_value
+    return steps</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">ModuloPerformanceEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>num_velocity_bins=0, max_shift_steps=100)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An EventSequenceEncoderDecoder for modulo encoding performance events.</p>
+<p>ModuloPerformanceEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder
+that uses modulo/circular encoding for encoding performance input events, and
+otherwise uses one hot encoding for encoding and decoding of labels.</p>
+<p>Initialize a ModuloPerformanceEventSequenceEncoderDecoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins.</dd>
+<dt><strong><code>max_shift_steps</code></strong></dt>
+<dd>Maximum number of shift steps supported.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ModuloPerformanceEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder for modulo encoding performance events.
+
+  ModuloPerformanceEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder
+  that uses modulo/circular encoding for encoding performance input events, and
+  otherwise uses one hot encoding for encoding and decoding of labels.
+  &#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS):
+    &#34;&#34;&#34;Initialize a ModuloPerformanceEventSequenceEncoderDecoder object.
+
+    Args:
+      num_velocity_bins: Number of velocity bins.
+      max_shift_steps: Maximum number of shift steps supported.
+    &#34;&#34;&#34;
+
+    self._modulo_encoding = PerformanceModuloEncoding(
+        num_velocity_bins=num_velocity_bins, max_shift_steps=max_shift_steps)
+    self._one_hot_encoding = PerformanceOneHotEncoding(
+        num_velocity_bins=num_velocity_bins, max_shift_steps=max_shift_steps)
+
+  @property
+  def input_size(self):
+    return self._modulo_encoding.input_size
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a modulo/circular encoding for the given position in the performance
+      event sequence.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    offset, event_type, value = (self._modulo_encoding
+                                 .encode_modulo_event(events[position]))
+    input_[offset] = 1.0  # valid bit for the event
+    offset += 1
+    if event_type in (performance_lib.PerformanceEvent.NOTE_ON,
+                      performance_lib.PerformanceEvent.NOTE_OFF):
+
+      # Encode the note on a circle of 144 notes, covering 12 octaves.
+      cosine_sine_pair = self._modulo_encoding.embed_note(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+      offset += 2
+
+      # Encode the note&#39;s pitch class, using the encoder&#39;s lookup table.
+      value %= 12
+      cosine_sine_pair = self._modulo_encoding.embed_pitch_class(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+    else:
+      # This must be a velocity, or a time-shift event. Encode it using
+      # modulo-bins embedding.
+      if event_type == performance_lib.PerformanceEvent.TIME_SHIFT:
+        cosine_sine_pair = self._modulo_encoding.embed_time_shift(value)
+      else:
+        cosine_sine_pair = self._modulo_encoding.embed_velocity(value)
+      input_[offset] = cosine_sine_pair[0]
+      input_[offset + 1] = cosine_sine_pair[1]
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns the zero-based index value for the given position in the event
+    sequence, as determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events. This object is not used in this
+          implementation.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An integer in the range [0, self.num_classes).</dd>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events. This object is not used in this
+implementation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_index_to_event(self, class_index, events):
+  &#34;&#34;&#34;Returns the event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An integer in the range [0, self.num_classes).
+    events: A list-like sequence of events. This object is not used in this
+        implementation.
+
+  Returns:
+    An event value.
+  &#34;&#34;&#34;
+  return self._one_hot_encoding.decode_event(class_index)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the given position in the event sequence.</p>
+<p>Returns a modulo/circular encoding for the given position in the performance
+event sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, a list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+  Returns a modulo/circular encoding for the given position in the performance
+    event sequence.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the event sequence.
+
+  Returns:
+    An input vector, a list of floats.
+  &#34;&#34;&#34;
+  input_ = [0.0] * self.input_size
+  offset, event_type, value = (self._modulo_encoding
+                               .encode_modulo_event(events[position]))
+  input_[offset] = 1.0  # valid bit for the event
+  offset += 1
+  if event_type in (performance_lib.PerformanceEvent.NOTE_ON,
+                    performance_lib.PerformanceEvent.NOTE_OFF):
+
+    # Encode the note on a circle of 144 notes, covering 12 octaves.
+    cosine_sine_pair = self._modulo_encoding.embed_note(value)
+    input_[offset] = cosine_sine_pair[0]
+    input_[offset + 1] = cosine_sine_pair[1]
+    offset += 2
+
+    # Encode the note&#39;s pitch class, using the encoder&#39;s lookup table.
+    value %= 12
+    cosine_sine_pair = self._modulo_encoding.embed_pitch_class(value)
+    input_[offset] = cosine_sine_pair[0]
+    input_[offset + 1] = cosine_sine_pair[1]
+  else:
+    # This must be a velocity, or a time-shift event. Encode it using
+    # modulo-bins embedding.
+    if event_type == performance_lib.PerformanceEvent.TIME_SHIFT:
+      cosine_sine_pair = self._modulo_encoding.embed_time_shift(value)
+    else:
+      cosine_sine_pair = self._modulo_encoding.embed_velocity(value)
+    input_[offset] = cosine_sine_pair[0]
+    input_[offset + 1] = cosine_sine_pair[1]
+  return input_</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the given position in the event sequence.</p>
+<p>Returns the zero-based index value for the given position in the event
+sequence, as determined by the one hot encoding.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_label(self, events, position):
+  &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+  Returns the zero-based index value for the given position in the event
+  sequence, as determined by the one hot encoding.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the event sequence.
+
+  Returns:
+    A label, an integer.
+  &#34;&#34;&#34;
+  return self._one_hot_encoding.encode_event(events[position])</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.labels_to_num_steps"><code class="name flex">
+<span>def <span class="ident">labels_to_num_steps</span></span>(<span>self, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the total number of time steps for a sequence of class labels.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>labels</code></strong></dt>
+<dd>A list-like sequence of integers in the range
+[0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The total number of time steps for the label sequence, as determined by
+the one-hot encoding.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def labels_to_num_steps(self, labels):
+  &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+  Args:
+    labels: A list-like sequence of integers in the range
+        [0, self.num_classes).
+
+  Returns:
+    The total number of time steps for the label sequence, as determined by
+    the one-hot encoding.
+  &#34;&#34;&#34;
+  events = []
+  for label in labels:
+    events.append(self.class_index_to_event(label, events))
+  return sum(self._one_hot_encoding.event_to_num_steps(event)
+             for event in events)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">NotePerformanceEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>num_velocity_bins, max_shift_steps=1000, max_duration_steps=1000, min_pitch=0, max_pitch=127)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Multiple one-hot encoding for event tuples.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NotePerformanceEventSequenceEncoderDecoder(
+    EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;Multiple one-hot encoding for event tuples.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins, max_shift_steps=1000,
+               max_duration_steps=1000,
+               min_pitch=performance_lib.MIN_MIDI_PITCH,
+               max_pitch=performance_lib.MAX_MIDI_PITCH):
+    self._min_pitch = min_pitch
+
+    def optimal_num_segments(steps):
+      segments_indices = [(i, i + steps / i) for i in range(1, steps)
+                          if steps % i == 0]
+      return min(segments_indices, key=lambda v: v[1])[0]
+
+    # Add 1 because we need to represent 0 time shifts.
+    self._shift_steps_segments = optimal_num_segments(max_shift_steps + 1)
+    assert self._shift_steps_segments &gt; 1
+    self._shift_steps_per_segment = (
+        (max_shift_steps + 1) // self._shift_steps_segments)
+
+    self._max_duration_steps = max_duration_steps
+    self._duration_steps_segments = optimal_num_segments(max_duration_steps)
+    assert self._duration_steps_segments &gt; 1
+    self._duration_steps_per_segment = (
+        max_duration_steps // self._duration_steps_segments)
+
+    self._num_classes = [
+        # TIME_SHIFT major
+        self._shift_steps_segments,
+        # TIME_SHIFT minor
+        self._shift_steps_per_segment,
+        # NOTE_ON
+        max_pitch - min_pitch + 1,
+        # VELOCITY
+        num_velocity_bins,
+        # DURATION major
+        self._duration_steps_segments,
+        # DURATION minor
+        self._duration_steps_per_segment,
+    ]
+
+  @property
+  def input_size(self):
+    return sum(self._num_classes)
+
+  @property
+  def num_classes(self):
+    return self._num_classes
+
+  @property
+  def shift_steps_segments(self):
+    return self._shift_steps_segments
+
+  @property
+  def duration_steps_segments(self):
+    return self._duration_steps_segments
+
+  @property
+  def shift_steps_per_segment(self):
+    return self._shift_steps_per_segment
+
+  @property
+  def duration_steps_per_segment(self):
+    return self._duration_steps_per_segment
+
+  @property
+  def default_event_label(self):
+    return self._encode_event(
+        (PerformanceEvent(PerformanceEvent.TIME_SHIFT, 0),
+         PerformanceEvent(PerformanceEvent.NOTE_ON, 60),
+         PerformanceEvent(PerformanceEvent.VELOCITY, 1),
+         PerformanceEvent(PerformanceEvent.DURATION, 1)))
+
+  def _encode_event(self, event):
+    time_shift_major = event[0].event_value // self._shift_steps_per_segment
+    time_shift_minor = event[0].event_value % self._shift_steps_per_segment
+
+    note_on = event[1].event_value - self._min_pitch
+
+    velocity = event[2].event_value - 1
+
+    # Don&#39;t need to represent 0 duration, so subtract 1.
+    duration_value = event[3].event_value - 1
+    duration_major = duration_value // self._duration_steps_per_segment
+    duration_minor = duration_value % self._duration_steps_per_segment
+
+    return (time_shift_major, time_shift_minor, note_on, velocity,
+            duration_major, duration_minor)
+
+  def events_to_input(self, events, position):
+    event = events[position]
+    encoded = self._encode_event(event)
+
+    one_hots = []
+    for i, encoded_sub_event in enumerate(encoded):
+      one_hot = [0.0] * self._num_classes[i]
+      one_hot[encoded_sub_event] = 1.0
+      one_hots.append(one_hot)
+
+    return np.hstack(one_hots)
+
+  def events_to_label(self, events, position):
+    event = events[position]
+
+    return self._encode_event(event)
+
+  def class_index_to_event(self, class_index, events):
+    class_indices = class_index
+    time_shift = (class_indices[0] * self._shift_steps_per_segment +
+                  class_indices[1])
+    pitch = class_indices[2] + self._min_pitch
+    velocity = class_indices[3] + 1
+    duration = (class_indices[4] * self._duration_steps_per_segment +
+                class_indices[5]) + 1
+
+    return (PerformanceEvent(PerformanceEvent.TIME_SHIFT, time_shift),
+            PerformanceEvent(PerformanceEvent.NOTE_ON, pitch),
+            PerformanceEvent(PerformanceEvent.VELOCITY, velocity),
+            PerformanceEvent(PerformanceEvent.DURATION, duration))
+
+  def labels_to_num_steps(self, labels):
+    steps = 0
+    for label in labels:
+      event = self.class_index_to_event(label, None)
+      steps += event[0].event_value
+    if event:
+      steps += event[3].event_value
+    return steps</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_per_segment"><code class="name">var <span class="ident">duration_steps_per_segment</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def duration_steps_per_segment(self):
+  return self._duration_steps_per_segment</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_segments"><code class="name">var <span class="ident">duration_steps_segments</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def duration_steps_segments(self):
+  return self._duration_steps_segments</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_per_segment"><code class="name">var <span class="ident">shift_steps_per_segment</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def shift_steps_per_segment(self):
+  return self._shift_steps_per_segment</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_segments"><code class="name">var <span class="ident">shift_steps_segments</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def shift_steps_segments(self):
+  return self._shift_steps_segments</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="encoder_decoder.html#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding"><code class="flex name class">
+<span>class <span class="ident">PerformanceModuloEncoding</span></span>
+<span>(</span><span>num_velocity_bins=0, max_shift_steps=100)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Modulo encoding for performance events.</p>
+<p>Initiaizer for PerformanceModuloEncoding.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_velocity_bins</code></strong></dt>
+<dd>Number of velocity bins.</dd>
+<dt><strong><code>max_shift_steps</code></strong></dt>
+<dd>Maximum number of shift steps supported.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PerformanceModuloEncoding(object):
+  &#34;&#34;&#34;Modulo encoding for performance events.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS):
+    &#34;&#34;&#34;Initiaizer for PerformanceModuloEncoding.
+
+    Args:
+      num_velocity_bins: Number of velocity bins.
+      max_shift_steps: Maximum number of shift steps supported.
+    &#34;&#34;&#34;
+
+    self._event_ranges = MODULO_EVENT_RANGES + [
+        (PerformanceEvent.TIME_SHIFT, 1, max_shift_steps,
+         MODULO_TIME_SHIFT_ENCODER_WIDTH)
+    ]
+    if num_velocity_bins &gt; 0:
+      self._event_ranges.append(
+          (PerformanceEvent.VELOCITY, 1, num_velocity_bins,
+           MODULO_VELOCITY_ENCODER_WIDTH))
+    self._max_shift_steps = max_shift_steps
+    self._num_velocity_bins = num_velocity_bins
+
+    # Create a lookup table for modulo-12 encoding of pitch classes.
+    # Possible values for semitone_steps are 1 and 7. A value of 1 corresponds
+    # to placing notes consecutively on the unit circle. A value of 7
+    # corresponds to following each note with one that is 7 semitones above it.
+    # semitone_steps = 1 seems to produce better results, and is the recommended
+    # value. Moreover, unit tests are provided only for semitone_steps = 1. If
+    # in the future you plan to enable support for semitone_steps = 7, then
+    # please make semitone_steps a parameter of this method, and add unit tests
+    # for it.
+    semitone_steps = 1
+    self._pitch_class_table = np.zeros((12, 2))
+    for i in range(12):
+      row = (i * semitone_steps) % 12
+      angle = (float(row) * math.pi) / 6.0
+      self._pitch_class_table[row] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-144 encoding of notes. Encode each note
+    # on a unit circle of 144 notes, spanning 12 octaves. Since there are only
+    # 128 midi notes, the last 16 positions on the unit circle will not be used.
+    self._note_table = np.zeros((144, 2))
+    for i in range(144):
+      angle = (float(i) * math.pi) / 72.0
+      self._note_table[i] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-bins encoding of time_shifts.
+    self._time_shift_table = np.zeros((max_shift_steps, 2))
+    for i in range(max_shift_steps):
+      angle = (float(i) * 2.0 * math.pi) / float(max_shift_steps)
+      self._time_shift_table[i] = [math.cos(angle), math.sin(angle)]
+
+    # Create a lookup table for modulo-bins encoding of velocities.
+    if num_velocity_bins &gt; 0:
+      self._velocity_table = np.zeros((num_velocity_bins, 2))
+      for i in range(num_velocity_bins):
+        angle = (float(i) * 2.0 * math.pi) / float(num_velocity_bins)
+        self._velocity_table[i] = [math.cos(angle), math.sin(angle)]
+
+  @property
+  def input_size(self):
+    total = 0
+    for _, _, _, encoder_width in self._event_ranges:
+      total += encoder_width
+    return total
+
+  def encode_modulo_event(self, event):
+    offset = 0
+    for event_type, min_value, _, encoder_width in self._event_ranges:
+      if event.event_type == event_type:
+        value = event.event_value - min_value
+        return offset, event_type, value
+      offset += encoder_width
+
+    raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+  def embed_pitch_class(self, value):
+    if value &lt; 0 or value &gt;= 12:
+      raise ValueError(&#39;Unexpected pitch class value: %s&#39; % value)
+    return self._pitch_class_table[value]
+
+  def embed_note(self, value):
+    if value &lt; 0 or value &gt;= 144:
+      raise ValueError(&#39;Unexpected note value: %s&#39; % value)
+    return self._note_table[value]
+
+  def embed_time_shift(self, value):
+    if value &lt; 0 or value &gt;= self._max_shift_steps:
+      raise ValueError(&#39;Unexpected time shift value: %s&#39; % value)
+    return self._time_shift_table[value]
+
+  def embed_velocity(self, value):
+    if value &lt; 0 or value &gt;= self._num_velocity_bins:
+      raise ValueError(&#39;Unexpected velocity value: %s&#39; % value)
+    return self._velocity_table[value]</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.input_size"><code class="name">var <span class="ident">input_size</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def input_size(self):
+  total = 0
+  for _, _, _, encoder_width in self._event_ranges:
+    total += encoder_width
+  return total</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_note"><code class="name flex">
+<span>def <span class="ident">embed_note</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def embed_note(self, value):
+  if value &lt; 0 or value &gt;= 144:
+    raise ValueError(&#39;Unexpected note value: %s&#39; % value)
+  return self._note_table[value]</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_pitch_class"><code class="name flex">
+<span>def <span class="ident">embed_pitch_class</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def embed_pitch_class(self, value):
+  if value &lt; 0 or value &gt;= 12:
+    raise ValueError(&#39;Unexpected pitch class value: %s&#39; % value)
+  return self._pitch_class_table[value]</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_time_shift"><code class="name flex">
+<span>def <span class="ident">embed_time_shift</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def embed_time_shift(self, value):
+  if value &lt; 0 or value &gt;= self._max_shift_steps:
+    raise ValueError(&#39;Unexpected time shift value: %s&#39; % value)
+  return self._time_shift_table[value]</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_velocity"><code class="name flex">
+<span>def <span class="ident">embed_velocity</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def embed_velocity(self, value):
+  if value &lt; 0 or value &gt;= self._num_velocity_bins:
+    raise ValueError(&#39;Unexpected velocity value: %s&#39; % value)
+  return self._velocity_table[value]</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.encode_modulo_event"><code class="name flex">
+<span>def <span class="ident">encode_modulo_event</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode_modulo_event(self, event):
+  offset = 0
+  for event_type, min_value, _, encoder_width in self._event_ranges:
+    if event.event_type == event_type:
+      value = event.event_value - min_value
+      return offset, event_type, value
+    offset += encoder_width
+
+  raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.performance_encoder_decoder.PerformanceOneHotEncoding"><code class="flex name class">
+<span>class <span class="ident">PerformanceOneHotEncoding</span></span>
+<span>(</span><span>num_velocity_bins=0, max_shift_steps=100, min_pitch=0, max_pitch=127)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>One-hot encoding for performance events.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PerformanceOneHotEncoding(encoder_decoder.OneHotEncoding):
+  &#34;&#34;&#34;One-hot encoding for performance events.&#34;&#34;&#34;
+
+  def __init__(self, num_velocity_bins=0,
+               max_shift_steps=performance_lib.DEFAULT_MAX_SHIFT_STEPS,
+               min_pitch=performance_lib.MIN_MIDI_PITCH,
+               max_pitch=performance_lib.MAX_MIDI_PITCH):
+    self._event_ranges = [
+        (PerformanceEvent.NOTE_ON, min_pitch, max_pitch),
+        (PerformanceEvent.NOTE_OFF, min_pitch, max_pitch),
+        (PerformanceEvent.TIME_SHIFT, 1, max_shift_steps)
+    ]
+    if num_velocity_bins &gt; 0:
+      self._event_ranges.append(
+          (PerformanceEvent.VELOCITY, 1, num_velocity_bins))
+    self._max_shift_steps = max_shift_steps
+
+  @property
+  def num_classes(self):
+    return sum(max_value - min_value + 1
+               for event_type, min_value, max_value in self._event_ranges)
+
+  @property
+  def default_event(self):
+    return PerformanceEvent(
+        event_type=PerformanceEvent.TIME_SHIFT,
+        event_value=self._max_shift_steps)
+
+  def encode_event(self, event):
+    offset = 0
+    for event_type, min_value, max_value in self._event_ranges:
+      if event.event_type == event_type:
+        return offset + event.event_value - min_value
+      offset += max_value - min_value + 1
+
+    raise ValueError(&#39;Unknown event type: %s&#39; % event.event_type)
+
+  def decode_event(self, index):
+    offset = 0
+    for event_type, min_value, max_value in self._event_ranges:
+      if offset &lt;= index &lt;= offset + max_value - min_value:
+        return PerformanceEvent(
+            event_type=event_type, event_value=min_value + index - offset)
+      offset += max_value - min_value + 1
+
+    raise ValueError(&#39;Unknown event index: %s&#39; % index)
+
+  def event_to_num_steps(self, event):
+    if event.event_type == PerformanceEvent.TIME_SHIFT:
+      return event.event_value
+    else:
+      return 0</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.OneHotEncoding" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding">OneHotEncoding</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.OneHotEncoding" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding">OneHotEncoding</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.decode_event" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.decode_event">decode_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.default_event" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.default_event">default_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.encode_event" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.encode_event">encode_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps">event_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.num_classes" href="encoder_decoder.html#note_seq.encoder_decoder.OneHotEncoding.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder" href="#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder">ModuloPerformanceEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_input" href="#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_label" href="#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder" href="#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder">NotePerformanceEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_per_segment" href="#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_per_segment">duration_steps_per_segment</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_segments" href="#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.duration_steps_segments">duration_steps_segments</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_per_segment" href="#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_per_segment">shift_steps_per_segment</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_segments" href="#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder.shift_steps_segments">shift_steps_segments</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding">PerformanceModuloEncoding</a></code></h4>
+<ul class="two-column">
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_note" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_note">embed_note</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_pitch_class" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_pitch_class">embed_pitch_class</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_time_shift" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_time_shift">embed_time_shift</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_velocity" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.embed_velocity">embed_velocity</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.encode_modulo_event" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.encode_modulo_event">encode_modulo_event</a></code></li>
+<li><code><a title="note_seq.performance_encoder_decoder.PerformanceModuloEncoding.input_size" href="#note_seq.performance_encoder_decoder.PerformanceModuloEncoding.input_size">input_size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_encoder_decoder.PerformanceOneHotEncoding" href="#note_seq.performance_encoder_decoder.PerformanceOneHotEncoding">PerformanceOneHotEncoding</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.abc_parser API documentation</title>
+<meta name="description" content="Parser for ABC files …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.abc_parser</code></h1>
+</header>
+<section id="section-intro">
+<p>Parser for ABC files.</p>
+<p><a href="http://abcnotation.com/wiki/abc:standard:v2.1">http://abcnotation.com/wiki/abc:standard:v2.1</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Parser for ABC files.
+
+http://abcnotation.com/wiki/abc:standard:v2.1
+&#34;&#34;&#34;
+
+import fractions
+import re
+
+from absl import logging
+from note_seq import constants
+from note_seq.protobuf import music_pb2
+
+
+Fraction = fractions.Fraction
+
+
+class ABCParseError(Exception):
+  &#34;&#34;&#34;Exception thrown when ABC contents cannot be parsed.&#34;&#34;&#34;
+  pass
+
+
+class MultiVoiceError(ABCParseError):
+  &#34;&#34;&#34;Exception when a multi-voice directive is encountered.&#34;&#34;&#34;
+
+
+class RepeatParseError(ABCParseError):
+  &#34;&#34;&#34;Exception when a repeat directive could not be parsed.&#34;&#34;&#34;
+
+
+class VariantEndingError(ABCParseError):
+  &#34;&#34;&#34;Variant endings are not yet supported.&#34;&#34;&#34;
+
+
+class PartError(ABCParseError):
+  &#34;&#34;&#34;ABC Parts are not yet supported.&#34;&#34;&#34;
+
+
+class InvalidCharacterError(ABCParseError):
+  &#34;&#34;&#34;Invalid character.&#34;&#34;&#34;
+
+
+class ChordError(ABCParseError):
+  &#34;&#34;&#34;Chords are not supported.&#34;&#34;&#34;
+
+
+class DuplicateReferenceNumberError(ABCParseError):
+  &#34;&#34;&#34;Found duplicate reference numbers.&#34;&#34;&#34;
+
+
+class TupletError(ABCParseError):
+  &#34;&#34;&#34;Tuplets are not supported.&#34;&#34;&#34;
+
+
+def parse_abc_tunebook_file(filename):
+  &#34;&#34;&#34;Parse an ABC Tunebook file.
+
+  Args:
+    filename: File path to an ABC tunebook.
+
+  Returns:
+    tunes: A dictionary of reference number to NoteSequence of parsed ABC tunes.
+    exceptions: A list of exceptions for tunes that could not be parsed.
+
+  Raises:
+    DuplicateReferenceNumberError: If the same reference number appears more
+        than once in the tunebook.
+  &#34;&#34;&#34;
+  # &#39;r&#39; mode will decode the file as utf-8 in py3.
+  return parse_abc_tunebook(open(filename, &#39;r&#39;).read())
+
+
+def parse_abc_tunebook(tunebook):
+  &#34;&#34;&#34;Parse an ABC Tunebook string.
+
+  Args:
+    tunebook: The ABC tunebook as a string.
+
+  Returns:
+    tunes: A dictionary of reference number to NoteSequence of parsed ABC tunes.
+    exceptions: A list of exceptions for tunes that could not be parsed.
+
+  Raises:
+    DuplicateReferenceNumberError: If the same reference number appears more
+        than once in the tunebook.
+  &#34;&#34;&#34;
+  # Split tunebook into sections based on empty lines.
+  sections = []
+  current_lines = []
+  for line in tunebook.splitlines():
+    line = line.strip()
+    if not line:
+      if current_lines:
+        sections.append(current_lines)
+        current_lines = []
+    else:
+      current_lines.append(line)
+  if current_lines:
+    sections.append(current_lines)
+
+  # If there are multiple sections, the first one may be a header.
+  # The first section is a header if it does not contain an X information field.
+  header = []
+  if len(sections) &gt; 1 and not any(
+      line.startswith(&#39;X:&#39;) for line in sections[0]):
+    header = sections.pop(0)
+
+  tunes = {}
+  exceptions = []
+
+  for tune in sections:
+    try:
+      # The header sets default values for each tune, so prepend it to every
+      # tune that is being parsed.
+      abc_tune = ABCTune(header + tune)
+    except ABCParseError as e:
+      exceptions.append(e)
+    else:
+      ns = abc_tune.note_sequence
+      if ns.reference_number in tunes:
+        raise DuplicateReferenceNumberError(
+            &#39;ABC Reference number {} appears more than once in this &#39;
+            &#39;tunebook&#39;.format(ns.reference_number))
+      tunes[ns.reference_number] = ns
+
+  return tunes, exceptions
+
+
+class ABCTune(object):
+  &#34;&#34;&#34;Class for parsing an individual ABC tune.&#34;&#34;&#34;
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+  DECORATION_TO_VELOCITY = {
+      &#39;!pppp!&#39;: 30,
+      &#39;!ppp!&#39;: 30,
+      &#39;!pp!&#39;: 45,
+      &#39;!p!&#39;: 60,
+      &#39;!mp!&#39;: 75,
+      &#39;!mf!&#39;: 90,
+      &#39;!f!&#39;: 105,
+      &#39;!ff!&#39;: 120,
+      &#39;!fff!&#39;: 127,
+      &#39;!ffff!&#39;: 127,
+  }
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#pitch
+  ABC_NOTE_TO_MIDI = {
+      &#39;C&#39;: 60,
+      &#39;D&#39;: 62,
+      &#39;E&#39;: 64,
+      &#39;F&#39;: 65,
+      &#39;G&#39;: 67,
+      &#39;A&#39;: 69,
+      &#39;B&#39;: 71,
+      &#39;c&#39;: 72,
+      &#39;d&#39;: 74,
+      &#39;e&#39;: 76,
+      &#39;f&#39;: 77,
+      &#39;g&#39;: 79,
+      &#39;a&#39;: 81,
+      &#39;b&#39;: 83,
+  }
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  SIG_TO_KEYS = {
+      7: [&#39;C#&#39;, &#39;A#m&#39;, &#39;G#Mix&#39;, &#39;D#Dor&#39;, &#39;E#Phr&#39;, &#39;F#Lyd&#39;, &#39;B#Loc&#39;],
+      6: [&#39;F#&#39;, &#39;D#m&#39;, &#39;C#Mix&#39;, &#39;G#Dor&#39;, &#39;A#Phr&#39;, &#39;BLyd&#39;, &#39;E#Loc&#39;],
+      5: [&#39;B&#39;, &#39;G#m&#39;, &#39;F#Mix&#39;, &#39;C#Dor&#39;, &#39;D#Phr&#39;, &#39;ELyd&#39;, &#39;A#Loc&#39;],
+      4: [&#39;E&#39;, &#39;C#m&#39;, &#39;BMix&#39;, &#39;F#Dor&#39;, &#39;G#Phr&#39;, &#39;ALyd&#39;, &#39;D#Loc&#39;],
+      3: [&#39;A&#39;, &#39;F#m&#39;, &#39;EMix&#39;, &#39;BDor&#39;, &#39;C#Phr&#39;, &#39;DLyd&#39;, &#39;G#Loc&#39;],
+      2: [&#39;D&#39;, &#39;Bm&#39;, &#39;AMix&#39;, &#39;EDor&#39;, &#39;F#Phr&#39;, &#39;GLyd&#39;, &#39;C#Loc&#39;],
+      1: [&#39;G&#39;, &#39;Em&#39;, &#39;DMix&#39;, &#39;ADor&#39;, &#39;BPhr&#39;, &#39;CLyd&#39;, &#39;F#Loc&#39;],
+      0: [&#39;C&#39;, &#39;Am&#39;, &#39;GMix&#39;, &#39;DDor&#39;, &#39;EPhr&#39;, &#39;FLyd&#39;, &#39;BLoc&#39;],
+      -1: [&#39;F&#39;, &#39;Dm&#39;, &#39;CMix&#39;, &#39;GDor&#39;, &#39;APhr&#39;, &#39;BbLyd&#39;, &#39;ELoc&#39;],
+      -2: [&#39;Bb&#39;, &#39;Gm&#39;, &#39;FMix&#39;, &#39;CDor&#39;, &#39;DPhr&#39;, &#39;EbLyd&#39;, &#39;ALoc&#39;],
+      -3: [&#39;Eb&#39;, &#39;Cm&#39;, &#39;BbMix&#39;, &#39;FDor&#39;, &#39;GPhr&#39;, &#39;AbLyd&#39;, &#39;DLoc&#39;],
+      -4: [&#39;Ab&#39;, &#39;Fm&#39;, &#39;EbMix&#39;, &#39;BbDor&#39;, &#39;CPhr&#39;, &#39;DbLyd&#39;, &#39;GLoc&#39;],
+      -5: [&#39;Db&#39;, &#39;Bbm&#39;, &#39;AbMix&#39;, &#39;EbDor&#39;, &#39;FPhr&#39;, &#39;GbLyd&#39;, &#39;CLoc&#39;],
+      -6: [&#39;Gb&#39;, &#39;Ebm&#39;, &#39;DbMix&#39;, &#39;AbDor&#39;, &#39;BbPhr&#39;, &#39;CbLyd&#39;, &#39;FLoc&#39;],
+      -7: [&#39;Cb&#39;, &#39;Abm&#39;, &#39;GbMix&#39;, &#39;DbDor&#39;, &#39;EbPhr&#39;, &#39;FbLyd&#39;, &#39;BbLoc&#39;],
+  }
+
+  KEY_TO_SIG = {}
+  for sig, keys in SIG_TO_KEYS.items():
+    for key in keys:
+      KEY_TO_SIG[key.lower()] = sig
+
+  KEY_TO_PROTO_KEY = {
+      &#39;c&#39;: music_pb2.NoteSequence.KeySignature.C,
+      &#39;c#&#39;: music_pb2.NoteSequence.KeySignature.C_SHARP,
+      &#39;db&#39;: music_pb2.NoteSequence.KeySignature.D_FLAT,
+      &#39;d&#39;: music_pb2.NoteSequence.KeySignature.D,
+      &#39;d#&#39;: music_pb2.NoteSequence.KeySignature.D_SHARP,
+      &#39;eb&#39;: music_pb2.NoteSequence.KeySignature.E_FLAT,
+      &#39;e&#39;: music_pb2.NoteSequence.KeySignature.E,
+      &#39;f&#39;: music_pb2.NoteSequence.KeySignature.F,
+      &#39;f#&#39;: music_pb2.NoteSequence.KeySignature.F_SHARP,
+      &#39;gb&#39;: music_pb2.NoteSequence.KeySignature.G_FLAT,
+      &#39;g&#39;: music_pb2.NoteSequence.KeySignature.G,
+      &#39;g#&#39;: music_pb2.NoteSequence.KeySignature.G_SHARP,
+      &#39;ab&#39;: music_pb2.NoteSequence.KeySignature.A_FLAT,
+      &#39;a&#39;: music_pb2.NoteSequence.KeySignature.A,
+      &#39;a#&#39;: music_pb2.NoteSequence.KeySignature.A_SHARP,
+      &#39;bb&#39;: music_pb2.NoteSequence.KeySignature.B_FLAT,
+      &#39;b&#39;: music_pb2.NoteSequence.KeySignature.B,
+  }
+
+  SHARPS_ORDER = &#39;FCGDAEB&#39;
+  FLATS_ORDER = &#39;BEADGCF&#39;
+
+  INFORMATION_FIELD_PATTERN = re.compile(r&#39;([A-Za-z]):\s*(.*)&#39;)
+
+  def __init__(self, tune_lines):
+    self._ns = music_pb2.NoteSequence()
+    # Standard ABC fields.
+    self._ns.source_info.source_type = (
+        music_pb2.NoteSequence.SourceInfo.SCORE_BASED)
+    self._ns.source_info.encoding_type = (
+        music_pb2.NoteSequence.SourceInfo.ABC)
+    self._ns.source_info.parser = (
+        music_pb2.NoteSequence.SourceInfo.MAGENTA_ABC)
+    self._ns.ticks_per_quarter = constants.STANDARD_PPQ
+
+    self._current_time = 0
+    self._accidentals = ABCTune._sig_to_accidentals(0)
+    self._bar_accidentals = {}
+    self._current_unit_note_length = None
+    self._current_expected_repeats = None
+
+    # Default dynamic should be !mf! as per:
+    # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+    self._current_velocity = ABCTune.DECORATION_TO_VELOCITY[&#39;!mf!&#39;]
+
+    self._in_header = True
+    self._header_tempo_unit = None
+    self._header_tempo_rate = None
+    for line in tune_lines:
+      line = re.sub(&#39;%.*$&#39;, &#39;&#39;, line)  # Strip comments.
+      line = line.strip()  # Strip whitespace.
+      if not line:
+        continue
+
+      # If the lines begins with a letter and a colon, it&#39;s an information
+      # field. Extract it.
+      info_field_match = ABCTune.INFORMATION_FIELD_PATTERN.match(line)
+      if info_field_match:
+        self._parse_information_field(
+            info_field_match.group(1), info_field_match.group(2))
+      else:
+        if self._in_header:
+          self._set_values_from_header()
+          self._in_header = False
+        self._parse_music_code(line)
+    if self._in_header:
+      self._set_values_from_header()
+
+    self._finalize()
+
+    if self._ns.notes:
+      self._ns.total_time = self._ns.notes[-1].end_time
+
+  @property
+  def note_sequence(self):
+    return self._ns
+
+  @staticmethod
+  def _sig_to_accidentals(sig):
+    accidentals = {pitch: 0 for pitch in &#39;ABCDEFG&#39;}
+    if sig &gt; 0:
+      for i in range(sig):
+        accidentals[ABCTune.SHARPS_ORDER[i]] = 1
+    elif sig &lt; 0:
+      for i in range(abs(sig)):
+        accidentals[ABCTune.FLATS_ORDER[i]] = -1
+    return accidentals
+
+  @property
+  def _qpm(self):
+    &#34;&#34;&#34;Returns the current QPM.&#34;&#34;&#34;
+    if self._ns.tempos:
+      return self._ns.tempos[-1].qpm
+    else:
+      # No QPM has been specified, so will use the default one.
+      return constants.DEFAULT_QUARTERS_PER_MINUTE
+
+  def _set_values_from_header(self):
+    # Set unit note length. May depend on the current meter, so this has to be
+    # calculated at the end of the header.
+    self._set_unit_note_length_from_header()
+
+    # Set the tempo if it was specified in the header. May depend on current
+    # unit note length, so has to be calculated after that is set.
+    # _header_tempo_unit may be legitimately None, so check _header_tempo_rate.
+    if self._header_tempo_rate:
+      self._add_tempo(self._header_tempo_unit, self._header_tempo_rate)
+
+  def _set_unit_note_length_from_header(self):
+    &#34;&#34;&#34;Sets the current unit note length.
+
+    Should be called immediately after parsing the header.
+
+    Raises:
+      ABCParseError: If multiple time signatures were set in the header.
+    &#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#lunit_note_length
+
+    if self._current_unit_note_length:
+      # If it has been set explicitly, leave it as is.
+      pass
+    elif not self._ns.time_signatures:
+      # For free meter, the default unit note length is 1/8.
+      self._current_unit_note_length = Fraction(1, 8)
+    else:
+      # Otherwise, base it on the current meter.
+      if len(self._ns.time_signatures) != 1:
+        raise ABCParseError(&#39;Multiple time signatures set in header.&#39;)
+      current_ts = self._ns.time_signatures[0]
+      ratio = current_ts.numerator / current_ts.denominator
+      if ratio &lt; 0.75:
+        self._current_unit_note_length = Fraction(1, 16)
+      else:
+        self._current_unit_note_length = Fraction(1, 8)
+
+  def _add_tempo(self, tempo_unit, tempo_rate):
+    if tempo_unit is None:
+      tempo_unit = self._current_unit_note_length
+
+    tempo = self._ns.tempos.add()
+    tempo.time = self._current_time
+    tempo.qpm = float((tempo_unit / Fraction(1, 4)) * tempo_rate)
+
+  def _add_section(self, time):
+    &#34;&#34;&#34;Adds a new section to the NoteSequence.
+
+    If the most recently added section is for the same time, a new section will
+    not be created.
+
+    Args:
+      time: The time at which to create the new section.
+
+    Returns:
+      The id of the newly created section, or None if no new section was
+      created.
+    &#34;&#34;&#34;
+    if not self._ns.section_annotations and time &gt; 0:
+      # We&#39;re in a piece with sections, need to add a section marker at the
+      # beginning of the piece if there isn&#39;t one there already.
+      sa = self._ns.section_annotations.add()
+      sa.time = 0
+      sa.section_id = 0
+
+    if self._ns.section_annotations:
+      if self._ns.section_annotations[-1].time == time:
+        logging.debug(&#39;Ignoring duplicate section at time %f&#39;, time)
+        return None
+      new_id = self._ns.section_annotations[-1].section_id + 1
+    else:
+      new_id = 0
+
+    sa = self._ns.section_annotations.add()
+    sa.time = time
+    sa.section_id = new_id
+    return new_id
+
+  def _finalize(self):
+    &#34;&#34;&#34;Do final cleanup. To be called at the end of the tune.&#34;&#34;&#34;
+    self._finalize_repeats()
+    self._finalize_sections()
+
+  def _finalize_repeats(self):
+    &#34;&#34;&#34;Handle any pending repeats.&#34;&#34;&#34;
+    # If we&#39;re still expecting a repeat at the end of the tune, that&#39;s an error
+    # in the file.
+    if self._current_expected_repeats:
+      raise RepeatParseError(
+          &#39;Expected a repeat at the end of the file, but did not get one.&#39;)
+
+  def _finalize_sections(self):
+    &#34;&#34;&#34;Handle any pending sections.&#34;&#34;&#34;
+    # If a new section was started at the very end of the piece, delete it
+    # because it will contain no notes and is meaningless.
+    # This happens if the last line in the piece ends with a :| symbol. A new
+    # section is set up to handle upcoming notes, but then the end of the piece
+    # is reached.
+    if (self._ns.section_annotations and
+        self._ns.section_annotations[-1].time == self._ns.notes[-1].end_time):
+      del self._ns.section_annotations[-1]
+
+    # Make sure the final section annotation is referenced in a section group.
+    # If it hasn&#39;t been referenced yet, it just needs to be played once.
+    # This checks that the final section_annotation is referenced in the final
+    # section_group.
+    # At this point, all of our section_groups have only 1 section, so this
+    # logic will need to be updated when we support parts and start creating
+    # more complex section_groups.
+    if (self._ns.section_annotations and self._ns.section_groups and
+        self._ns.section_groups[-1].sections[0].section_id !=
+        self._ns.section_annotations[-1].section_id):
+      sg = self._ns.section_groups.add()
+      sg.sections.add(
+          section_id=self._ns.section_annotations[-1].section_id)
+      sg.num_times = 1
+
+  def _apply_broken_rhythm(self, broken_rhythm):
+    &#34;&#34;&#34;Applies a broken rhythm symbol to the two most recently added notes.&#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#broken_rhythm
+
+    if len(self._ns.notes) &lt; 2:
+      raise ABCParseError(
+          &#39;Cannot apply a broken rhythm with fewer than 2 notes&#39;)
+
+    note1 = self._ns.notes[-2]
+    note2 = self._ns.notes[-1]
+    note1_len = note1.end_time - note1.start_time
+    note2_len = note2.end_time - note2.start_time
+    if note1_len != note2_len:
+      raise ABCParseError(
+          &#39;Cannot apply broken rhythm to two notes of different lengths&#39;)
+
+    time_adj = note1_len / (2 ** len(broken_rhythm))
+    if broken_rhythm[0] == &#39;&lt;&#39;:
+      note1.end_time -= time_adj
+      note2.start_time -= time_adj
+    elif broken_rhythm[0] == &#39;&gt;&#39;:
+      note1.end_time += time_adj
+      note2.start_time += time_adj
+    else:
+      raise ABCParseError(&#39;Could not parse broken rhythm token: {}&#39;.format(
+          broken_rhythm))
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#pitch
+  NOTE_PATTERN = re.compile(
+      r&#39;(__|_|=|\^|\^\^)?([A-Ga-g])([\&#39;,]*)(\d*/*\d*)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#chords_and_unisons
+  CHORD_PATTERN = re.compile(r&#39;\[(&#39; + NOTE_PATTERN.pattern + r&#39;)+\]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#broken_rhythm
+  BROKEN_RHYTHM_PATTERN = re.compile(r&#39;(&lt;+|&gt;+)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#use_of_fields_within_the_tune_body
+  INLINE_INFORMATION_FIELD_PATTERN = re.compile(r&#39;\[([A-Za-z]):\s*([^\]]+)\]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#repeat_bar_symbols
+
+  # Pattern for matching variant endings with an associated bar symbol.
+  BAR_AND_VARIANT_ENDINGS_PATTERN = re.compile(r&#39;(:*)[\[\]|]+\s*([0-9,-]+)&#39;)
+  # Pattern for matching repeat symbols with an associated bar symbol.
+  BAR_AND_REPEAT_SYMBOLS_PATTERN = re.compile(r&#39;(:*)([\[\]|]+)(:*)&#39;)
+  # Pattern for matching repeat symbols without an associated bar symbol.
+  REPEAT_SYMBOLS_PATTERN = re.compile(r&#39;(:+)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+  # http://abcnotation.com/wiki/abc:standard:v2.1#annotations
+  TEXT_ANNOTATION_PATTERN = re.compile(r&#39;&#34;([^&#34;]*)&#34;&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+  DECORATION_PATTERN = re.compile(r&#39;[.~HLMOPSTuv]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+  # Either an opening parenthesis (not followed by a digit, since that indicates
+  # a tuplet) or a closing parenthesis.
+  SLUR_PATTERN = re.compile(r&#39;\((?!\d)|\)&#39;)
+  TIE_PATTERN = re.compile(r&#39;-&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#duplets_triplets_quadruplets_etc
+  TUPLET_PATTERN = re.compile(r&#39;\(\d&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#typesetting_line-breaks
+  LINE_CONTINUATION_PATTERN = re.compile(r&#39;\\$&#39;)
+
+  def _parse_music_code(self, line):
+    &#34;&#34;&#34;Parse the music code within an ABC file.&#34;&#34;&#34;
+
+    # http://abcnotation.com/wiki/abc:standard:v2.1#the_tune_body
+    pos = 0
+    broken_rhythm = None
+    while pos &lt; len(line):
+      match = None
+      for regex in [
+          ABCTune.NOTE_PATTERN,
+          ABCTune.CHORD_PATTERN,
+          ABCTune.BROKEN_RHYTHM_PATTERN,
+          ABCTune.INLINE_INFORMATION_FIELD_PATTERN,
+          ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN,
+          ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN,
+          ABCTune.REPEAT_SYMBOLS_PATTERN,
+          ABCTune.TEXT_ANNOTATION_PATTERN,
+          ABCTune.DECORATION_PATTERN,
+          ABCTune.SLUR_PATTERN,
+          ABCTune.TIE_PATTERN,
+          ABCTune.TUPLET_PATTERN,
+          ABCTune.LINE_CONTINUATION_PATTERN]:
+        match = regex.match(line, pos)
+        if match:
+          break
+
+      if not match:
+        if not line[pos].isspace():
+          raise InvalidCharacterError(
+              &#39;Unexpected character: [{}]&#39;.format(line[pos].encode(&#39;utf-8&#39;)))
+        pos += 1
+        continue
+
+      pos = match.end()
+      if match.re == ABCTune.NOTE_PATTERN:
+        note = self._ns.notes.add()
+        note.velocity = self._current_velocity
+        note.start_time = self._current_time
+
+        note.pitch = ABCTune.ABC_NOTE_TO_MIDI[match.group(2)]
+        note_name = match.group(2).upper()
+
+        # Accidentals
+        if match.group(1):
+          pitch_change = 0
+          for accidental in match.group(1).split():
+            if accidental == &#39;^&#39;:
+              pitch_change += 1
+            elif accidental == &#39;_&#39;:
+              pitch_change -= 1
+            elif accidental == &#39;=&#39;:
+              pass
+            else:
+              raise ABCParseError(
+                  &#39;Invalid accidental: {}&#39;.format(accidental))
+          note.pitch += pitch_change
+          self._bar_accidentals[note_name] = pitch_change
+        elif note_name in self._bar_accidentals:
+          note.pitch += self._bar_accidentals[note_name]
+        else:
+          # No accidentals, so modify according to current key.
+          note.pitch += self._accidentals[note_name]
+
+        # Octaves
+        if match.group(3):
+          for octave in match.group(3):
+            if octave == &#39;\&#39;&#39;:
+              note.pitch += 12
+            elif octave == &#39;,&#39;:
+              note.pitch -= 12
+            else:
+              raise ABCParseError(&#39;Invalid octave: {}&#39;.format(octave))
+
+        if (note.pitch &lt; constants.MIN_MIDI_PITCH or
+            note.pitch &gt; constants.MAX_MIDI_PITCH):
+          raise ABCParseError(&#39;pitch {} is invalid&#39;.format(note.pitch))
+
+        # Note length
+        length = self._current_unit_note_length
+        # http://abcnotation.com/wiki/abc:standard:v2.1#note_lengths
+        if match.group(4):
+          slash_count = match.group(4).count(&#39;/&#39;)
+          if slash_count == len(match.group(4)):
+            # Handle A// shorthand case.
+            length /= 2 ** slash_count
+          elif match.group(4).startswith(&#39;/&#39;):
+            length /= int(match.group(4)[1:])
+          elif slash_count == 1:
+            fraction = match.group(4).split(&#39;/&#39;, 1)
+            # If no denominator is specified (e.g., &#34;3/&#34;), default to 2.
+            if not fraction[1]:
+              fraction[1] = 2
+            length *= Fraction(int(fraction[0]), int(fraction[1]))
+          elif slash_count == 0:
+            length *= int(match.group(4))
+          else:
+            raise ABCParseError(
+                &#39;Could not parse note length: {}&#39;.format(match.group(4)))
+
+        # Advance clock based on note length.
+        self._current_time += (1 / (self._qpm / 60)) * (length / Fraction(1, 4))
+
+        note.end_time = self._current_time
+
+        if broken_rhythm:
+          self._apply_broken_rhythm(broken_rhythm)
+          broken_rhythm = None
+      elif match.re == ABCTune.CHORD_PATTERN:
+        raise ChordError(&#39;Chords are not supported.&#39;)
+      elif match.re == ABCTune.BROKEN_RHYTHM_PATTERN:
+        if broken_rhythm:
+          raise ABCParseError(
+              &#39;Cannot specify a broken rhythm twice in a row.&#39;)
+        broken_rhythm = match.group(1)
+      elif match.re == ABCTune.INLINE_INFORMATION_FIELD_PATTERN:
+        self._parse_information_field(match.group(1), match.group(2))
+      elif match.re == ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN:
+        raise VariantEndingError(
+            &#39;Variant ending {} is not supported.&#39;.format(match.group(0)))
+      elif (match.re == ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN or
+            match.re == ABCTune.REPEAT_SYMBOLS_PATTERN):
+        if match.re == ABCTune.REPEAT_SYMBOLS_PATTERN:
+          colon_count = len(match.group(1))
+          if colon_count % 2 != 0:
+            raise RepeatParseError(
+                &#39;Colon-only repeats must be divisible by 2: {}&#39;.format(
+                    match.group(1)))
+          backward_repeats = forward_repeats = int((colon_count / 2) + 1)
+        elif match.re == ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN:
+          # We&#39;re in a new bar, so clear the bar-wise accidentals.
+          self._bar_accidentals.clear()
+
+          is_repeat = &#39;:&#39; in match.group(1) or match.group(3)
+          if not is_repeat:
+            if len(match.group(2)) &gt;= 2:
+              # This is a double bar that isn&#39;t a repeat.
+              if not self._current_expected_repeats and self._current_time &gt; 0:
+                # There was no previous forward repeat symbol.
+                # Add a new section so that if there is a backward repeat later
+                # on, it will repeat to this bar.
+                new_section_id = self._add_section(self._current_time)
+                if new_section_id is not None:
+                  sg = self._ns.section_groups.add()
+                  sg.sections.add(
+                      section_id=self._ns.section_annotations[-2].section_id)
+                  sg.num_times = 1
+
+            # If this isn&#39;t a repeat, no additional work to do.
+            continue
+
+          # Count colons on either side.
+          if match.group(1):
+            backward_repeats = len(match.group(1)) + 1
+          else:
+            backward_repeats = None
+
+          if match.group(3):
+            forward_repeats = len(match.group(3)) + 1
+          else:
+            forward_repeats = None
+        else:
+          raise ABCParseError(&#39;Unexpected regex. Should not happen.&#39;)
+
+        if (self._current_expected_repeats and
+            backward_repeats != self._current_expected_repeats):
+          raise RepeatParseError(
+              &#39;Mismatched forward/backward repeat symbols. &#39;
+              &#39;Expected {} but got {}.&#39;.format(
+                  self._current_expected_repeats, backward_repeats))
+
+        # A repeat implies the start of a new section, so make one.
+        new_section_id = self._add_section(self._current_time)
+
+        if backward_repeats:
+          if self._current_time == 0:
+            raise RepeatParseError(
+                &#39;Cannot have a backward repeat at time 0&#39;)
+          sg = self._ns.section_groups.add()
+          sg.sections.add(
+              section_id=self._ns.section_annotations[-2].section_id)
+          sg.num_times = backward_repeats
+        elif self._current_time &gt; 0 and new_section_id is not None:
+          # There were not backward repeats, but we still want to play the
+          # previous section once.
+          # If new_section_id is None (implying that a section at the current
+          # time was created elsewhere), this is not needed because it should
+          # have been done when the section was created.
+          sg = self._ns.section_groups.add()
+          sg.sections.add(
+              section_id=self._ns.section_annotations[-2].section_id)
+          sg.num_times = 1
+
+        self._current_expected_repeats = forward_repeats
+      elif match.re == ABCTune.TEXT_ANNOTATION_PATTERN:
+        # Text annotation
+        # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+        # http://abcnotation.com/wiki/abc:standard:v2.1#annotations
+        annotation = match.group(1)
+        ta = self._ns.text_annotations.add()
+        ta.time = self._current_time
+        ta.text = annotation
+        if annotation and annotation[0] in ABCTune.ABC_NOTE_TO_MIDI:
+          # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+          ta.annotation_type = (
+              music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL)
+        else:
+          ta.annotation_type = (
+              music_pb2.NoteSequence.TextAnnotation.UNKNOWN)
+      elif match.re == ABCTune.DECORATION_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+        # We don&#39;t currently do anything with decorations.
+        pass
+      elif match.re == ABCTune.SLUR_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+        # We don&#39;t currently do anything with slurs.
+        pass
+      elif match.re == ABCTune.TIE_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+        # We don&#39;t currently do anything with ties.
+        # TODO(fjord): Ideally, we would extend the duration of the previous
+        # note to include the duration of the next note.
+        pass
+      elif match.re == ABCTune.TUPLET_PATTERN:
+        raise TupletError(&#39;Tuplets are not supported.&#39;)
+      elif match.re == ABCTune.LINE_CONTINUATION_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#typesetting_line-breaks
+        # Line continuations are only for typesetting, so we can ignore them.
+        pass
+      else:
+        raise ABCParseError(&#39;Unknown regex match!&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  KEY_PATTERN = re.compile(
+      r&#39;([A-G])\s*([#b]?)\s*&#39;
+      r&#39;((?:(?:maj|ion|min|aeo|mix|dor|phr|lyd|loc|m)[^ ]*)?)&#39;,
+      re.IGNORECASE)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  KEY_ACCIDENTALS_PATTERN = re.compile(r&#39;(__|_|=|\^|\^\^)?([A-Ga-g])&#39;)
+
+  @staticmethod
+  def parse_key(key):
+    &#34;&#34;&#34;Parse an ABC key string.&#34;&#34;&#34;
+
+    # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+    key_match = ABCTune.KEY_PATTERN.match(key)
+    if not key_match:
+      raise ABCParseError(&#39;Could not parse key: {}&#39;.format(key))
+
+    key_components = list(key_match.groups())
+
+    # Shorten the mode to be at most 3 letters long.
+    mode = key_components[2][:3].lower()
+
+    # &#34;Minor&#34; and &#34;Aeolian&#34; are special cases that are abbreviated to &#39;m&#39;.
+    # &#34;Major&#34; and &#34;Ionian&#34; are special cases that are abbreviated to &#39;&#39;.
+    if mode in (&#39;min&#39;, &#39;aeo&#39;):
+      mode = &#39;m&#39;
+    elif mode in (&#39;maj&#39;, &#39;ion&#39;):
+      mode = &#39;&#39;
+
+    sig = ABCTune.KEY_TO_SIG[&#39;&#39;.join(key_components[0:2] + [mode]).lower()]
+
+    proto_key = ABCTune.KEY_TO_PROTO_KEY[&#39;&#39;.join(key_components[0:2]).lower()]
+
+    if mode == &#39;&#39;:  # pylint: disable=g-explicit-bool-comparison
+      proto_mode = music_pb2.NoteSequence.KeySignature.MAJOR
+    elif mode == &#39;m&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.MINOR
+    elif mode == &#39;mix&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.MIXOLYDIAN
+    elif mode == &#39;dor&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.DORIAN
+    elif mode == &#39;phr&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.PHRYGIAN
+    elif mode == &#39;lyd&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.LYDIAN
+    elif mode == &#39;loc&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.LOCRIAN
+    else:
+      raise ABCParseError(&#39;Unknown mode: {}&#39;.format(mode))
+
+    # Match the rest of the string for possible modifications.
+    pos = key_match.end()
+    exppos = key[pos:].find(&#39;exp&#39;)
+    if exppos != -1:
+      # Only explicit accidentals will be used.
+      accidentals = ABCTune._sig_to_accidentals(0)
+      pos += exppos + 3
+    else:
+      accidentals = ABCTune._sig_to_accidentals(sig)
+
+    while pos &lt; len(key):
+      note_match = ABCTune.KEY_ACCIDENTALS_PATTERN.match(key, pos)
+      if note_match:
+        pos += len(note_match.group(0))
+
+        note = note_match.group(2).upper()
+        if note_match.group(1):
+          if note_match.group(1) == &#39;^&#39;:
+            accidentals[note] = 1
+          elif note_match.group(1) == &#39;_&#39;:
+            accidentals[note] = -1
+          elif note_match.group(1) == &#39;=&#39;:
+            accidentals[note] = 0
+          else:
+            raise ABCParseError(
+                &#39;Invalid accidental: {}&#39;.format(note_match.group(1)))
+      else:
+        pos += 1
+
+    return accidentals, proto_key, proto_mode
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#outdated_information_field_syntax
+  # This syntax is deprecated but must still be supported.
+  TEMPO_DEPRECATED_PATTERN = re.compile(r&#39;C?\s*=?\s*(\d+)$&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#qtempo
+  TEMPO_PATTERN = re.compile(r&#39;(?:&#34;[^&#34;]*&#34;)?\s*((?:\d+/\d+\s*)+)\s*=\s*(\d+)&#39;)
+  TEMPO_PATTERN_STRING_ONLY = re.compile(r&#39;&#34;([^&#34;]*)&#34;$&#39;)
+
+  def _parse_information_field(self, field_name, field_content):
+    &#34;&#34;&#34;Parses information field.&#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#information_fields
+    if field_name == &#39;A&#39;:
+      pass
+    elif field_name == &#39;B&#39;:
+      pass
+    elif field_name == &#39;C&#39;:
+      # Composer
+      # http://abcnotation.com/wiki/abc:standard:v2.1#ccomposer
+      self._ns.sequence_metadata.composers.append(field_content)
+
+      # The first composer will be set as the primary artist.
+      if not self._ns.sequence_metadata.artist:
+        self._ns.sequence_metadata.artist = field_content
+    elif field_name == &#39;D&#39;:
+      pass
+    elif field_name == &#39;F&#39;:
+      pass
+    elif field_name == &#39;G&#39;:
+      pass
+    elif field_name == &#39;H&#39;:
+      pass
+    elif field_name == &#39;I&#39;:
+      pass
+    elif field_name == &#39;K&#39;:
+      # Key
+      # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+      accidentals, proto_key, proto_mode = ABCTune.parse_key(field_content)
+      self._accidentals = accidentals
+      ks = self._ns.key_signatures.add()
+      ks.key = proto_key
+      ks.mode = proto_mode
+      ks.time = self._current_time
+    elif field_name == &#39;L&#39;:
+      # Unit note length
+      # http://abcnotation.com/wiki/abc:standard:v2.1#lunit_note_length
+      length = field_content.split(&#39;/&#39;, 1)
+
+      # Handle the case of L:1 being equivalent to L:1/1
+      if len(length) &lt; 2:
+        length.append(&#39;1&#39;)
+
+      try:
+        numerator = int(length[0])
+        denominator = int(length[1])
+      except ValueError as e:
+        raise ABCParseError(
+            e, &#39;Could not parse unit note length: {}&#39;.format(field_content))
+
+      self._current_unit_note_length = Fraction(numerator, denominator)
+    elif field_name == &#39;M&#39;:
+      # Meter
+      # http://abcnotation.com/wiki/abc:standard:v2.1#mmeter
+      if field_content.upper() == &#39;C&#39;:
+        ts = self._ns.time_signatures.add()
+        ts.numerator = 4
+        ts.denominator = 4
+        ts.time = self._current_time
+      elif field_content.upper() == &#39;C|&#39;:
+        ts = self._ns.time_signatures.add()
+        ts.numerator = 2
+        ts.denominator = 2
+        ts.time = self._current_time
+      elif field_content.lower() == &#39;none&#39;:
+        pass
+      else:
+        timesig = field_content.split(&#39;/&#39;, 1)
+        if len(timesig) != 2:
+          raise ABCParseError(&#39;Could not parse meter: {}&#39;.format(field_content))
+
+        ts = self._ns.time_signatures.add()
+        ts.time = self._current_time
+        try:
+          ts.numerator = int(timesig[0])
+          ts.denominator = int(timesig[1])
+        except ValueError as e:
+          raise ABCParseError(
+              e, &#39;Could not parse meter: {}&#39;.format(field_content))
+    elif field_name == &#39;m&#39;:
+      pass
+    elif field_name == &#39;N&#39;:
+      pass
+    elif field_name == &#39;O&#39;:
+      pass
+    elif field_name == &#39;P&#39;:
+      # TODO(fjord): implement part parsing.
+      raise PartError(&#39;ABC parts are not yet supported.&#39;)
+    elif field_name == &#39;Q&#39;:
+      # Tempo
+      # http://abcnotation.com/wiki/abc:standard:v2.1#qtempo
+
+      tempo_match = ABCTune.TEMPO_PATTERN.match(field_content)
+      deprecated_tempo_match = ABCTune.TEMPO_DEPRECATED_PATTERN.match(
+          field_content)
+      tempo_string_only_match = ABCTune.TEMPO_PATTERN_STRING_ONLY.match(
+          field_content)
+      if tempo_match:
+        tempo_rate = int(tempo_match.group(2))
+        tempo_unit = Fraction(0)
+        for beat in tempo_match.group(1).split():
+          tempo_unit += Fraction(beat)
+      elif deprecated_tempo_match:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#outdated_information_field_syntax
+        # In the deprecated syntax, the tempo is interpreted based on the unit
+        # note length, which is potentially dependent on the current meter.
+        # Set tempo_unit to None for now, and the current unit note length will
+        # be filled in later.
+        tempo_unit = None
+        tempo_rate = int(deprecated_tempo_match.group(1))
+      elif tempo_string_only_match:
+        logging.warning(&#39;Ignoring string-only tempo marking: %s&#39;, field_content)
+        return
+      else:
+        raise ABCParseError(&#39;Could not parse tempo: {}&#39;.format(field_content))
+
+      if self._in_header:
+        # If we&#39;re in the header, save these until we&#39;ve finished parsing the
+        # header. The deprecated syntax relies on the unit note length and
+        # meter, which may not be set yet. At the end of the header, we&#39;ll fill
+        # in the necessary information and add these.
+        self._header_tempo_unit = tempo_unit
+        self._header_tempo_rate = tempo_rate
+      else:
+        self._add_tempo(tempo_unit, tempo_rate)
+    elif field_name == &#39;R&#39;:
+      pass
+    elif field_name == &#39;r&#39;:
+      pass
+    elif field_name == &#39;S&#39;:
+      pass
+    elif field_name == &#39;s&#39;:
+      pass
+    elif field_name == &#39;T&#39;:
+      # Title
+      # http://abcnotation.com/wiki/abc:standard:v2.1#ttune_title
+
+      if not self._in_header:
+        # TODO(fjord): Non-header titles are used to name parts of tunes, but
+        # NoteSequence doesn&#39;t currently have any place to put that information.
+        logging.warning(&#39;Ignoring non-header title: %s&#39;, field_content)
+        return
+
+      # If there are multiple titles, separate them with semicolons.
+      if self._ns.sequence_metadata.title:
+        self._ns.sequence_metadata.title += &#39;; &#39; + field_content
+      else:
+        self._ns.sequence_metadata.title = field_content
+    elif field_name == &#39;U&#39;:
+      pass
+    elif field_name == &#39;V&#39;:
+      raise MultiVoiceError(&#39;Multi-voice files are not currently supported.&#39;)
+    elif field_name == &#39;W&#39;:
+      pass
+    elif field_name == &#39;w&#39;:
+      pass
+    elif field_name == &#39;X&#39;:
+      # Reference number
+      # http://abcnotation.com/wiki/abc:standard:v2.1#xreference_number
+      self._ns.reference_number = int(field_content)
+    elif field_name == &#39;Z&#39;:
+      pass
+    else:
+      logging.warning(
+          &#39;Unknown field name %s with content %s&#39;, field_name, field_content)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="note_seq.abc_parser.parse_abc_tunebook"><code class="name flex">
+<span>def <span class="ident">parse_abc_tunebook</span></span>(<span>tunebook)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse an ABC Tunebook string.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tunebook</code></strong></dt>
+<dd>The ABC tunebook as a string.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tunes</code></dt>
+<dd>A dictionary of reference number to NoteSequence of parsed ABC tunes.</dd>
+<dt><code>exceptions</code></dt>
+<dd>A list of exceptions for tunes that could not be parsed.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="note_seq.abc_parser.DuplicateReferenceNumberError" href="#note_seq.abc_parser.DuplicateReferenceNumberError">DuplicateReferenceNumberError</a></code></dt>
+<dd>If the same reference number appears more
+than once in the tunebook.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_abc_tunebook(tunebook):
+  &#34;&#34;&#34;Parse an ABC Tunebook string.
+
+  Args:
+    tunebook: The ABC tunebook as a string.
+
+  Returns:
+    tunes: A dictionary of reference number to NoteSequence of parsed ABC tunes.
+    exceptions: A list of exceptions for tunes that could not be parsed.
+
+  Raises:
+    DuplicateReferenceNumberError: If the same reference number appears more
+        than once in the tunebook.
+  &#34;&#34;&#34;
+  # Split tunebook into sections based on empty lines.
+  sections = []
+  current_lines = []
+  for line in tunebook.splitlines():
+    line = line.strip()
+    if not line:
+      if current_lines:
+        sections.append(current_lines)
+        current_lines = []
+    else:
+      current_lines.append(line)
+  if current_lines:
+    sections.append(current_lines)
+
+  # If there are multiple sections, the first one may be a header.
+  # The first section is a header if it does not contain an X information field.
+  header = []
+  if len(sections) &gt; 1 and not any(
+      line.startswith(&#39;X:&#39;) for line in sections[0]):
+    header = sections.pop(0)
+
+  tunes = {}
+  exceptions = []
+
+  for tune in sections:
+    try:
+      # The header sets default values for each tune, so prepend it to every
+      # tune that is being parsed.
+      abc_tune = ABCTune(header + tune)
+    except ABCParseError as e:
+      exceptions.append(e)
+    else:
+      ns = abc_tune.note_sequence
+      if ns.reference_number in tunes:
+        raise DuplicateReferenceNumberError(
+            &#39;ABC Reference number {} appears more than once in this &#39;
+            &#39;tunebook&#39;.format(ns.reference_number))
+      tunes[ns.reference_number] = ns
+
+  return tunes, exceptions</code></pre>
+</details>
+</dd>
+<dt id="note_seq.abc_parser.parse_abc_tunebook_file"><code class="name flex">
+<span>def <span class="ident">parse_abc_tunebook_file</span></span>(<span>filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse an ABC Tunebook file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong></dt>
+<dd>File path to an ABC tunebook.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tunes</code></dt>
+<dd>A dictionary of reference number to NoteSequence of parsed ABC tunes.</dd>
+<dt><code>exceptions</code></dt>
+<dd>A list of exceptions for tunes that could not be parsed.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="note_seq.abc_parser.DuplicateReferenceNumberError" href="#note_seq.abc_parser.DuplicateReferenceNumberError">DuplicateReferenceNumberError</a></code></dt>
+<dd>If the same reference number appears more
+than once in the tunebook.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_abc_tunebook_file(filename):
+  &#34;&#34;&#34;Parse an ABC Tunebook file.
+
+  Args:
+    filename: File path to an ABC tunebook.
+
+  Returns:
+    tunes: A dictionary of reference number to NoteSequence of parsed ABC tunes.
+    exceptions: A list of exceptions for tunes that could not be parsed.
+
+  Raises:
+    DuplicateReferenceNumberError: If the same reference number appears more
+        than once in the tunebook.
+  &#34;&#34;&#34;
+  # &#39;r&#39; mode will decode the file as utf-8 in py3.
+  return parse_abc_tunebook(open(filename, &#39;r&#39;).read())</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.abc_parser.ABCParseError"><code class="flex name class">
+<span>class <span class="ident">ABCParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when ABC contents cannot be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ABCParseError(Exception):
+  &#34;&#34;&#34;Exception thrown when ABC contents cannot be parsed.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ChordError" href="#note_seq.abc_parser.ChordError">ChordError</a></li>
+<li><a title="note_seq.abc_parser.DuplicateReferenceNumberError" href="#note_seq.abc_parser.DuplicateReferenceNumberError">DuplicateReferenceNumberError</a></li>
+<li><a title="note_seq.abc_parser.InvalidCharacterError" href="#note_seq.abc_parser.InvalidCharacterError">InvalidCharacterError</a></li>
+<li><a title="note_seq.abc_parser.MultiVoiceError" href="#note_seq.abc_parser.MultiVoiceError">MultiVoiceError</a></li>
+<li><a title="note_seq.abc_parser.PartError" href="#note_seq.abc_parser.PartError">PartError</a></li>
+<li><a title="note_seq.abc_parser.RepeatParseError" href="#note_seq.abc_parser.RepeatParseError">RepeatParseError</a></li>
+<li><a title="note_seq.abc_parser.TupletError" href="#note_seq.abc_parser.TupletError">TupletError</a></li>
+<li><a title="note_seq.abc_parser.VariantEndingError" href="#note_seq.abc_parser.VariantEndingError">VariantEndingError</a></li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune"><code class="flex name class">
+<span>class <span class="ident">ABCTune</span></span>
+<span>(</span><span>tune_lines)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for parsing an individual ABC tune.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ABCTune(object):
+  &#34;&#34;&#34;Class for parsing an individual ABC tune.&#34;&#34;&#34;
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+  DECORATION_TO_VELOCITY = {
+      &#39;!pppp!&#39;: 30,
+      &#39;!ppp!&#39;: 30,
+      &#39;!pp!&#39;: 45,
+      &#39;!p!&#39;: 60,
+      &#39;!mp!&#39;: 75,
+      &#39;!mf!&#39;: 90,
+      &#39;!f!&#39;: 105,
+      &#39;!ff!&#39;: 120,
+      &#39;!fff!&#39;: 127,
+      &#39;!ffff!&#39;: 127,
+  }
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#pitch
+  ABC_NOTE_TO_MIDI = {
+      &#39;C&#39;: 60,
+      &#39;D&#39;: 62,
+      &#39;E&#39;: 64,
+      &#39;F&#39;: 65,
+      &#39;G&#39;: 67,
+      &#39;A&#39;: 69,
+      &#39;B&#39;: 71,
+      &#39;c&#39;: 72,
+      &#39;d&#39;: 74,
+      &#39;e&#39;: 76,
+      &#39;f&#39;: 77,
+      &#39;g&#39;: 79,
+      &#39;a&#39;: 81,
+      &#39;b&#39;: 83,
+  }
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  SIG_TO_KEYS = {
+      7: [&#39;C#&#39;, &#39;A#m&#39;, &#39;G#Mix&#39;, &#39;D#Dor&#39;, &#39;E#Phr&#39;, &#39;F#Lyd&#39;, &#39;B#Loc&#39;],
+      6: [&#39;F#&#39;, &#39;D#m&#39;, &#39;C#Mix&#39;, &#39;G#Dor&#39;, &#39;A#Phr&#39;, &#39;BLyd&#39;, &#39;E#Loc&#39;],
+      5: [&#39;B&#39;, &#39;G#m&#39;, &#39;F#Mix&#39;, &#39;C#Dor&#39;, &#39;D#Phr&#39;, &#39;ELyd&#39;, &#39;A#Loc&#39;],
+      4: [&#39;E&#39;, &#39;C#m&#39;, &#39;BMix&#39;, &#39;F#Dor&#39;, &#39;G#Phr&#39;, &#39;ALyd&#39;, &#39;D#Loc&#39;],
+      3: [&#39;A&#39;, &#39;F#m&#39;, &#39;EMix&#39;, &#39;BDor&#39;, &#39;C#Phr&#39;, &#39;DLyd&#39;, &#39;G#Loc&#39;],
+      2: [&#39;D&#39;, &#39;Bm&#39;, &#39;AMix&#39;, &#39;EDor&#39;, &#39;F#Phr&#39;, &#39;GLyd&#39;, &#39;C#Loc&#39;],
+      1: [&#39;G&#39;, &#39;Em&#39;, &#39;DMix&#39;, &#39;ADor&#39;, &#39;BPhr&#39;, &#39;CLyd&#39;, &#39;F#Loc&#39;],
+      0: [&#39;C&#39;, &#39;Am&#39;, &#39;GMix&#39;, &#39;DDor&#39;, &#39;EPhr&#39;, &#39;FLyd&#39;, &#39;BLoc&#39;],
+      -1: [&#39;F&#39;, &#39;Dm&#39;, &#39;CMix&#39;, &#39;GDor&#39;, &#39;APhr&#39;, &#39;BbLyd&#39;, &#39;ELoc&#39;],
+      -2: [&#39;Bb&#39;, &#39;Gm&#39;, &#39;FMix&#39;, &#39;CDor&#39;, &#39;DPhr&#39;, &#39;EbLyd&#39;, &#39;ALoc&#39;],
+      -3: [&#39;Eb&#39;, &#39;Cm&#39;, &#39;BbMix&#39;, &#39;FDor&#39;, &#39;GPhr&#39;, &#39;AbLyd&#39;, &#39;DLoc&#39;],
+      -4: [&#39;Ab&#39;, &#39;Fm&#39;, &#39;EbMix&#39;, &#39;BbDor&#39;, &#39;CPhr&#39;, &#39;DbLyd&#39;, &#39;GLoc&#39;],
+      -5: [&#39;Db&#39;, &#39;Bbm&#39;, &#39;AbMix&#39;, &#39;EbDor&#39;, &#39;FPhr&#39;, &#39;GbLyd&#39;, &#39;CLoc&#39;],
+      -6: [&#39;Gb&#39;, &#39;Ebm&#39;, &#39;DbMix&#39;, &#39;AbDor&#39;, &#39;BbPhr&#39;, &#39;CbLyd&#39;, &#39;FLoc&#39;],
+      -7: [&#39;Cb&#39;, &#39;Abm&#39;, &#39;GbMix&#39;, &#39;DbDor&#39;, &#39;EbPhr&#39;, &#39;FbLyd&#39;, &#39;BbLoc&#39;],
+  }
+
+  KEY_TO_SIG = {}
+  for sig, keys in SIG_TO_KEYS.items():
+    for key in keys:
+      KEY_TO_SIG[key.lower()] = sig
+
+  KEY_TO_PROTO_KEY = {
+      &#39;c&#39;: music_pb2.NoteSequence.KeySignature.C,
+      &#39;c#&#39;: music_pb2.NoteSequence.KeySignature.C_SHARP,
+      &#39;db&#39;: music_pb2.NoteSequence.KeySignature.D_FLAT,
+      &#39;d&#39;: music_pb2.NoteSequence.KeySignature.D,
+      &#39;d#&#39;: music_pb2.NoteSequence.KeySignature.D_SHARP,
+      &#39;eb&#39;: music_pb2.NoteSequence.KeySignature.E_FLAT,
+      &#39;e&#39;: music_pb2.NoteSequence.KeySignature.E,
+      &#39;f&#39;: music_pb2.NoteSequence.KeySignature.F,
+      &#39;f#&#39;: music_pb2.NoteSequence.KeySignature.F_SHARP,
+      &#39;gb&#39;: music_pb2.NoteSequence.KeySignature.G_FLAT,
+      &#39;g&#39;: music_pb2.NoteSequence.KeySignature.G,
+      &#39;g#&#39;: music_pb2.NoteSequence.KeySignature.G_SHARP,
+      &#39;ab&#39;: music_pb2.NoteSequence.KeySignature.A_FLAT,
+      &#39;a&#39;: music_pb2.NoteSequence.KeySignature.A,
+      &#39;a#&#39;: music_pb2.NoteSequence.KeySignature.A_SHARP,
+      &#39;bb&#39;: music_pb2.NoteSequence.KeySignature.B_FLAT,
+      &#39;b&#39;: music_pb2.NoteSequence.KeySignature.B,
+  }
+
+  SHARPS_ORDER = &#39;FCGDAEB&#39;
+  FLATS_ORDER = &#39;BEADGCF&#39;
+
+  INFORMATION_FIELD_PATTERN = re.compile(r&#39;([A-Za-z]):\s*(.*)&#39;)
+
+  def __init__(self, tune_lines):
+    self._ns = music_pb2.NoteSequence()
+    # Standard ABC fields.
+    self._ns.source_info.source_type = (
+        music_pb2.NoteSequence.SourceInfo.SCORE_BASED)
+    self._ns.source_info.encoding_type = (
+        music_pb2.NoteSequence.SourceInfo.ABC)
+    self._ns.source_info.parser = (
+        music_pb2.NoteSequence.SourceInfo.MAGENTA_ABC)
+    self._ns.ticks_per_quarter = constants.STANDARD_PPQ
+
+    self._current_time = 0
+    self._accidentals = ABCTune._sig_to_accidentals(0)
+    self._bar_accidentals = {}
+    self._current_unit_note_length = None
+    self._current_expected_repeats = None
+
+    # Default dynamic should be !mf! as per:
+    # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+    self._current_velocity = ABCTune.DECORATION_TO_VELOCITY[&#39;!mf!&#39;]
+
+    self._in_header = True
+    self._header_tempo_unit = None
+    self._header_tempo_rate = None
+    for line in tune_lines:
+      line = re.sub(&#39;%.*$&#39;, &#39;&#39;, line)  # Strip comments.
+      line = line.strip()  # Strip whitespace.
+      if not line:
+        continue
+
+      # If the lines begins with a letter and a colon, it&#39;s an information
+      # field. Extract it.
+      info_field_match = ABCTune.INFORMATION_FIELD_PATTERN.match(line)
+      if info_field_match:
+        self._parse_information_field(
+            info_field_match.group(1), info_field_match.group(2))
+      else:
+        if self._in_header:
+          self._set_values_from_header()
+          self._in_header = False
+        self._parse_music_code(line)
+    if self._in_header:
+      self._set_values_from_header()
+
+    self._finalize()
+
+    if self._ns.notes:
+      self._ns.total_time = self._ns.notes[-1].end_time
+
+  @property
+  def note_sequence(self):
+    return self._ns
+
+  @staticmethod
+  def _sig_to_accidentals(sig):
+    accidentals = {pitch: 0 for pitch in &#39;ABCDEFG&#39;}
+    if sig &gt; 0:
+      for i in range(sig):
+        accidentals[ABCTune.SHARPS_ORDER[i]] = 1
+    elif sig &lt; 0:
+      for i in range(abs(sig)):
+        accidentals[ABCTune.FLATS_ORDER[i]] = -1
+    return accidentals
+
+  @property
+  def _qpm(self):
+    &#34;&#34;&#34;Returns the current QPM.&#34;&#34;&#34;
+    if self._ns.tempos:
+      return self._ns.tempos[-1].qpm
+    else:
+      # No QPM has been specified, so will use the default one.
+      return constants.DEFAULT_QUARTERS_PER_MINUTE
+
+  def _set_values_from_header(self):
+    # Set unit note length. May depend on the current meter, so this has to be
+    # calculated at the end of the header.
+    self._set_unit_note_length_from_header()
+
+    # Set the tempo if it was specified in the header. May depend on current
+    # unit note length, so has to be calculated after that is set.
+    # _header_tempo_unit may be legitimately None, so check _header_tempo_rate.
+    if self._header_tempo_rate:
+      self._add_tempo(self._header_tempo_unit, self._header_tempo_rate)
+
+  def _set_unit_note_length_from_header(self):
+    &#34;&#34;&#34;Sets the current unit note length.
+
+    Should be called immediately after parsing the header.
+
+    Raises:
+      ABCParseError: If multiple time signatures were set in the header.
+    &#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#lunit_note_length
+
+    if self._current_unit_note_length:
+      # If it has been set explicitly, leave it as is.
+      pass
+    elif not self._ns.time_signatures:
+      # For free meter, the default unit note length is 1/8.
+      self._current_unit_note_length = Fraction(1, 8)
+    else:
+      # Otherwise, base it on the current meter.
+      if len(self._ns.time_signatures) != 1:
+        raise ABCParseError(&#39;Multiple time signatures set in header.&#39;)
+      current_ts = self._ns.time_signatures[0]
+      ratio = current_ts.numerator / current_ts.denominator
+      if ratio &lt; 0.75:
+        self._current_unit_note_length = Fraction(1, 16)
+      else:
+        self._current_unit_note_length = Fraction(1, 8)
+
+  def _add_tempo(self, tempo_unit, tempo_rate):
+    if tempo_unit is None:
+      tempo_unit = self._current_unit_note_length
+
+    tempo = self._ns.tempos.add()
+    tempo.time = self._current_time
+    tempo.qpm = float((tempo_unit / Fraction(1, 4)) * tempo_rate)
+
+  def _add_section(self, time):
+    &#34;&#34;&#34;Adds a new section to the NoteSequence.
+
+    If the most recently added section is for the same time, a new section will
+    not be created.
+
+    Args:
+      time: The time at which to create the new section.
+
+    Returns:
+      The id of the newly created section, or None if no new section was
+      created.
+    &#34;&#34;&#34;
+    if not self._ns.section_annotations and time &gt; 0:
+      # We&#39;re in a piece with sections, need to add a section marker at the
+      # beginning of the piece if there isn&#39;t one there already.
+      sa = self._ns.section_annotations.add()
+      sa.time = 0
+      sa.section_id = 0
+
+    if self._ns.section_annotations:
+      if self._ns.section_annotations[-1].time == time:
+        logging.debug(&#39;Ignoring duplicate section at time %f&#39;, time)
+        return None
+      new_id = self._ns.section_annotations[-1].section_id + 1
+    else:
+      new_id = 0
+
+    sa = self._ns.section_annotations.add()
+    sa.time = time
+    sa.section_id = new_id
+    return new_id
+
+  def _finalize(self):
+    &#34;&#34;&#34;Do final cleanup. To be called at the end of the tune.&#34;&#34;&#34;
+    self._finalize_repeats()
+    self._finalize_sections()
+
+  def _finalize_repeats(self):
+    &#34;&#34;&#34;Handle any pending repeats.&#34;&#34;&#34;
+    # If we&#39;re still expecting a repeat at the end of the tune, that&#39;s an error
+    # in the file.
+    if self._current_expected_repeats:
+      raise RepeatParseError(
+          &#39;Expected a repeat at the end of the file, but did not get one.&#39;)
+
+  def _finalize_sections(self):
+    &#34;&#34;&#34;Handle any pending sections.&#34;&#34;&#34;
+    # If a new section was started at the very end of the piece, delete it
+    # because it will contain no notes and is meaningless.
+    # This happens if the last line in the piece ends with a :| symbol. A new
+    # section is set up to handle upcoming notes, but then the end of the piece
+    # is reached.
+    if (self._ns.section_annotations and
+        self._ns.section_annotations[-1].time == self._ns.notes[-1].end_time):
+      del self._ns.section_annotations[-1]
+
+    # Make sure the final section annotation is referenced in a section group.
+    # If it hasn&#39;t been referenced yet, it just needs to be played once.
+    # This checks that the final section_annotation is referenced in the final
+    # section_group.
+    # At this point, all of our section_groups have only 1 section, so this
+    # logic will need to be updated when we support parts and start creating
+    # more complex section_groups.
+    if (self._ns.section_annotations and self._ns.section_groups and
+        self._ns.section_groups[-1].sections[0].section_id !=
+        self._ns.section_annotations[-1].section_id):
+      sg = self._ns.section_groups.add()
+      sg.sections.add(
+          section_id=self._ns.section_annotations[-1].section_id)
+      sg.num_times = 1
+
+  def _apply_broken_rhythm(self, broken_rhythm):
+    &#34;&#34;&#34;Applies a broken rhythm symbol to the two most recently added notes.&#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#broken_rhythm
+
+    if len(self._ns.notes) &lt; 2:
+      raise ABCParseError(
+          &#39;Cannot apply a broken rhythm with fewer than 2 notes&#39;)
+
+    note1 = self._ns.notes[-2]
+    note2 = self._ns.notes[-1]
+    note1_len = note1.end_time - note1.start_time
+    note2_len = note2.end_time - note2.start_time
+    if note1_len != note2_len:
+      raise ABCParseError(
+          &#39;Cannot apply broken rhythm to two notes of different lengths&#39;)
+
+    time_adj = note1_len / (2 ** len(broken_rhythm))
+    if broken_rhythm[0] == &#39;&lt;&#39;:
+      note1.end_time -= time_adj
+      note2.start_time -= time_adj
+    elif broken_rhythm[0] == &#39;&gt;&#39;:
+      note1.end_time += time_adj
+      note2.start_time += time_adj
+    else:
+      raise ABCParseError(&#39;Could not parse broken rhythm token: {}&#39;.format(
+          broken_rhythm))
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#pitch
+  NOTE_PATTERN = re.compile(
+      r&#39;(__|_|=|\^|\^\^)?([A-Ga-g])([\&#39;,]*)(\d*/*\d*)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#chords_and_unisons
+  CHORD_PATTERN = re.compile(r&#39;\[(&#39; + NOTE_PATTERN.pattern + r&#39;)+\]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#broken_rhythm
+  BROKEN_RHYTHM_PATTERN = re.compile(r&#39;(&lt;+|&gt;+)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#use_of_fields_within_the_tune_body
+  INLINE_INFORMATION_FIELD_PATTERN = re.compile(r&#39;\[([A-Za-z]):\s*([^\]]+)\]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#repeat_bar_symbols
+
+  # Pattern for matching variant endings with an associated bar symbol.
+  BAR_AND_VARIANT_ENDINGS_PATTERN = re.compile(r&#39;(:*)[\[\]|]+\s*([0-9,-]+)&#39;)
+  # Pattern for matching repeat symbols with an associated bar symbol.
+  BAR_AND_REPEAT_SYMBOLS_PATTERN = re.compile(r&#39;(:*)([\[\]|]+)(:*)&#39;)
+  # Pattern for matching repeat symbols without an associated bar symbol.
+  REPEAT_SYMBOLS_PATTERN = re.compile(r&#39;(:+)&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+  # http://abcnotation.com/wiki/abc:standard:v2.1#annotations
+  TEXT_ANNOTATION_PATTERN = re.compile(r&#39;&#34;([^&#34;]*)&#34;&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+  DECORATION_PATTERN = re.compile(r&#39;[.~HLMOPSTuv]&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+  # Either an opening parenthesis (not followed by a digit, since that indicates
+  # a tuplet) or a closing parenthesis.
+  SLUR_PATTERN = re.compile(r&#39;\((?!\d)|\)&#39;)
+  TIE_PATTERN = re.compile(r&#39;-&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#duplets_triplets_quadruplets_etc
+  TUPLET_PATTERN = re.compile(r&#39;\(\d&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#typesetting_line-breaks
+  LINE_CONTINUATION_PATTERN = re.compile(r&#39;\\$&#39;)
+
+  def _parse_music_code(self, line):
+    &#34;&#34;&#34;Parse the music code within an ABC file.&#34;&#34;&#34;
+
+    # http://abcnotation.com/wiki/abc:standard:v2.1#the_tune_body
+    pos = 0
+    broken_rhythm = None
+    while pos &lt; len(line):
+      match = None
+      for regex in [
+          ABCTune.NOTE_PATTERN,
+          ABCTune.CHORD_PATTERN,
+          ABCTune.BROKEN_RHYTHM_PATTERN,
+          ABCTune.INLINE_INFORMATION_FIELD_PATTERN,
+          ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN,
+          ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN,
+          ABCTune.REPEAT_SYMBOLS_PATTERN,
+          ABCTune.TEXT_ANNOTATION_PATTERN,
+          ABCTune.DECORATION_PATTERN,
+          ABCTune.SLUR_PATTERN,
+          ABCTune.TIE_PATTERN,
+          ABCTune.TUPLET_PATTERN,
+          ABCTune.LINE_CONTINUATION_PATTERN]:
+        match = regex.match(line, pos)
+        if match:
+          break
+
+      if not match:
+        if not line[pos].isspace():
+          raise InvalidCharacterError(
+              &#39;Unexpected character: [{}]&#39;.format(line[pos].encode(&#39;utf-8&#39;)))
+        pos += 1
+        continue
+
+      pos = match.end()
+      if match.re == ABCTune.NOTE_PATTERN:
+        note = self._ns.notes.add()
+        note.velocity = self._current_velocity
+        note.start_time = self._current_time
+
+        note.pitch = ABCTune.ABC_NOTE_TO_MIDI[match.group(2)]
+        note_name = match.group(2).upper()
+
+        # Accidentals
+        if match.group(1):
+          pitch_change = 0
+          for accidental in match.group(1).split():
+            if accidental == &#39;^&#39;:
+              pitch_change += 1
+            elif accidental == &#39;_&#39;:
+              pitch_change -= 1
+            elif accidental == &#39;=&#39;:
+              pass
+            else:
+              raise ABCParseError(
+                  &#39;Invalid accidental: {}&#39;.format(accidental))
+          note.pitch += pitch_change
+          self._bar_accidentals[note_name] = pitch_change
+        elif note_name in self._bar_accidentals:
+          note.pitch += self._bar_accidentals[note_name]
+        else:
+          # No accidentals, so modify according to current key.
+          note.pitch += self._accidentals[note_name]
+
+        # Octaves
+        if match.group(3):
+          for octave in match.group(3):
+            if octave == &#39;\&#39;&#39;:
+              note.pitch += 12
+            elif octave == &#39;,&#39;:
+              note.pitch -= 12
+            else:
+              raise ABCParseError(&#39;Invalid octave: {}&#39;.format(octave))
+
+        if (note.pitch &lt; constants.MIN_MIDI_PITCH or
+            note.pitch &gt; constants.MAX_MIDI_PITCH):
+          raise ABCParseError(&#39;pitch {} is invalid&#39;.format(note.pitch))
+
+        # Note length
+        length = self._current_unit_note_length
+        # http://abcnotation.com/wiki/abc:standard:v2.1#note_lengths
+        if match.group(4):
+          slash_count = match.group(4).count(&#39;/&#39;)
+          if slash_count == len(match.group(4)):
+            # Handle A// shorthand case.
+            length /= 2 ** slash_count
+          elif match.group(4).startswith(&#39;/&#39;):
+            length /= int(match.group(4)[1:])
+          elif slash_count == 1:
+            fraction = match.group(4).split(&#39;/&#39;, 1)
+            # If no denominator is specified (e.g., &#34;3/&#34;), default to 2.
+            if not fraction[1]:
+              fraction[1] = 2
+            length *= Fraction(int(fraction[0]), int(fraction[1]))
+          elif slash_count == 0:
+            length *= int(match.group(4))
+          else:
+            raise ABCParseError(
+                &#39;Could not parse note length: {}&#39;.format(match.group(4)))
+
+        # Advance clock based on note length.
+        self._current_time += (1 / (self._qpm / 60)) * (length / Fraction(1, 4))
+
+        note.end_time = self._current_time
+
+        if broken_rhythm:
+          self._apply_broken_rhythm(broken_rhythm)
+          broken_rhythm = None
+      elif match.re == ABCTune.CHORD_PATTERN:
+        raise ChordError(&#39;Chords are not supported.&#39;)
+      elif match.re == ABCTune.BROKEN_RHYTHM_PATTERN:
+        if broken_rhythm:
+          raise ABCParseError(
+              &#39;Cannot specify a broken rhythm twice in a row.&#39;)
+        broken_rhythm = match.group(1)
+      elif match.re == ABCTune.INLINE_INFORMATION_FIELD_PATTERN:
+        self._parse_information_field(match.group(1), match.group(2))
+      elif match.re == ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN:
+        raise VariantEndingError(
+            &#39;Variant ending {} is not supported.&#39;.format(match.group(0)))
+      elif (match.re == ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN or
+            match.re == ABCTune.REPEAT_SYMBOLS_PATTERN):
+        if match.re == ABCTune.REPEAT_SYMBOLS_PATTERN:
+          colon_count = len(match.group(1))
+          if colon_count % 2 != 0:
+            raise RepeatParseError(
+                &#39;Colon-only repeats must be divisible by 2: {}&#39;.format(
+                    match.group(1)))
+          backward_repeats = forward_repeats = int((colon_count / 2) + 1)
+        elif match.re == ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN:
+          # We&#39;re in a new bar, so clear the bar-wise accidentals.
+          self._bar_accidentals.clear()
+
+          is_repeat = &#39;:&#39; in match.group(1) or match.group(3)
+          if not is_repeat:
+            if len(match.group(2)) &gt;= 2:
+              # This is a double bar that isn&#39;t a repeat.
+              if not self._current_expected_repeats and self._current_time &gt; 0:
+                # There was no previous forward repeat symbol.
+                # Add a new section so that if there is a backward repeat later
+                # on, it will repeat to this bar.
+                new_section_id = self._add_section(self._current_time)
+                if new_section_id is not None:
+                  sg = self._ns.section_groups.add()
+                  sg.sections.add(
+                      section_id=self._ns.section_annotations[-2].section_id)
+                  sg.num_times = 1
+
+            # If this isn&#39;t a repeat, no additional work to do.
+            continue
+
+          # Count colons on either side.
+          if match.group(1):
+            backward_repeats = len(match.group(1)) + 1
+          else:
+            backward_repeats = None
+
+          if match.group(3):
+            forward_repeats = len(match.group(3)) + 1
+          else:
+            forward_repeats = None
+        else:
+          raise ABCParseError(&#39;Unexpected regex. Should not happen.&#39;)
+
+        if (self._current_expected_repeats and
+            backward_repeats != self._current_expected_repeats):
+          raise RepeatParseError(
+              &#39;Mismatched forward/backward repeat symbols. &#39;
+              &#39;Expected {} but got {}.&#39;.format(
+                  self._current_expected_repeats, backward_repeats))
+
+        # A repeat implies the start of a new section, so make one.
+        new_section_id = self._add_section(self._current_time)
+
+        if backward_repeats:
+          if self._current_time == 0:
+            raise RepeatParseError(
+                &#39;Cannot have a backward repeat at time 0&#39;)
+          sg = self._ns.section_groups.add()
+          sg.sections.add(
+              section_id=self._ns.section_annotations[-2].section_id)
+          sg.num_times = backward_repeats
+        elif self._current_time &gt; 0 and new_section_id is not None:
+          # There were not backward repeats, but we still want to play the
+          # previous section once.
+          # If new_section_id is None (implying that a section at the current
+          # time was created elsewhere), this is not needed because it should
+          # have been done when the section was created.
+          sg = self._ns.section_groups.add()
+          sg.sections.add(
+              section_id=self._ns.section_annotations[-2].section_id)
+          sg.num_times = 1
+
+        self._current_expected_repeats = forward_repeats
+      elif match.re == ABCTune.TEXT_ANNOTATION_PATTERN:
+        # Text annotation
+        # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+        # http://abcnotation.com/wiki/abc:standard:v2.1#annotations
+        annotation = match.group(1)
+        ta = self._ns.text_annotations.add()
+        ta.time = self._current_time
+        ta.text = annotation
+        if annotation and annotation[0] in ABCTune.ABC_NOTE_TO_MIDI:
+          # http://abcnotation.com/wiki/abc:standard:v2.1#chord_symbols
+          ta.annotation_type = (
+              music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL)
+        else:
+          ta.annotation_type = (
+              music_pb2.NoteSequence.TextAnnotation.UNKNOWN)
+      elif match.re == ABCTune.DECORATION_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#decorations
+        # We don&#39;t currently do anything with decorations.
+        pass
+      elif match.re == ABCTune.SLUR_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+        # We don&#39;t currently do anything with slurs.
+        pass
+      elif match.re == ABCTune.TIE_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#ties_and_slurs
+        # We don&#39;t currently do anything with ties.
+        # TODO(fjord): Ideally, we would extend the duration of the previous
+        # note to include the duration of the next note.
+        pass
+      elif match.re == ABCTune.TUPLET_PATTERN:
+        raise TupletError(&#39;Tuplets are not supported.&#39;)
+      elif match.re == ABCTune.LINE_CONTINUATION_PATTERN:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#typesetting_line-breaks
+        # Line continuations are only for typesetting, so we can ignore them.
+        pass
+      else:
+        raise ABCParseError(&#39;Unknown regex match!&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  KEY_PATTERN = re.compile(
+      r&#39;([A-G])\s*([#b]?)\s*&#39;
+      r&#39;((?:(?:maj|ion|min|aeo|mix|dor|phr|lyd|loc|m)[^ ]*)?)&#39;,
+      re.IGNORECASE)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  KEY_ACCIDENTALS_PATTERN = re.compile(r&#39;(__|_|=|\^|\^\^)?([A-Ga-g])&#39;)
+
+  @staticmethod
+  def parse_key(key):
+    &#34;&#34;&#34;Parse an ABC key string.&#34;&#34;&#34;
+
+    # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+    key_match = ABCTune.KEY_PATTERN.match(key)
+    if not key_match:
+      raise ABCParseError(&#39;Could not parse key: {}&#39;.format(key))
+
+    key_components = list(key_match.groups())
+
+    # Shorten the mode to be at most 3 letters long.
+    mode = key_components[2][:3].lower()
+
+    # &#34;Minor&#34; and &#34;Aeolian&#34; are special cases that are abbreviated to &#39;m&#39;.
+    # &#34;Major&#34; and &#34;Ionian&#34; are special cases that are abbreviated to &#39;&#39;.
+    if mode in (&#39;min&#39;, &#39;aeo&#39;):
+      mode = &#39;m&#39;
+    elif mode in (&#39;maj&#39;, &#39;ion&#39;):
+      mode = &#39;&#39;
+
+    sig = ABCTune.KEY_TO_SIG[&#39;&#39;.join(key_components[0:2] + [mode]).lower()]
+
+    proto_key = ABCTune.KEY_TO_PROTO_KEY[&#39;&#39;.join(key_components[0:2]).lower()]
+
+    if mode == &#39;&#39;:  # pylint: disable=g-explicit-bool-comparison
+      proto_mode = music_pb2.NoteSequence.KeySignature.MAJOR
+    elif mode == &#39;m&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.MINOR
+    elif mode == &#39;mix&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.MIXOLYDIAN
+    elif mode == &#39;dor&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.DORIAN
+    elif mode == &#39;phr&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.PHRYGIAN
+    elif mode == &#39;lyd&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.LYDIAN
+    elif mode == &#39;loc&#39;:
+      proto_mode = music_pb2.NoteSequence.KeySignature.LOCRIAN
+    else:
+      raise ABCParseError(&#39;Unknown mode: {}&#39;.format(mode))
+
+    # Match the rest of the string for possible modifications.
+    pos = key_match.end()
+    exppos = key[pos:].find(&#39;exp&#39;)
+    if exppos != -1:
+      # Only explicit accidentals will be used.
+      accidentals = ABCTune._sig_to_accidentals(0)
+      pos += exppos + 3
+    else:
+      accidentals = ABCTune._sig_to_accidentals(sig)
+
+    while pos &lt; len(key):
+      note_match = ABCTune.KEY_ACCIDENTALS_PATTERN.match(key, pos)
+      if note_match:
+        pos += len(note_match.group(0))
+
+        note = note_match.group(2).upper()
+        if note_match.group(1):
+          if note_match.group(1) == &#39;^&#39;:
+            accidentals[note] = 1
+          elif note_match.group(1) == &#39;_&#39;:
+            accidentals[note] = -1
+          elif note_match.group(1) == &#39;=&#39;:
+            accidentals[note] = 0
+          else:
+            raise ABCParseError(
+                &#39;Invalid accidental: {}&#39;.format(note_match.group(1)))
+      else:
+        pos += 1
+
+    return accidentals, proto_key, proto_mode
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#outdated_information_field_syntax
+  # This syntax is deprecated but must still be supported.
+  TEMPO_DEPRECATED_PATTERN = re.compile(r&#39;C?\s*=?\s*(\d+)$&#39;)
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#qtempo
+  TEMPO_PATTERN = re.compile(r&#39;(?:&#34;[^&#34;]*&#34;)?\s*((?:\d+/\d+\s*)+)\s*=\s*(\d+)&#39;)
+  TEMPO_PATTERN_STRING_ONLY = re.compile(r&#39;&#34;([^&#34;]*)&#34;$&#39;)
+
+  def _parse_information_field(self, field_name, field_content):
+    &#34;&#34;&#34;Parses information field.&#34;&#34;&#34;
+    # http://abcnotation.com/wiki/abc:standard:v2.1#information_fields
+    if field_name == &#39;A&#39;:
+      pass
+    elif field_name == &#39;B&#39;:
+      pass
+    elif field_name == &#39;C&#39;:
+      # Composer
+      # http://abcnotation.com/wiki/abc:standard:v2.1#ccomposer
+      self._ns.sequence_metadata.composers.append(field_content)
+
+      # The first composer will be set as the primary artist.
+      if not self._ns.sequence_metadata.artist:
+        self._ns.sequence_metadata.artist = field_content
+    elif field_name == &#39;D&#39;:
+      pass
+    elif field_name == &#39;F&#39;:
+      pass
+    elif field_name == &#39;G&#39;:
+      pass
+    elif field_name == &#39;H&#39;:
+      pass
+    elif field_name == &#39;I&#39;:
+      pass
+    elif field_name == &#39;K&#39;:
+      # Key
+      # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+      accidentals, proto_key, proto_mode = ABCTune.parse_key(field_content)
+      self._accidentals = accidentals
+      ks = self._ns.key_signatures.add()
+      ks.key = proto_key
+      ks.mode = proto_mode
+      ks.time = self._current_time
+    elif field_name == &#39;L&#39;:
+      # Unit note length
+      # http://abcnotation.com/wiki/abc:standard:v2.1#lunit_note_length
+      length = field_content.split(&#39;/&#39;, 1)
+
+      # Handle the case of L:1 being equivalent to L:1/1
+      if len(length) &lt; 2:
+        length.append(&#39;1&#39;)
+
+      try:
+        numerator = int(length[0])
+        denominator = int(length[1])
+      except ValueError as e:
+        raise ABCParseError(
+            e, &#39;Could not parse unit note length: {}&#39;.format(field_content))
+
+      self._current_unit_note_length = Fraction(numerator, denominator)
+    elif field_name == &#39;M&#39;:
+      # Meter
+      # http://abcnotation.com/wiki/abc:standard:v2.1#mmeter
+      if field_content.upper() == &#39;C&#39;:
+        ts = self._ns.time_signatures.add()
+        ts.numerator = 4
+        ts.denominator = 4
+        ts.time = self._current_time
+      elif field_content.upper() == &#39;C|&#39;:
+        ts = self._ns.time_signatures.add()
+        ts.numerator = 2
+        ts.denominator = 2
+        ts.time = self._current_time
+      elif field_content.lower() == &#39;none&#39;:
+        pass
+      else:
+        timesig = field_content.split(&#39;/&#39;, 1)
+        if len(timesig) != 2:
+          raise ABCParseError(&#39;Could not parse meter: {}&#39;.format(field_content))
+
+        ts = self._ns.time_signatures.add()
+        ts.time = self._current_time
+        try:
+          ts.numerator = int(timesig[0])
+          ts.denominator = int(timesig[1])
+        except ValueError as e:
+          raise ABCParseError(
+              e, &#39;Could not parse meter: {}&#39;.format(field_content))
+    elif field_name == &#39;m&#39;:
+      pass
+    elif field_name == &#39;N&#39;:
+      pass
+    elif field_name == &#39;O&#39;:
+      pass
+    elif field_name == &#39;P&#39;:
+      # TODO(fjord): implement part parsing.
+      raise PartError(&#39;ABC parts are not yet supported.&#39;)
+    elif field_name == &#39;Q&#39;:
+      # Tempo
+      # http://abcnotation.com/wiki/abc:standard:v2.1#qtempo
+
+      tempo_match = ABCTune.TEMPO_PATTERN.match(field_content)
+      deprecated_tempo_match = ABCTune.TEMPO_DEPRECATED_PATTERN.match(
+          field_content)
+      tempo_string_only_match = ABCTune.TEMPO_PATTERN_STRING_ONLY.match(
+          field_content)
+      if tempo_match:
+        tempo_rate = int(tempo_match.group(2))
+        tempo_unit = Fraction(0)
+        for beat in tempo_match.group(1).split():
+          tempo_unit += Fraction(beat)
+      elif deprecated_tempo_match:
+        # http://abcnotation.com/wiki/abc:standard:v2.1#outdated_information_field_syntax
+        # In the deprecated syntax, the tempo is interpreted based on the unit
+        # note length, which is potentially dependent on the current meter.
+        # Set tempo_unit to None for now, and the current unit note length will
+        # be filled in later.
+        tempo_unit = None
+        tempo_rate = int(deprecated_tempo_match.group(1))
+      elif tempo_string_only_match:
+        logging.warning(&#39;Ignoring string-only tempo marking: %s&#39;, field_content)
+        return
+      else:
+        raise ABCParseError(&#39;Could not parse tempo: {}&#39;.format(field_content))
+
+      if self._in_header:
+        # If we&#39;re in the header, save these until we&#39;ve finished parsing the
+        # header. The deprecated syntax relies on the unit note length and
+        # meter, which may not be set yet. At the end of the header, we&#39;ll fill
+        # in the necessary information and add these.
+        self._header_tempo_unit = tempo_unit
+        self._header_tempo_rate = tempo_rate
+      else:
+        self._add_tempo(tempo_unit, tempo_rate)
+    elif field_name == &#39;R&#39;:
+      pass
+    elif field_name == &#39;r&#39;:
+      pass
+    elif field_name == &#39;S&#39;:
+      pass
+    elif field_name == &#39;s&#39;:
+      pass
+    elif field_name == &#39;T&#39;:
+      # Title
+      # http://abcnotation.com/wiki/abc:standard:v2.1#ttune_title
+
+      if not self._in_header:
+        # TODO(fjord): Non-header titles are used to name parts of tunes, but
+        # NoteSequence doesn&#39;t currently have any place to put that information.
+        logging.warning(&#39;Ignoring non-header title: %s&#39;, field_content)
+        return
+
+      # If there are multiple titles, separate them with semicolons.
+      if self._ns.sequence_metadata.title:
+        self._ns.sequence_metadata.title += &#39;; &#39; + field_content
+      else:
+        self._ns.sequence_metadata.title = field_content
+    elif field_name == &#39;U&#39;:
+      pass
+    elif field_name == &#39;V&#39;:
+      raise MultiVoiceError(&#39;Multi-voice files are not currently supported.&#39;)
+    elif field_name == &#39;W&#39;:
+      pass
+    elif field_name == &#39;w&#39;:
+      pass
+    elif field_name == &#39;X&#39;:
+      # Reference number
+      # http://abcnotation.com/wiki/abc:standard:v2.1#xreference_number
+      self._ns.reference_number = int(field_content)
+    elif field_name == &#39;Z&#39;:
+      pass
+    else:
+      logging.warning(
+          &#39;Unknown field name %s with content %s&#39;, field_name, field_content)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.abc_parser.ABCTune.ABC_NOTE_TO_MIDI"><code class="name">var <span class="ident">ABC_NOTE_TO_MIDI</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN"><code class="name">var <span class="ident">BAR_AND_REPEAT_SYMBOLS_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN"><code class="name">var <span class="ident">BAR_AND_VARIANT_ENDINGS_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.BROKEN_RHYTHM_PATTERN"><code class="name">var <span class="ident">BROKEN_RHYTHM_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.CHORD_PATTERN"><code class="name">var <span class="ident">CHORD_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.DECORATION_PATTERN"><code class="name">var <span class="ident">DECORATION_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.DECORATION_TO_VELOCITY"><code class="name">var <span class="ident">DECORATION_TO_VELOCITY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.FLATS_ORDER"><code class="name">var <span class="ident">FLATS_ORDER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.INFORMATION_FIELD_PATTERN"><code class="name">var <span class="ident">INFORMATION_FIELD_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.INLINE_INFORMATION_FIELD_PATTERN"><code class="name">var <span class="ident">INLINE_INFORMATION_FIELD_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.KEY_ACCIDENTALS_PATTERN"><code class="name">var <span class="ident">KEY_ACCIDENTALS_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.KEY_PATTERN"><code class="name">var <span class="ident">KEY_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.KEY_TO_PROTO_KEY"><code class="name">var <span class="ident">KEY_TO_PROTO_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.KEY_TO_SIG"><code class="name">var <span class="ident">KEY_TO_SIG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.LINE_CONTINUATION_PATTERN"><code class="name">var <span class="ident">LINE_CONTINUATION_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.NOTE_PATTERN"><code class="name">var <span class="ident">NOTE_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.REPEAT_SYMBOLS_PATTERN"><code class="name">var <span class="ident">REPEAT_SYMBOLS_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.SHARPS_ORDER"><code class="name">var <span class="ident">SHARPS_ORDER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.SIG_TO_KEYS"><code class="name">var <span class="ident">SIG_TO_KEYS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.SLUR_PATTERN"><code class="name">var <span class="ident">SLUR_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TEMPO_DEPRECATED_PATTERN"><code class="name">var <span class="ident">TEMPO_DEPRECATED_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TEMPO_PATTERN"><code class="name">var <span class="ident">TEMPO_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TEMPO_PATTERN_STRING_ONLY"><code class="name">var <span class="ident">TEMPO_PATTERN_STRING_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TEXT_ANNOTATION_PATTERN"><code class="name">var <span class="ident">TEXT_ANNOTATION_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TIE_PATTERN"><code class="name">var <span class="ident">TIE_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.TUPLET_PATTERN"><code class="name">var <span class="ident">TUPLET_PATTERN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.key"><code class="name">var <span class="ident">key</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.keys"><code class="name">var <span class="ident">keys</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.abc_parser.ABCTune.sig"><code class="name">var <span class="ident">sig</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="note_seq.abc_parser.ABCTune.parse_key"><code class="name flex">
+<span>def <span class="ident">parse_key</span></span>(<span>key)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse an ABC key string.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def parse_key(key):
+  &#34;&#34;&#34;Parse an ABC key string.&#34;&#34;&#34;
+
+  # http://abcnotation.com/wiki/abc:standard:v2.1#kkey
+  key_match = ABCTune.KEY_PATTERN.match(key)
+  if not key_match:
+    raise ABCParseError(&#39;Could not parse key: {}&#39;.format(key))
+
+  key_components = list(key_match.groups())
+
+  # Shorten the mode to be at most 3 letters long.
+  mode = key_components[2][:3].lower()
+
+  # &#34;Minor&#34; and &#34;Aeolian&#34; are special cases that are abbreviated to &#39;m&#39;.
+  # &#34;Major&#34; and &#34;Ionian&#34; are special cases that are abbreviated to &#39;&#39;.
+  if mode in (&#39;min&#39;, &#39;aeo&#39;):
+    mode = &#39;m&#39;
+  elif mode in (&#39;maj&#39;, &#39;ion&#39;):
+    mode = &#39;&#39;
+
+  sig = ABCTune.KEY_TO_SIG[&#39;&#39;.join(key_components[0:2] + [mode]).lower()]
+
+  proto_key = ABCTune.KEY_TO_PROTO_KEY[&#39;&#39;.join(key_components[0:2]).lower()]
+
+  if mode == &#39;&#39;:  # pylint: disable=g-explicit-bool-comparison
+    proto_mode = music_pb2.NoteSequence.KeySignature.MAJOR
+  elif mode == &#39;m&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.MINOR
+  elif mode == &#39;mix&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.MIXOLYDIAN
+  elif mode == &#39;dor&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.DORIAN
+  elif mode == &#39;phr&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.PHRYGIAN
+  elif mode == &#39;lyd&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.LYDIAN
+  elif mode == &#39;loc&#39;:
+    proto_mode = music_pb2.NoteSequence.KeySignature.LOCRIAN
+  else:
+    raise ABCParseError(&#39;Unknown mode: {}&#39;.format(mode))
+
+  # Match the rest of the string for possible modifications.
+  pos = key_match.end()
+  exppos = key[pos:].find(&#39;exp&#39;)
+  if exppos != -1:
+    # Only explicit accidentals will be used.
+    accidentals = ABCTune._sig_to_accidentals(0)
+    pos += exppos + 3
+  else:
+    accidentals = ABCTune._sig_to_accidentals(sig)
+
+  while pos &lt; len(key):
+    note_match = ABCTune.KEY_ACCIDENTALS_PATTERN.match(key, pos)
+    if note_match:
+      pos += len(note_match.group(0))
+
+      note = note_match.group(2).upper()
+      if note_match.group(1):
+        if note_match.group(1) == &#39;^&#39;:
+          accidentals[note] = 1
+        elif note_match.group(1) == &#39;_&#39;:
+          accidentals[note] = -1
+        elif note_match.group(1) == &#39;=&#39;:
+          accidentals[note] = 0
+        else:
+          raise ABCParseError(
+              &#39;Invalid accidental: {}&#39;.format(note_match.group(1)))
+    else:
+      pos += 1
+
+  return accidentals, proto_key, proto_mode</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.abc_parser.ABCTune.note_sequence"><code class="name">var <span class="ident">note_sequence</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def note_sequence(self):
+  return self._ns</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.abc_parser.ChordError"><code class="flex name class">
+<span>class <span class="ident">ChordError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Chords are not supported.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChordError(ABCParseError):
+  &#34;&#34;&#34;Chords are not supported.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.DuplicateReferenceNumberError"><code class="flex name class">
+<span>class <span class="ident">DuplicateReferenceNumberError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Found duplicate reference numbers.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DuplicateReferenceNumberError(ABCParseError):
+  &#34;&#34;&#34;Found duplicate reference numbers.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.InvalidCharacterError"><code class="flex name class">
+<span>class <span class="ident">InvalidCharacterError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Invalid character.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InvalidCharacterError(ABCParseError):
+  &#34;&#34;&#34;Invalid character.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.MultiVoiceError"><code class="flex name class">
+<span>class <span class="ident">MultiVoiceError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception when a multi-voice directive is encountered.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultiVoiceError(ABCParseError):
+  &#34;&#34;&#34;Exception when a multi-voice directive is encountered.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.PartError"><code class="flex name class">
+<span>class <span class="ident">PartError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ABC Parts are not yet supported.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PartError(ABCParseError):
+  &#34;&#34;&#34;ABC Parts are not yet supported.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.RepeatParseError"><code class="flex name class">
+<span>class <span class="ident">RepeatParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception when a repeat directive could not be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RepeatParseError(ABCParseError):
+  &#34;&#34;&#34;Exception when a repeat directive could not be parsed.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.TupletError"><code class="flex name class">
+<span>class <span class="ident">TupletError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tuplets are not supported.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TupletError(ABCParseError):
+  &#34;&#34;&#34;Tuplets are not supported.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.abc_parser.VariantEndingError"><code class="flex name class">
+<span>class <span class="ident">VariantEndingError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Variant endings are not yet supported.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VariantEndingError(ABCParseError):
+  &#34;&#34;&#34;Variant endings are not yet supported.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="note_seq.abc_parser.parse_abc_tunebook" href="#note_seq.abc_parser.parse_abc_tunebook">parse_abc_tunebook</a></code></li>
+<li><code><a title="note_seq.abc_parser.parse_abc_tunebook_file" href="#note_seq.abc_parser.parse_abc_tunebook_file">parse_abc_tunebook_file</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.abc_parser.ABCParseError" href="#note_seq.abc_parser.ABCParseError">ABCParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.ABCTune" href="#note_seq.abc_parser.ABCTune">ABCTune</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.abc_parser.ABCTune.ABC_NOTE_TO_MIDI" href="#note_seq.abc_parser.ABCTune.ABC_NOTE_TO_MIDI">ABC_NOTE_TO_MIDI</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN" href="#note_seq.abc_parser.ABCTune.BAR_AND_REPEAT_SYMBOLS_PATTERN">BAR_AND_REPEAT_SYMBOLS_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN" href="#note_seq.abc_parser.ABCTune.BAR_AND_VARIANT_ENDINGS_PATTERN">BAR_AND_VARIANT_ENDINGS_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.BROKEN_RHYTHM_PATTERN" href="#note_seq.abc_parser.ABCTune.BROKEN_RHYTHM_PATTERN">BROKEN_RHYTHM_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.CHORD_PATTERN" href="#note_seq.abc_parser.ABCTune.CHORD_PATTERN">CHORD_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.DECORATION_PATTERN" href="#note_seq.abc_parser.ABCTune.DECORATION_PATTERN">DECORATION_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.DECORATION_TO_VELOCITY" href="#note_seq.abc_parser.ABCTune.DECORATION_TO_VELOCITY">DECORATION_TO_VELOCITY</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.FLATS_ORDER" href="#note_seq.abc_parser.ABCTune.FLATS_ORDER">FLATS_ORDER</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.INFORMATION_FIELD_PATTERN" href="#note_seq.abc_parser.ABCTune.INFORMATION_FIELD_PATTERN">INFORMATION_FIELD_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.INLINE_INFORMATION_FIELD_PATTERN" href="#note_seq.abc_parser.ABCTune.INLINE_INFORMATION_FIELD_PATTERN">INLINE_INFORMATION_FIELD_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.KEY_ACCIDENTALS_PATTERN" href="#note_seq.abc_parser.ABCTune.KEY_ACCIDENTALS_PATTERN">KEY_ACCIDENTALS_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.KEY_PATTERN" href="#note_seq.abc_parser.ABCTune.KEY_PATTERN">KEY_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.KEY_TO_PROTO_KEY" href="#note_seq.abc_parser.ABCTune.KEY_TO_PROTO_KEY">KEY_TO_PROTO_KEY</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.KEY_TO_SIG" href="#note_seq.abc_parser.ABCTune.KEY_TO_SIG">KEY_TO_SIG</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.LINE_CONTINUATION_PATTERN" href="#note_seq.abc_parser.ABCTune.LINE_CONTINUATION_PATTERN">LINE_CONTINUATION_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.NOTE_PATTERN" href="#note_seq.abc_parser.ABCTune.NOTE_PATTERN">NOTE_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.REPEAT_SYMBOLS_PATTERN" href="#note_seq.abc_parser.ABCTune.REPEAT_SYMBOLS_PATTERN">REPEAT_SYMBOLS_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.SHARPS_ORDER" href="#note_seq.abc_parser.ABCTune.SHARPS_ORDER">SHARPS_ORDER</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.SIG_TO_KEYS" href="#note_seq.abc_parser.ABCTune.SIG_TO_KEYS">SIG_TO_KEYS</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.SLUR_PATTERN" href="#note_seq.abc_parser.ABCTune.SLUR_PATTERN">SLUR_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TEMPO_DEPRECATED_PATTERN" href="#note_seq.abc_parser.ABCTune.TEMPO_DEPRECATED_PATTERN">TEMPO_DEPRECATED_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TEMPO_PATTERN" href="#note_seq.abc_parser.ABCTune.TEMPO_PATTERN">TEMPO_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TEMPO_PATTERN_STRING_ONLY" href="#note_seq.abc_parser.ABCTune.TEMPO_PATTERN_STRING_ONLY">TEMPO_PATTERN_STRING_ONLY</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TEXT_ANNOTATION_PATTERN" href="#note_seq.abc_parser.ABCTune.TEXT_ANNOTATION_PATTERN">TEXT_ANNOTATION_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TIE_PATTERN" href="#note_seq.abc_parser.ABCTune.TIE_PATTERN">TIE_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.TUPLET_PATTERN" href="#note_seq.abc_parser.ABCTune.TUPLET_PATTERN">TUPLET_PATTERN</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.key" href="#note_seq.abc_parser.ABCTune.key">key</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.keys" href="#note_seq.abc_parser.ABCTune.keys">keys</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.note_sequence" href="#note_seq.abc_parser.ABCTune.note_sequence">note_sequence</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.parse_key" href="#note_seq.abc_parser.ABCTune.parse_key">parse_key</a></code></li>
+<li><code><a title="note_seq.abc_parser.ABCTune.sig" href="#note_seq.abc_parser.ABCTune.sig">sig</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.ChordError" href="#note_seq.abc_parser.ChordError">ChordError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.DuplicateReferenceNumberError" href="#note_seq.abc_parser.DuplicateReferenceNumberError">DuplicateReferenceNumberError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.InvalidCharacterError" href="#note_seq.abc_parser.InvalidCharacterError">InvalidCharacterError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.MultiVoiceError" href="#note_seq.abc_parser.MultiVoiceError">MultiVoiceError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.PartError" href="#note_seq.abc_parser.PartError">PartError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.RepeatParseError" href="#note_seq.abc_parser.RepeatParseError">RepeatParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.TupletError" href="#note_seq.abc_parser.TupletError">TupletError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.abc_parser.VariantEndingError" href="#note_seq.abc_parser.VariantEndingError">VariantEndingError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.notebook_utils API documentation</title>
+<meta name="description" content="Python functions which run only within a Jupyter or Colab notebook." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.notebook_utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Python functions which run only within a Jupyter or Colab notebook.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Lint as: python3
+&#34;&#34;&#34;Python functions which run only within a Jupyter or Colab notebook.&#34;&#34;&#34;
+
+import base64
+import collections
+import functools
+import io
+import os
+import urllib
+
+import bokeh
+import bokeh.plotting
+from IPython import display
+from note_seq import midi_synth
+import numpy as np
+import pandas as pd
+from scipy.io import wavfile
+
+makedirs = functools.partial(os.makedirs, exist_ok=True)
+
+
+_DEFAULT_SAMPLE_RATE = 44100
+_play_id = 0  # Used for ephemeral colab_play.
+
+
+def colab_play(array_of_floats, sample_rate, ephemeral=True, autoplay=False):
+  &#34;&#34;&#34;Creates an HTML5 audio widget to play a sound in Colab.
+
+  This function should only be called from a Colab notebook.
+
+  Args:
+    array_of_floats: A 1D or 2D array-like container of float sound
+      samples. Values outside of the range [-1, 1] will be clipped.
+    sample_rate: Sample rate in samples per second.
+    ephemeral: If set to True, the widget will be ephemeral, and disappear
+      on reload (and it won&#39;t be counted against realtime document size).
+    autoplay: If True, automatically start playing the sound when the
+      widget is rendered.
+  &#34;&#34;&#34;
+  from google.colab.output import _js_builder as js  # pylint:disable=import-outside-toplevel,g-import-not-at-top,protected-access
+
+  normalizer = float(np.iinfo(np.int16).max)
+  array_of_ints = np.array(
+      np.asarray(array_of_floats) * normalizer, dtype=np.int16)
+  memfile = io.BytesIO()
+  wavfile.write(memfile, sample_rate, array_of_ints)
+  html = &#34;&#34;&#34;&lt;audio controls {autoplay}&gt;
+              &lt;source controls src=&#34;data:audio/wav;base64,{base64_wavfile}&#34;
+              type=&#34;audio/wav&#34; /&gt;
+              Your browser does not support the audio element.
+            &lt;/audio&gt;&#34;&#34;&#34;
+  html = html.format(
+      autoplay=&#39;autoplay&#39; if autoplay else &#39;&#39;,
+      base64_wavfile=base64.b64encode(memfile.getvalue()).decode(&#39;ascii&#39;))
+  memfile.close()
+  global _play_id
+  _play_id += 1
+  if ephemeral:
+    element = &#39;id_%s&#39; % _play_id
+    display.display(display.HTML(&#39;&lt;div id=&#34;%s&#34;&gt; &lt;/div&gt;&#39; % element))
+    js.Js(&#39;document&#39;, mode=js.EVAL).getElementById(element).innerHTML = html
+  else:
+    display.display(display.HTML(html))
+
+
+def play_sequence(sequence,
+                  synth=midi_synth.synthesize,
+                  sample_rate=_DEFAULT_SAMPLE_RATE,
+                  colab_ephemeral=True,
+                  **synth_args):
+  &#34;&#34;&#34;Creates an interactive player for a synthesized note sequence.
+
+  This function should only be called from a Jupyter or Colab notebook.
+
+  Args:
+    sequence: A music_pb2.NoteSequence to synthesize and play.
+    synth: A synthesis function that takes a sequence and sample rate as input.
+    sample_rate: The sample rate at which to synthesize.
+    colab_ephemeral: If set to True, the widget will be ephemeral in Colab, and
+      disappear on reload (and it won&#39;t be counted against realtime document
+      size).
+    **synth_args: Additional keyword arguments to pass to the synth function.
+  &#34;&#34;&#34;
+  array_of_floats = synth(sequence, sample_rate=sample_rate, **synth_args)
+
+  try:
+    import google.colab  # pylint:disable=import-outside-toplevel,g-import-not-at-top,unused-import
+    colab_play(array_of_floats, sample_rate, colab_ephemeral)
+  except ImportError:
+    display.display(display.Audio(array_of_floats, rate=sample_rate))
+
+
+def plot_sequence(sequence, show_figure=True):
+  &#34;&#34;&#34;Creates an interactive pianoroll for a NoteSequence.
+
+  Example usage: plot a random melody.
+    sequence = mm.Melody(np.random.randint(36, 72, 30)).to_sequence()
+    bokeh_pianoroll(sequence)
+
+  Args:
+     sequence: A NoteSequence.
+     show_figure: A boolean indicating whether or not to show the figure.
+
+  Returns:
+     If show_figure is False, a Bokeh figure; otherwise None.
+  &#34;&#34;&#34;
+
+  def _sequence_to_pandas_dataframe(sequence):
+    &#34;&#34;&#34;Generates a pandas dataframe from a sequence.&#34;&#34;&#34;
+    pd_dict = collections.defaultdict(list)
+    for note in sequence.notes:
+      pd_dict[&#39;start_time&#39;].append(note.start_time)
+      pd_dict[&#39;end_time&#39;].append(note.end_time)
+      pd_dict[&#39;duration&#39;].append(note.end_time - note.start_time)
+      pd_dict[&#39;pitch&#39;].append(note.pitch)
+      pd_dict[&#39;bottom&#39;].append(note.pitch - 0.4)
+      pd_dict[&#39;top&#39;].append(note.pitch + 0.4)
+      pd_dict[&#39;velocity&#39;].append(note.velocity)
+      pd_dict[&#39;fill_alpha&#39;].append(note.velocity / 128.0)
+      pd_dict[&#39;instrument&#39;].append(note.instrument)
+      pd_dict[&#39;program&#39;].append(note.program)
+
+    # If no velocity differences are found, set alpha to 1.0.
+    if np.max(pd_dict[&#39;velocity&#39;]) == np.min(pd_dict[&#39;velocity&#39;]):
+      pd_dict[&#39;fill_alpha&#39;] = [1.0] * len(pd_dict[&#39;fill_alpha&#39;])
+
+    return pd.DataFrame(pd_dict)
+
+  # These are hard-coded reasonable values, but the user can override them
+  # by updating the figure if need be.
+  fig = bokeh.plotting.figure(
+      tools=&#39;hover,pan,box_zoom,reset,save&#39;)
+  fig.plot_width = 500
+  fig.plot_height = 200
+  fig.xaxis.axis_label = &#39;time (sec)&#39;
+  fig.yaxis.axis_label = &#39;pitch (MIDI)&#39;
+  fig.yaxis.ticker = bokeh.models.SingleIntervalTicker(interval=12)
+  fig.ygrid.ticker = bokeh.models.SingleIntervalTicker(interval=12)
+  # Pick indexes that are maximally different in Spectral8 colormap.
+  spectral_color_indexes = [7, 0, 6, 1, 5, 2, 3]
+
+  # Create a Pandas dataframe and group it by instrument.
+  dataframe = _sequence_to_pandas_dataframe(sequence)
+  instruments = sorted(set(dataframe[&#39;instrument&#39;]))
+  grouped_dataframe = dataframe.groupby(&#39;instrument&#39;)
+  for counter, instrument in enumerate(instruments):
+    instrument_df = grouped_dataframe.get_group(instrument)
+    color_idx = spectral_color_indexes[counter % len(spectral_color_indexes)]
+    color = bokeh.palettes.Spectral8[color_idx]
+    source = bokeh.plotting.ColumnDataSource(instrument_df)
+    fig.quad(top=&#39;top&#39;, bottom=&#39;bottom&#39;, left=&#39;start_time&#39;, right=&#39;end_time&#39;,
+             line_color=&#39;black&#39;, fill_color=color,
+             fill_alpha=&#39;fill_alpha&#39;, source=source)
+  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = (
+      {&#39;pitch&#39;: &#39;@pitch&#39;,
+       &#39;program&#39;: &#39;@program&#39;,
+       &#39;velo&#39;: &#39;@velocity&#39;,
+       &#39;duration&#39;: &#39;@duration&#39;,
+       &#39;start_time&#39;: &#39;@start_time&#39;,
+       &#39;end_time&#39;: &#39;@end_time&#39;,
+       &#39;velocity&#39;: &#39;@velocity&#39;,
+       &#39;fill_alpha&#39;: &#39;@fill_alpha&#39;})
+
+  if show_figure:
+    bokeh.plotting.output_notebook()
+    bokeh.plotting.show(fig)
+    return None
+  return fig
+
+
+def download_bundle(bundle_name, target_dir, force_reload=False):
+  &#34;&#34;&#34;Downloads a Magenta bundle to target directory.
+
+  Target directory target_dir will be created if it does not already exist.
+
+  Args:
+     bundle_name: A string Magenta bundle name to download.
+     target_dir: A string local directory in which to write the bundle.
+     force_reload: A boolean that when True, reloads the bundle even if present.
+  &#34;&#34;&#34;
+  makedirs(target_dir)
+  bundle_target = os.path.join(target_dir, bundle_name)
+  if not os.path.exists(bundle_target) or force_reload:
+    response = urllib.request.urlopen(
+        &#39;http://download.magenta.tensorflow.org/models/%s&#39; % bundle_name)
+    data = response.read()
+    local_file = open(bundle_target, &#39;wb&#39;)
+    local_file.write(data)
+    local_file.close()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="note_seq.notebook_utils.colab_play"><code class="name flex">
+<span>def <span class="ident">colab_play</span></span>(<span>array_of_floats, sample_rate, ephemeral=True, autoplay=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an HTML5 audio widget to play a sound in Colab.</p>
+<p>This function should only be called from a Colab notebook.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>array_of_floats</code></strong></dt>
+<dd>A 1D or 2D array-like container of float sound
+samples. Values outside of the range [-1, 1] will be clipped.</dd>
+<dt><strong><code>sample_rate</code></strong></dt>
+<dd>Sample rate in samples per second.</dd>
+<dt><strong><code>ephemeral</code></strong></dt>
+<dd>If set to True, the widget will be ephemeral, and disappear
+on reload (and it won't be counted against realtime document size).</dd>
+<dt><strong><code>autoplay</code></strong></dt>
+<dd>If True, automatically start playing the sound when the
+widget is rendered.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def colab_play(array_of_floats, sample_rate, ephemeral=True, autoplay=False):
+  &#34;&#34;&#34;Creates an HTML5 audio widget to play a sound in Colab.
+
+  This function should only be called from a Colab notebook.
+
+  Args:
+    array_of_floats: A 1D or 2D array-like container of float sound
+      samples. Values outside of the range [-1, 1] will be clipped.
+    sample_rate: Sample rate in samples per second.
+    ephemeral: If set to True, the widget will be ephemeral, and disappear
+      on reload (and it won&#39;t be counted against realtime document size).
+    autoplay: If True, automatically start playing the sound when the
+      widget is rendered.
+  &#34;&#34;&#34;
+  from google.colab.output import _js_builder as js  # pylint:disable=import-outside-toplevel,g-import-not-at-top,protected-access
+
+  normalizer = float(np.iinfo(np.int16).max)
+  array_of_ints = np.array(
+      np.asarray(array_of_floats) * normalizer, dtype=np.int16)
+  memfile = io.BytesIO()
+  wavfile.write(memfile, sample_rate, array_of_ints)
+  html = &#34;&#34;&#34;&lt;audio controls {autoplay}&gt;
+              &lt;source controls src=&#34;data:audio/wav;base64,{base64_wavfile}&#34;
+              type=&#34;audio/wav&#34; /&gt;
+              Your browser does not support the audio element.
+            &lt;/audio&gt;&#34;&#34;&#34;
+  html = html.format(
+      autoplay=&#39;autoplay&#39; if autoplay else &#39;&#39;,
+      base64_wavfile=base64.b64encode(memfile.getvalue()).decode(&#39;ascii&#39;))
+  memfile.close()
+  global _play_id
+  _play_id += 1
+  if ephemeral:
+    element = &#39;id_%s&#39; % _play_id
+    display.display(display.HTML(&#39;&lt;div id=&#34;%s&#34;&gt; &lt;/div&gt;&#39; % element))
+    js.Js(&#39;document&#39;, mode=js.EVAL).getElementById(element).innerHTML = html
+  else:
+    display.display(display.HTML(html))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.notebook_utils.download_bundle"><code class="name flex">
+<span>def <span class="ident">download_bundle</span></span>(<span>bundle_name, target_dir, force_reload=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Downloads a Magenta bundle to target directory.</p>
+<p>Target directory target_dir will be created if it does not already exist.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bundle_name</code></strong></dt>
+<dd>A string Magenta bundle name to download.</dd>
+<dt><strong><code>target_dir</code></strong></dt>
+<dd>A string local directory in which to write the bundle.</dd>
+<dt><strong><code>force_reload</code></strong></dt>
+<dd>A boolean that when True, reloads the bundle even if present.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_bundle(bundle_name, target_dir, force_reload=False):
+  &#34;&#34;&#34;Downloads a Magenta bundle to target directory.
+
+  Target directory target_dir will be created if it does not already exist.
+
+  Args:
+     bundle_name: A string Magenta bundle name to download.
+     target_dir: A string local directory in which to write the bundle.
+     force_reload: A boolean that when True, reloads the bundle even if present.
+  &#34;&#34;&#34;
+  makedirs(target_dir)
+  bundle_target = os.path.join(target_dir, bundle_name)
+  if not os.path.exists(bundle_target) or force_reload:
+    response = urllib.request.urlopen(
+        &#39;http://download.magenta.tensorflow.org/models/%s&#39; % bundle_name)
+    data = response.read()
+    local_file = open(bundle_target, &#39;wb&#39;)
+    local_file.write(data)
+    local_file.close()</code></pre>
+</details>
+</dd>
+<dt id="note_seq.notebook_utils.play_sequence"><code class="name flex">
+<span>def <span class="ident">play_sequence</span></span>(<span>sequence, synth=&lt;function synthesize&gt;, sample_rate=44100, colab_ephemeral=True, **synth_args)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an interactive player for a synthesized note sequence.</p>
+<p>This function should only be called from a Jupyter or Colab notebook.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sequence</code></strong></dt>
+<dd>A music_pb2.NoteSequence to synthesize and play.</dd>
+<dt><strong><code>synth</code></strong></dt>
+<dd>A synthesis function that takes a sequence and sample rate as input.</dd>
+<dt><strong><code>sample_rate</code></strong></dt>
+<dd>The sample rate at which to synthesize.</dd>
+<dt><strong><code>colab_ephemeral</code></strong></dt>
+<dd>If set to True, the widget will be ephemeral in Colab, and
+disappear on reload (and it won't be counted against realtime document
+size).</dd>
+<dt><strong><code>**synth_args</code></strong></dt>
+<dd>Additional keyword arguments to pass to the synth function.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def play_sequence(sequence,
+                  synth=midi_synth.synthesize,
+                  sample_rate=_DEFAULT_SAMPLE_RATE,
+                  colab_ephemeral=True,
+                  **synth_args):
+  &#34;&#34;&#34;Creates an interactive player for a synthesized note sequence.
+
+  This function should only be called from a Jupyter or Colab notebook.
+
+  Args:
+    sequence: A music_pb2.NoteSequence to synthesize and play.
+    synth: A synthesis function that takes a sequence and sample rate as input.
+    sample_rate: The sample rate at which to synthesize.
+    colab_ephemeral: If set to True, the widget will be ephemeral in Colab, and
+      disappear on reload (and it won&#39;t be counted against realtime document
+      size).
+    **synth_args: Additional keyword arguments to pass to the synth function.
+  &#34;&#34;&#34;
+  array_of_floats = synth(sequence, sample_rate=sample_rate, **synth_args)
+
+  try:
+    import google.colab  # pylint:disable=import-outside-toplevel,g-import-not-at-top,unused-import
+    colab_play(array_of_floats, sample_rate, colab_ephemeral)
+  except ImportError:
+    display.display(display.Audio(array_of_floats, rate=sample_rate))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.notebook_utils.plot_sequence"><code class="name flex">
+<span>def <span class="ident">plot_sequence</span></span>(<span>sequence, show_figure=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an interactive pianoroll for a NoteSequence.</p>
+<p>Example usage: plot a random melody.
+sequence = mm.Melody(np.random.randint(36, 72, 30)).to_sequence()
+bokeh_pianoroll(sequence)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sequence</code></strong></dt>
+<dd>A NoteSequence.</dd>
+<dt><strong><code>show_figure</code></strong></dt>
+<dd>A boolean indicating whether or not to show the figure.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>If show_figure is False, a Bokeh figure; otherwise None.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_sequence(sequence, show_figure=True):
+  &#34;&#34;&#34;Creates an interactive pianoroll for a NoteSequence.
+
+  Example usage: plot a random melody.
+    sequence = mm.Melody(np.random.randint(36, 72, 30)).to_sequence()
+    bokeh_pianoroll(sequence)
+
+  Args:
+     sequence: A NoteSequence.
+     show_figure: A boolean indicating whether or not to show the figure.
+
+  Returns:
+     If show_figure is False, a Bokeh figure; otherwise None.
+  &#34;&#34;&#34;
+
+  def _sequence_to_pandas_dataframe(sequence):
+    &#34;&#34;&#34;Generates a pandas dataframe from a sequence.&#34;&#34;&#34;
+    pd_dict = collections.defaultdict(list)
+    for note in sequence.notes:
+      pd_dict[&#39;start_time&#39;].append(note.start_time)
+      pd_dict[&#39;end_time&#39;].append(note.end_time)
+      pd_dict[&#39;duration&#39;].append(note.end_time - note.start_time)
+      pd_dict[&#39;pitch&#39;].append(note.pitch)
+      pd_dict[&#39;bottom&#39;].append(note.pitch - 0.4)
+      pd_dict[&#39;top&#39;].append(note.pitch + 0.4)
+      pd_dict[&#39;velocity&#39;].append(note.velocity)
+      pd_dict[&#39;fill_alpha&#39;].append(note.velocity / 128.0)
+      pd_dict[&#39;instrument&#39;].append(note.instrument)
+      pd_dict[&#39;program&#39;].append(note.program)
+
+    # If no velocity differences are found, set alpha to 1.0.
+    if np.max(pd_dict[&#39;velocity&#39;]) == np.min(pd_dict[&#39;velocity&#39;]):
+      pd_dict[&#39;fill_alpha&#39;] = [1.0] * len(pd_dict[&#39;fill_alpha&#39;])
+
+    return pd.DataFrame(pd_dict)
+
+  # These are hard-coded reasonable values, but the user can override them
+  # by updating the figure if need be.
+  fig = bokeh.plotting.figure(
+      tools=&#39;hover,pan,box_zoom,reset,save&#39;)
+  fig.plot_width = 500
+  fig.plot_height = 200
+  fig.xaxis.axis_label = &#39;time (sec)&#39;
+  fig.yaxis.axis_label = &#39;pitch (MIDI)&#39;
+  fig.yaxis.ticker = bokeh.models.SingleIntervalTicker(interval=12)
+  fig.ygrid.ticker = bokeh.models.SingleIntervalTicker(interval=12)
+  # Pick indexes that are maximally different in Spectral8 colormap.
+  spectral_color_indexes = [7, 0, 6, 1, 5, 2, 3]
+
+  # Create a Pandas dataframe and group it by instrument.
+  dataframe = _sequence_to_pandas_dataframe(sequence)
+  instruments = sorted(set(dataframe[&#39;instrument&#39;]))
+  grouped_dataframe = dataframe.groupby(&#39;instrument&#39;)
+  for counter, instrument in enumerate(instruments):
+    instrument_df = grouped_dataframe.get_group(instrument)
+    color_idx = spectral_color_indexes[counter % len(spectral_color_indexes)]
+    color = bokeh.palettes.Spectral8[color_idx]
+    source = bokeh.plotting.ColumnDataSource(instrument_df)
+    fig.quad(top=&#39;top&#39;, bottom=&#39;bottom&#39;, left=&#39;start_time&#39;, right=&#39;end_time&#39;,
+             line_color=&#39;black&#39;, fill_color=color,
+             fill_alpha=&#39;fill_alpha&#39;, source=source)
+  fig.select(dict(type=bokeh.models.HoverTool)).tooltips = (
+      {&#39;pitch&#39;: &#39;@pitch&#39;,
+       &#39;program&#39;: &#39;@program&#39;,
+       &#39;velo&#39;: &#39;@velocity&#39;,
+       &#39;duration&#39;: &#39;@duration&#39;,
+       &#39;start_time&#39;: &#39;@start_time&#39;,
+       &#39;end_time&#39;: &#39;@end_time&#39;,
+       &#39;velocity&#39;: &#39;@velocity&#39;,
+       &#39;fill_alpha&#39;: &#39;@fill_alpha&#39;})
+
+  if show_figure:
+    bokeh.plotting.output_notebook()
+    bokeh.plotting.show(fig)
+    return None
+  return fig</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="note_seq.notebook_utils.colab_play" href="#note_seq.notebook_utils.colab_play">colab_play</a></code></li>
+<li><code><a title="note_seq.notebook_utils.download_bundle" href="#note_seq.notebook_utils.download_bundle">download_bundle</a></code></li>
+<li><code><a title="note_seq.notebook_utils.play_sequence" href="#note_seq.notebook_utils.play_sequence">play_sequence</a></code></li>
+<li><code><a title="note_seq.notebook_utils.plot_sequence" href="#note_seq.notebook_utils.plot_sequence">plot_sequence</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

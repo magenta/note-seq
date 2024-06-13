@@ -1,0 +1,5810 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.musicxml_parser_test API documentation</title>
+<meta name="description" content="Test to ensure correct import of MusicXML." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.musicxml_parser_test</code></h1>
+</header>
+<section id="section-intro">
+<p>Test to ensure correct import of MusicXML.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Test to ensure correct import of MusicXML.&#34;&#34;&#34;
+
+import collections
+import operator
+import os.path
+import tempfile
+import zipfile
+
+from absl.testing import absltest
+from note_seq import musicxml_parser
+from note_seq import musicxml_reader
+from note_seq import testing_lib
+from note_seq.protobuf import music_pb2
+
+# Shortcut to CHORD_SYMBOL annotation type.
+CHORD_SYMBOL = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
+
+
+class MusicXMLParserTest(testing_lib.ProtoTestCase):
+  &#34;&#34;&#34;Class to test the MusicXML parser use cases.
+
+  self.flute_scale_filename contains an F-major scale of 8 quarter notes each
+
+  self.clarinet_scale_filename contains a F-major scale of 8 quarter notes
+  each appearing as written pitch. This means the key is written as
+  G-major but sounds as F-major. The MIDI pitch numbers must be transposed
+  to be input into Magenta
+
+  self.band_score_filename contains a number of instruments in written
+  pitch. The score has two time signatures (6/8 and 2/4) and two sounding
+  keys (Bb-major and Eb major). The file also contains chords and
+  multiple voices (see Oboe part in measure 57), as well as dynamics,
+  articulations, slurs, ties, hairpins, grace notes, tempo changes,
+  and multiple barline types (double, repeat)
+
+  self.compressed_filename contains the same content as
+  self.flute_scale_filename, but compressed in MXL format
+
+  self.rhythm_durations_filename contains a variety of rhythms (long, short,
+  dotted, tuplet, and dotted tuplet) to test the computation of rhythmic
+  ratios.
+
+  self.atonal_transposition_filename contains a change of instrument
+  from a non-transposing (Flute) to transposing (Bb Clarinet) in a score
+  with no key / atonal. This ensures that transposition works properly when
+  no key signature is found (Issue #355)
+
+  self.st_anne_filename contains a 4-voice piece written in two parts.
+
+  self.whole_measure_rest_forward_filename contains 4 measures:
+  Measures 1 and 2 contain whole note rests in 4/4. The first is a &lt;note&gt;,
+  the second uses a &lt;forward&gt;. The durations must match.
+  Measures 3 and 4 contain whole note rests in 2/4. The first is a &lt;note&gt;,
+  the second uses a &lt;forward&gt;. The durations must match.
+  (Issue #674).
+
+  self.meter_test_filename contains a different meter in each measure:
+  - 1/4 through 7/4 inclusive
+  - 1/8 through 12/8 inclusive
+  - 2/2 through 4/2 inclusive
+  - Common time and Cut time meters
+  &#34;&#34;&#34;
+
+  def setUp(self):
+    self.maxDiff = None   # pylint:disable=invalid-name
+
+    self.steps_per_quarter = 4
+
+    self.flute_scale_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale.xml&#39;)
+
+    self.clarinet_scale_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;clarinet_scale.xml&#39;)
+
+    self.band_score_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;el_capitan.xml&#39;)
+
+    self.compressed_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale.mxl&#39;)
+
+    self.multiple_rootfile_compressed_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale_with_png.mxl&#39;)
+
+    self.rhythm_durations_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;rhythm_durations.xml&#39;)
+
+    self.st_anne_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;st_anne.xml&#39;)
+
+    self.atonal_transposition_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;atonal_transposition_change.xml&#39;)
+
+    self.chord_symbols_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;chord_symbols.xml&#39;)
+
+    self.time_signature_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;st_anne.xml&#39;)
+
+    self.unmetered_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unmetered_example.xml&#39;)
+
+    self.alternating_meter_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;alternating_meter.xml&#39;)
+
+    self.mid_measure_meter_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;mid_measure_time_signature.xml&#39;)
+
+    self.whole_measure_rest_forward_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;whole_measure_rest_forward.xml&#39;)
+
+    self.meter_test_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;meter_test.xml&#39;)
+
+    super().setUp()
+
+  def check_musicxml_and_sequence(self, musicxml, sequence_proto):
+    &#34;&#34;&#34;Compares MusicXMLDocument object against a sequence proto.
+
+    Args:
+      musicxml: A MusicXMLDocument object.
+      sequence_proto: A NoteSequence proto.
+    &#34;&#34;&#34;
+    # Test time signature changes.
+    self.assertEqual(len(musicxml.get_time_signatures()),
+                     len(sequence_proto.time_signatures))
+    for musicxml_time, sequence_time in zip(musicxml.get_time_signatures(),
+                                            sequence_proto.time_signatures):
+      self.assertEqual(musicxml_time.numerator, sequence_time.numerator)
+      self.assertEqual(musicxml_time.denominator, sequence_time.denominator)
+      self.assertAlmostEqual(musicxml_time.time_position, sequence_time.time)
+
+    # Test key signature changes.
+    self.assertEqual(len(musicxml.get_key_signatures()),
+                     len(sequence_proto.key_signatures))
+    for musicxml_key, sequence_key in zip(musicxml.get_key_signatures(),
+                                          sequence_proto.key_signatures):
+
+      if musicxml_key.mode == &#39;major&#39;:
+        mode = 0
+      elif musicxml_key.mode == &#39;minor&#39;:
+        mode = 1
+
+      # The Key enum in music.proto does NOT follow MIDI / MusicXML specs
+      # Convert from MIDI / MusicXML key to music.proto key
+      music_proto_keys = [11, 6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6, 1]
+      key = music_proto_keys[musicxml_key.key + 7]
+      self.assertEqual(key, sequence_key.key)
+      self.assertEqual(mode, sequence_key.mode)
+      self.assertAlmostEqual(musicxml_key.time_position, sequence_key.time)
+
+    # Test tempos.
+    musicxml_tempos = musicxml.get_tempos()
+    self.assertEqual(len(musicxml_tempos),
+                     len(sequence_proto.tempos))
+    for musicxml_tempo, sequence_tempo in zip(
+        musicxml_tempos, sequence_proto.tempos):
+      self.assertAlmostEqual(musicxml_tempo.qpm, sequence_tempo.qpm)
+      self.assertAlmostEqual(musicxml_tempo.time_position,
+                             sequence_tempo.time)
+
+    # Test parts/instruments.
+    seq_parts = collections.defaultdict(list)
+    for seq_note in sequence_proto.notes:
+      seq_parts[seq_note.part].append(seq_note)
+
+    self.assertEqual(len(musicxml.parts), len(seq_parts))
+    for musicxml_part, seq_part_id in zip(
+        musicxml.parts, sorted(seq_parts.keys())):
+
+      seq_instrument_notes = seq_parts[seq_part_id]
+      musicxml_notes = []
+      for musicxml_measure in musicxml_part.measures:
+        for musicxml_note in musicxml_measure.notes:
+          if not musicxml_note.is_rest:
+            musicxml_notes.append(musicxml_note)
+
+      self.assertEqual(len(musicxml_notes), len(seq_instrument_notes))
+      for musicxml_note, sequence_note in zip(musicxml_notes,
+                                              seq_instrument_notes):
+        self.assertEqual(musicxml_note.pitch[1], sequence_note.pitch)
+        self.assertEqual(musicxml_note.velocity, sequence_note.velocity)
+        self.assertAlmostEqual(musicxml_note.note_duration.time_position,
+                               sequence_note.start_time)
+        self.assertAlmostEqual(musicxml_note.note_duration.time_position
+                               + musicxml_note.note_duration.seconds,
+                               sequence_note.end_time)
+        # Check that the duration specified in the MusicXML and the
+        # duration float match to within +/- 1 (delta = 1)
+        # Delta is used because duration in MusicXML is always an integer
+        # For example, a 3:2 half note might have a durationfloat of 341.333
+        # but would have the 1/3 distributed in the MusicXML as
+        # 341.0, 341.0, 342.0.
+        # Check that (3 * 341.333) = (341 + 341 + 342) is true by checking
+        # that 341.0 and 342.0 are +/- 1 of 341.333
+        self.assertAlmostEqual(
+            musicxml_note.note_duration.duration,
+            musicxml_note.state.divisions * 4
+            * musicxml_note.note_duration.duration_float(),
+            delta=1)
+
+  def check_musicxml_to_sequence(self, filename):
+    &#34;&#34;&#34;Test the translation from MusicXML to Sequence proto.&#34;&#34;&#34;
+    source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+    sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+    self.check_musicxml_and_sequence(source_musicxml, sequence_proto)
+
+  def check_fmajor_scale(self, filename, part_name):
+    &#34;&#34;&#34;Verify MusicXML scale file.
+
+    Verify that it contains the correct pitches (sounding pitch) and durations.
+
+    Args:
+      filename: file to test.
+      part_name: name of the part the sequence is expected to contain.
+    &#34;&#34;&#34;
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: F
+          time: 0
+        }
+        time_signatures {
+          numerator: 4
+          denominator: 4
+        }
+        tempos {
+          qpm: 120.0
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+
+    part_info = expected_ns.part_infos.add()
+    part_info.name = part_name
+
+    expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.part = 0
+      note.voice = 1
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+
+    # Convert MusicXML to NoteSequence
+    source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+    sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+
+    # Check equality
+    self.assertProtoEquals(expected_ns, sequence_proto)
+
+  def testsimplemusicxmltosequence(self):
+    &#34;&#34;&#34;Test the simple flute scale MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.flute_scale_filename)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testcomplexmusicxmltosequence(self):
+    &#34;&#34;&#34;Test the complex band score MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.band_score_filename)
+
+  def testtransposedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from transposed MusicXML to Sequence proto.
+
+    Compare a transposed MusicXML file (clarinet) to an identical untransposed
+    sequence (flute).
+    &#34;&#34;&#34;
+    untransposed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    transposed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.clarinet_scale_filename)
+    untransposed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        untransposed_musicxml)
+    self.check_musicxml_and_sequence(transposed_musicxml, untransposed_proto)
+    self.check_fmajor_scale(self.clarinet_scale_filename, &#39;Clarinet in Bb&#39;)
+
+  def testcompressedmxlunicodefilename(self):
+    &#34;&#34;&#34;Test an MXL file containing a unicode filename within its zip archive.&#34;&#34;&#34;
+
+    unicode_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unicode_filename.mxl&#39;)
+    sequence = musicxml_reader.musicxml_file_to_sequence_proto(unicode_filename)
+    self.assertLen(sequence.notes, 8)
+
+  def testcompressedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from compressed MusicXML to Sequence proto.
+
+    Compare a compressed MusicXML file to an identical uncompressed sequence.
+    &#34;&#34;&#34;
+    uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    compressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.compressed_filename)
+    uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        uncompressed_musicxml)
+    self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testmultiplecompressedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from compressed MusicXML with multiple rootfiles.
+
+    The example MXL file contains a MusicXML file of the Flute F Major scale,
+    as well as the PNG rendering of the score contained within the single MXL
+    file.
+    &#34;&#34;&#34;
+    uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    compressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.multiple_rootfile_compressed_filename)
+    uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        uncompressed_musicxml)
+    self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testrhythmdurationsxmltosequence(self):
+    &#34;&#34;&#34;Test the rhythm durations MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.rhythm_durations_filename)
+
+  def testFluteScale(self):
+    &#34;&#34;&#34;Verify properties of the flute scale.&#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.flute_scale_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 4
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+          key: F
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        part_infos {
+          part: 0
+          name: &#34;Flute&#34;
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+    expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.part = 0
+      note.voice = 1
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_atonal_transposition(self):
+    &#34;&#34;&#34;Test that transposition works when changing instrument transposition.
+
+    This can occur within a single part in a score where the score
+    has no key signature / is atonal. Examples include changing from a
+    non-transposing instrument to a transposing one (ex. Flute to Bb Clarinet)
+    or vice versa, or changing among transposing instruments (ex. Bb Clarinet
+    to Eb Alto Saxophone).
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.atonal_transposition_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 4
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+        }
+        part_infos {
+          part: 0
+          name: &#34;Flute&#34;
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+    expected_pitches = [72, 74, 76, 77, 79, 77, 76, 74]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+      note.voice = 1
+    self.maxDiff = None
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_incomplete_measures(self):
+    &#34;&#34;&#34;Test that incomplete measures have the correct time signature.
+
+    This can occur in pickup bars or incomplete measures. For example,
+    if the time signature in the MusicXML is 4/4, but the measure only
+    contains one quarter note, Magenta expects this pickup measure to have
+    a time signature of 1/4.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.time_signature_filename)
+
+    # One time signature per measure
+    self.assertLen(ns.time_signatures, 6)
+    self.assertLen(ns.key_signatures, 1)
+    self.assertLen(ns.notes, 112)
+
+  def test_unmetered_music(self):
+    &#34;&#34;&#34;Test that time signatures are inserted for music without time signatures.
+
+    MusicXML does not require the use of time signatures. Music without
+    time signatures occur in medieval chant, cadenzas, and contemporary music.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.unmetered_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 11
+          denominator: 8
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 0.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 74
+          velocity: 64
+          start_time: 0.5
+          end_time: 0.75
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 76
+          velocity: 64
+          start_time: 0.75
+          end_time: 1.25
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 77
+          velocity: 64
+          start_time: 1.25
+          end_time: 1.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 79
+          velocity: 64
+          start_time: 1.75
+          end_time: 2.75
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        total_time: 2.75
+        &#34;&#34;&#34;)
+    self.maxDiff = None
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_st_anne(self):
+    &#34;&#34;&#34;Verify properties of the St. Anne file.
+
+    The file contains 2 parts and 4 voices.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.st_anne_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 0.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 6.5
+          numerator: 3
+          denominator: 4
+        }
+        time_signatures {
+          time: 8.0
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 8.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 14.5
+          numerator: 3
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+          key: C
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        part_infos {
+          part: 0
+          name: &#34;Harpsichord&#34;
+        }
+        part_infos {
+          part: 1
+          name: &#34;Piano&#34;
+        }
+        total_time: 16.0
+        &#34;&#34;&#34;)
+    pitches_0_1 = [
+        (67, .5),
+
+        (64, .5),
+        (69, .5),
+        (67, .5),
+        (72, .5),
+
+        (72, .5),
+        (71, .5),
+        (72, .5),
+        (67, .5),
+
+        (72, .5),
+        (67, .5),
+        (69, .5),
+        (66, .5),
+
+        (67, 1.5),
+
+        (71, .5),
+
+        (72, .5),
+        (69, .5),
+        (74, .5),
+        (71, .5),
+
+        (72, .5),
+        (69, .5),
+        (71, .5),
+        (67, .5),
+
+        (69, .5),
+        (72, .5),
+        (74, .5),
+        (71, .5),
+
+        (72, 1.5),
+    ]
+    pitches_0_2 = [
+        (60, .5),
+
+        (60, .5),
+        (60, .5),
+        (60, .5),
+        (64, .5),
+
+        (62, .5),
+        (62, .5),
+        (64, .5),
+        (64, .5),
+
+        (64, .5),
+        (64, .5),
+        (64, .5),
+        (62, .5),
+
+        (62, 1.5),
+
+        (62, .5),
+
+        (64, .5),
+        (60, .5),
+        (65, .5),
+        (62, .5),
+
+        (64, .75),
+        (62, .25),
+        (59, .5),
+        (60, .5),
+
+        (65, .5),
+        (64, .5),
+        (62, .5),
+        (62, .5),
+
+        (64, 1.5),
+    ]
+    pitches_1_1 = [
+        (52, .5),
+
+        (55, .5),
+        (57, .5),
+        (60, .5),
+        (60, .5),
+
+        (57, .5),
+        (55, .5),
+        (55, .5),
+        (60, .5),
+
+        (60, .5),
+        (59, .5),
+        (57, .5),
+        (57, .5),
+
+        (59, 1.5),
+
+        (55, .5),
+
+        (55, .5),
+        (57, .5),
+        (57, .5),
+        (55, .5),
+
+        (55, .5),
+        (57, .5),
+        (56, .5),
+        (55, .5),
+
+        (53, .5),
+        (55, .5),
+        (57, .5),
+        (55, .5),
+
+        (55, 1.5),
+    ]
+    pitches_1_2 = [
+        (48, .5),
+
+        (48, .5),
+        (53, .5),
+        (52, .5),
+        (57, .5),
+
+        (53, .5),
+        (55, .5),
+        (48, .5),
+        (48, .5),
+
+        (45, .5),
+        (52, .5),
+        (48, .5),
+        (50, .5),
+
+        (43, 1.5),
+
+        (55, .5),
+
+        (48, .5),
+        (53, .5),
+        (50, .5),
+        (55, .5),
+
+        (48, .5),
+        (53, .5),
+        (52, .5),
+        (52, .5),
+
+        (50, .5),
+        (48, .5),
+        (53, .5),
+        (55, .5),
+
+        (48, 1.5),
+    ]
+    part_voice_instrument_program_pitches = [
+        (0, 1, 1, 7, pitches_0_1),
+        (0, 2, 1, 7, pitches_0_2),
+        (1, 1, 2, 1, pitches_1_1),
+        (1, 2, 2, 1, pitches_1_2),
+    ]
+    for part, voice, instrument, program, pitches in (
+        part_voice_instrument_program_pitches):
+      time = 0
+      for pitch, duration in pitches:
+        note = expected_ns.notes.add()
+        note.part = part
+        note.voice = voice
+        note.pitch = pitch
+        note.start_time = time
+        time += duration
+        note.end_time = time
+        note.velocity = 64
+        note.instrument = instrument
+        note.program = program
+        if duration == .5:
+          note.numerator = 1
+          note.denominator = 4
+        if duration == .25:
+          note.numerator = 1
+          note.denominator = 8
+        if duration == .75:
+          note.numerator = 3
+          note.denominator = 8
+        if duration == 1.5:
+          note.numerator = 3
+          note.denominator = 4
+    expected_ns.notes.sort(
+        key=lambda note: (note.part, note.voice, note.start_time))
+    ns.notes.sort(
+        key=lambda note: (note.part, note.voice, note.start_time))
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_part_name(self):
+    &#34;&#34;&#34;Verify that a part with an empty name can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        part_infos {
+          part: 0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_part_list(self):
+    &#34;&#34;&#34;Verify that a part without a corresponding score-part can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        part_infos {
+          part: 0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_doc(self):
+    &#34;&#34;&#34;Verify that an empty doc can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_chord_symbols(self):
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.chord_symbols_filename)
+    chord_symbols = [(annotation.time, annotation.text)
+                     for annotation in ns.text_annotations
+                     if annotation.annotation_type == CHORD_SYMBOL]
+    chord_symbols = list(sorted(chord_symbols, key=operator.itemgetter(0)))
+
+    expected_beats_and_chords = [
+        (0.0, &#39;N.C.&#39;),
+        (4.0, &#39;Cmaj7&#39;),
+        (12.0, &#39;F6(add9)&#39;),
+        (16.0, &#39;F#dim7/A&#39;),
+        (20.0, &#39;Bm7b5&#39;),
+        (24.0, &#39;E7(#9)&#39;),
+        (28.0, &#39;A7(add9)(no3)&#39;),
+        (32.0, &#39;Bbsus2&#39;),
+        (36.0, &#39;Am(maj7)&#39;),
+        (38.0, &#39;D13&#39;),
+        (40.0, &#39;E5&#39;),
+        (44.0, &#39;Caug&#39;)
+    ]
+
+    # Adjust for 120 QPM.
+    expected_times_and_chords = [(beat / 2.0, chord)
+                                 for beat, chord in expected_beats_and_chords]
+    self.assertEqual(expected_times_and_chords, chord_symbols)
+
+  def test_alternating_meter(self):
+    with self.assertRaises(musicxml_parser.AlternatingTimeSignatureError):
+      musicxml_parser.MusicXMLDocument(self.alternating_meter_filename)
+
+  def test_mid_measure_meter_change(self):
+    with self.assertRaises(musicxml_parser.MultipleTimeSignatureError):
+      musicxml_parser.MusicXMLDocument(self.mid_measure_meter_filename)
+
+  def test_unpitched_notes(self):
+    with self.assertRaises(musicxml_parser.UnpitchedNoteError):
+      musicxml_parser.MusicXMLDocument(os.path.join(
+          testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))
+    with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+      musicxml_reader.musicxml_file_to_sequence_proto(os.path.join(
+          testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))
+
+  def test_empty_archive(self):
+    with tempfile.NamedTemporaryFile(suffix=&#39;.mxl&#39;) as temp_file:
+      z = zipfile.ZipFile(temp_file.name, &#39;w&#39;)
+      z.close()
+
+      with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+        musicxml_reader.musicxml_file_to_sequence_proto(
+            temp_file.name)
+
+  def test_whole_measure_rest_forward(self):
+    &#34;&#34;&#34;Test that a whole measure rest can be encoded using &lt;forward&gt;.
+
+    A whole measure rest is usually encoded as a &lt;note&gt; with a duration
+    equal to that of a whole measure. An alternative encoding is to
+    use the &lt;forward&gt; element to advance the time cursor to a duration
+    equal to that of a whole measure. This implies a whole measure rest
+    when there are no &lt;note&gt; elements in this measure.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.whole_measure_rest_forward_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 6.0
+          numerator: 2
+          denominator: 4
+        }
+        key_signatures {
+        }
+        tempos {
+          qpm: 120
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 2.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 4.0
+          end_time: 6.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 60
+          velocity: 64
+          start_time: 6.0
+          end_time: 7.0
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 60
+          velocity: 64
+          start_time: 8.0
+          end_time: 9.0
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        total_time: 9.0
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_meter(self):
+    &#34;&#34;&#34;Test that meters are encoded properly.
+
+    Musical meters are expressed as a ratio of beats to divisions.
+    The MusicXML parser uses this ratio in lowest terms for timing
+    purposes. However, the meters should be in the actual terms
+    when appearing in a NoteSequence.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.meter_test_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 0.5
+          numerator: 2
+          denominator: 4
+        }
+        time_signatures {
+          time: 1.5
+          numerator: 3
+          denominator: 4
+        }
+        time_signatures {
+          time: 3.0
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 5.0
+          numerator: 5
+          denominator: 4
+        }
+        time_signatures {
+          time: 7.5
+          numerator: 6
+          denominator: 4
+        }
+        time_signatures {
+          time: 10.5
+          numerator: 7
+          denominator: 4
+        }
+        time_signatures {
+          time: 14.0
+          numerator: 1
+          denominator: 8
+        }
+        time_signatures {
+          time: 14.25
+          numerator: 2
+          denominator: 8
+        }
+        time_signatures {
+          time: 14.75
+          numerator: 3
+          denominator: 8
+        }
+        time_signatures {
+          time: 15.5
+          numerator: 4
+          denominator: 8
+        }
+        time_signatures {
+          time: 16.5
+          numerator: 5
+          denominator: 8
+        }
+        time_signatures {
+          time: 17.75
+          numerator: 6
+          denominator: 8
+        }
+        time_signatures {
+          time: 19.25
+          numerator: 7
+          denominator: 8
+        }
+        time_signatures {
+          time: 21.0
+          numerator: 8
+          denominator: 8
+        }
+        time_signatures {
+          time: 23.0
+          numerator: 9
+          denominator: 8
+        }
+        time_signatures {
+          time: 25.25
+          numerator: 10
+          denominator: 8
+        }
+        time_signatures {
+          time: 27.75
+          numerator: 11
+          denominator: 8
+        }
+        time_signatures {
+          time: 30.5
+          numerator: 12
+          denominator: 8
+        }
+        time_signatures {
+          time: 33.5
+          numerator: 2
+          denominator: 2
+        }
+        time_signatures {
+          time: 35.5
+          numerator: 3
+          denominator: 2
+        }
+        time_signatures {
+          time: 38.5
+          numerator: 4
+          denominator: 2
+        }
+        time_signatures {
+          time: 42.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 44.5
+          numerator: 2
+          denominator: 2
+        }
+        key_signatures {
+        }
+        tempos {
+          qpm: 120
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 0.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 0.5
+          end_time: 1.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 1.5
+          end_time: 3.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 3.0
+          end_time: 5.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 5.0
+          end_time: 6.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 6.5
+          end_time: 7.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 7.5
+          end_time: 9.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 9.0
+          end_time: 10.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 10.5
+          end_time: 12.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 12.0
+          end_time: 13.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 13.5
+          end_time: 14.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.0
+          end_time: 14.25
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.25
+          end_time: 14.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.75
+          end_time: 15.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 15.5
+          end_time: 16.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 16.0
+          end_time: 16.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 16.5
+          end_time: 17.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.0
+          end_time: 17.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.5
+          end_time: 17.75
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.75
+          end_time: 18.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 18.5
+          end_time: 19.25
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 19.25
+          end_time: 20.0
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 20.0
+          end_time: 20.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 20.5
+          end_time: 21.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 21.0
+          end_time: 21.75
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 21.75
+          end_time: 22.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 22.5
+          end_time: 23.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 23.0
+          end_time: 24.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 24.5
+          end_time: 25.25
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 25.25
+          end_time: 26.75
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 26.75
+          end_time: 27.25
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 27.25
+          end_time: 27.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 27.75
+          end_time: 29.25
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 29.25
+          end_time: 30.0
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 30.0
+          end_time: 30.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 30.5
+          end_time: 32.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 32.0
+          end_time: 33.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 33.5
+          end_time: 34.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 34.5
+          end_time: 35.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 35.5
+          end_time: 36.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 36.5
+          end_time: 37.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 37.5
+          end_time: 38.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 38.5
+          end_time: 40.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 40.5
+          end_time: 42.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 42.5
+          end_time: 44.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 44.5
+          end_time: 46.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        total_time: 46.5
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_key_missing_fifths(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;key&gt;
+                &lt;!-- missing fifths element. --&gt;
+              &lt;/key&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.KeyParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_harmony_missing_degree(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+            &lt;harmony&gt;
+              &lt;degree&gt;
+                &lt;!-- missing degree-value text --&gt;
+                &lt;degree-value&gt;&lt;/degree-value&gt;
+              &lt;/degree&gt;
+            &lt;/harmony&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.ChordSymbolParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_transposed_keysig(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;4&lt;/divisions&gt;
+            &lt;key&gt;
+              &lt;fifths&gt;-3&lt;/fifths&gt;
+              &lt;mode&gt;major&lt;/mode&gt;
+            &lt;/key&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+            &lt;clef&gt;
+              &lt;sign&gt;G&lt;/sign&gt;
+              &lt;line&gt;2&lt;/line&gt;
+            &lt;/clef&gt;
+            &lt;transpose&gt;
+              &lt;diatonic&gt;-5&lt;/diatonic&gt;
+              &lt;chromatic&gt;-9&lt;/chromatic&gt;
+            &lt;/transpose&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      musicxml_parser.MusicXMLDocument(temp_file.name)
+      sequence = musicxml_reader.musicxml_file_to_sequence_proto(temp_file.name)
+      self.assertLen(sequence.key_signatures, 1)
+      self.assertEqual(music_pb2.NoteSequence.KeySignature.G_FLAT,
+                       sequence.key_signatures[0].key)
+
+  def test_beats_composite(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4+5&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.TimeSignatureParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_invalid_note_type(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;blarg&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.InvalidNoteDurationTypeError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+
+if __name__ == &#39;__main__&#39;:
+  absltest.main()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest"><code class="flex name class">
+<span>class <span class="ident">MusicXMLParserTest</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class to test the MusicXML parser use cases.</p>
+<p>self.flute_scale_filename contains an F-major scale of 8 quarter notes each</p>
+<p>self.clarinet_scale_filename contains a F-major scale of 8 quarter notes
+each appearing as written pitch. This means the key is written as
+G-major but sounds as F-major. The MIDI pitch numbers must be transposed
+to be input into Magenta</p>
+<p>self.band_score_filename contains a number of instruments in written
+pitch. The score has two time signatures (6/8 and 2/4) and two sounding
+keys (Bb-major and Eb major). The file also contains chords and
+multiple voices (see Oboe part in measure 57), as well as dynamics,
+articulations, slurs, ties, hairpins, grace notes, tempo changes,
+and multiple barline types (double, repeat)</p>
+<p>self.compressed_filename contains the same content as
+self.flute_scale_filename, but compressed in MXL format</p>
+<p>self.rhythm_durations_filename contains a variety of rhythms (long, short,
+dotted, tuplet, and dotted tuplet) to test the computation of rhythmic
+ratios.</p>
+<p>self.atonal_transposition_filename contains a change of instrument
+from a non-transposing (Flute) to transposing (Bb Clarinet) in a score
+with no key / atonal. This ensures that transposition works properly when
+no key signature is found (Issue #355)</p>
+<p>self.st_anne_filename contains a 4-voice piece written in two parts.</p>
+<p>self.whole_measure_rest_forward_filename contains 4 measures:
+Measures 1 and 2 contain whole note rests in 4/4. The first is a <note>,
+the second uses a <forward>. The durations must match.
+Measures 3 and 4 contain whole note rests in 2/4. The first is a <note>,
+the second uses a <forward>. The durations must match.
+(Issue #674).</p>
+<p>self.meter_test_filename contains a different meter in each measure:
+- 1/4 through 7/4 inclusive
+- 1/8 through 12/8 inclusive
+- 2/2 through 4/2 inclusive
+- Common time and Cut time meters</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MusicXMLParserTest(testing_lib.ProtoTestCase):
+  &#34;&#34;&#34;Class to test the MusicXML parser use cases.
+
+  self.flute_scale_filename contains an F-major scale of 8 quarter notes each
+
+  self.clarinet_scale_filename contains a F-major scale of 8 quarter notes
+  each appearing as written pitch. This means the key is written as
+  G-major but sounds as F-major. The MIDI pitch numbers must be transposed
+  to be input into Magenta
+
+  self.band_score_filename contains a number of instruments in written
+  pitch. The score has two time signatures (6/8 and 2/4) and two sounding
+  keys (Bb-major and Eb major). The file also contains chords and
+  multiple voices (see Oboe part in measure 57), as well as dynamics,
+  articulations, slurs, ties, hairpins, grace notes, tempo changes,
+  and multiple barline types (double, repeat)
+
+  self.compressed_filename contains the same content as
+  self.flute_scale_filename, but compressed in MXL format
+
+  self.rhythm_durations_filename contains a variety of rhythms (long, short,
+  dotted, tuplet, and dotted tuplet) to test the computation of rhythmic
+  ratios.
+
+  self.atonal_transposition_filename contains a change of instrument
+  from a non-transposing (Flute) to transposing (Bb Clarinet) in a score
+  with no key / atonal. This ensures that transposition works properly when
+  no key signature is found (Issue #355)
+
+  self.st_anne_filename contains a 4-voice piece written in two parts.
+
+  self.whole_measure_rest_forward_filename contains 4 measures:
+  Measures 1 and 2 contain whole note rests in 4/4. The first is a &lt;note&gt;,
+  the second uses a &lt;forward&gt;. The durations must match.
+  Measures 3 and 4 contain whole note rests in 2/4. The first is a &lt;note&gt;,
+  the second uses a &lt;forward&gt;. The durations must match.
+  (Issue #674).
+
+  self.meter_test_filename contains a different meter in each measure:
+  - 1/4 through 7/4 inclusive
+  - 1/8 through 12/8 inclusive
+  - 2/2 through 4/2 inclusive
+  - Common time and Cut time meters
+  &#34;&#34;&#34;
+
+  def setUp(self):
+    self.maxDiff = None   # pylint:disable=invalid-name
+
+    self.steps_per_quarter = 4
+
+    self.flute_scale_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale.xml&#39;)
+
+    self.clarinet_scale_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;clarinet_scale.xml&#39;)
+
+    self.band_score_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;el_capitan.xml&#39;)
+
+    self.compressed_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale.mxl&#39;)
+
+    self.multiple_rootfile_compressed_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;flute_scale_with_png.mxl&#39;)
+
+    self.rhythm_durations_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;rhythm_durations.xml&#39;)
+
+    self.st_anne_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;st_anne.xml&#39;)
+
+    self.atonal_transposition_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;atonal_transposition_change.xml&#39;)
+
+    self.chord_symbols_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;chord_symbols.xml&#39;)
+
+    self.time_signature_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;st_anne.xml&#39;)
+
+    self.unmetered_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unmetered_example.xml&#39;)
+
+    self.alternating_meter_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;alternating_meter.xml&#39;)
+
+    self.mid_measure_meter_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;mid_measure_time_signature.xml&#39;)
+
+    self.whole_measure_rest_forward_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;whole_measure_rest_forward.xml&#39;)
+
+    self.meter_test_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;meter_test.xml&#39;)
+
+    super().setUp()
+
+  def check_musicxml_and_sequence(self, musicxml, sequence_proto):
+    &#34;&#34;&#34;Compares MusicXMLDocument object against a sequence proto.
+
+    Args:
+      musicxml: A MusicXMLDocument object.
+      sequence_proto: A NoteSequence proto.
+    &#34;&#34;&#34;
+    # Test time signature changes.
+    self.assertEqual(len(musicxml.get_time_signatures()),
+                     len(sequence_proto.time_signatures))
+    for musicxml_time, sequence_time in zip(musicxml.get_time_signatures(),
+                                            sequence_proto.time_signatures):
+      self.assertEqual(musicxml_time.numerator, sequence_time.numerator)
+      self.assertEqual(musicxml_time.denominator, sequence_time.denominator)
+      self.assertAlmostEqual(musicxml_time.time_position, sequence_time.time)
+
+    # Test key signature changes.
+    self.assertEqual(len(musicxml.get_key_signatures()),
+                     len(sequence_proto.key_signatures))
+    for musicxml_key, sequence_key in zip(musicxml.get_key_signatures(),
+                                          sequence_proto.key_signatures):
+
+      if musicxml_key.mode == &#39;major&#39;:
+        mode = 0
+      elif musicxml_key.mode == &#39;minor&#39;:
+        mode = 1
+
+      # The Key enum in music.proto does NOT follow MIDI / MusicXML specs
+      # Convert from MIDI / MusicXML key to music.proto key
+      music_proto_keys = [11, 6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6, 1]
+      key = music_proto_keys[musicxml_key.key + 7]
+      self.assertEqual(key, sequence_key.key)
+      self.assertEqual(mode, sequence_key.mode)
+      self.assertAlmostEqual(musicxml_key.time_position, sequence_key.time)
+
+    # Test tempos.
+    musicxml_tempos = musicxml.get_tempos()
+    self.assertEqual(len(musicxml_tempos),
+                     len(sequence_proto.tempos))
+    for musicxml_tempo, sequence_tempo in zip(
+        musicxml_tempos, sequence_proto.tempos):
+      self.assertAlmostEqual(musicxml_tempo.qpm, sequence_tempo.qpm)
+      self.assertAlmostEqual(musicxml_tempo.time_position,
+                             sequence_tempo.time)
+
+    # Test parts/instruments.
+    seq_parts = collections.defaultdict(list)
+    for seq_note in sequence_proto.notes:
+      seq_parts[seq_note.part].append(seq_note)
+
+    self.assertEqual(len(musicxml.parts), len(seq_parts))
+    for musicxml_part, seq_part_id in zip(
+        musicxml.parts, sorted(seq_parts.keys())):
+
+      seq_instrument_notes = seq_parts[seq_part_id]
+      musicxml_notes = []
+      for musicxml_measure in musicxml_part.measures:
+        for musicxml_note in musicxml_measure.notes:
+          if not musicxml_note.is_rest:
+            musicxml_notes.append(musicxml_note)
+
+      self.assertEqual(len(musicxml_notes), len(seq_instrument_notes))
+      for musicxml_note, sequence_note in zip(musicxml_notes,
+                                              seq_instrument_notes):
+        self.assertEqual(musicxml_note.pitch[1], sequence_note.pitch)
+        self.assertEqual(musicxml_note.velocity, sequence_note.velocity)
+        self.assertAlmostEqual(musicxml_note.note_duration.time_position,
+                               sequence_note.start_time)
+        self.assertAlmostEqual(musicxml_note.note_duration.time_position
+                               + musicxml_note.note_duration.seconds,
+                               sequence_note.end_time)
+        # Check that the duration specified in the MusicXML and the
+        # duration float match to within +/- 1 (delta = 1)
+        # Delta is used because duration in MusicXML is always an integer
+        # For example, a 3:2 half note might have a durationfloat of 341.333
+        # but would have the 1/3 distributed in the MusicXML as
+        # 341.0, 341.0, 342.0.
+        # Check that (3 * 341.333) = (341 + 341 + 342) is true by checking
+        # that 341.0 and 342.0 are +/- 1 of 341.333
+        self.assertAlmostEqual(
+            musicxml_note.note_duration.duration,
+            musicxml_note.state.divisions * 4
+            * musicxml_note.note_duration.duration_float(),
+            delta=1)
+
+  def check_musicxml_to_sequence(self, filename):
+    &#34;&#34;&#34;Test the translation from MusicXML to Sequence proto.&#34;&#34;&#34;
+    source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+    sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+    self.check_musicxml_and_sequence(source_musicxml, sequence_proto)
+
+  def check_fmajor_scale(self, filename, part_name):
+    &#34;&#34;&#34;Verify MusicXML scale file.
+
+    Verify that it contains the correct pitches (sounding pitch) and durations.
+
+    Args:
+      filename: file to test.
+      part_name: name of the part the sequence is expected to contain.
+    &#34;&#34;&#34;
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: F
+          time: 0
+        }
+        time_signatures {
+          numerator: 4
+          denominator: 4
+        }
+        tempos {
+          qpm: 120.0
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+
+    part_info = expected_ns.part_infos.add()
+    part_info.name = part_name
+
+    expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.part = 0
+      note.voice = 1
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+
+    # Convert MusicXML to NoteSequence
+    source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+    sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+
+    # Check equality
+    self.assertProtoEquals(expected_ns, sequence_proto)
+
+  def testsimplemusicxmltosequence(self):
+    &#34;&#34;&#34;Test the simple flute scale MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.flute_scale_filename)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testcomplexmusicxmltosequence(self):
+    &#34;&#34;&#34;Test the complex band score MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.band_score_filename)
+
+  def testtransposedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from transposed MusicXML to Sequence proto.
+
+    Compare a transposed MusicXML file (clarinet) to an identical untransposed
+    sequence (flute).
+    &#34;&#34;&#34;
+    untransposed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    transposed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.clarinet_scale_filename)
+    untransposed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        untransposed_musicxml)
+    self.check_musicxml_and_sequence(transposed_musicxml, untransposed_proto)
+    self.check_fmajor_scale(self.clarinet_scale_filename, &#39;Clarinet in Bb&#39;)
+
+  def testcompressedmxlunicodefilename(self):
+    &#34;&#34;&#34;Test an MXL file containing a unicode filename within its zip archive.&#34;&#34;&#34;
+
+    unicode_filename = os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unicode_filename.mxl&#39;)
+    sequence = musicxml_reader.musicxml_file_to_sequence_proto(unicode_filename)
+    self.assertLen(sequence.notes, 8)
+
+  def testcompressedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from compressed MusicXML to Sequence proto.
+
+    Compare a compressed MusicXML file to an identical uncompressed sequence.
+    &#34;&#34;&#34;
+    uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    compressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.compressed_filename)
+    uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        uncompressed_musicxml)
+    self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testmultiplecompressedxmltosequence(self):
+    &#34;&#34;&#34;Test the translation from compressed MusicXML with multiple rootfiles.
+
+    The example MXL file contains a MusicXML file of the Flute F Major scale,
+    as well as the PNG rendering of the score contained within the single MXL
+    file.
+    &#34;&#34;&#34;
+    uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.flute_scale_filename)
+    compressed_musicxml = musicxml_parser.MusicXMLDocument(
+        self.multiple_rootfile_compressed_filename)
+    uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+        uncompressed_musicxml)
+    self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+    self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)
+
+  def testrhythmdurationsxmltosequence(self):
+    &#34;&#34;&#34;Test the rhythm durations MusicXML file.&#34;&#34;&#34;
+    self.check_musicxml_to_sequence(self.rhythm_durations_filename)
+
+  def testFluteScale(self):
+    &#34;&#34;&#34;Verify properties of the flute scale.&#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.flute_scale_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 4
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+          key: F
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        part_infos {
+          part: 0
+          name: &#34;Flute&#34;
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+    expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.part = 0
+      note.voice = 1
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_atonal_transposition(self):
+    &#34;&#34;&#34;Test that transposition works when changing instrument transposition.
+
+    This can occur within a single part in a score where the score
+    has no key signature / is atonal. Examples include changing from a
+    non-transposing instrument to a transposing one (ex. Flute to Bb Clarinet)
+    or vice versa, or changing among transposing instruments (ex. Bb Clarinet
+    to Eb Alto Saxophone).
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.atonal_transposition_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 4
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+        }
+        part_infos {
+          part: 0
+          name: &#34;Flute&#34;
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        total_time: 4.0
+        &#34;&#34;&#34;)
+    expected_pitches = [72, 74, 76, 77, 79, 77, 76, 74]
+    time = 0
+    for pitch in expected_pitches:
+      note = expected_ns.notes.add()
+      note.pitch = pitch
+      note.start_time = time
+      time += .5
+      note.end_time = time
+      note.velocity = 64
+      note.numerator = 1
+      note.denominator = 4
+      note.voice = 1
+    self.maxDiff = None
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_incomplete_measures(self):
+    &#34;&#34;&#34;Test that incomplete measures have the correct time signature.
+
+    This can occur in pickup bars or incomplete measures. For example,
+    if the time signature in the MusicXML is 4/4, but the measure only
+    contains one quarter note, Magenta expects this pickup measure to have
+    a time signature of 1/4.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.time_signature_filename)
+
+    # One time signature per measure
+    self.assertLen(ns.time_signatures, 6)
+    self.assertLen(ns.key_signatures, 1)
+    self.assertLen(ns.notes, 112)
+
+  def test_unmetered_music(self):
+    &#34;&#34;&#34;Test that time signatures are inserted for music without time signatures.
+
+    MusicXML does not require the use of time signatures. Music without
+    time signatures occur in medieval chant, cadenzas, and contemporary music.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.unmetered_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures: {
+          numerator: 11
+          denominator: 8
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 0.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 74
+          velocity: 64
+          start_time: 0.5
+          end_time: 0.75
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 76
+          velocity: 64
+          start_time: 0.75
+          end_time: 1.25
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 77
+          velocity: 64
+          start_time: 1.25
+          end_time: 1.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 79
+          velocity: 64
+          start_time: 1.75
+          end_time: 2.75
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        total_time: 2.75
+        &#34;&#34;&#34;)
+    self.maxDiff = None
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_st_anne(self):
+    &#34;&#34;&#34;Verify properties of the St. Anne file.
+
+    The file contains 2 parts and 4 voices.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.st_anne_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 0.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 6.5
+          numerator: 3
+          denominator: 4
+        }
+        time_signatures {
+          time: 8.0
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 8.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 14.5
+          numerator: 3
+          denominator: 4
+        }
+        tempos: {
+          qpm: 120
+        }
+        key_signatures: {
+          key: C
+        }
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        part_infos {
+          part: 0
+          name: &#34;Harpsichord&#34;
+        }
+        part_infos {
+          part: 1
+          name: &#34;Piano&#34;
+        }
+        total_time: 16.0
+        &#34;&#34;&#34;)
+    pitches_0_1 = [
+        (67, .5),
+
+        (64, .5),
+        (69, .5),
+        (67, .5),
+        (72, .5),
+
+        (72, .5),
+        (71, .5),
+        (72, .5),
+        (67, .5),
+
+        (72, .5),
+        (67, .5),
+        (69, .5),
+        (66, .5),
+
+        (67, 1.5),
+
+        (71, .5),
+
+        (72, .5),
+        (69, .5),
+        (74, .5),
+        (71, .5),
+
+        (72, .5),
+        (69, .5),
+        (71, .5),
+        (67, .5),
+
+        (69, .5),
+        (72, .5),
+        (74, .5),
+        (71, .5),
+
+        (72, 1.5),
+    ]
+    pitches_0_2 = [
+        (60, .5),
+
+        (60, .5),
+        (60, .5),
+        (60, .5),
+        (64, .5),
+
+        (62, .5),
+        (62, .5),
+        (64, .5),
+        (64, .5),
+
+        (64, .5),
+        (64, .5),
+        (64, .5),
+        (62, .5),
+
+        (62, 1.5),
+
+        (62, .5),
+
+        (64, .5),
+        (60, .5),
+        (65, .5),
+        (62, .5),
+
+        (64, .75),
+        (62, .25),
+        (59, .5),
+        (60, .5),
+
+        (65, .5),
+        (64, .5),
+        (62, .5),
+        (62, .5),
+
+        (64, 1.5),
+    ]
+    pitches_1_1 = [
+        (52, .5),
+
+        (55, .5),
+        (57, .5),
+        (60, .5),
+        (60, .5),
+
+        (57, .5),
+        (55, .5),
+        (55, .5),
+        (60, .5),
+
+        (60, .5),
+        (59, .5),
+        (57, .5),
+        (57, .5),
+
+        (59, 1.5),
+
+        (55, .5),
+
+        (55, .5),
+        (57, .5),
+        (57, .5),
+        (55, .5),
+
+        (55, .5),
+        (57, .5),
+        (56, .5),
+        (55, .5),
+
+        (53, .5),
+        (55, .5),
+        (57, .5),
+        (55, .5),
+
+        (55, 1.5),
+    ]
+    pitches_1_2 = [
+        (48, .5),
+
+        (48, .5),
+        (53, .5),
+        (52, .5),
+        (57, .5),
+
+        (53, .5),
+        (55, .5),
+        (48, .5),
+        (48, .5),
+
+        (45, .5),
+        (52, .5),
+        (48, .5),
+        (50, .5),
+
+        (43, 1.5),
+
+        (55, .5),
+
+        (48, .5),
+        (53, .5),
+        (50, .5),
+        (55, .5),
+
+        (48, .5),
+        (53, .5),
+        (52, .5),
+        (52, .5),
+
+        (50, .5),
+        (48, .5),
+        (53, .5),
+        (55, .5),
+
+        (48, 1.5),
+    ]
+    part_voice_instrument_program_pitches = [
+        (0, 1, 1, 7, pitches_0_1),
+        (0, 2, 1, 7, pitches_0_2),
+        (1, 1, 2, 1, pitches_1_1),
+        (1, 2, 2, 1, pitches_1_2),
+    ]
+    for part, voice, instrument, program, pitches in (
+        part_voice_instrument_program_pitches):
+      time = 0
+      for pitch, duration in pitches:
+        note = expected_ns.notes.add()
+        note.part = part
+        note.voice = voice
+        note.pitch = pitch
+        note.start_time = time
+        time += duration
+        note.end_time = time
+        note.velocity = 64
+        note.instrument = instrument
+        note.program = program
+        if duration == .5:
+          note.numerator = 1
+          note.denominator = 4
+        if duration == .25:
+          note.numerator = 1
+          note.denominator = 8
+        if duration == .75:
+          note.numerator = 3
+          note.denominator = 8
+        if duration == 1.5:
+          note.numerator = 3
+          note.denominator = 4
+    expected_ns.notes.sort(
+        key=lambda note: (note.part, note.voice, note.start_time))
+    ns.notes.sort(
+        key=lambda note: (note.part, note.voice, note.start_time))
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_part_name(self):
+    &#34;&#34;&#34;Verify that a part with an empty name can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        part_infos {
+          part: 0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_part_list(self):
+    &#34;&#34;&#34;Verify that a part without a corresponding score-part can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        part_infos {
+          part: 0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_empty_doc(self):
+    &#34;&#34;&#34;Verify that an empty doc can be parsed.&#34;&#34;&#34;
+
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)
+
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        source_info: {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        key_signatures {
+          key: C
+          time: 0
+        }
+        tempos {
+          qpm: 120.0
+        }
+        total_time: 0.0
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_chord_symbols(self):
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.chord_symbols_filename)
+    chord_symbols = [(annotation.time, annotation.text)
+                     for annotation in ns.text_annotations
+                     if annotation.annotation_type == CHORD_SYMBOL]
+    chord_symbols = list(sorted(chord_symbols, key=operator.itemgetter(0)))
+
+    expected_beats_and_chords = [
+        (0.0, &#39;N.C.&#39;),
+        (4.0, &#39;Cmaj7&#39;),
+        (12.0, &#39;F6(add9)&#39;),
+        (16.0, &#39;F#dim7/A&#39;),
+        (20.0, &#39;Bm7b5&#39;),
+        (24.0, &#39;E7(#9)&#39;),
+        (28.0, &#39;A7(add9)(no3)&#39;),
+        (32.0, &#39;Bbsus2&#39;),
+        (36.0, &#39;Am(maj7)&#39;),
+        (38.0, &#39;D13&#39;),
+        (40.0, &#39;E5&#39;),
+        (44.0, &#39;Caug&#39;)
+    ]
+
+    # Adjust for 120 QPM.
+    expected_times_and_chords = [(beat / 2.0, chord)
+                                 for beat, chord in expected_beats_and_chords]
+    self.assertEqual(expected_times_and_chords, chord_symbols)
+
+  def test_alternating_meter(self):
+    with self.assertRaises(musicxml_parser.AlternatingTimeSignatureError):
+      musicxml_parser.MusicXMLDocument(self.alternating_meter_filename)
+
+  def test_mid_measure_meter_change(self):
+    with self.assertRaises(musicxml_parser.MultipleTimeSignatureError):
+      musicxml_parser.MusicXMLDocument(self.mid_measure_meter_filename)
+
+  def test_unpitched_notes(self):
+    with self.assertRaises(musicxml_parser.UnpitchedNoteError):
+      musicxml_parser.MusicXMLDocument(os.path.join(
+          testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))
+    with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+      musicxml_reader.musicxml_file_to_sequence_proto(os.path.join(
+          testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))
+
+  def test_empty_archive(self):
+    with tempfile.NamedTemporaryFile(suffix=&#39;.mxl&#39;) as temp_file:
+      z = zipfile.ZipFile(temp_file.name, &#39;w&#39;)
+      z.close()
+
+      with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+        musicxml_reader.musicxml_file_to_sequence_proto(
+            temp_file.name)
+
+  def test_whole_measure_rest_forward(self):
+    &#34;&#34;&#34;Test that a whole measure rest can be encoded using &lt;forward&gt;.
+
+    A whole measure rest is usually encoded as a &lt;note&gt; with a duration
+    equal to that of a whole measure. An alternative encoding is to
+    use the &lt;forward&gt; element to advance the time cursor to a duration
+    equal to that of a whole measure. This implies a whole measure rest
+    when there are no &lt;note&gt; elements in this measure.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.whole_measure_rest_forward_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 6.0
+          numerator: 2
+          denominator: 4
+        }
+        key_signatures {
+        }
+        tempos {
+          qpm: 120
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 2.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 4.0
+          end_time: 6.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 60
+          velocity: 64
+          start_time: 6.0
+          end_time: 7.0
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 60
+          velocity: 64
+          start_time: 8.0
+          end_time: 9.0
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        total_time: 9.0
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_meter(self):
+    &#34;&#34;&#34;Test that meters are encoded properly.
+
+    Musical meters are expressed as a ratio of beats to divisions.
+    The MusicXML parser uses this ratio in lowest terms for timing
+    purposes. However, the meters should be in the actual terms
+    when appearing in a NoteSequence.
+    &#34;&#34;&#34;
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        self.meter_test_filename)
+    expected_ns = testing_lib.parse_test_proto(
+        music_pb2.NoteSequence,
+        &#34;&#34;&#34;
+        ticks_per_quarter: 220
+        time_signatures {
+          numerator: 1
+          denominator: 4
+        }
+        time_signatures {
+          time: 0.5
+          numerator: 2
+          denominator: 4
+        }
+        time_signatures {
+          time: 1.5
+          numerator: 3
+          denominator: 4
+        }
+        time_signatures {
+          time: 3.0
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 5.0
+          numerator: 5
+          denominator: 4
+        }
+        time_signatures {
+          time: 7.5
+          numerator: 6
+          denominator: 4
+        }
+        time_signatures {
+          time: 10.5
+          numerator: 7
+          denominator: 4
+        }
+        time_signatures {
+          time: 14.0
+          numerator: 1
+          denominator: 8
+        }
+        time_signatures {
+          time: 14.25
+          numerator: 2
+          denominator: 8
+        }
+        time_signatures {
+          time: 14.75
+          numerator: 3
+          denominator: 8
+        }
+        time_signatures {
+          time: 15.5
+          numerator: 4
+          denominator: 8
+        }
+        time_signatures {
+          time: 16.5
+          numerator: 5
+          denominator: 8
+        }
+        time_signatures {
+          time: 17.75
+          numerator: 6
+          denominator: 8
+        }
+        time_signatures {
+          time: 19.25
+          numerator: 7
+          denominator: 8
+        }
+        time_signatures {
+          time: 21.0
+          numerator: 8
+          denominator: 8
+        }
+        time_signatures {
+          time: 23.0
+          numerator: 9
+          denominator: 8
+        }
+        time_signatures {
+          time: 25.25
+          numerator: 10
+          denominator: 8
+        }
+        time_signatures {
+          time: 27.75
+          numerator: 11
+          denominator: 8
+        }
+        time_signatures {
+          time: 30.5
+          numerator: 12
+          denominator: 8
+        }
+        time_signatures {
+          time: 33.5
+          numerator: 2
+          denominator: 2
+        }
+        time_signatures {
+          time: 35.5
+          numerator: 3
+          denominator: 2
+        }
+        time_signatures {
+          time: 38.5
+          numerator: 4
+          denominator: 2
+        }
+        time_signatures {
+          time: 42.5
+          numerator: 4
+          denominator: 4
+        }
+        time_signatures {
+          time: 44.5
+          numerator: 2
+          denominator: 2
+        }
+        key_signatures {
+        }
+        tempos {
+          qpm: 120
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          end_time: 0.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 0.5
+          end_time: 1.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 1.5
+          end_time: 3.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 3.0
+          end_time: 5.0
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 5.0
+          end_time: 6.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 6.5
+          end_time: 7.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 7.5
+          end_time: 9.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 9.0
+          end_time: 10.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 10.5
+          end_time: 12.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 12.0
+          end_time: 13.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 13.5
+          end_time: 14.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.0
+          end_time: 14.25
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.25
+          end_time: 14.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 14.75
+          end_time: 15.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 15.5
+          end_time: 16.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 16.0
+          end_time: 16.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 16.5
+          end_time: 17.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.0
+          end_time: 17.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.5
+          end_time: 17.75
+          numerator: 1
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 17.75
+          end_time: 18.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 18.5
+          end_time: 19.25
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 19.25
+          end_time: 20.0
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 20.0
+          end_time: 20.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 20.5
+          end_time: 21.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 21.0
+          end_time: 21.75
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 21.75
+          end_time: 22.5
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 22.5
+          end_time: 23.0
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 23.0
+          end_time: 24.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 24.5
+          end_time: 25.25
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 25.25
+          end_time: 26.75
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 26.75
+          end_time: 27.25
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 27.25
+          end_time: 27.75
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 27.75
+          end_time: 29.25
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 29.25
+          end_time: 30.0
+          numerator: 3
+          denominator: 8
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 30.0
+          end_time: 30.5
+          numerator: 1
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 30.5
+          end_time: 32.0
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 32.0
+          end_time: 33.5
+          numerator: 3
+          denominator: 4
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 33.5
+          end_time: 34.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 34.5
+          end_time: 35.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 35.5
+          end_time: 36.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 36.5
+          end_time: 37.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 37.5
+          end_time: 38.5
+          numerator: 1
+          denominator: 2
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 38.5
+          end_time: 40.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 40.5
+          end_time: 42.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 42.5
+          end_time: 44.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        notes {
+          pitch: 72
+          velocity: 64
+          start_time: 44.5
+          end_time: 46.5
+          numerator: 1
+          denominator: 1
+          voice: 1
+        }
+        total_time: 46.5
+        part_infos {
+          name: &#34;Flute&#34;
+        }
+        source_info {
+          source_type: SCORE_BASED
+          encoding_type: MUSIC_XML
+          parser: MAGENTA_MUSIC_XML
+        }
+        &#34;&#34;&#34;)
+    self.assertProtoEquals(expected_ns, ns)
+
+  def test_key_missing_fifths(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;key&gt;
+                &lt;!-- missing fifths element. --&gt;
+              &lt;/key&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.KeyParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_harmony_missing_degree(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+            &lt;harmony&gt;
+              &lt;degree&gt;
+                &lt;!-- missing degree-value text --&gt;
+                &lt;degree-value&gt;&lt;/degree-value&gt;
+              &lt;/degree&gt;
+            &lt;/harmony&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.ChordSymbolParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_transposed_keysig(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;4&lt;/divisions&gt;
+            &lt;key&gt;
+              &lt;fifths&gt;-3&lt;/fifths&gt;
+              &lt;mode&gt;major&lt;/mode&gt;
+            &lt;/key&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+            &lt;clef&gt;
+              &lt;sign&gt;G&lt;/sign&gt;
+              &lt;line&gt;2&lt;/line&gt;
+            &lt;/clef&gt;
+            &lt;transpose&gt;
+              &lt;diatonic&gt;-5&lt;/diatonic&gt;
+              &lt;chromatic&gt;-9&lt;/chromatic&gt;
+            &lt;/transpose&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      musicxml_parser.MusicXMLDocument(temp_file.name)
+      sequence = musicxml_reader.musicxml_file_to_sequence_proto(temp_file.name)
+      self.assertLen(sequence.key_signatures, 1)
+      self.assertEqual(music_pb2.NoteSequence.KeySignature.G_FLAT,
+                       sequence.key_signatures[0].key)
+
+  def test_beats_composite(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4+5&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;quarter&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.TimeSignatureParseError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)
+
+  def test_invalid_note_type(self):
+    xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+      &lt;!DOCTYPE score-partwise PUBLIC
+          &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+          &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+      &lt;score-partwise version=&#34;3.0&#34;&gt;
+        &lt;part-list&gt;
+          &lt;score-part id=&#34;P1&#34;&gt;
+            &lt;part-name/&gt;
+          &lt;/score-part&gt;
+        &lt;/part-list&gt;
+        &lt;part id=&#34;P1&#34;&gt;
+          &lt;measure number=&#34;1&#34;&gt;
+            &lt;attributes&gt;
+              &lt;divisions&gt;2&lt;/divisions&gt;
+              &lt;time&gt;
+                &lt;beats&gt;4&lt;/beats&gt;
+                &lt;beat-type&gt;4&lt;/beat-type&gt;
+              &lt;/time&gt;
+            &lt;/attributes&gt;
+            &lt;note&gt;
+              &lt;pitch&gt;
+                &lt;step&gt;G&lt;/step&gt;
+                &lt;octave&gt;4&lt;/octave&gt;
+              &lt;/pitch&gt;
+              &lt;duration&gt;2&lt;/duration&gt;
+              &lt;voice&gt;1&lt;/voice&gt;
+              &lt;type&gt;blarg&lt;/type&gt;
+            &lt;/note&gt;
+          &lt;/measure&gt;
+        &lt;/part&gt;
+      &lt;/score-partwise&gt;
+    &#34;&#34;&#34;
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      with self.assertRaises(musicxml_parser.InvalidNoteDurationTypeError):
+        musicxml_parser.MusicXMLDocument(temp_file.name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.testing_lib.ProtoTestCase" href="testing_lib.html#note_seq.testing_lib.ProtoTestCase">ProtoTestCase</a></li>
+<li>absl.testing.absltest.TestCase</li>
+<li>absl.third_party.unittest3_backport.case.TestCase</li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.check_fmajor_scale"><code class="name flex">
+<span>def <span class="ident">check_fmajor_scale</span></span>(<span>self, filename, part_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify MusicXML scale file.</p>
+<p>Verify that it contains the correct pitches (sounding pitch) and durations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>filename</code></strong></dt>
+<dd>file to test.</dd>
+<dt><strong><code>part_name</code></strong></dt>
+<dd>name of the part the sequence is expected to contain.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_fmajor_scale(self, filename, part_name):
+  &#34;&#34;&#34;Verify MusicXML scale file.
+
+  Verify that it contains the correct pitches (sounding pitch) and durations.
+
+  Args:
+    filename: file to test.
+    part_name: name of the part the sequence is expected to contain.
+  &#34;&#34;&#34;
+
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      key_signatures {
+        key: F
+        time: 0
+      }
+      time_signatures {
+        numerator: 4
+        denominator: 4
+      }
+      tempos {
+        qpm: 120.0
+      }
+      total_time: 4.0
+      &#34;&#34;&#34;)
+
+  part_info = expected_ns.part_infos.add()
+  part_info.name = part_name
+
+  expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+  time = 0
+  for pitch in expected_pitches:
+    note = expected_ns.notes.add()
+    note.part = 0
+    note.voice = 1
+    note.pitch = pitch
+    note.start_time = time
+    time += .5
+    note.end_time = time
+    note.velocity = 64
+    note.numerator = 1
+    note.denominator = 4
+
+  # Convert MusicXML to NoteSequence
+  source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+  sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+
+  # Check equality
+  self.assertProtoEquals(expected_ns, sequence_proto)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_and_sequence"><code class="name flex">
+<span>def <span class="ident">check_musicxml_and_sequence</span></span>(<span>self, musicxml, sequence_proto)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compares MusicXMLDocument object against a sequence proto.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>musicxml</code></strong></dt>
+<dd>A MusicXMLDocument object.</dd>
+<dt><strong><code>sequence_proto</code></strong></dt>
+<dd>A NoteSequence proto.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_musicxml_and_sequence(self, musicxml, sequence_proto):
+  &#34;&#34;&#34;Compares MusicXMLDocument object against a sequence proto.
+
+  Args:
+    musicxml: A MusicXMLDocument object.
+    sequence_proto: A NoteSequence proto.
+  &#34;&#34;&#34;
+  # Test time signature changes.
+  self.assertEqual(len(musicxml.get_time_signatures()),
+                   len(sequence_proto.time_signatures))
+  for musicxml_time, sequence_time in zip(musicxml.get_time_signatures(),
+                                          sequence_proto.time_signatures):
+    self.assertEqual(musicxml_time.numerator, sequence_time.numerator)
+    self.assertEqual(musicxml_time.denominator, sequence_time.denominator)
+    self.assertAlmostEqual(musicxml_time.time_position, sequence_time.time)
+
+  # Test key signature changes.
+  self.assertEqual(len(musicxml.get_key_signatures()),
+                   len(sequence_proto.key_signatures))
+  for musicxml_key, sequence_key in zip(musicxml.get_key_signatures(),
+                                        sequence_proto.key_signatures):
+
+    if musicxml_key.mode == &#39;major&#39;:
+      mode = 0
+    elif musicxml_key.mode == &#39;minor&#39;:
+      mode = 1
+
+    # The Key enum in music.proto does NOT follow MIDI / MusicXML specs
+    # Convert from MIDI / MusicXML key to music.proto key
+    music_proto_keys = [11, 6, 1, 8, 3, 10, 5, 0, 7, 2, 9, 4, 11, 6, 1]
+    key = music_proto_keys[musicxml_key.key + 7]
+    self.assertEqual(key, sequence_key.key)
+    self.assertEqual(mode, sequence_key.mode)
+    self.assertAlmostEqual(musicxml_key.time_position, sequence_key.time)
+
+  # Test tempos.
+  musicxml_tempos = musicxml.get_tempos()
+  self.assertEqual(len(musicxml_tempos),
+                   len(sequence_proto.tempos))
+  for musicxml_tempo, sequence_tempo in zip(
+      musicxml_tempos, sequence_proto.tempos):
+    self.assertAlmostEqual(musicxml_tempo.qpm, sequence_tempo.qpm)
+    self.assertAlmostEqual(musicxml_tempo.time_position,
+                           sequence_tempo.time)
+
+  # Test parts/instruments.
+  seq_parts = collections.defaultdict(list)
+  for seq_note in sequence_proto.notes:
+    seq_parts[seq_note.part].append(seq_note)
+
+  self.assertEqual(len(musicxml.parts), len(seq_parts))
+  for musicxml_part, seq_part_id in zip(
+      musicxml.parts, sorted(seq_parts.keys())):
+
+    seq_instrument_notes = seq_parts[seq_part_id]
+    musicxml_notes = []
+    for musicxml_measure in musicxml_part.measures:
+      for musicxml_note in musicxml_measure.notes:
+        if not musicxml_note.is_rest:
+          musicxml_notes.append(musicxml_note)
+
+    self.assertEqual(len(musicxml_notes), len(seq_instrument_notes))
+    for musicxml_note, sequence_note in zip(musicxml_notes,
+                                            seq_instrument_notes):
+      self.assertEqual(musicxml_note.pitch[1], sequence_note.pitch)
+      self.assertEqual(musicxml_note.velocity, sequence_note.velocity)
+      self.assertAlmostEqual(musicxml_note.note_duration.time_position,
+                             sequence_note.start_time)
+      self.assertAlmostEqual(musicxml_note.note_duration.time_position
+                             + musicxml_note.note_duration.seconds,
+                             sequence_note.end_time)
+      # Check that the duration specified in the MusicXML and the
+      # duration float match to within +/- 1 (delta = 1)
+      # Delta is used because duration in MusicXML is always an integer
+      # For example, a 3:2 half note might have a durationfloat of 341.333
+      # but would have the 1/3 distributed in the MusicXML as
+      # 341.0, 341.0, 342.0.
+      # Check that (3 * 341.333) = (341 + 341 + 342) is true by checking
+      # that 341.0 and 342.0 are +/- 1 of 341.333
+      self.assertAlmostEqual(
+          musicxml_note.note_duration.duration,
+          musicxml_note.state.divisions * 4
+          * musicxml_note.note_duration.duration_float(),
+          delta=1)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_to_sequence"><code class="name flex">
+<span>def <span class="ident">check_musicxml_to_sequence</span></span>(<span>self, filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the translation from MusicXML to Sequence proto.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_musicxml_to_sequence(self, filename):
+  &#34;&#34;&#34;Test the translation from MusicXML to Sequence proto.&#34;&#34;&#34;
+  source_musicxml = musicxml_parser.MusicXMLDocument(filename)
+  sequence_proto = musicxml_reader.musicxml_to_sequence_proto(source_musicxml)
+  self.check_musicxml_and_sequence(source_musicxml, sequence_proto)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testFluteScale"><code class="name flex">
+<span>def <span class="ident">testFluteScale</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify properties of the flute scale.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testFluteScale(self):
+  &#34;&#34;&#34;Verify properties of the flute scale.&#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.flute_scale_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures: {
+        numerator: 4
+        denominator: 4
+      }
+      tempos: {
+        qpm: 120
+      }
+      key_signatures: {
+        key: F
+      }
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      part_infos {
+        part: 0
+        name: &#34;Flute&#34;
+      }
+      total_time: 4.0
+      &#34;&#34;&#34;)
+  expected_pitches = [65, 67, 69, 70, 72, 74, 76, 77]
+  time = 0
+  for pitch in expected_pitches:
+    note = expected_ns.notes.add()
+    note.part = 0
+    note.voice = 1
+    note.pitch = pitch
+    note.start_time = time
+    time += .5
+    note.end_time = time
+    note.velocity = 64
+    note.numerator = 1
+    note.denominator = 4
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_alternating_meter"><code class="name flex">
+<span>def <span class="ident">test_alternating_meter</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_alternating_meter(self):
+  with self.assertRaises(musicxml_parser.AlternatingTimeSignatureError):
+    musicxml_parser.MusicXMLDocument(self.alternating_meter_filename)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_atonal_transposition"><code class="name flex">
+<span>def <span class="ident">test_atonal_transposition</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test that transposition works when changing instrument transposition.</p>
+<p>This can occur within a single part in a score where the score
+has no key signature / is atonal. Examples include changing from a
+non-transposing instrument to a transposing one (ex. Flute to Bb Clarinet)
+or vice versa, or changing among transposing instruments (ex. Bb Clarinet
+to Eb Alto Saxophone).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_atonal_transposition(self):
+  &#34;&#34;&#34;Test that transposition works when changing instrument transposition.
+
+  This can occur within a single part in a score where the score
+  has no key signature / is atonal. Examples include changing from a
+  non-transposing instrument to a transposing one (ex. Flute to Bb Clarinet)
+  or vice versa, or changing among transposing instruments (ex. Bb Clarinet
+  to Eb Alto Saxophone).
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.atonal_transposition_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures: {
+        numerator: 4
+        denominator: 4
+      }
+      tempos: {
+        qpm: 120
+      }
+      key_signatures: {
+      }
+      part_infos {
+        part: 0
+        name: &#34;Flute&#34;
+      }
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      total_time: 4.0
+      &#34;&#34;&#34;)
+  expected_pitches = [72, 74, 76, 77, 79, 77, 76, 74]
+  time = 0
+  for pitch in expected_pitches:
+    note = expected_ns.notes.add()
+    note.pitch = pitch
+    note.start_time = time
+    time += .5
+    note.end_time = time
+    note.velocity = 64
+    note.numerator = 1
+    note.denominator = 4
+    note.voice = 1
+  self.maxDiff = None
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_beats_composite"><code class="name flex">
+<span>def <span class="ident">test_beats_composite</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_beats_composite(self):
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+        &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;2&lt;/divisions&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4+5&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+          &lt;/attributes&gt;
+          &lt;note&gt;
+            &lt;pitch&gt;
+              &lt;step&gt;G&lt;/step&gt;
+              &lt;octave&gt;4&lt;/octave&gt;
+            &lt;/pitch&gt;
+            &lt;duration&gt;2&lt;/duration&gt;
+            &lt;voice&gt;1&lt;/voice&gt;
+            &lt;type&gt;quarter&lt;/type&gt;
+          &lt;/note&gt;
+        &lt;/measure&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    with self.assertRaises(musicxml_parser.TimeSignatureParseError):
+      musicxml_parser.MusicXMLDocument(temp_file.name)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_chord_symbols"><code class="name flex">
+<span>def <span class="ident">test_chord_symbols</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_chord_symbols(self):
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.chord_symbols_filename)
+  chord_symbols = [(annotation.time, annotation.text)
+                   for annotation in ns.text_annotations
+                   if annotation.annotation_type == CHORD_SYMBOL]
+  chord_symbols = list(sorted(chord_symbols, key=operator.itemgetter(0)))
+
+  expected_beats_and_chords = [
+      (0.0, &#39;N.C.&#39;),
+      (4.0, &#39;Cmaj7&#39;),
+      (12.0, &#39;F6(add9)&#39;),
+      (16.0, &#39;F#dim7/A&#39;),
+      (20.0, &#39;Bm7b5&#39;),
+      (24.0, &#39;E7(#9)&#39;),
+      (28.0, &#39;A7(add9)(no3)&#39;),
+      (32.0, &#39;Bbsus2&#39;),
+      (36.0, &#39;Am(maj7)&#39;),
+      (38.0, &#39;D13&#39;),
+      (40.0, &#39;E5&#39;),
+      (44.0, &#39;Caug&#39;)
+  ]
+
+  # Adjust for 120 QPM.
+  expected_times_and_chords = [(beat / 2.0, chord)
+                               for beat, chord in expected_beats_and_chords]
+  self.assertEqual(expected_times_and_chords, chord_symbols)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_archive"><code class="name flex">
+<span>def <span class="ident">test_empty_archive</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_empty_archive(self):
+  with tempfile.NamedTemporaryFile(suffix=&#39;.mxl&#39;) as temp_file:
+    z = zipfile.ZipFile(temp_file.name, &#39;w&#39;)
+    z.close()
+
+    with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+      musicxml_reader.musicxml_file_to_sequence_proto(
+          temp_file.name)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_doc"><code class="name flex">
+<span>def <span class="ident">test_empty_doc</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify that an empty doc can be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_empty_doc(self):
+  &#34;&#34;&#34;Verify that an empty doc can be parsed.&#34;&#34;&#34;
+
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        temp_file.name)
+
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      key_signatures {
+        key: C
+        time: 0
+      }
+      tempos {
+        qpm: 120.0
+      }
+      total_time: 0.0
+      &#34;&#34;&#34;)
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_list"><code class="name flex">
+<span>def <span class="ident">test_empty_part_list</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify that a part without a corresponding score-part can be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_empty_part_list(self):
+  &#34;&#34;&#34;Verify that a part without a corresponding score-part can be parsed.&#34;&#34;&#34;
+
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        temp_file.name)
+
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      key_signatures {
+        key: C
+        time: 0
+      }
+      tempos {
+        qpm: 120.0
+      }
+      part_infos {
+        part: 0
+      }
+      total_time: 0.0
+      &#34;&#34;&#34;)
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_name"><code class="name flex">
+<span>def <span class="ident">test_empty_part_name</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify that a part with an empty name can be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_empty_part_name(self):
+  &#34;&#34;&#34;Verify that a part with an empty name can be parsed.&#34;&#34;&#34;
+
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    ns = musicxml_reader.musicxml_file_to_sequence_proto(
+        temp_file.name)
+
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      key_signatures {
+        key: C
+        time: 0
+      }
+      tempos {
+        qpm: 120.0
+      }
+      part_infos {
+        part: 0
+      }
+      total_time: 0.0
+      &#34;&#34;&#34;)
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_harmony_missing_degree"><code class="name flex">
+<span>def <span class="ident">test_harmony_missing_degree</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_harmony_missing_degree(self):
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+        &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;2&lt;/divisions&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+          &lt;/attributes&gt;
+          &lt;note&gt;
+            &lt;pitch&gt;
+              &lt;step&gt;G&lt;/step&gt;
+              &lt;octave&gt;4&lt;/octave&gt;
+            &lt;/pitch&gt;
+            &lt;duration&gt;2&lt;/duration&gt;
+            &lt;voice&gt;1&lt;/voice&gt;
+            &lt;type&gt;quarter&lt;/type&gt;
+          &lt;/note&gt;
+          &lt;harmony&gt;
+            &lt;degree&gt;
+              &lt;!-- missing degree-value text --&gt;
+              &lt;degree-value&gt;&lt;/degree-value&gt;
+            &lt;/degree&gt;
+          &lt;/harmony&gt;
+        &lt;/measure&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    with self.assertRaises(musicxml_parser.ChordSymbolParseError):
+      musicxml_parser.MusicXMLDocument(temp_file.name)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_incomplete_measures"><code class="name flex">
+<span>def <span class="ident">test_incomplete_measures</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test that incomplete measures have the correct time signature.</p>
+<p>This can occur in pickup bars or incomplete measures. For example,
+if the time signature in the MusicXML is 4/4, but the measure only
+contains one quarter note, Magenta expects this pickup measure to have
+a time signature of 1/4.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_incomplete_measures(self):
+  &#34;&#34;&#34;Test that incomplete measures have the correct time signature.
+
+  This can occur in pickup bars or incomplete measures. For example,
+  if the time signature in the MusicXML is 4/4, but the measure only
+  contains one quarter note, Magenta expects this pickup measure to have
+  a time signature of 1/4.
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.time_signature_filename)
+
+  # One time signature per measure
+  self.assertLen(ns.time_signatures, 6)
+  self.assertLen(ns.key_signatures, 1)
+  self.assertLen(ns.notes, 112)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_invalid_note_type"><code class="name flex">
+<span>def <span class="ident">test_invalid_note_type</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_invalid_note_type(self):
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+        &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;2&lt;/divisions&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+          &lt;/attributes&gt;
+          &lt;note&gt;
+            &lt;pitch&gt;
+              &lt;step&gt;G&lt;/step&gt;
+              &lt;octave&gt;4&lt;/octave&gt;
+            &lt;/pitch&gt;
+            &lt;duration&gt;2&lt;/duration&gt;
+            &lt;voice&gt;1&lt;/voice&gt;
+            &lt;type&gt;blarg&lt;/type&gt;
+          &lt;/note&gt;
+        &lt;/measure&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    with self.assertRaises(musicxml_parser.InvalidNoteDurationTypeError):
+      musicxml_parser.MusicXMLDocument(temp_file.name)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_key_missing_fifths"><code class="name flex">
+<span>def <span class="ident">test_key_missing_fifths</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_key_missing_fifths(self):
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+        &lt;measure number=&#34;1&#34;&gt;
+          &lt;attributes&gt;
+            &lt;divisions&gt;2&lt;/divisions&gt;
+            &lt;key&gt;
+              &lt;!-- missing fifths element. --&gt;
+            &lt;/key&gt;
+            &lt;time&gt;
+              &lt;beats&gt;4&lt;/beats&gt;
+              &lt;beat-type&gt;4&lt;/beat-type&gt;
+            &lt;/time&gt;
+          &lt;/attributes&gt;
+          &lt;note&gt;
+            &lt;pitch&gt;
+              &lt;step&gt;G&lt;/step&gt;
+              &lt;octave&gt;4&lt;/octave&gt;
+            &lt;/pitch&gt;
+            &lt;duration&gt;2&lt;/duration&gt;
+            &lt;voice&gt;1&lt;/voice&gt;
+            &lt;type&gt;quarter&lt;/type&gt;
+          &lt;/note&gt;
+        &lt;/measure&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    with self.assertRaises(musicxml_parser.KeyParseError):
+      musicxml_parser.MusicXMLDocument(temp_file.name)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_meter"><code class="name flex">
+<span>def <span class="ident">test_meter</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test that meters are encoded properly.</p>
+<p>Musical meters are expressed as a ratio of beats to divisions.
+The MusicXML parser uses this ratio in lowest terms for timing
+purposes. However, the meters should be in the actual terms
+when appearing in a NoteSequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_meter(self):
+  &#34;&#34;&#34;Test that meters are encoded properly.
+
+  Musical meters are expressed as a ratio of beats to divisions.
+  The MusicXML parser uses this ratio in lowest terms for timing
+  purposes. However, the meters should be in the actual terms
+  when appearing in a NoteSequence.
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.meter_test_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures {
+        numerator: 1
+        denominator: 4
+      }
+      time_signatures {
+        time: 0.5
+        numerator: 2
+        denominator: 4
+      }
+      time_signatures {
+        time: 1.5
+        numerator: 3
+        denominator: 4
+      }
+      time_signatures {
+        time: 3.0
+        numerator: 4
+        denominator: 4
+      }
+      time_signatures {
+        time: 5.0
+        numerator: 5
+        denominator: 4
+      }
+      time_signatures {
+        time: 7.5
+        numerator: 6
+        denominator: 4
+      }
+      time_signatures {
+        time: 10.5
+        numerator: 7
+        denominator: 4
+      }
+      time_signatures {
+        time: 14.0
+        numerator: 1
+        denominator: 8
+      }
+      time_signatures {
+        time: 14.25
+        numerator: 2
+        denominator: 8
+      }
+      time_signatures {
+        time: 14.75
+        numerator: 3
+        denominator: 8
+      }
+      time_signatures {
+        time: 15.5
+        numerator: 4
+        denominator: 8
+      }
+      time_signatures {
+        time: 16.5
+        numerator: 5
+        denominator: 8
+      }
+      time_signatures {
+        time: 17.75
+        numerator: 6
+        denominator: 8
+      }
+      time_signatures {
+        time: 19.25
+        numerator: 7
+        denominator: 8
+      }
+      time_signatures {
+        time: 21.0
+        numerator: 8
+        denominator: 8
+      }
+      time_signatures {
+        time: 23.0
+        numerator: 9
+        denominator: 8
+      }
+      time_signatures {
+        time: 25.25
+        numerator: 10
+        denominator: 8
+      }
+      time_signatures {
+        time: 27.75
+        numerator: 11
+        denominator: 8
+      }
+      time_signatures {
+        time: 30.5
+        numerator: 12
+        denominator: 8
+      }
+      time_signatures {
+        time: 33.5
+        numerator: 2
+        denominator: 2
+      }
+      time_signatures {
+        time: 35.5
+        numerator: 3
+        denominator: 2
+      }
+      time_signatures {
+        time: 38.5
+        numerator: 4
+        denominator: 2
+      }
+      time_signatures {
+        time: 42.5
+        numerator: 4
+        denominator: 4
+      }
+      time_signatures {
+        time: 44.5
+        numerator: 2
+        denominator: 2
+      }
+      key_signatures {
+      }
+      tempos {
+        qpm: 120
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        end_time: 0.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 0.5
+        end_time: 1.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 1.5
+        end_time: 3.0
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 3.0
+        end_time: 5.0
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 5.0
+        end_time: 6.5
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 6.5
+        end_time: 7.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 7.5
+        end_time: 9.0
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 9.0
+        end_time: 10.5
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 10.5
+        end_time: 12.0
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 12.0
+        end_time: 13.5
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 13.5
+        end_time: 14.0
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 14.0
+        end_time: 14.25
+        numerator: 1
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 14.25
+        end_time: 14.75
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 14.75
+        end_time: 15.5
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 15.5
+        end_time: 16.0
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 16.0
+        end_time: 16.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 16.5
+        end_time: 17.0
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 17.0
+        end_time: 17.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 17.5
+        end_time: 17.75
+        numerator: 1
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 17.75
+        end_time: 18.5
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 18.5
+        end_time: 19.25
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 19.25
+        end_time: 20.0
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 20.0
+        end_time: 20.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 20.5
+        end_time: 21.0
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 21.0
+        end_time: 21.75
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 21.75
+        end_time: 22.5
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 22.5
+        end_time: 23.0
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 23.0
+        end_time: 24.5
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 24.5
+        end_time: 25.25
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 25.25
+        end_time: 26.75
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 26.75
+        end_time: 27.25
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 27.25
+        end_time: 27.75
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 27.75
+        end_time: 29.25
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 29.25
+        end_time: 30.0
+        numerator: 3
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 30.0
+        end_time: 30.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 30.5
+        end_time: 32.0
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 32.0
+        end_time: 33.5
+        numerator: 3
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 33.5
+        end_time: 34.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 34.5
+        end_time: 35.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 35.5
+        end_time: 36.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 36.5
+        end_time: 37.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 37.5
+        end_time: 38.5
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 38.5
+        end_time: 40.5
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 40.5
+        end_time: 42.5
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 42.5
+        end_time: 44.5
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 44.5
+        end_time: 46.5
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      total_time: 46.5
+      part_infos {
+        name: &#34;Flute&#34;
+      }
+      source_info {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      &#34;&#34;&#34;)
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_mid_measure_meter_change"><code class="name flex">
+<span>def <span class="ident">test_mid_measure_meter_change</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_mid_measure_meter_change(self):
+  with self.assertRaises(musicxml_parser.MultipleTimeSignatureError):
+    musicxml_parser.MusicXMLDocument(self.mid_measure_meter_filename)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_st_anne"><code class="name flex">
+<span>def <span class="ident">test_st_anne</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify properties of the St. Anne file.</p>
+<p>The file contains 2 parts and 4 voices.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_st_anne(self):
+  &#34;&#34;&#34;Verify properties of the St. Anne file.
+
+  The file contains 2 parts and 4 voices.
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.st_anne_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures {
+        numerator: 1
+        denominator: 4
+      }
+      time_signatures {
+        time: 0.5
+        numerator: 4
+        denominator: 4
+      }
+      time_signatures {
+        time: 6.5
+        numerator: 3
+        denominator: 4
+      }
+      time_signatures {
+        time: 8.0
+        numerator: 1
+        denominator: 4
+      }
+      time_signatures {
+        time: 8.5
+        numerator: 4
+        denominator: 4
+      }
+      time_signatures {
+        time: 14.5
+        numerator: 3
+        denominator: 4
+      }
+      tempos: {
+        qpm: 120
+      }
+      key_signatures: {
+        key: C
+      }
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      part_infos {
+        part: 0
+        name: &#34;Harpsichord&#34;
+      }
+      part_infos {
+        part: 1
+        name: &#34;Piano&#34;
+      }
+      total_time: 16.0
+      &#34;&#34;&#34;)
+  pitches_0_1 = [
+      (67, .5),
+
+      (64, .5),
+      (69, .5),
+      (67, .5),
+      (72, .5),
+
+      (72, .5),
+      (71, .5),
+      (72, .5),
+      (67, .5),
+
+      (72, .5),
+      (67, .5),
+      (69, .5),
+      (66, .5),
+
+      (67, 1.5),
+
+      (71, .5),
+
+      (72, .5),
+      (69, .5),
+      (74, .5),
+      (71, .5),
+
+      (72, .5),
+      (69, .5),
+      (71, .5),
+      (67, .5),
+
+      (69, .5),
+      (72, .5),
+      (74, .5),
+      (71, .5),
+
+      (72, 1.5),
+  ]
+  pitches_0_2 = [
+      (60, .5),
+
+      (60, .5),
+      (60, .5),
+      (60, .5),
+      (64, .5),
+
+      (62, .5),
+      (62, .5),
+      (64, .5),
+      (64, .5),
+
+      (64, .5),
+      (64, .5),
+      (64, .5),
+      (62, .5),
+
+      (62, 1.5),
+
+      (62, .5),
+
+      (64, .5),
+      (60, .5),
+      (65, .5),
+      (62, .5),
+
+      (64, .75),
+      (62, .25),
+      (59, .5),
+      (60, .5),
+
+      (65, .5),
+      (64, .5),
+      (62, .5),
+      (62, .5),
+
+      (64, 1.5),
+  ]
+  pitches_1_1 = [
+      (52, .5),
+
+      (55, .5),
+      (57, .5),
+      (60, .5),
+      (60, .5),
+
+      (57, .5),
+      (55, .5),
+      (55, .5),
+      (60, .5),
+
+      (60, .5),
+      (59, .5),
+      (57, .5),
+      (57, .5),
+
+      (59, 1.5),
+
+      (55, .5),
+
+      (55, .5),
+      (57, .5),
+      (57, .5),
+      (55, .5),
+
+      (55, .5),
+      (57, .5),
+      (56, .5),
+      (55, .5),
+
+      (53, .5),
+      (55, .5),
+      (57, .5),
+      (55, .5),
+
+      (55, 1.5),
+  ]
+  pitches_1_2 = [
+      (48, .5),
+
+      (48, .5),
+      (53, .5),
+      (52, .5),
+      (57, .5),
+
+      (53, .5),
+      (55, .5),
+      (48, .5),
+      (48, .5),
+
+      (45, .5),
+      (52, .5),
+      (48, .5),
+      (50, .5),
+
+      (43, 1.5),
+
+      (55, .5),
+
+      (48, .5),
+      (53, .5),
+      (50, .5),
+      (55, .5),
+
+      (48, .5),
+      (53, .5),
+      (52, .5),
+      (52, .5),
+
+      (50, .5),
+      (48, .5),
+      (53, .5),
+      (55, .5),
+
+      (48, 1.5),
+  ]
+  part_voice_instrument_program_pitches = [
+      (0, 1, 1, 7, pitches_0_1),
+      (0, 2, 1, 7, pitches_0_2),
+      (1, 1, 2, 1, pitches_1_1),
+      (1, 2, 2, 1, pitches_1_2),
+  ]
+  for part, voice, instrument, program, pitches in (
+      part_voice_instrument_program_pitches):
+    time = 0
+    for pitch, duration in pitches:
+      note = expected_ns.notes.add()
+      note.part = part
+      note.voice = voice
+      note.pitch = pitch
+      note.start_time = time
+      time += duration
+      note.end_time = time
+      note.velocity = 64
+      note.instrument = instrument
+      note.program = program
+      if duration == .5:
+        note.numerator = 1
+        note.denominator = 4
+      if duration == .25:
+        note.numerator = 1
+        note.denominator = 8
+      if duration == .75:
+        note.numerator = 3
+        note.denominator = 8
+      if duration == 1.5:
+        note.numerator = 3
+        note.denominator = 4
+  expected_ns.notes.sort(
+      key=lambda note: (note.part, note.voice, note.start_time))
+  ns.notes.sort(
+      key=lambda note: (note.part, note.voice, note.start_time))
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_transposed_keysig"><code class="name flex">
+<span>def <span class="ident">test_transposed_keysig</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_transposed_keysig(self):
+  xml = br&#34;&#34;&#34;&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;
+    &lt;!DOCTYPE score-partwise PUBLIC
+        &#34;-//Recordare//DTD MusicXML 3.0 Partwise//EN&#34;
+        &#34;http://www.musicxml.org/dtds/partwise.dtd&#34;&gt;
+    &lt;score-partwise version=&#34;3.0&#34;&gt;
+      &lt;part-list&gt;
+        &lt;score-part id=&#34;P1&#34;&gt;
+          &lt;part-name/&gt;
+        &lt;/score-part&gt;
+      &lt;/part-list&gt;
+      &lt;part id=&#34;P1&#34;&gt;
+        &lt;measure number=&#34;1&#34;&gt;
+        &lt;attributes&gt;
+          &lt;divisions&gt;4&lt;/divisions&gt;
+          &lt;key&gt;
+            &lt;fifths&gt;-3&lt;/fifths&gt;
+            &lt;mode&gt;major&lt;/mode&gt;
+          &lt;/key&gt;
+          &lt;time&gt;
+            &lt;beats&gt;4&lt;/beats&gt;
+            &lt;beat-type&gt;4&lt;/beat-type&gt;
+          &lt;/time&gt;
+          &lt;clef&gt;
+            &lt;sign&gt;G&lt;/sign&gt;
+            &lt;line&gt;2&lt;/line&gt;
+          &lt;/clef&gt;
+          &lt;transpose&gt;
+            &lt;diatonic&gt;-5&lt;/diatonic&gt;
+            &lt;chromatic&gt;-9&lt;/chromatic&gt;
+          &lt;/transpose&gt;
+          &lt;/attributes&gt;
+          &lt;note&gt;
+            &lt;pitch&gt;
+              &lt;step&gt;G&lt;/step&gt;
+              &lt;octave&gt;4&lt;/octave&gt;
+            &lt;/pitch&gt;
+            &lt;duration&gt;2&lt;/duration&gt;
+            &lt;voice&gt;1&lt;/voice&gt;
+            &lt;type&gt;quarter&lt;/type&gt;
+          &lt;/note&gt;
+        &lt;/measure&gt;
+      &lt;/part&gt;
+    &lt;/score-partwise&gt;
+  &#34;&#34;&#34;
+  with tempfile.NamedTemporaryFile() as temp_file:
+    temp_file.write(xml)
+    temp_file.flush()
+    musicxml_parser.MusicXMLDocument(temp_file.name)
+    sequence = musicxml_reader.musicxml_file_to_sequence_proto(temp_file.name)
+    self.assertLen(sequence.key_signatures, 1)
+    self.assertEqual(music_pb2.NoteSequence.KeySignature.G_FLAT,
+                     sequence.key_signatures[0].key)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_unmetered_music"><code class="name flex">
+<span>def <span class="ident">test_unmetered_music</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test that time signatures are inserted for music without time signatures.</p>
+<p>MusicXML does not require the use of time signatures. Music without
+time signatures occur in medieval chant, cadenzas, and contemporary music.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_unmetered_music(self):
+  &#34;&#34;&#34;Test that time signatures are inserted for music without time signatures.
+
+  MusicXML does not require the use of time signatures. Music without
+  time signatures occur in medieval chant, cadenzas, and contemporary music.
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.unmetered_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures: {
+        numerator: 11
+        denominator: 8
+      }
+      tempos: {
+        qpm: 120
+      }
+      key_signatures: {
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        end_time: 0.5
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 74
+        velocity: 64
+        start_time: 0.5
+        end_time: 0.75
+        numerator: 1
+        denominator: 8
+        voice: 1
+      }
+      notes {
+        pitch: 76
+        velocity: 64
+        start_time: 0.75
+        end_time: 1.25
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 77
+        velocity: 64
+        start_time: 1.25
+        end_time: 1.75
+        numerator: 1
+        denominator: 4
+        voice: 1
+      }
+      notes {
+        pitch: 79
+        velocity: 64
+        start_time: 1.75
+        end_time: 2.75
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      part_infos {
+        name: &#34;Flute&#34;
+      }
+      source_info: {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      total_time: 2.75
+      &#34;&#34;&#34;)
+  self.maxDiff = None
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_unpitched_notes"><code class="name flex">
+<span>def <span class="ident">test_unpitched_notes</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_unpitched_notes(self):
+  with self.assertRaises(musicxml_parser.UnpitchedNoteError):
+    musicxml_parser.MusicXMLDocument(os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))
+  with self.assertRaises(musicxml_reader.MusicXMLConversionError):
+    musicxml_reader.musicxml_file_to_sequence_proto(os.path.join(
+        testing_lib.get_testdata_dir(), &#39;unpitched.xml&#39;))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.test_whole_measure_rest_forward"><code class="name flex">
+<span>def <span class="ident">test_whole_measure_rest_forward</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test that a whole measure rest can be encoded using <forward>.</p>
+<p>A whole measure rest is usually encoded as a <note> with a duration
+equal to that of a whole measure. An alternative encoding is to
+use the <forward> element to advance the time cursor to a duration
+equal to that of a whole measure. This implies a whole measure rest
+when there are no <note> elements in this measure.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_whole_measure_rest_forward(self):
+  &#34;&#34;&#34;Test that a whole measure rest can be encoded using &lt;forward&gt;.
+
+  A whole measure rest is usually encoded as a &lt;note&gt; with a duration
+  equal to that of a whole measure. An alternative encoding is to
+  use the &lt;forward&gt; element to advance the time cursor to a duration
+  equal to that of a whole measure. This implies a whole measure rest
+  when there are no &lt;note&gt; elements in this measure.
+  &#34;&#34;&#34;
+  ns = musicxml_reader.musicxml_file_to_sequence_proto(
+      self.whole_measure_rest_forward_filename)
+  expected_ns = testing_lib.parse_test_proto(
+      music_pb2.NoteSequence,
+      &#34;&#34;&#34;
+      ticks_per_quarter: 220
+      time_signatures {
+        numerator: 4
+        denominator: 4
+      }
+      time_signatures {
+        time: 6.0
+        numerator: 2
+        denominator: 4
+      }
+      key_signatures {
+      }
+      tempos {
+        qpm: 120
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        end_time: 2.0
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 72
+        velocity: 64
+        start_time: 4.0
+        end_time: 6.0
+        numerator: 1
+        denominator: 1
+        voice: 1
+      }
+      notes {
+        pitch: 60
+        velocity: 64
+        start_time: 6.0
+        end_time: 7.0
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      notes {
+        pitch: 60
+        velocity: 64
+        start_time: 8.0
+        end_time: 9.0
+        numerator: 1
+        denominator: 2
+        voice: 1
+      }
+      total_time: 9.0
+      part_infos {
+        name: &#34;Flute&#34;
+      }
+      source_info {
+        source_type: SCORE_BASED
+        encoding_type: MUSIC_XML
+        parser: MAGENTA_MUSIC_XML
+      }
+      &#34;&#34;&#34;)
+  self.assertProtoEquals(expected_ns, ns)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testcomplexmusicxmltosequence"><code class="name flex">
+<span>def <span class="ident">testcomplexmusicxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the complex band score MusicXML file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testcomplexmusicxmltosequence(self):
+  &#34;&#34;&#34;Test the complex band score MusicXML file.&#34;&#34;&#34;
+  self.check_musicxml_to_sequence(self.band_score_filename)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedmxlunicodefilename"><code class="name flex">
+<span>def <span class="ident">testcompressedmxlunicodefilename</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test an MXL file containing a unicode filename within its zip archive.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testcompressedmxlunicodefilename(self):
+  &#34;&#34;&#34;Test an MXL file containing a unicode filename within its zip archive.&#34;&#34;&#34;
+
+  unicode_filename = os.path.join(
+      testing_lib.get_testdata_dir(), &#39;unicode_filename.mxl&#39;)
+  sequence = musicxml_reader.musicxml_file_to_sequence_proto(unicode_filename)
+  self.assertLen(sequence.notes, 8)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedxmltosequence"><code class="name flex">
+<span>def <span class="ident">testcompressedxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the translation from compressed MusicXML to Sequence proto.</p>
+<p>Compare a compressed MusicXML file to an identical uncompressed sequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testcompressedxmltosequence(self):
+  &#34;&#34;&#34;Test the translation from compressed MusicXML to Sequence proto.
+
+  Compare a compressed MusicXML file to an identical uncompressed sequence.
+  &#34;&#34;&#34;
+  uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.flute_scale_filename)
+  compressed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.compressed_filename)
+  uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+      uncompressed_musicxml)
+  self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+  self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testmultiplecompressedxmltosequence"><code class="name flex">
+<span>def <span class="ident">testmultiplecompressedxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the translation from compressed MusicXML with multiple rootfiles.</p>
+<p>The example MXL file contains a MusicXML file of the Flute F Major scale,
+as well as the PNG rendering of the score contained within the single MXL
+file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testmultiplecompressedxmltosequence(self):
+  &#34;&#34;&#34;Test the translation from compressed MusicXML with multiple rootfiles.
+
+  The example MXL file contains a MusicXML file of the Flute F Major scale,
+  as well as the PNG rendering of the score contained within the single MXL
+  file.
+  &#34;&#34;&#34;
+  uncompressed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.flute_scale_filename)
+  compressed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.multiple_rootfile_compressed_filename)
+  uncompressed_proto = musicxml_reader.musicxml_to_sequence_proto(
+      uncompressed_musicxml)
+  self.check_musicxml_and_sequence(compressed_musicxml, uncompressed_proto)
+  self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testrhythmdurationsxmltosequence"><code class="name flex">
+<span>def <span class="ident">testrhythmdurationsxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the rhythm durations MusicXML file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testrhythmdurationsxmltosequence(self):
+  &#34;&#34;&#34;Test the rhythm durations MusicXML file.&#34;&#34;&#34;
+  self.check_musicxml_to_sequence(self.rhythm_durations_filename)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testsimplemusicxmltosequence"><code class="name flex">
+<span>def <span class="ident">testsimplemusicxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the simple flute scale MusicXML file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testsimplemusicxmltosequence(self):
+  &#34;&#34;&#34;Test the simple flute scale MusicXML file.&#34;&#34;&#34;
+  self.check_musicxml_to_sequence(self.flute_scale_filename)
+  self.check_fmajor_scale(self.flute_scale_filename, &#39;Flute&#39;)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser_test.MusicXMLParserTest.testtransposedxmltosequence"><code class="name flex">
+<span>def <span class="ident">testtransposedxmltosequence</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Test the translation from transposed MusicXML to Sequence proto.</p>
+<p>Compare a transposed MusicXML file (clarinet) to an identical untransposed
+sequence (flute).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def testtransposedxmltosequence(self):
+  &#34;&#34;&#34;Test the translation from transposed MusicXML to Sequence proto.
+
+  Compare a transposed MusicXML file (clarinet) to an identical untransposed
+  sequence (flute).
+  &#34;&#34;&#34;
+  untransposed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.flute_scale_filename)
+  transposed_musicxml = musicxml_parser.MusicXMLDocument(
+      self.clarinet_scale_filename)
+  untransposed_proto = musicxml_reader.musicxml_to_sequence_proto(
+      untransposed_musicxml)
+  self.check_musicxml_and_sequence(transposed_musicxml, untransposed_proto)
+  self.check_fmajor_scale(self.clarinet_scale_filename, &#39;Clarinet in Bb&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.testing_lib.ProtoTestCase" href="testing_lib.html#note_seq.testing_lib.ProtoTestCase">ProtoTestCase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.testing_lib.ProtoTestCase.assertProtoEquals" href="testing_lib.html#note_seq.testing_lib.ProtoTestCase.assertProtoEquals">assertProtoEquals</a></code></li>
+<li><code><a title="note_seq.testing_lib.ProtoTestCase.setUp" href="testing_lib.html#note_seq.testing_lib.ProtoTestCase.setUp">setUp</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest" href="#note_seq.musicxml_parser_test.MusicXMLParserTest">MusicXMLParserTest</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.check_fmajor_scale" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.check_fmajor_scale">check_fmajor_scale</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_and_sequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_and_sequence">check_musicxml_and_sequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_to_sequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.check_musicxml_to_sequence">check_musicxml_to_sequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testFluteScale" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testFluteScale">testFluteScale</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_alternating_meter" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_alternating_meter">test_alternating_meter</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_atonal_transposition" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_atonal_transposition">test_atonal_transposition</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_beats_composite" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_beats_composite">test_beats_composite</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_chord_symbols" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_chord_symbols">test_chord_symbols</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_archive" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_archive">test_empty_archive</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_doc" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_doc">test_empty_doc</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_list" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_list">test_empty_part_list</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_name" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_empty_part_name">test_empty_part_name</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_harmony_missing_degree" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_harmony_missing_degree">test_harmony_missing_degree</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_incomplete_measures" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_incomplete_measures">test_incomplete_measures</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_invalid_note_type" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_invalid_note_type">test_invalid_note_type</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_key_missing_fifths" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_key_missing_fifths">test_key_missing_fifths</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_meter" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_meter">test_meter</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_mid_measure_meter_change" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_mid_measure_meter_change">test_mid_measure_meter_change</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_st_anne" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_st_anne">test_st_anne</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_transposed_keysig" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_transposed_keysig">test_transposed_keysig</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_unmetered_music" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_unmetered_music">test_unmetered_music</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_unpitched_notes" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_unpitched_notes">test_unpitched_notes</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.test_whole_measure_rest_forward" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.test_whole_measure_rest_forward">test_whole_measure_rest_forward</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testcomplexmusicxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testcomplexmusicxmltosequence">testcomplexmusicxmltosequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedmxlunicodefilename" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedmxlunicodefilename">testcompressedmxlunicodefilename</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testcompressedxmltosequence">testcompressedxmltosequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testmultiplecompressedxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testmultiplecompressedxmltosequence">testmultiplecompressedxmltosequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testrhythmdurationsxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testrhythmdurationsxmltosequence">testrhythmdurationsxmltosequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testsimplemusicxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testsimplemusicxmltosequence">testsimplemusicxmltosequence</a></code></li>
+<li><code><a title="note_seq.musicxml_parser_test.MusicXMLParserTest.testtransposedxmltosequence" href="#note_seq.musicxml_parser_test.MusicXMLParserTest.testtransposedxmltosequence">testtransposedxmltosequence</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
