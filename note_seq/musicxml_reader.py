@@ -57,6 +57,12 @@ def musicxml_to_sequence_proto(musicxml_document):
   # Populate header.
   sequence.ticks_per_quarter = musicxml_document.midi_resolution
 
+  # Populate work title and creators.
+  if musicxml_document.work_title:
+    sequence.sequence_metadata.title = musicxml_document.work_title
+  for creator in musicxml_document.creators:
+    sequence.sequence_metadata.composers.append(creator)
+
   # Populate time signatures.
   musicxml_time_signatures = musicxml_document.get_time_signatures()
   for musicxml_time_signature in musicxml_time_signatures:

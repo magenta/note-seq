@@ -249,6 +249,22 @@ class MusicXMLDocument(object):
 
   def _parse(self):
     """Parse the uncompressed MusicXML document."""
+    # Parse work title and creators
+    xml_work = self._score.find('work')
+    self.work_title = (
+        getattr(xml_work.find('work-title'), 'text', '')
+        if xml_work is not None
+        else ''
+    )
+    self.creators = []
+    xml_identification = self._score.find('identification')
+    if xml_identification is not None:
+      self.creators = [
+          creator.text
+          for creator in xml_identification.findall('creator')
+          if creator.text
+      ]
+
     # Parse part-list
     xml_part_list = self._score.find('part-list')
     if xml_part_list is not None:

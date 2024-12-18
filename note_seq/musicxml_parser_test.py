@@ -1818,6 +1818,32 @@ class MusicXMLParserTest(testing_lib.ProtoTestCase):
       with self.assertRaises(musicxml_parser.InvalidNoteDurationTypeError):
         musicxml_parser.MusicXMLDocument(temp_file.name)
 
+  def test_work_title(self):
+    """Verify that the work/work-title element is parsed."""
+
+    xml = rb"""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+      <!DOCTYPE score-partwise PUBLIC
+          "-//Recordare//DTD MusicXML 3.0 Partwise//EN"
+          "http://www.musicxml.org/dtds/partwise.dtd">
+      <score-partwise version="3.0">
+        <work>
+          <work-title>My Funny Valentine</work-title>
+        </work>
+        <identification>
+          <creator type="composer">Richard Rodgers</creator>
+          <creator type="composer">Lorenz Hart</creator>
+        </identification>
+      </score-partwise>
+    """
+    with tempfile.NamedTemporaryFile() as temp_file:
+      temp_file.write(xml)
+      temp_file.flush()
+      ns = musicxml_reader.musicxml_file_to_sequence_proto(temp_file.name)
+
+      self.assertEqual(ns.sequence_metadata.title, 'My Funny Valentine')
+      self.assertEqual(ns.sequence_metadata.composers,
+                       ['Richard Rodgers', 'Lorenz Hart'])
+
 
 if __name__ == '__main__':
   absltest.main()
