@@ -1,0 +1,3463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.musicxml_parser API documentation</title>
+<meta name="description" content="MusicXML parser …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.musicxml_parser</code></h1>
+</header>
+<section id="section-intro">
+<p>MusicXML parser.</p>
+<p>Simple MusicXML parser used to convert MusicXML into NoteSequence.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;MusicXML parser.
+
+Simple MusicXML parser used to convert MusicXML into NoteSequence.
+&#34;&#34;&#34;
+
+import fractions
+import xml.etree.ElementTree as ET
+import zipfile
+
+from note_seq import constants
+
+Fraction = fractions.Fraction
+
+DEFAULT_MIDI_PROGRAM = 0    # Default MIDI Program (0 = grand piano)
+DEFAULT_MIDI_CHANNEL = 0    # Default MIDI Channel (0 = first channel)
+MUSICXML_MIME_TYPE = &#39;application/vnd.recordare.musicxml+xml&#39;
+
+
+class MusicXMLParseError(Exception):
+  &#34;&#34;&#34;Exception thrown when the MusicXML contents cannot be parsed.&#34;&#34;&#34;
+  pass
+
+
+class PitchStepParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a pitch step cannot be parsed.
+
+  Will happen if pitch step is not one of A, B, C, D, E, F, or G
+  &#34;&#34;&#34;
+  pass
+
+
+class ChordSymbolParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a chord symbol cannot be parsed.&#34;&#34;&#34;
+  pass
+
+
+class MultipleTimeSignatureError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when multiple time signatures found in a measure.&#34;&#34;&#34;
+  pass
+
+
+class AlternatingTimeSignatureError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when an alternating time signature is encountered.&#34;&#34;&#34;
+  pass
+
+
+class TimeSignatureParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when the time signature could not be parsed.&#34;&#34;&#34;
+  pass
+
+
+class UnpitchedNoteError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when an unpitched note is encountered.
+
+  We do not currently support parsing files with unpitched notes (e.g.,
+  percussion scores).
+
+  http://www.musicxml.com/tutorial/percussion/unpitched-notes/
+  &#34;&#34;&#34;
+  pass
+
+
+class KeyParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a key signature cannot be parsed.&#34;&#34;&#34;
+  pass
+
+
+class InvalidNoteDurationTypeError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a note&#39;s duration type is invalid.&#34;&#34;&#34;
+  pass
+
+
+class MusicXMLParserState(object):
+  &#34;&#34;&#34;Maintains internal state of the MusicXML parser.&#34;&#34;&#34;
+
+  def __init__(self):
+    # Default to one division per measure
+    # From the MusicXML documentation: &#34;The divisions element indicates
+    # how many divisions per quarter note are used to indicate a note&#39;s
+    # duration. For example, if duration = 1 and divisions = 2,
+    # this is an eighth note duration.&#34;
+    self.divisions = 1
+
+    # Default to a tempo of 120 quarter notes per minute
+    # MusicXML calls this tempo, but Magenta calls this qpm
+    # Therefore, the variable is called qpm, but reads the
+    # MusicXML tempo attribute
+    # (120 qpm is the default tempo according to the
+    # Standard MIDI Files 1.0 Specification)
+    self.qpm = 120
+
+    # Duration of a single quarter note in seconds
+    self.seconds_per_quarter = 0.5
+
+    # Running total of time for the current event in seconds.
+    # Resets to 0 on every part. Affected by &lt;forward&gt; and &lt;backup&gt; elements
+    self.time_position = 0
+
+    # Default to a MIDI velocity of 64 (mf)
+    self.velocity = 64
+
+    # Default MIDI program (0 = grand piano)
+    self.midi_program = DEFAULT_MIDI_PROGRAM
+
+    # Current MIDI channel (usually equal to the part number)
+    self.midi_channel = DEFAULT_MIDI_CHANNEL
+
+    # Keep track of previous note to get chord timing correct
+    # This variable stores an instance of the Note class (defined below)
+    self.previous_note = None
+
+    # Keep track of current transposition level in +/- semitones.
+    self.transpose = 0
+
+    # Keep track of current time signature. Does not support polymeter.
+    self.time_signature = None
+
+
+class MusicXMLDocument(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML Document.
+
+  Represents the top level object which holds the MusicXML document
+  Responsible for loading the .xml or .mxl file using the _get_score method
+  If the file is .mxl, this class uncompresses it
+
+  After the file is loaded, this class then parses the document into memory
+  using the parse method.
+  &#34;&#34;&#34;
+
+  def __init__(self, filename):
+    self._score = self._get_score(filename)
+    self.parts = []
+    # ScoreParts indexed by id.
+    self._score_parts = {}
+    self.midi_resolution = constants.STANDARD_PPQ
+    self._state = MusicXMLParserState()
+    # Total time in seconds
+    self.total_time_secs = 0
+    self._parse()
+
+  @staticmethod
+  def _get_score(filename):
+    &#34;&#34;&#34;Given a MusicXML file, return the score as an xml.etree.ElementTree.
+
+    Given a MusicXML file, return the score as an xml.etree.ElementTree
+    If the file is compress (ends in .mxl), uncompress it first
+
+    Args:
+        filename: The path of a MusicXML file
+
+    Returns:
+      The score as an xml.etree.ElementTree.
+
+    Raises:
+      MusicXMLParseError: if the file cannot be parsed.
+    &#34;&#34;&#34;
+    score = None
+    if filename.endswith(&#39;.mxl&#39;):
+      # Compressed MXL file. Uncompress in memory.
+      try:
+        mxlzip = zipfile.ZipFile(filename)
+      except zipfile.BadZipfile as exception:
+        raise MusicXMLParseError(exception)
+
+      # A compressed MXL file may contain multiple files, but only one
+      # MusicXML file. Read the META-INF/container.xml file inside of the
+      # MXL file to locate the MusicXML file within the MXL file
+      # http://www.musicxml.com/tutorial/compressed-mxl-files/zip-archive-structure/
+
+      # Raise a MusicXMLParseError if multiple MusicXML files found
+
+      infolist = mxlzip.infolist()
+      # In py3, instead of returning raw bytes, ZipFile.infolist() tries to
+      # guess the filenames&#39; encoding based on file headers, and decodes using
+      # this encoding in order to return a list of strings. If the utf-8
+      # header is missing, it decodes using the DOS code page 437 encoding
+      # which is almost definitely wrong. Here we need to explicitly check
+      # for when this has occurred and change the encoding to utf-8.
+      # https://stackoverflow.com/questions/37723505/namelist-from-zipfile-returns-strings-with-an-invalid-encoding
+      zip_filename_utf8_flag = 0x800
+      for info in infolist:
+        if info.flag_bits &amp; zip_filename_utf8_flag == 0:
+          filename_bytes = info.filename.encode(&#39;437&#39;)
+          filename = filename_bytes.decode(&#39;utf-8&#39;, &#39;replace&#39;)
+          info.filename = filename
+
+      container_file = [x for x in infolist
+                        if x.filename == &#39;META-INF/container.xml&#39;]
+      compressed_file_name = &#39;&#39;
+
+      if container_file:
+        try:
+          container = ET.fromstring(mxlzip.read(container_file[0]))
+          for rootfile_tag in container.findall(&#39;./rootfiles/rootfile&#39;):
+            if &#39;media-type&#39; in rootfile_tag.attrib:
+              if rootfile_tag.attrib[&#39;media-type&#39;] == MUSICXML_MIME_TYPE:
+                if not compressed_file_name:
+                  compressed_file_name = rootfile_tag.attrib[&#39;full-path&#39;]
+                else:
+                  raise MusicXMLParseError(
+                      &#39;Multiple MusicXML files found in compressed archive&#39;)
+            else:
+              # No media-type attribute, so assume this is the MusicXML file
+              if not compressed_file_name:
+                compressed_file_name = rootfile_tag.attrib[&#39;full-path&#39;]
+              else:
+                raise MusicXMLParseError(
+                    &#39;Multiple MusicXML files found in compressed archive&#39;)
+        except ET.ParseError as exception:
+          raise MusicXMLParseError(exception)
+
+      if not compressed_file_name:
+        raise MusicXMLParseError(
+            &#39;Unable to locate main .xml file in compressed archive.&#39;)
+      try:
+        compressed_file_info = [x for x in infolist
+                                if x.filename == compressed_file_name][0]
+      except IndexError:
+        raise MusicXMLParseError(
+            &#39;Score file %s not found in zip archive&#39; % compressed_file_name)
+      score_string = mxlzip.read(compressed_file_info)
+      try:
+        score = ET.fromstring(score_string)
+      except ET.ParseError as exception:
+        raise MusicXMLParseError(exception)
+    else:
+      # Uncompressed XML file.
+      try:
+        tree = ET.parse(filename)
+        score = tree.getroot()
+      except ET.ParseError as exception:
+        raise MusicXMLParseError(exception)
+
+    return score
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the uncompressed MusicXML document.&#34;&#34;&#34;
+    # Parse part-list
+    xml_part_list = self._score.find(&#39;part-list&#39;)
+    if xml_part_list is not None:
+      for element in xml_part_list:
+        if element.tag == &#39;score-part&#39;:
+          score_part = ScorePart(element)
+          self._score_parts[score_part.id] = score_part
+
+    # Parse parts
+    for score_part_index, child in enumerate(self._score.findall(&#39;part&#39;)):
+      part = Part(child, self._score_parts, self._state)
+      self.parts.append(part)
+      score_part_index += 1
+      if self._state.time_position &gt; self.total_time_secs:
+        self.total_time_secs = self._state.time_position
+
+  def get_chord_symbols(self):
+    &#34;&#34;&#34;Return a list of all the chord symbols used in this score.&#34;&#34;&#34;
+    chord_symbols = []
+    for part in self.parts:
+      for measure in part.measures:
+        for chord_symbol in measure.chord_symbols:
+          if chord_symbol not in chord_symbols:
+            # Prevent duplicate chord symbols
+            chord_symbols.append(chord_symbol)
+    return chord_symbols
+
+  def get_time_signatures(self):
+    &#34;&#34;&#34;Return a list of all the time signatures used in this score.
+
+    Does not support polymeter (i.e. assumes all parts have the same
+    time signature, such as Part 1 having a time signature of 6/8
+    while Part 2 has a simultaneous time signature of 2/4).
+
+    Ignores duplicate time signatures to prevent Magenta duplicate
+    time signature error. This happens when multiple parts have the
+    same time signature is used in multiple parts at the same time.
+
+    Example: If Part 1 has a time siganture of 4/4 and Part 2 also
+    has a time signature of 4/4, then only instance of 4/4 is sent
+    to Magenta.
+
+    Returns:
+      A list of all TimeSignature objects used in this score.
+    &#34;&#34;&#34;
+    time_signatures = []
+    for part in self.parts:
+      for measure in part.measures:
+        if measure.time_signature is not None:
+          if measure.time_signature not in time_signatures:
+            # Prevent duplicate time signatures
+            time_signatures.append(measure.time_signature)
+
+    return time_signatures
+
+  def get_key_signatures(self):
+    &#34;&#34;&#34;Return a list of all the key signatures used in this score.
+
+    Support different key signatures in different parts (score in
+    written pitch).
+
+    Ignores duplicate key signatures to prevent Magenta duplicate key
+    signature error. This happens when multiple parts have the same
+    key signature at the same time.
+
+    Example: If the score is in written pitch and the
+    flute is written in the key of Bb major, the trombone will also be
+    written in the key of Bb major. However, the clarinet and trumpet
+    will be written in the key of C major because they are Bb transposing
+    instruments.
+
+    If no key signatures are found, create a default key signature of
+    C major.
+
+    Returns:
+      A list of all KeySignature objects used in this score.
+    &#34;&#34;&#34;
+    key_signatures = []
+    for part in self.parts:
+      for measure in part.measures:
+        if measure.key_signature is not None:
+          if measure.key_signature not in key_signatures:
+            # Prevent duplicate key signatures
+            key_signatures.append(measure.key_signature)
+
+    if not key_signatures:
+      # If there are no key signatures, add C major at the beginning
+      key_signature = KeySignature(self._state)
+      key_signature.time_position = 0
+      key_signatures.append(key_signature)
+
+    return key_signatures
+
+  def get_tempos(self):
+    &#34;&#34;&#34;Return a list of all tempos in this score.
+
+    If no tempos are found, create a default tempo of 120 qpm.
+
+    Returns:
+      A list of all Tempo objects used in this score.
+    &#34;&#34;&#34;
+    tempos = []
+
+    if self.parts:
+      part = self.parts[0]  # Use only first part
+      for measure in part.measures:
+        for tempo in measure.tempos:
+          tempos.append(tempo)
+
+    # If no tempos, add a default of 120 at beginning
+    if not tempos:
+      tempo = Tempo(self._state)
+      tempo.qpm = self._state.qpm
+      tempo.time_position = 0
+      tempos.append(tempo)
+
+    return tempos
+
+
+class ScorePart(object):
+  &#34;&#34;&#34;&#34;Internal representation of a MusicXML &lt;score-part&gt;.
+
+  A &lt;score-part&gt; element contains MIDI program and channel info
+  for the &lt;part&gt; elements in the MusicXML document.
+
+  If no MIDI info is found for the part, use the default MIDI channel (0)
+  and default to the Grand Piano program (MIDI Program #1).
+  &#34;&#34;&#34;
+
+  def __init__(self, xml_score_part=None):
+    self.id = &#39;&#39;
+    self.part_name = &#39;&#39;
+    self.midi_channel = DEFAULT_MIDI_CHANNEL
+    self.midi_program = DEFAULT_MIDI_PROGRAM
+    if xml_score_part is not None:
+      self._parse(xml_score_part)
+
+  def _parse(self, xml_score_part):
+    &#34;&#34;&#34;Parse the &lt;score-part&gt; element to an in-memory representation.&#34;&#34;&#34;
+    self.id = xml_score_part.attrib[&#39;id&#39;]
+
+    if xml_score_part.find(&#39;part-name&#39;) is not None:
+      self.part_name = xml_score_part.find(&#39;part-name&#39;).text or &#39;&#39;
+
+    xml_midi_instrument = xml_score_part.find(&#39;midi-instrument&#39;)
+    if (xml_midi_instrument is not None and
+        xml_midi_instrument.find(&#39;midi-channel&#39;) is not None and
+        xml_midi_instrument.find(&#39;midi-program&#39;) is not None):
+      self.midi_channel = int(xml_midi_instrument.find(&#39;midi-channel&#39;).text)
+      self.midi_program = int(xml_midi_instrument.find(&#39;midi-program&#39;).text)
+    else:
+      # If no MIDI info, use the default MIDI channel.
+      self.midi_channel = DEFAULT_MIDI_CHANNEL
+      # Use the default MIDI program
+      self.midi_program = DEFAULT_MIDI_PROGRAM
+
+  def __str__(self):
+    score_str = &#39;ScorePart: &#39; + self.part_name
+    score_str += &#39;, Channel: &#39; + str(self.midi_channel)
+    score_str += &#39;, Program: &#39; + str(self.midi_program)
+    return score_str
+
+
+class Part(object):
+  &#34;&#34;&#34;Internal represention of a MusicXML &lt;part&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_part, score_parts, state):
+    self.id = &#39;&#39;
+    self.score_part = None
+    self.measures = []
+    self._state = state
+    self._parse(xml_part, score_parts)
+
+  def _parse(self, xml_part, score_parts):
+    &#34;&#34;&#34;Parse the &lt;part&gt; element.&#34;&#34;&#34;
+    if &#39;id&#39; in xml_part.attrib:
+      self.id = xml_part.attrib[&#39;id&#39;]
+    if self.id in score_parts:
+      self.score_part = score_parts[self.id]
+    else:
+      # If this part references a score-part id that was not found in the file,
+      # construct a default score-part.
+      self.score_part = ScorePart()
+
+    # Reset the time position when parsing each part
+    self._state.time_position = 0
+    self._state.midi_channel = self.score_part.midi_channel
+    self._state.midi_program = self.score_part.midi_program
+    self._state.transpose = 0
+
+    xml_measures = xml_part.findall(&#39;measure&#39;)
+    for measure in xml_measures:
+      # Issue #674: Repair measures that do not contain notes
+      # by inserting a whole measure rest
+      self._repair_empty_measure(measure)
+      parsed_measure = Measure(measure, self._state)
+      self.measures.append(parsed_measure)
+
+  def _repair_empty_measure(self, measure):
+    &#34;&#34;&#34;Repair a measure if it is empty by inserting a whole measure rest.
+
+    If a &lt;measure&gt; only consists of a &lt;forward&gt; element that advances
+    the time cursor, remove the &lt;forward&gt; element and replace
+    with a whole measure rest of the same duration.
+
+    Args:
+      measure: The measure to repair.
+    &#34;&#34;&#34;
+    # Issue #674 - If the &lt;forward&gt; element is in a measure without
+    # any &lt;note&gt; elements, treat it as if it were a whole measure
+    # rest by inserting a rest of that duration
+    forward_count = len(measure.findall(&#39;forward&#39;))
+    note_count = len(measure.findall(&#39;note&#39;))
+    if note_count == 0 and forward_count == 1:
+      # Get the duration of the &lt;forward&gt; element
+      xml_forward = measure.find(&#39;forward&#39;)
+      xml_duration = xml_forward.find(&#39;duration&#39;)
+      forward_duration = int(xml_duration.text)
+
+      # Delete the &lt;forward&gt; element
+      measure.remove(xml_forward)
+
+      # Insert the new note
+      new_note = &#39;&lt;note&gt;&#39;
+      new_note += &#39;&lt;rest /&gt;&lt;duration&gt;&#39; + str(forward_duration) + &#39;&lt;/duration&gt;&#39;
+      new_note += &#39;&lt;voice&gt;1&lt;/voice&gt;&lt;type&gt;whole&lt;/type&gt;&lt;staff&gt;1&lt;/staff&gt;&#39;
+      new_note += &#39;&lt;/note&gt;&#39;
+      new_note_xml = ET.fromstring(new_note)
+      measure.append(new_note_xml)
+
+  def __str__(self):
+    part_str = &#39;Part: &#39; + self.score_part.part_name
+    return part_str
+
+
+class Measure(object):
+  &#34;&#34;&#34;Internal represention of the MusicXML &lt;measure&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_measure, state):
+    self.xml_measure = xml_measure
+    self.notes = []
+    self.chord_symbols = []
+    self.tempos = []
+    self.time_signature = None
+    self.key_signature = None
+    # Cumulative duration in MusicXML duration.
+    # Used for time signature calculations
+    self.duration = 0
+    self.state = state
+    # Record the starting time of this measure so that time signatures
+    # can be inserted at the beginning of the measure
+    self.start_time_position = self.state.time_position
+    self._parse()
+    # Update the time signature if a partial or pickup measure
+    self._fix_time_signature()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the &lt;measure&gt; element.&#34;&#34;&#34;
+
+    for child in self.xml_measure:
+      if child.tag == &#39;attributes&#39;:
+        self._parse_attributes(child)
+      elif child.tag == &#39;backup&#39;:
+        self._parse_backup(child)
+      elif child.tag == &#39;direction&#39;:
+        self._parse_direction(child)
+      elif child.tag == &#39;forward&#39;:
+        self._parse_forward(child)
+      elif child.tag == &#39;note&#39;:
+        note = Note(child, self.state)
+        self.notes.append(note)
+        # Keep track of current note as previous note for chord timings
+        self.state.previous_note = note
+
+        # Sum up the MusicXML durations in voice 1 of this measure
+        if note.voice == 1 and not note.is_in_chord:
+          self.duration += note.note_duration.duration
+      elif child.tag == &#39;harmony&#39;:
+        chord_symbol = ChordSymbol(child, self.state)
+        self.chord_symbols.append(chord_symbol)
+
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_attributes(self, xml_attributes):
+    &#34;&#34;&#34;Parse the MusicXML &lt;attributes&gt; element.&#34;&#34;&#34;
+
+    for child in xml_attributes:
+      if child.tag == &#39;divisions&#39;:
+        self.state.divisions = int(child.text)
+      elif child.tag == &#39;key&#39;:
+        self.key_signature = KeySignature(self.state, child)
+      elif child.tag == &#39;time&#39;:
+        if self.time_signature is None:
+          self.time_signature = TimeSignature(self.state, child)
+          self.state.time_signature = self.time_signature
+        else:
+          raise MultipleTimeSignatureError(&#39;Multiple time signatures&#39;)
+      elif child.tag == &#39;transpose&#39;:
+        transpose = int(child.find(&#39;chromatic&#39;).text)
+        self.state.transpose = transpose
+        if self.key_signature is not None:
+          # Transposition is chromatic. Every half step up is 5 steps backward
+          # on the circle of fifths, which has 12 positions.
+          key_transpose = (transpose * -5) % 12
+          new_key = self.key_signature.key + key_transpose
+          # If the new key has &gt;6 sharps, translate to flats.
+          # TODO(fjord): Could be more smart about when to use sharps vs. flats
+          # when there are enharmonic equivalents.
+          if new_key &gt; 6:
+            new_key %= -6
+          self.key_signature.key = new_key
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_backup(self, xml_backup):
+    &#34;&#34;&#34;Parse the MusicXML &lt;backup&gt; element.
+
+    This moves the global time position backwards.
+
+    Args:
+      xml_backup: XML element with tag type &#39;backup&#39;.
+    &#34;&#34;&#34;
+
+    xml_duration = xml_backup.find(&#39;duration&#39;)
+    backup_duration = int(xml_duration.text)
+    midi_ticks = backup_duration * (constants.STANDARD_PPQ
+                                    / self.state.divisions)
+    seconds = ((midi_ticks / constants.STANDARD_PPQ)
+               * self.state.seconds_per_quarter)
+    self.state.time_position -= seconds
+
+  def _parse_direction(self, xml_direction):
+    &#34;&#34;&#34;Parse the MusicXML &lt;direction&gt; element.&#34;&#34;&#34;
+
+    for child in xml_direction:
+      if child.tag == &#39;sound&#39;:
+        if child.get(&#39;tempo&#39;) is not None:
+          tempo = Tempo(self.state, child)
+          self.tempos.append(tempo)
+          self.state.qpm = tempo.qpm
+          self.state.seconds_per_quarter = 60 / self.state.qpm
+          if child.get(&#39;dynamics&#39;) is not None:
+            self.state.velocity = int(child.get(&#39;dynamics&#39;))
+
+  def _parse_forward(self, xml_forward):
+    &#34;&#34;&#34;Parse the MusicXML &lt;forward&gt; element.
+
+    This moves the global time position forward.
+
+    Args:
+      xml_forward: XML element with tag type &#39;forward&#39;.
+    &#34;&#34;&#34;
+
+    xml_duration = xml_forward.find(&#39;duration&#39;)
+    forward_duration = int(xml_duration.text)
+    midi_ticks = forward_duration * (constants.STANDARD_PPQ
+                                     / self.state.divisions)
+    seconds = ((midi_ticks / constants.STANDARD_PPQ)
+               * self.state.seconds_per_quarter)
+    self.state.time_position += seconds
+
+  def _fix_time_signature(self):
+    &#34;&#34;&#34;Correct the time signature for incomplete measures.
+
+    If the measure is incomplete or a pickup, insert an appropriate
+    time signature into this Measure.
+    &#34;&#34;&#34;
+    # Compute the fractional time signature (duration / divisions)
+    # Multiply divisions by 4 because division is always parts per quarter note
+    numerator = self.duration
+    denominator = self.state.divisions * 4
+    fractional_time_signature = Fraction(numerator, denominator)
+
+    if self.state.time_signature is None and self.time_signature is None:
+      # No global time signature yet and no measure time signature defined
+      # in this measure (no time signature or senza misura).
+      # Insert the fractional time signature as the time signature
+      # for this measure
+      self.time_signature = TimeSignature(self.state)
+      self.time_signature.numerator = fractional_time_signature.numerator
+      self.time_signature.denominator = fractional_time_signature.denominator
+      self.state.time_signature = self.time_signature
+    else:
+      fractional_state_time_signature = Fraction(
+          self.state.time_signature.numerator,
+          self.state.time_signature.denominator)
+
+      # Check for pickup measure. Reset time signature to smaller numerator
+      pickup_measure = False
+      if numerator &lt; self.state.time_signature.numerator:
+        pickup_measure = True
+
+      # Get the current time signature denominator
+      global_time_signature_denominator = self.state.time_signature.denominator
+
+      # If the fractional time signature = 1 (e.g. 4/4),
+      # make the numerator the same as the global denominator
+      if fractional_time_signature == 1 and not pickup_measure:
+        new_time_signature = TimeSignature(self.state)
+        new_time_signature.numerator = global_time_signature_denominator
+        new_time_signature.denominator = global_time_signature_denominator
+      else:
+        # Otherwise, set the time signature to the fractional time signature
+        # Issue #674 - Use the original numerator and denominator
+        # instead of the fractional one
+        new_time_signature = TimeSignature(self.state)
+        new_time_signature.numerator = numerator
+        new_time_signature.denominator = denominator
+
+        new_time_sig_fraction = Fraction(numerator, denominator)
+
+        if new_time_sig_fraction == fractional_time_signature:
+          new_time_signature.numerator = fractional_time_signature.numerator
+          new_time_signature.denominator = fractional_time_signature.denominator
+
+      # Insert a new time signature only if it does not equal the global
+      # time signature.
+      if (pickup_measure or
+          (self.time_signature is None
+           and (fractional_time_signature != fractional_state_time_signature))):
+        new_time_signature.time_position = self.start_time_position
+        self.time_signature = new_time_signature
+        self.state.time_signature = new_time_signature
+
+
+class Note(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML &lt;note&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_note, state):
+    self.xml_note = xml_note
+    self.voice = 1
+    self.is_rest = False
+    self.is_in_chord = False
+    self.is_grace_note = False
+    self.pitch = None               # Tuple (Pitch Name, MIDI number)
+    self.note_duration = NoteDuration(state)
+    self.state = state
+    self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;note&gt; element.&#34;&#34;&#34;
+
+    self.midi_channel = self.state.midi_channel
+    self.midi_program = self.state.midi_program
+    self.velocity = self.state.velocity
+
+    for child in self.xml_note:
+      if child.tag == &#39;chord&#39;:
+        self.is_in_chord = True
+      elif child.tag == &#39;duration&#39;:
+        self.note_duration.parse_duration(self.is_in_chord, self.is_grace_note,
+                                          child.text)
+      elif child.tag == &#39;pitch&#39;:
+        self._parse_pitch(child)
+      elif child.tag == &#39;rest&#39;:
+        self.is_rest = True
+      elif child.tag == &#39;voice&#39;:
+        self.voice = int(child.text)
+      elif child.tag == &#39;dot&#39;:
+        self.note_duration.dots += 1
+      elif child.tag == &#39;type&#39;:
+        self.note_duration.type = child.text
+      elif child.tag == &#39;time-modification&#39;:
+        # A time-modification element represents a tuplet_ratio
+        self._parse_tuplet(child)
+      elif child.tag == &#39;unpitched&#39;:
+        raise UnpitchedNoteError(&#39;Unpitched notes are not supported&#39;)
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_pitch(self, xml_pitch):
+    &#34;&#34;&#34;Parse the MusicXML &lt;pitch&gt; element.&#34;&#34;&#34;
+    step = xml_pitch.find(&#39;step&#39;).text
+    alter_text = &#39;&#39;
+    alter = 0.0
+    if xml_pitch.find(&#39;alter&#39;) is not None:
+      alter_text = xml_pitch.find(&#39;alter&#39;).text
+    octave = xml_pitch.find(&#39;octave&#39;).text
+
+    # Parse alter string to a float (floats represent microtonal alterations)
+    if alter_text:
+      alter = float(alter_text)
+
+    # Check if this is a semitone alter (i.e. an integer) or microtonal (float)
+    alter_semitones = int(alter)  # Number of semitones
+    is_microtonal_alter = (alter != alter_semitones)
+
+    # Visual pitch representation
+    alter_string = &#39;&#39;
+    if alter_semitones == -2:
+      alter_string = &#39;bb&#39;
+    elif alter_semitones == -1:
+      alter_string = &#39;b&#39;
+    elif alter_semitones == 1:
+      alter_string = &#39;#&#39;
+    elif alter_semitones == 2:
+      alter_string = &#39;x&#39;
+
+    if is_microtonal_alter:
+      alter_string += &#39; (+microtones) &#39;
+
+    # N.B. - pitch_string does not account for transposition
+    pitch_string = step + alter_string + octave
+
+    # Compute MIDI pitch number (C4 = 60, C1 = 24, C0 = 12)
+    midi_pitch = self.pitch_to_midi_pitch(step, alter, octave)
+    # Transpose MIDI pitch
+    midi_pitch += self.state.transpose
+    self.pitch = (pitch_string, midi_pitch)
+
+  def _parse_tuplet(self, xml_time_modification):
+    &#34;&#34;&#34;Parses a tuplet ratio.
+
+    Represented in MusicXML by the &lt;time-modification&gt; element.
+
+    Args:
+      xml_time_modification: An xml time-modification element.
+    &#34;&#34;&#34;
+    numerator = int(xml_time_modification.find(&#39;actual-notes&#39;).text)
+    denominator = int(xml_time_modification.find(&#39;normal-notes&#39;).text)
+    self.note_duration.tuplet_ratio = Fraction(numerator, denominator)
+
+  @staticmethod
+  def pitch_to_midi_pitch(step, alter, octave):
+    &#34;&#34;&#34;Convert MusicXML pitch representation to MIDI pitch number.&#34;&#34;&#34;
+    pitch_class = 0
+    if step == &#39;C&#39;:
+      pitch_class = 0
+    elif step == &#39;D&#39;:
+      pitch_class = 2
+    elif step == &#39;E&#39;:
+      pitch_class = 4
+    elif step == &#39;F&#39;:
+      pitch_class = 5
+    elif step == &#39;G&#39;:
+      pitch_class = 7
+    elif step == &#39;A&#39;:
+      pitch_class = 9
+    elif step == &#39;B&#39;:
+      pitch_class = 11
+    else:
+      # Raise exception for unknown step (ex: &#39;Q&#39;)
+      raise PitchStepParseError(&#39;Unable to parse pitch step &#39; + step)
+
+    pitch_class = (pitch_class + int(alter)) % 12
+    midi_pitch = (12 + pitch_class) + (int(octave) * 12)
+    return midi_pitch
+
+  def __str__(self):
+    note_string = &#39;{duration: &#39; + str(self.note_duration.duration)
+    note_string += &#39;, midi_ticks: &#39; + str(self.note_duration.midi_ticks)
+    note_string += &#39;, seconds: &#39; + str(self.note_duration.seconds)
+    if self.is_rest:
+      note_string += &#39;, rest: &#39; + str(self.is_rest)
+    else:
+      note_string += &#39;, pitch: &#39; + self.pitch[0]
+      note_string += &#39;, MIDI pitch: &#39; + str(self.pitch[1])
+
+    note_string += &#39;, voice: &#39; + str(self.voice)
+    note_string += &#39;, velocity: &#39; + str(self.velocity) + &#39;} &#39;
+    note_string += &#39;(@time: &#39; + str(self.note_duration.time_position) + &#39;)&#39;
+    return note_string
+
+
+class NoteDuration(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML note&#39;s duration properties.&#34;&#34;&#34;
+
+  TYPE_RATIO_MAP = {&#39;maxima&#39;: Fraction(8, 1), &#39;long&#39;: Fraction(4, 1),
+                    &#39;breve&#39;: Fraction(2, 1), &#39;whole&#39;: Fraction(1, 1),
+                    &#39;half&#39;: Fraction(1, 2), &#39;quarter&#39;: Fraction(1, 4),
+                    &#39;eighth&#39;: Fraction(1, 8), &#39;16th&#39;: Fraction(1, 16),
+                    &#39;32nd&#39;: Fraction(1, 32), &#39;64th&#39;: Fraction(1, 64),
+                    &#39;128th&#39;: Fraction(1, 128), &#39;256th&#39;: Fraction(1, 256),
+                    &#39;512th&#39;: Fraction(1, 512), &#39;1024th&#39;: Fraction(1, 1024)}
+
+  def __init__(self, state):
+    self.duration = 0                   # MusicXML duration
+    self.midi_ticks = 0                 # Duration in MIDI ticks
+    self.seconds = 0                    # Duration in seconds
+    self.time_position = 0              # Onset time in seconds
+    self.dots = 0                       # Number of augmentation dots
+    self._type = &#39;quarter&#39;              # MusicXML duration type
+    self.tuplet_ratio = Fraction(1, 1)  # Ratio for tuplets (default to 1)
+    self.is_grace_note = True           # Assume true until not found
+    self.state = state
+
+  def parse_duration(self, is_in_chord, is_grace_note, duration):
+    &#34;&#34;&#34;Parse the duration of a note and compute timings.&#34;&#34;&#34;
+    self.duration = int(duration)
+
+    # Due to an error in Sibelius&#39; export, force this note to have the
+    # duration of the previous note if it is in a chord
+    if is_in_chord:
+      self.duration = self.state.previous_note.note_duration.duration
+
+    self.midi_ticks = self.duration
+    self.midi_ticks *= (constants.STANDARD_PPQ / self.state.divisions)
+
+    self.seconds = (self.midi_ticks / constants.STANDARD_PPQ)
+    self.seconds *= self.state.seconds_per_quarter
+
+    self.time_position = self.state.time_position
+
+    # Not sure how to handle durations of grace notes yet as they
+    # steal time from subsequent notes and they do not have a
+    # &lt;duration&gt; tag in the MusicXML
+    self.is_grace_note = is_grace_note
+
+    if is_in_chord:
+      # If this is a chord, set the time position to the time position
+      # of the previous note (i.e. all the notes in the chord will have
+      # the same time position)
+      self.time_position = self.state.previous_note.note_duration.time_position
+    else:
+      # Only increment time positions once in chord
+      self.state.time_position += self.seconds
+
+  def _convert_type_to_ratio(self):
+    &#34;&#34;&#34;Convert the MusicXML note-type-value to a Python Fraction.
+
+    Examples:
+    - whole = 1/1
+    - half = 1/2
+    - quarter = 1/4
+    - 32nd = 1/32
+
+    Returns:
+      A Fraction object representing the note type.
+    &#34;&#34;&#34;
+    return self.TYPE_RATIO_MAP[self.type]
+
+  def duration_ratio(self):
+    &#34;&#34;&#34;Compute the duration ratio of the note as a Python Fraction.
+
+    Examples:
+    - Whole Note = 1
+    - Quarter Note = 1/4
+    - Dotted Quarter Note = 3/8
+    - Triplet eighth note = 1/12
+
+    Returns:
+      The duration ratio as a Python Fraction.
+    &#34;&#34;&#34;
+    # Get ratio from MusicXML note type
+    duration_ratio = Fraction(1, 1)
+    type_ratio = self._convert_type_to_ratio()
+
+    # Compute tuplet ratio
+    duration_ratio /= self.tuplet_ratio
+    type_ratio /= self.tuplet_ratio
+
+    # Add augmentation dots
+    one_half = Fraction(1, 2)
+    dot_sum = Fraction(0, 1)
+    for dot in range(self.dots):
+      dot_sum += (one_half ** (dot + 1)) * type_ratio
+
+    duration_ratio = type_ratio + dot_sum
+
+    # If the note is a grace note, force its ratio to be 0
+    # because it does not have a &lt;duration&gt; tag
+    if self.is_grace_note:
+      duration_ratio = Fraction(0, 1)
+
+    return duration_ratio
+
+  def duration_float(self):
+    &#34;&#34;&#34;Return the duration ratio as a float.&#34;&#34;&#34;
+    ratio = self.duration_ratio()
+    return ratio.numerator / ratio.denominator
+
+  @property
+  def type(self):
+    return self._type
+
+  @type.setter
+  def type(self, new_type):
+    if new_type not in self.TYPE_RATIO_MAP:
+      raise InvalidNoteDurationTypeError(
+          &#39;Note duration type &#34;{}&#34; is not valid&#39;.format(new_type))
+    self._type = new_type
+
+
+class ChordSymbol(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML chord symbol &lt;harmony&gt; element.
+
+  This represents a chord symbol with four components:
+
+  1) Root: a string representing the chord root pitch class, e.g. &#34;C#&#34;.
+  2) Kind: a string representing the chord kind, e.g. &#34;m7&#34; for minor-seventh,
+      &#34;9&#34; for dominant-ninth, or the empty string for major triad.
+  3) Scale degree modifications: a list of strings representing scale degree
+      modifications for the chord, e.g. &#34;add9&#34; to add an unaltered ninth scale
+      degree (without the seventh), &#34;b5&#34; to flatten the fifth scale degree,
+      &#34;no3&#34; to remove the third scale degree, etc.
+  4) Bass: a string representing the chord bass pitch class, or None if the bass
+      pitch class is the same as the root pitch class.
+
+  There&#39;s also a special chord kind &#34;N.C.&#34; representing no harmony, for which
+  all other fields should be None.
+
+  Use the `get_figure_string` method to get a string representation of the chord
+  symbol as might appear in a lead sheet. This string representation is what we
+  use to represent chord symbols in NoteSequence protos, as text annotations.
+  While the MusicXML representation has more structure, using an unstructured
+  string provides more flexibility and allows us to ingest chords from other
+  sources, e.g. guitar tabs on the web.
+  &#34;&#34;&#34;
+
+  # The below dictionary maps chord kinds to an abbreviated string as would
+  # appear in a chord symbol in a standard lead sheet. There are often multiple
+  # standard abbreviations for the same chord type, e.g. &#34;+&#34; and &#34;aug&#34; both
+  # refer to an augmented chord, and &#34;maj7&#34;, &#34;M7&#34;, and a Delta character all
+  # refer to a major-seventh chord; this dictionary attempts to be consistent
+  # but the choice of abbreviation is somewhat arbitrary.
+  #
+  # The MusicXML-defined chord kinds are listed here:
+  # http://usermanuals.musicxml.com/MusicXML/Content/ST-MusicXML-kind-value.htm
+
+  CHORD_KIND_ABBREVIATIONS = {
+      # These chord kinds are in the MusicXML spec.
+      &#39;major&#39;: &#39;&#39;,
+      &#39;minor&#39;: &#39;m&#39;,
+      &#39;augmented&#39;: &#39;aug&#39;,
+      &#39;diminished&#39;: &#39;dim&#39;,
+      &#39;dominant&#39;: &#39;7&#39;,
+      &#39;major-seventh&#39;: &#39;maj7&#39;,
+      &#39;minor-seventh&#39;: &#39;m7&#39;,
+      &#39;diminished-seventh&#39;: &#39;dim7&#39;,
+      &#39;augmented-seventh&#39;: &#39;aug7&#39;,
+      &#39;half-diminished&#39;: &#39;m7b5&#39;,
+      &#39;major-minor&#39;: &#39;m(maj7)&#39;,
+      &#39;major-sixth&#39;: &#39;6&#39;,
+      &#39;minor-sixth&#39;: &#39;m6&#39;,
+      &#39;dominant-ninth&#39;: &#39;9&#39;,
+      &#39;major-ninth&#39;: &#39;maj9&#39;,
+      &#39;minor-ninth&#39;: &#39;m9&#39;,
+      &#39;dominant-11th&#39;: &#39;11&#39;,
+      &#39;major-11th&#39;: &#39;maj11&#39;,
+      &#39;minor-11th&#39;: &#39;m11&#39;,
+      &#39;dominant-13th&#39;: &#39;13&#39;,
+      &#39;major-13th&#39;: &#39;maj13&#39;,
+      &#39;minor-13th&#39;: &#39;m13&#39;,
+      &#39;suspended-second&#39;: &#39;sus2&#39;,
+      &#39;suspended-fourth&#39;: &#39;sus&#39;,
+      &#39;pedal&#39;: &#39;ped&#39;,
+      &#39;power&#39;: &#39;5&#39;,
+      &#39;none&#39;: &#39;N.C.&#39;,
+
+      # These are not in the spec, but show up frequently in the wild.
+      &#39;dominant-seventh&#39;: &#39;7&#39;,
+      &#39;augmented-ninth&#39;: &#39;aug9&#39;,
+      &#39;minor-major&#39;: &#39;m(maj7)&#39;,
+
+      # Some abbreviated kinds also show up frequently in the wild.
+      &#39;&#39;: &#39;&#39;,
+      &#39;min&#39;: &#39;m&#39;,
+      &#39;aug&#39;: &#39;aug&#39;,
+      &#39;dim&#39;: &#39;dim&#39;,
+      &#39;7&#39;: &#39;7&#39;,
+      &#39;maj7&#39;: &#39;maj7&#39;,
+      &#39;min7&#39;: &#39;m7&#39;,
+      &#39;dim7&#39;: &#39;dim7&#39;,
+      &#39;m7b5&#39;: &#39;m7b5&#39;,
+      &#39;minMaj7&#39;: &#39;m(maj7)&#39;,
+      &#39;6&#39;: &#39;6&#39;,
+      &#39;min6&#39;: &#39;m6&#39;,
+      &#39;maj69&#39;: &#39;6(add9)&#39;,
+      &#39;9&#39;: &#39;9&#39;,
+      &#39;maj9&#39;: &#39;maj9&#39;,
+      &#39;min9&#39;: &#39;m9&#39;,
+      &#39;sus47&#39;: &#39;sus7&#39;
+  }
+
+  def __init__(self, xml_harmony, state):
+    self.xml_harmony = xml_harmony
+    self.time_position = -1
+    self.root = None
+    self.kind = &#39;&#39;
+    self.degrees = []
+    self.bass = None
+    self.state = state
+    self._parse()
+
+  def _alter_to_string(self, alter_text):
+    &#34;&#34;&#34;Parse alter text to a string of one or two sharps/flats.
+
+    Args:
+      alter_text: A string representation of an integer number of semitones.
+
+    Returns:
+      A string, one of &#39;bb&#39;, &#39;b&#39;, &#39;#&#39;, &#39;##&#39;, or the empty string.
+
+    Raises:
+      ChordSymbolParseError: If `alter_text` cannot be parsed to an integer,
+          or if the integer is not a valid number of semitones between -2 and 2
+          inclusive.
+    &#34;&#34;&#34;
+    # Parse alter text to an integer number of semitones.
+    try:
+      alter_semitones = int(alter_text)
+    except ValueError:
+      raise ChordSymbolParseError(&#39;Non-integer alter: &#39; + str(alter_text))
+
+    # Visual alter representation
+    if alter_semitones == -2:
+      alter_string = &#39;bb&#39;
+    elif alter_semitones == -1:
+      alter_string = &#39;b&#39;
+    elif alter_semitones == 0:
+      alter_string = &#39;&#39;
+    elif alter_semitones == 1:
+      alter_string = &#39;#&#39;
+    elif alter_semitones == 2:
+      alter_string = &#39;##&#39;
+    else:
+      raise ChordSymbolParseError(&#39;Invalid alter: &#39; + str(alter_semitones))
+
+    return alter_string
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;harmony&gt; element.&#34;&#34;&#34;
+    self.time_position = self.state.time_position
+
+    for child in self.xml_harmony:
+      if child.tag == &#39;root&#39;:
+        self._parse_root(child)
+      elif child.tag == &#39;kind&#39;:
+        if child.text is None:
+          # Seems like this shouldn&#39;t happen but frequently does in the wild...
+          continue
+        kind_text = str(child.text).strip()
+        if kind_text not in self.CHORD_KIND_ABBREVIATIONS:
+          raise ChordSymbolParseError(&#39;Unknown chord kind: &#39; + kind_text)
+        self.kind = self.CHORD_KIND_ABBREVIATIONS[kind_text]
+      elif child.tag == &#39;degree&#39;:
+        self.degrees.append(self._parse_degree(child))
+      elif child.tag == &#39;bass&#39;:
+        self._parse_bass(child)
+      elif child.tag == &#39;offset&#39;:
+        # Offset tag moves chord symbol time position.
+        try:
+          offset = int(child.text)
+        except ValueError:
+          raise ChordSymbolParseError(&#39;Non-integer offset: &#39; + str(child.text))
+        midi_ticks = offset * constants.STANDARD_PPQ / self.state.divisions
+        seconds = (midi_ticks / constants.STANDARD_PPQ *
+                   self.state.seconds_per_quarter)
+        self.time_position += seconds
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+    if self.root is None and self.kind != &#39;N.C.&#39;:
+      raise ChordSymbolParseError(&#39;Chord symbol must have a root&#39;)
+
+  def _parse_pitch(self, xml_pitch, step_tag, alter_tag):
+    &#34;&#34;&#34;Parse and return the pitch-like &lt;root&gt; or &lt;bass&gt; element.&#34;&#34;&#34;
+    if xml_pitch.find(step_tag) is None:
+      raise ChordSymbolParseError(&#39;Missing pitch step&#39;)
+    step = xml_pitch.find(step_tag).text
+
+    alter_string = &#39;&#39;
+    if xml_pitch.find(alter_tag) is not None:
+      alter_text = xml_pitch.find(alter_tag).text
+      alter_string = self._alter_to_string(alter_text)
+
+    if self.state.transpose:
+      raise ChordSymbolParseError(
+          &#39;Transposition of chord symbols currently unsupported&#39;)
+
+    return step + alter_string
+
+  def _parse_root(self, xml_root):
+    &#34;&#34;&#34;Parse the &lt;root&gt; tag for a chord symbol.&#34;&#34;&#34;
+    self.root = self._parse_pitch(xml_root, step_tag=&#39;root-step&#39;,
+                                  alter_tag=&#39;root-alter&#39;)
+
+  def _parse_bass(self, xml_bass):
+    &#34;&#34;&#34;Parse the &lt;bass&gt; tag for a chord symbol.&#34;&#34;&#34;
+    self.bass = self._parse_pitch(xml_bass, step_tag=&#39;bass-step&#39;,
+                                  alter_tag=&#39;bass-alter&#39;)
+
+  def _parse_degree(self, xml_degree):
+    &#34;&#34;&#34;Parse and return the &lt;degree&gt; scale degree modification element.&#34;&#34;&#34;
+    if xml_degree.find(&#39;degree-value&#39;) is None:
+      raise ChordSymbolParseError(&#39;Missing scale degree value in harmony&#39;)
+    value_text = xml_degree.find(&#39;degree-value&#39;).text
+    if value_text is None:
+      raise ChordSymbolParseError(&#39;Missing scale degree&#39;)
+    try:
+      value = int(value_text)
+    except ValueError:
+      raise ChordSymbolParseError(
+          &#39;Non-integer scale degree: &#39; + str(value_text))
+
+    alter_string = &#39;&#39;
+    if xml_degree.find(&#39;degree-alter&#39;) is not None:
+      alter_text = xml_degree.find(&#39;degree-alter&#39;).text
+      alter_string = self._alter_to_string(alter_text)
+
+    if xml_degree.find(&#39;degree-type&#39;) is None:
+      raise ChordSymbolParseError(&#39;Missing degree modification type&#39;)
+    type_text = xml_degree.find(&#39;degree-type&#39;).text
+
+    if type_text == &#39;add&#39;:
+      if not alter_string:
+        # When adding unaltered scale degree, use &#34;add&#34; string.
+        type_string = &#39;add&#39;
+      else:
+        # When adding altered scale degree, &#34;add&#34; not necessary.
+        type_string = &#39;&#39;
+    elif type_text == &#39;subtract&#39;:
+      type_string = &#39;no&#39;
+      # Alter should be irrelevant when removing scale degree.
+      alter_string = &#39;&#39;
+    elif type_text == &#39;alter&#39;:
+      if not alter_string:
+        raise ChordSymbolParseError(&#39;Degree alteration by zero semitones&#39;)
+      # No type string necessary as merely appending e.g. &#34;#9&#34; suffices.
+      type_string = &#39;&#39;
+    else:
+      raise ChordSymbolParseError(
+          &#39;Invalid degree modification type: &#39; + str(type_text))
+
+    # Return a scale degree modification string that can be appended to a chord
+    # symbol figure string.
+    return type_string + alter_string + str(value)
+
+  def __str__(self):
+    if self.kind == &#39;N.C.&#39;:
+      note_string = &#39;{kind: &#39; + self.kind + &#39;} &#39;
+    else:
+      note_string = &#39;{root: &#39; + self.root
+      note_string += &#39;, kind: &#39; + self.kind
+      note_string += &#39;, degrees: [%s]&#39; % &#39;, &#39;.join(degree
+                                                   for degree in self.degrees)
+      note_string += &#39;, bass: &#39; + self.bass + &#39;} &#39;
+    note_string += &#39;(@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return note_string
+
+  def get_figure_string(self):
+    &#34;&#34;&#34;Return a chord symbol figure string.&#34;&#34;&#34;
+    if self.kind == &#39;N.C.&#39;:
+      return self.kind
+    else:
+      degrees_string = &#39;&#39;.join(&#39;(%s)&#39; % degree for degree in self.degrees)
+      figure = self.root + self.kind + degrees_string
+      if self.bass:
+        figure += &#39;/&#39; + self.bass
+      return figure
+
+
+class TimeSignature(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML time signature.
+
+  Does not support:
+  - Composite time signatures: 3+2/8
+  - Alternating time signatures 2/4 + 3/8
+  - Senza misura
+  &#34;&#34;&#34;
+
+  def __init__(self, state, xml_time=None):
+    self.xml_time = xml_time
+    self.numerator = -1
+    self.denominator = -1
+    self.time_position = 0
+    self.state = state
+    if xml_time is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;time&gt; element.&#34;&#34;&#34;
+    if (len(self.xml_time.findall(&#39;beats&#39;)) &gt; 1 or
+        len(self.xml_time.findall(&#39;beat-type&#39;)) &gt; 1):
+      # If more than 1 beats or beat-type found, this time signature is
+      # not supported (ex: alternating meter)
+      raise AlternatingTimeSignatureError(&#39;Alternating Time Signature&#39;)
+
+    beats = self.xml_time.find(&#39;beats&#39;).text
+    beat_type = self.xml_time.find(&#39;beat-type&#39;).text
+    try:
+      self.numerator = int(beats)
+      self.denominator = int(beat_type)
+    except ValueError:
+      raise TimeSignatureParseError(
+          &#39;Could not parse time signature: {}/{}&#39;.format(beats, beat_type))
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    time_sig_str = str(self.numerator) + &#39;/&#39; + str(self.denominator)
+    time_sig_str += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return time_sig_str
+
+  def __eq__(self, other):
+    isequal = self.numerator == other.numerator
+    isequal = isequal and (self.denominator == other.denominator)
+    isequal = isequal and (self.time_position == other.time_position)
+    return isequal
+
+  def __ne__(self, other):
+    return not self.__eq__(other)
+
+
+class KeySignature(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML key signature.&#34;&#34;&#34;
+
+  def __init__(self, state, xml_key=None):
+    self.xml_key = xml_key
+    # MIDI and MusicXML identify key by using &#34;fifths&#34;:
+    # -1 = F, 0 = C, 1 = G etc.
+    self.key = 0
+    # mode is &#34;major&#34; or &#34;minor&#34; only: MIDI only supports major and minor
+    self.mode = &#39;major&#39;
+    self.time_position = -1
+    self.state = state
+    if xml_key is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;key&gt; element into a MIDI compatible key.
+
+    If the mode is not minor (e.g. dorian), default to &#34;major&#34;
+    because MIDI only supports major and minor modes.
+
+
+    Raises:
+      KeyParseError: If the fifths element is missing.
+    &#34;&#34;&#34;
+    fifths = self.xml_key.find(&#39;fifths&#39;)
+    if fifths is None:
+      raise KeyParseError(
+          &#39;Could not find fifths attribute in key signature.&#39;)
+    self.key = int(self.xml_key.find(&#39;fifths&#39;).text)
+    mode = self.xml_key.find(&#39;mode&#39;)
+    # Anything not minor will be interpreted as major
+    if mode != &#39;minor&#39;:
+      mode = &#39;major&#39;
+    self.mode = mode
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    keys = ([&#39;Cb&#39;, &#39;Gb&#39;, &#39;Db&#39;, &#39;Ab&#39;, &#39;Eb&#39;, &#39;Bb&#39;, &#39;F&#39;, &#39;C&#39;, &#39;G&#39;, &#39;D&#39;,
+             &#39;A&#39;, &#39;E&#39;, &#39;B&#39;, &#39;F#&#39;, &#39;C#&#39;])
+    key_string = keys[self.key + 7] + &#39; &#39; + self.mode
+    key_string += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return key_string
+
+  def __eq__(self, other):
+    isequal = self.key == other.key
+    isequal = isequal and (self.mode == other.mode)
+    isequal = isequal and (self.time_position == other.time_position)
+    return isequal
+
+
+class Tempo(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML tempo.&#34;&#34;&#34;
+
+  def __init__(self, state, xml_sound=None):
+    self.xml_sound = xml_sound
+    self.qpm = -1
+    self.time_position = -1
+    self.state = state
+    if xml_sound is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;sound&gt; element and retrieve the tempo.
+
+    If no tempo is specified, default to DEFAULT_QUARTERS_PER_MINUTE
+    &#34;&#34;&#34;
+    self.qpm = float(self.xml_sound.get(&#39;tempo&#39;))
+    if self.qpm == 0:
+      # If tempo is 0, set it to default
+      self.qpm = constants.DEFAULT_QUARTERS_PER_MINUTE
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    tempo_str = &#39;Tempo: &#39; + str(self.qpm)
+    tempo_str += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return tempo_str</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.musicxml_parser.AlternatingTimeSignatureError"><code class="flex name class">
+<span>class <span class="ident">AlternatingTimeSignatureError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when an alternating time signature is encountered.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AlternatingTimeSignatureError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when an alternating time signature is encountered.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.ChordSymbol"><code class="flex name class">
+<span>class <span class="ident">ChordSymbol</span></span>
+<span>(</span><span>xml_harmony, state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML chord symbol <harmony> element.</p>
+<p>This represents a chord symbol with four components:</p>
+<p>1) Root: a string representing the chord root pitch class, e.g. "C#".
+2) Kind: a string representing the chord kind, e.g. "m7" for minor-seventh,
+"9" for dominant-ninth, or the empty string for major triad.
+3) Scale degree modifications: a list of strings representing scale degree
+modifications for the chord, e.g. "add9" to add an unaltered ninth scale
+degree (without the seventh), "b5" to flatten the fifth scale degree,
+"no3" to remove the third scale degree, etc.
+4) Bass: a string representing the chord bass pitch class, or None if the bass
+pitch class is the same as the root pitch class.</p>
+<p>There's also a special chord kind "N.C." representing no harmony, for which
+all other fields should be None.</p>
+<p>Use the <code>get_figure_string</code> method to get a string representation of the chord
+symbol as might appear in a lead sheet. This string representation is what we
+use to represent chord symbols in NoteSequence protos, as text annotations.
+While the MusicXML representation has more structure, using an unstructured
+string provides more flexibility and allows us to ingest chords from other
+sources, e.g. guitar tabs on the web.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChordSymbol(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML chord symbol &lt;harmony&gt; element.
+
+  This represents a chord symbol with four components:
+
+  1) Root: a string representing the chord root pitch class, e.g. &#34;C#&#34;.
+  2) Kind: a string representing the chord kind, e.g. &#34;m7&#34; for minor-seventh,
+      &#34;9&#34; for dominant-ninth, or the empty string for major triad.
+  3) Scale degree modifications: a list of strings representing scale degree
+      modifications for the chord, e.g. &#34;add9&#34; to add an unaltered ninth scale
+      degree (without the seventh), &#34;b5&#34; to flatten the fifth scale degree,
+      &#34;no3&#34; to remove the third scale degree, etc.
+  4) Bass: a string representing the chord bass pitch class, or None if the bass
+      pitch class is the same as the root pitch class.
+
+  There&#39;s also a special chord kind &#34;N.C.&#34; representing no harmony, for which
+  all other fields should be None.
+
+  Use the `get_figure_string` method to get a string representation of the chord
+  symbol as might appear in a lead sheet. This string representation is what we
+  use to represent chord symbols in NoteSequence protos, as text annotations.
+  While the MusicXML representation has more structure, using an unstructured
+  string provides more flexibility and allows us to ingest chords from other
+  sources, e.g. guitar tabs on the web.
+  &#34;&#34;&#34;
+
+  # The below dictionary maps chord kinds to an abbreviated string as would
+  # appear in a chord symbol in a standard lead sheet. There are often multiple
+  # standard abbreviations for the same chord type, e.g. &#34;+&#34; and &#34;aug&#34; both
+  # refer to an augmented chord, and &#34;maj7&#34;, &#34;M7&#34;, and a Delta character all
+  # refer to a major-seventh chord; this dictionary attempts to be consistent
+  # but the choice of abbreviation is somewhat arbitrary.
+  #
+  # The MusicXML-defined chord kinds are listed here:
+  # http://usermanuals.musicxml.com/MusicXML/Content/ST-MusicXML-kind-value.htm
+
+  CHORD_KIND_ABBREVIATIONS = {
+      # These chord kinds are in the MusicXML spec.
+      &#39;major&#39;: &#39;&#39;,
+      &#39;minor&#39;: &#39;m&#39;,
+      &#39;augmented&#39;: &#39;aug&#39;,
+      &#39;diminished&#39;: &#39;dim&#39;,
+      &#39;dominant&#39;: &#39;7&#39;,
+      &#39;major-seventh&#39;: &#39;maj7&#39;,
+      &#39;minor-seventh&#39;: &#39;m7&#39;,
+      &#39;diminished-seventh&#39;: &#39;dim7&#39;,
+      &#39;augmented-seventh&#39;: &#39;aug7&#39;,
+      &#39;half-diminished&#39;: &#39;m7b5&#39;,
+      &#39;major-minor&#39;: &#39;m(maj7)&#39;,
+      &#39;major-sixth&#39;: &#39;6&#39;,
+      &#39;minor-sixth&#39;: &#39;m6&#39;,
+      &#39;dominant-ninth&#39;: &#39;9&#39;,
+      &#39;major-ninth&#39;: &#39;maj9&#39;,
+      &#39;minor-ninth&#39;: &#39;m9&#39;,
+      &#39;dominant-11th&#39;: &#39;11&#39;,
+      &#39;major-11th&#39;: &#39;maj11&#39;,
+      &#39;minor-11th&#39;: &#39;m11&#39;,
+      &#39;dominant-13th&#39;: &#39;13&#39;,
+      &#39;major-13th&#39;: &#39;maj13&#39;,
+      &#39;minor-13th&#39;: &#39;m13&#39;,
+      &#39;suspended-second&#39;: &#39;sus2&#39;,
+      &#39;suspended-fourth&#39;: &#39;sus&#39;,
+      &#39;pedal&#39;: &#39;ped&#39;,
+      &#39;power&#39;: &#39;5&#39;,
+      &#39;none&#39;: &#39;N.C.&#39;,
+
+      # These are not in the spec, but show up frequently in the wild.
+      &#39;dominant-seventh&#39;: &#39;7&#39;,
+      &#39;augmented-ninth&#39;: &#39;aug9&#39;,
+      &#39;minor-major&#39;: &#39;m(maj7)&#39;,
+
+      # Some abbreviated kinds also show up frequently in the wild.
+      &#39;&#39;: &#39;&#39;,
+      &#39;min&#39;: &#39;m&#39;,
+      &#39;aug&#39;: &#39;aug&#39;,
+      &#39;dim&#39;: &#39;dim&#39;,
+      &#39;7&#39;: &#39;7&#39;,
+      &#39;maj7&#39;: &#39;maj7&#39;,
+      &#39;min7&#39;: &#39;m7&#39;,
+      &#39;dim7&#39;: &#39;dim7&#39;,
+      &#39;m7b5&#39;: &#39;m7b5&#39;,
+      &#39;minMaj7&#39;: &#39;m(maj7)&#39;,
+      &#39;6&#39;: &#39;6&#39;,
+      &#39;min6&#39;: &#39;m6&#39;,
+      &#39;maj69&#39;: &#39;6(add9)&#39;,
+      &#39;9&#39;: &#39;9&#39;,
+      &#39;maj9&#39;: &#39;maj9&#39;,
+      &#39;min9&#39;: &#39;m9&#39;,
+      &#39;sus47&#39;: &#39;sus7&#39;
+  }
+
+  def __init__(self, xml_harmony, state):
+    self.xml_harmony = xml_harmony
+    self.time_position = -1
+    self.root = None
+    self.kind = &#39;&#39;
+    self.degrees = []
+    self.bass = None
+    self.state = state
+    self._parse()
+
+  def _alter_to_string(self, alter_text):
+    &#34;&#34;&#34;Parse alter text to a string of one or two sharps/flats.
+
+    Args:
+      alter_text: A string representation of an integer number of semitones.
+
+    Returns:
+      A string, one of &#39;bb&#39;, &#39;b&#39;, &#39;#&#39;, &#39;##&#39;, or the empty string.
+
+    Raises:
+      ChordSymbolParseError: If `alter_text` cannot be parsed to an integer,
+          or if the integer is not a valid number of semitones between -2 and 2
+          inclusive.
+    &#34;&#34;&#34;
+    # Parse alter text to an integer number of semitones.
+    try:
+      alter_semitones = int(alter_text)
+    except ValueError:
+      raise ChordSymbolParseError(&#39;Non-integer alter: &#39; + str(alter_text))
+
+    # Visual alter representation
+    if alter_semitones == -2:
+      alter_string = &#39;bb&#39;
+    elif alter_semitones == -1:
+      alter_string = &#39;b&#39;
+    elif alter_semitones == 0:
+      alter_string = &#39;&#39;
+    elif alter_semitones == 1:
+      alter_string = &#39;#&#39;
+    elif alter_semitones == 2:
+      alter_string = &#39;##&#39;
+    else:
+      raise ChordSymbolParseError(&#39;Invalid alter: &#39; + str(alter_semitones))
+
+    return alter_string
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;harmony&gt; element.&#34;&#34;&#34;
+    self.time_position = self.state.time_position
+
+    for child in self.xml_harmony:
+      if child.tag == &#39;root&#39;:
+        self._parse_root(child)
+      elif child.tag == &#39;kind&#39;:
+        if child.text is None:
+          # Seems like this shouldn&#39;t happen but frequently does in the wild...
+          continue
+        kind_text = str(child.text).strip()
+        if kind_text not in self.CHORD_KIND_ABBREVIATIONS:
+          raise ChordSymbolParseError(&#39;Unknown chord kind: &#39; + kind_text)
+        self.kind = self.CHORD_KIND_ABBREVIATIONS[kind_text]
+      elif child.tag == &#39;degree&#39;:
+        self.degrees.append(self._parse_degree(child))
+      elif child.tag == &#39;bass&#39;:
+        self._parse_bass(child)
+      elif child.tag == &#39;offset&#39;:
+        # Offset tag moves chord symbol time position.
+        try:
+          offset = int(child.text)
+        except ValueError:
+          raise ChordSymbolParseError(&#39;Non-integer offset: &#39; + str(child.text))
+        midi_ticks = offset * constants.STANDARD_PPQ / self.state.divisions
+        seconds = (midi_ticks / constants.STANDARD_PPQ *
+                   self.state.seconds_per_quarter)
+        self.time_position += seconds
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+    if self.root is None and self.kind != &#39;N.C.&#39;:
+      raise ChordSymbolParseError(&#39;Chord symbol must have a root&#39;)
+
+  def _parse_pitch(self, xml_pitch, step_tag, alter_tag):
+    &#34;&#34;&#34;Parse and return the pitch-like &lt;root&gt; or &lt;bass&gt; element.&#34;&#34;&#34;
+    if xml_pitch.find(step_tag) is None:
+      raise ChordSymbolParseError(&#39;Missing pitch step&#39;)
+    step = xml_pitch.find(step_tag).text
+
+    alter_string = &#39;&#39;
+    if xml_pitch.find(alter_tag) is not None:
+      alter_text = xml_pitch.find(alter_tag).text
+      alter_string = self._alter_to_string(alter_text)
+
+    if self.state.transpose:
+      raise ChordSymbolParseError(
+          &#39;Transposition of chord symbols currently unsupported&#39;)
+
+    return step + alter_string
+
+  def _parse_root(self, xml_root):
+    &#34;&#34;&#34;Parse the &lt;root&gt; tag for a chord symbol.&#34;&#34;&#34;
+    self.root = self._parse_pitch(xml_root, step_tag=&#39;root-step&#39;,
+                                  alter_tag=&#39;root-alter&#39;)
+
+  def _parse_bass(self, xml_bass):
+    &#34;&#34;&#34;Parse the &lt;bass&gt; tag for a chord symbol.&#34;&#34;&#34;
+    self.bass = self._parse_pitch(xml_bass, step_tag=&#39;bass-step&#39;,
+                                  alter_tag=&#39;bass-alter&#39;)
+
+  def _parse_degree(self, xml_degree):
+    &#34;&#34;&#34;Parse and return the &lt;degree&gt; scale degree modification element.&#34;&#34;&#34;
+    if xml_degree.find(&#39;degree-value&#39;) is None:
+      raise ChordSymbolParseError(&#39;Missing scale degree value in harmony&#39;)
+    value_text = xml_degree.find(&#39;degree-value&#39;).text
+    if value_text is None:
+      raise ChordSymbolParseError(&#39;Missing scale degree&#39;)
+    try:
+      value = int(value_text)
+    except ValueError:
+      raise ChordSymbolParseError(
+          &#39;Non-integer scale degree: &#39; + str(value_text))
+
+    alter_string = &#39;&#39;
+    if xml_degree.find(&#39;degree-alter&#39;) is not None:
+      alter_text = xml_degree.find(&#39;degree-alter&#39;).text
+      alter_string = self._alter_to_string(alter_text)
+
+    if xml_degree.find(&#39;degree-type&#39;) is None:
+      raise ChordSymbolParseError(&#39;Missing degree modification type&#39;)
+    type_text = xml_degree.find(&#39;degree-type&#39;).text
+
+    if type_text == &#39;add&#39;:
+      if not alter_string:
+        # When adding unaltered scale degree, use &#34;add&#34; string.
+        type_string = &#39;add&#39;
+      else:
+        # When adding altered scale degree, &#34;add&#34; not necessary.
+        type_string = &#39;&#39;
+    elif type_text == &#39;subtract&#39;:
+      type_string = &#39;no&#39;
+      # Alter should be irrelevant when removing scale degree.
+      alter_string = &#39;&#39;
+    elif type_text == &#39;alter&#39;:
+      if not alter_string:
+        raise ChordSymbolParseError(&#39;Degree alteration by zero semitones&#39;)
+      # No type string necessary as merely appending e.g. &#34;#9&#34; suffices.
+      type_string = &#39;&#39;
+    else:
+      raise ChordSymbolParseError(
+          &#39;Invalid degree modification type: &#39; + str(type_text))
+
+    # Return a scale degree modification string that can be appended to a chord
+    # symbol figure string.
+    return type_string + alter_string + str(value)
+
+  def __str__(self):
+    if self.kind == &#39;N.C.&#39;:
+      note_string = &#39;{kind: &#39; + self.kind + &#39;} &#39;
+    else:
+      note_string = &#39;{root: &#39; + self.root
+      note_string += &#39;, kind: &#39; + self.kind
+      note_string += &#39;, degrees: [%s]&#39; % &#39;, &#39;.join(degree
+                                                   for degree in self.degrees)
+      note_string += &#39;, bass: &#39; + self.bass + &#39;} &#39;
+    note_string += &#39;(@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return note_string
+
+  def get_figure_string(self):
+    &#34;&#34;&#34;Return a chord symbol figure string.&#34;&#34;&#34;
+    if self.kind == &#39;N.C.&#39;:
+      return self.kind
+    else:
+      degrees_string = &#39;&#39;.join(&#39;(%s)&#39; % degree for degree in self.degrees)
+      figure = self.root + self.kind + degrees_string
+      if self.bass:
+        figure += &#39;/&#39; + self.bass
+      return figure</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.ChordSymbol.CHORD_KIND_ABBREVIATIONS"><code class="name">var <span class="ident">CHORD_KIND_ABBREVIATIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.ChordSymbol.get_figure_string"><code class="name flex">
+<span>def <span class="ident">get_figure_string</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a chord symbol figure string.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_figure_string(self):
+  &#34;&#34;&#34;Return a chord symbol figure string.&#34;&#34;&#34;
+  if self.kind == &#39;N.C.&#39;:
+    return self.kind
+  else:
+    degrees_string = &#39;&#39;.join(&#39;(%s)&#39; % degree for degree in self.degrees)
+    figure = self.root + self.kind + degrees_string
+    if self.bass:
+      figure += &#39;/&#39; + self.bass
+    return figure</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.musicxml_parser.ChordSymbolParseError"><code class="flex name class">
+<span>class <span class="ident">ChordSymbolParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when a chord symbol cannot be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChordSymbolParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a chord symbol cannot be parsed.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.InvalidNoteDurationTypeError"><code class="flex name class">
+<span>class <span class="ident">InvalidNoteDurationTypeError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when a note's duration type is invalid.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InvalidNoteDurationTypeError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a note&#39;s duration type is invalid.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.KeyParseError"><code class="flex name class">
+<span>class <span class="ident">KeyParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when a key signature cannot be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeyParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a key signature cannot be parsed.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.KeySignature"><code class="flex name class">
+<span>class <span class="ident">KeySignature</span></span>
+<span>(</span><span>state, xml_key=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML key signature.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeySignature(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML key signature.&#34;&#34;&#34;
+
+  def __init__(self, state, xml_key=None):
+    self.xml_key = xml_key
+    # MIDI and MusicXML identify key by using &#34;fifths&#34;:
+    # -1 = F, 0 = C, 1 = G etc.
+    self.key = 0
+    # mode is &#34;major&#34; or &#34;minor&#34; only: MIDI only supports major and minor
+    self.mode = &#39;major&#39;
+    self.time_position = -1
+    self.state = state
+    if xml_key is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;key&gt; element into a MIDI compatible key.
+
+    If the mode is not minor (e.g. dorian), default to &#34;major&#34;
+    because MIDI only supports major and minor modes.
+
+
+    Raises:
+      KeyParseError: If the fifths element is missing.
+    &#34;&#34;&#34;
+    fifths = self.xml_key.find(&#39;fifths&#39;)
+    if fifths is None:
+      raise KeyParseError(
+          &#39;Could not find fifths attribute in key signature.&#39;)
+    self.key = int(self.xml_key.find(&#39;fifths&#39;).text)
+    mode = self.xml_key.find(&#39;mode&#39;)
+    # Anything not minor will be interpreted as major
+    if mode != &#39;minor&#39;:
+      mode = &#39;major&#39;
+    self.mode = mode
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    keys = ([&#39;Cb&#39;, &#39;Gb&#39;, &#39;Db&#39;, &#39;Ab&#39;, &#39;Eb&#39;, &#39;Bb&#39;, &#39;F&#39;, &#39;C&#39;, &#39;G&#39;, &#39;D&#39;,
+             &#39;A&#39;, &#39;E&#39;, &#39;B&#39;, &#39;F#&#39;, &#39;C#&#39;])
+    key_string = keys[self.key + 7] + &#39; &#39; + self.mode
+    key_string += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return key_string
+
+  def __eq__(self, other):
+    isequal = self.key == other.key
+    isequal = isequal and (self.mode == other.mode)
+    isequal = isequal and (self.time_position == other.time_position)
+    return isequal</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.Measure"><code class="flex name class">
+<span>class <span class="ident">Measure</span></span>
+<span>(</span><span>xml_measure, state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal represention of the MusicXML <measure> element.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Measure(object):
+  &#34;&#34;&#34;Internal represention of the MusicXML &lt;measure&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_measure, state):
+    self.xml_measure = xml_measure
+    self.notes = []
+    self.chord_symbols = []
+    self.tempos = []
+    self.time_signature = None
+    self.key_signature = None
+    # Cumulative duration in MusicXML duration.
+    # Used for time signature calculations
+    self.duration = 0
+    self.state = state
+    # Record the starting time of this measure so that time signatures
+    # can be inserted at the beginning of the measure
+    self.start_time_position = self.state.time_position
+    self._parse()
+    # Update the time signature if a partial or pickup measure
+    self._fix_time_signature()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the &lt;measure&gt; element.&#34;&#34;&#34;
+
+    for child in self.xml_measure:
+      if child.tag == &#39;attributes&#39;:
+        self._parse_attributes(child)
+      elif child.tag == &#39;backup&#39;:
+        self._parse_backup(child)
+      elif child.tag == &#39;direction&#39;:
+        self._parse_direction(child)
+      elif child.tag == &#39;forward&#39;:
+        self._parse_forward(child)
+      elif child.tag == &#39;note&#39;:
+        note = Note(child, self.state)
+        self.notes.append(note)
+        # Keep track of current note as previous note for chord timings
+        self.state.previous_note = note
+
+        # Sum up the MusicXML durations in voice 1 of this measure
+        if note.voice == 1 and not note.is_in_chord:
+          self.duration += note.note_duration.duration
+      elif child.tag == &#39;harmony&#39;:
+        chord_symbol = ChordSymbol(child, self.state)
+        self.chord_symbols.append(chord_symbol)
+
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_attributes(self, xml_attributes):
+    &#34;&#34;&#34;Parse the MusicXML &lt;attributes&gt; element.&#34;&#34;&#34;
+
+    for child in xml_attributes:
+      if child.tag == &#39;divisions&#39;:
+        self.state.divisions = int(child.text)
+      elif child.tag == &#39;key&#39;:
+        self.key_signature = KeySignature(self.state, child)
+      elif child.tag == &#39;time&#39;:
+        if self.time_signature is None:
+          self.time_signature = TimeSignature(self.state, child)
+          self.state.time_signature = self.time_signature
+        else:
+          raise MultipleTimeSignatureError(&#39;Multiple time signatures&#39;)
+      elif child.tag == &#39;transpose&#39;:
+        transpose = int(child.find(&#39;chromatic&#39;).text)
+        self.state.transpose = transpose
+        if self.key_signature is not None:
+          # Transposition is chromatic. Every half step up is 5 steps backward
+          # on the circle of fifths, which has 12 positions.
+          key_transpose = (transpose * -5) % 12
+          new_key = self.key_signature.key + key_transpose
+          # If the new key has &gt;6 sharps, translate to flats.
+          # TODO(fjord): Could be more smart about when to use sharps vs. flats
+          # when there are enharmonic equivalents.
+          if new_key &gt; 6:
+            new_key %= -6
+          self.key_signature.key = new_key
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_backup(self, xml_backup):
+    &#34;&#34;&#34;Parse the MusicXML &lt;backup&gt; element.
+
+    This moves the global time position backwards.
+
+    Args:
+      xml_backup: XML element with tag type &#39;backup&#39;.
+    &#34;&#34;&#34;
+
+    xml_duration = xml_backup.find(&#39;duration&#39;)
+    backup_duration = int(xml_duration.text)
+    midi_ticks = backup_duration * (constants.STANDARD_PPQ
+                                    / self.state.divisions)
+    seconds = ((midi_ticks / constants.STANDARD_PPQ)
+               * self.state.seconds_per_quarter)
+    self.state.time_position -= seconds
+
+  def _parse_direction(self, xml_direction):
+    &#34;&#34;&#34;Parse the MusicXML &lt;direction&gt; element.&#34;&#34;&#34;
+
+    for child in xml_direction:
+      if child.tag == &#39;sound&#39;:
+        if child.get(&#39;tempo&#39;) is not None:
+          tempo = Tempo(self.state, child)
+          self.tempos.append(tempo)
+          self.state.qpm = tempo.qpm
+          self.state.seconds_per_quarter = 60 / self.state.qpm
+          if child.get(&#39;dynamics&#39;) is not None:
+            self.state.velocity = int(child.get(&#39;dynamics&#39;))
+
+  def _parse_forward(self, xml_forward):
+    &#34;&#34;&#34;Parse the MusicXML &lt;forward&gt; element.
+
+    This moves the global time position forward.
+
+    Args:
+      xml_forward: XML element with tag type &#39;forward&#39;.
+    &#34;&#34;&#34;
+
+    xml_duration = xml_forward.find(&#39;duration&#39;)
+    forward_duration = int(xml_duration.text)
+    midi_ticks = forward_duration * (constants.STANDARD_PPQ
+                                     / self.state.divisions)
+    seconds = ((midi_ticks / constants.STANDARD_PPQ)
+               * self.state.seconds_per_quarter)
+    self.state.time_position += seconds
+
+  def _fix_time_signature(self):
+    &#34;&#34;&#34;Correct the time signature for incomplete measures.
+
+    If the measure is incomplete or a pickup, insert an appropriate
+    time signature into this Measure.
+    &#34;&#34;&#34;
+    # Compute the fractional time signature (duration / divisions)
+    # Multiply divisions by 4 because division is always parts per quarter note
+    numerator = self.duration
+    denominator = self.state.divisions * 4
+    fractional_time_signature = Fraction(numerator, denominator)
+
+    if self.state.time_signature is None and self.time_signature is None:
+      # No global time signature yet and no measure time signature defined
+      # in this measure (no time signature or senza misura).
+      # Insert the fractional time signature as the time signature
+      # for this measure
+      self.time_signature = TimeSignature(self.state)
+      self.time_signature.numerator = fractional_time_signature.numerator
+      self.time_signature.denominator = fractional_time_signature.denominator
+      self.state.time_signature = self.time_signature
+    else:
+      fractional_state_time_signature = Fraction(
+          self.state.time_signature.numerator,
+          self.state.time_signature.denominator)
+
+      # Check for pickup measure. Reset time signature to smaller numerator
+      pickup_measure = False
+      if numerator &lt; self.state.time_signature.numerator:
+        pickup_measure = True
+
+      # Get the current time signature denominator
+      global_time_signature_denominator = self.state.time_signature.denominator
+
+      # If the fractional time signature = 1 (e.g. 4/4),
+      # make the numerator the same as the global denominator
+      if fractional_time_signature == 1 and not pickup_measure:
+        new_time_signature = TimeSignature(self.state)
+        new_time_signature.numerator = global_time_signature_denominator
+        new_time_signature.denominator = global_time_signature_denominator
+      else:
+        # Otherwise, set the time signature to the fractional time signature
+        # Issue #674 - Use the original numerator and denominator
+        # instead of the fractional one
+        new_time_signature = TimeSignature(self.state)
+        new_time_signature.numerator = numerator
+        new_time_signature.denominator = denominator
+
+        new_time_sig_fraction = Fraction(numerator, denominator)
+
+        if new_time_sig_fraction == fractional_time_signature:
+          new_time_signature.numerator = fractional_time_signature.numerator
+          new_time_signature.denominator = fractional_time_signature.denominator
+
+      # Insert a new time signature only if it does not equal the global
+      # time signature.
+      if (pickup_measure or
+          (self.time_signature is None
+           and (fractional_time_signature != fractional_state_time_signature))):
+        new_time_signature.time_position = self.start_time_position
+        self.time_signature = new_time_signature
+        self.state.time_signature = new_time_signature</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.MultipleTimeSignatureError"><code class="flex name class">
+<span>class <span class="ident">MultipleTimeSignatureError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when multiple time signatures found in a measure.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultipleTimeSignatureError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when multiple time signatures found in a measure.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLDocument"><code class="flex name class">
+<span>class <span class="ident">MusicXMLDocument</span></span>
+<span>(</span><span>filename)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML Document.</p>
+<p>Represents the top level object which holds the MusicXML document
+Responsible for loading the .xml or .mxl file using the _get_score method
+If the file is .mxl, this class uncompresses it</p>
+<p>After the file is loaded, this class then parses the document into memory
+using the parse method.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MusicXMLDocument(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML Document.
+
+  Represents the top level object which holds the MusicXML document
+  Responsible for loading the .xml or .mxl file using the _get_score method
+  If the file is .mxl, this class uncompresses it
+
+  After the file is loaded, this class then parses the document into memory
+  using the parse method.
+  &#34;&#34;&#34;
+
+  def __init__(self, filename):
+    self._score = self._get_score(filename)
+    self.parts = []
+    # ScoreParts indexed by id.
+    self._score_parts = {}
+    self.midi_resolution = constants.STANDARD_PPQ
+    self._state = MusicXMLParserState()
+    # Total time in seconds
+    self.total_time_secs = 0
+    self._parse()
+
+  @staticmethod
+  def _get_score(filename):
+    &#34;&#34;&#34;Given a MusicXML file, return the score as an xml.etree.ElementTree.
+
+    Given a MusicXML file, return the score as an xml.etree.ElementTree
+    If the file is compress (ends in .mxl), uncompress it first
+
+    Args:
+        filename: The path of a MusicXML file
+
+    Returns:
+      The score as an xml.etree.ElementTree.
+
+    Raises:
+      MusicXMLParseError: if the file cannot be parsed.
+    &#34;&#34;&#34;
+    score = None
+    if filename.endswith(&#39;.mxl&#39;):
+      # Compressed MXL file. Uncompress in memory.
+      try:
+        mxlzip = zipfile.ZipFile(filename)
+      except zipfile.BadZipfile as exception:
+        raise MusicXMLParseError(exception)
+
+      # A compressed MXL file may contain multiple files, but only one
+      # MusicXML file. Read the META-INF/container.xml file inside of the
+      # MXL file to locate the MusicXML file within the MXL file
+      # http://www.musicxml.com/tutorial/compressed-mxl-files/zip-archive-structure/
+
+      # Raise a MusicXMLParseError if multiple MusicXML files found
+
+      infolist = mxlzip.infolist()
+      # In py3, instead of returning raw bytes, ZipFile.infolist() tries to
+      # guess the filenames&#39; encoding based on file headers, and decodes using
+      # this encoding in order to return a list of strings. If the utf-8
+      # header is missing, it decodes using the DOS code page 437 encoding
+      # which is almost definitely wrong. Here we need to explicitly check
+      # for when this has occurred and change the encoding to utf-8.
+      # https://stackoverflow.com/questions/37723505/namelist-from-zipfile-returns-strings-with-an-invalid-encoding
+      zip_filename_utf8_flag = 0x800
+      for info in infolist:
+        if info.flag_bits &amp; zip_filename_utf8_flag == 0:
+          filename_bytes = info.filename.encode(&#39;437&#39;)
+          filename = filename_bytes.decode(&#39;utf-8&#39;, &#39;replace&#39;)
+          info.filename = filename
+
+      container_file = [x for x in infolist
+                        if x.filename == &#39;META-INF/container.xml&#39;]
+      compressed_file_name = &#39;&#39;
+
+      if container_file:
+        try:
+          container = ET.fromstring(mxlzip.read(container_file[0]))
+          for rootfile_tag in container.findall(&#39;./rootfiles/rootfile&#39;):
+            if &#39;media-type&#39; in rootfile_tag.attrib:
+              if rootfile_tag.attrib[&#39;media-type&#39;] == MUSICXML_MIME_TYPE:
+                if not compressed_file_name:
+                  compressed_file_name = rootfile_tag.attrib[&#39;full-path&#39;]
+                else:
+                  raise MusicXMLParseError(
+                      &#39;Multiple MusicXML files found in compressed archive&#39;)
+            else:
+              # No media-type attribute, so assume this is the MusicXML file
+              if not compressed_file_name:
+                compressed_file_name = rootfile_tag.attrib[&#39;full-path&#39;]
+              else:
+                raise MusicXMLParseError(
+                    &#39;Multiple MusicXML files found in compressed archive&#39;)
+        except ET.ParseError as exception:
+          raise MusicXMLParseError(exception)
+
+      if not compressed_file_name:
+        raise MusicXMLParseError(
+            &#39;Unable to locate main .xml file in compressed archive.&#39;)
+      try:
+        compressed_file_info = [x for x in infolist
+                                if x.filename == compressed_file_name][0]
+      except IndexError:
+        raise MusicXMLParseError(
+            &#39;Score file %s not found in zip archive&#39; % compressed_file_name)
+      score_string = mxlzip.read(compressed_file_info)
+      try:
+        score = ET.fromstring(score_string)
+      except ET.ParseError as exception:
+        raise MusicXMLParseError(exception)
+    else:
+      # Uncompressed XML file.
+      try:
+        tree = ET.parse(filename)
+        score = tree.getroot()
+      except ET.ParseError as exception:
+        raise MusicXMLParseError(exception)
+
+    return score
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the uncompressed MusicXML document.&#34;&#34;&#34;
+    # Parse part-list
+    xml_part_list = self._score.find(&#39;part-list&#39;)
+    if xml_part_list is not None:
+      for element in xml_part_list:
+        if element.tag == &#39;score-part&#39;:
+          score_part = ScorePart(element)
+          self._score_parts[score_part.id] = score_part
+
+    # Parse parts
+    for score_part_index, child in enumerate(self._score.findall(&#39;part&#39;)):
+      part = Part(child, self._score_parts, self._state)
+      self.parts.append(part)
+      score_part_index += 1
+      if self._state.time_position &gt; self.total_time_secs:
+        self.total_time_secs = self._state.time_position
+
+  def get_chord_symbols(self):
+    &#34;&#34;&#34;Return a list of all the chord symbols used in this score.&#34;&#34;&#34;
+    chord_symbols = []
+    for part in self.parts:
+      for measure in part.measures:
+        for chord_symbol in measure.chord_symbols:
+          if chord_symbol not in chord_symbols:
+            # Prevent duplicate chord symbols
+            chord_symbols.append(chord_symbol)
+    return chord_symbols
+
+  def get_time_signatures(self):
+    &#34;&#34;&#34;Return a list of all the time signatures used in this score.
+
+    Does not support polymeter (i.e. assumes all parts have the same
+    time signature, such as Part 1 having a time signature of 6/8
+    while Part 2 has a simultaneous time signature of 2/4).
+
+    Ignores duplicate time signatures to prevent Magenta duplicate
+    time signature error. This happens when multiple parts have the
+    same time signature is used in multiple parts at the same time.
+
+    Example: If Part 1 has a time siganture of 4/4 and Part 2 also
+    has a time signature of 4/4, then only instance of 4/4 is sent
+    to Magenta.
+
+    Returns:
+      A list of all TimeSignature objects used in this score.
+    &#34;&#34;&#34;
+    time_signatures = []
+    for part in self.parts:
+      for measure in part.measures:
+        if measure.time_signature is not None:
+          if measure.time_signature not in time_signatures:
+            # Prevent duplicate time signatures
+            time_signatures.append(measure.time_signature)
+
+    return time_signatures
+
+  def get_key_signatures(self):
+    &#34;&#34;&#34;Return a list of all the key signatures used in this score.
+
+    Support different key signatures in different parts (score in
+    written pitch).
+
+    Ignores duplicate key signatures to prevent Magenta duplicate key
+    signature error. This happens when multiple parts have the same
+    key signature at the same time.
+
+    Example: If the score is in written pitch and the
+    flute is written in the key of Bb major, the trombone will also be
+    written in the key of Bb major. However, the clarinet and trumpet
+    will be written in the key of C major because they are Bb transposing
+    instruments.
+
+    If no key signatures are found, create a default key signature of
+    C major.
+
+    Returns:
+      A list of all KeySignature objects used in this score.
+    &#34;&#34;&#34;
+    key_signatures = []
+    for part in self.parts:
+      for measure in part.measures:
+        if measure.key_signature is not None:
+          if measure.key_signature not in key_signatures:
+            # Prevent duplicate key signatures
+            key_signatures.append(measure.key_signature)
+
+    if not key_signatures:
+      # If there are no key signatures, add C major at the beginning
+      key_signature = KeySignature(self._state)
+      key_signature.time_position = 0
+      key_signatures.append(key_signature)
+
+    return key_signatures
+
+  def get_tempos(self):
+    &#34;&#34;&#34;Return a list of all tempos in this score.
+
+    If no tempos are found, create a default tempo of 120 qpm.
+
+    Returns:
+      A list of all Tempo objects used in this score.
+    &#34;&#34;&#34;
+    tempos = []
+
+    if self.parts:
+      part = self.parts[0]  # Use only first part
+      for measure in part.measures:
+        for tempo in measure.tempos:
+          tempos.append(tempo)
+
+    # If no tempos, add a default of 120 at beginning
+    if not tempos:
+      tempo = Tempo(self._state)
+      tempo.qpm = self._state.qpm
+      tempo.time_position = 0
+      tempos.append(tempo)
+
+    return tempos</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.MusicXMLDocument.get_chord_symbols"><code class="name flex">
+<span>def <span class="ident">get_chord_symbols</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of all the chord symbols used in this score.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_chord_symbols(self):
+  &#34;&#34;&#34;Return a list of all the chord symbols used in this score.&#34;&#34;&#34;
+  chord_symbols = []
+  for part in self.parts:
+    for measure in part.measures:
+      for chord_symbol in measure.chord_symbols:
+        if chord_symbol not in chord_symbols:
+          # Prevent duplicate chord symbols
+          chord_symbols.append(chord_symbol)
+  return chord_symbols</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLDocument.get_key_signatures"><code class="name flex">
+<span>def <span class="ident">get_key_signatures</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of all the key signatures used in this score.</p>
+<p>Support different key signatures in different parts (score in
+written pitch).</p>
+<p>Ignores duplicate key signatures to prevent Magenta duplicate key
+signature error. This happens when multiple parts have the same
+key signature at the same time.</p>
+<p>Example: If the score is in written pitch and the
+flute is written in the key of Bb major, the trombone will also be
+written in the key of Bb major. However, the clarinet and trumpet
+will be written in the key of C major because they are Bb transposing
+instruments.</p>
+<p>If no key signatures are found, create a default key signature of
+C major.</p>
+<h2 id="returns">Returns</h2>
+<p>A list of all KeySignature objects used in this score.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_key_signatures(self):
+  &#34;&#34;&#34;Return a list of all the key signatures used in this score.
+
+  Support different key signatures in different parts (score in
+  written pitch).
+
+  Ignores duplicate key signatures to prevent Magenta duplicate key
+  signature error. This happens when multiple parts have the same
+  key signature at the same time.
+
+  Example: If the score is in written pitch and the
+  flute is written in the key of Bb major, the trombone will also be
+  written in the key of Bb major. However, the clarinet and trumpet
+  will be written in the key of C major because they are Bb transposing
+  instruments.
+
+  If no key signatures are found, create a default key signature of
+  C major.
+
+  Returns:
+    A list of all KeySignature objects used in this score.
+  &#34;&#34;&#34;
+  key_signatures = []
+  for part in self.parts:
+    for measure in part.measures:
+      if measure.key_signature is not None:
+        if measure.key_signature not in key_signatures:
+          # Prevent duplicate key signatures
+          key_signatures.append(measure.key_signature)
+
+  if not key_signatures:
+    # If there are no key signatures, add C major at the beginning
+    key_signature = KeySignature(self._state)
+    key_signature.time_position = 0
+    key_signatures.append(key_signature)
+
+  return key_signatures</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLDocument.get_tempos"><code class="name flex">
+<span>def <span class="ident">get_tempos</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of all tempos in this score.</p>
+<p>If no tempos are found, create a default tempo of 120 qpm.</p>
+<h2 id="returns">Returns</h2>
+<p>A list of all Tempo objects used in this score.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_tempos(self):
+  &#34;&#34;&#34;Return a list of all tempos in this score.
+
+  If no tempos are found, create a default tempo of 120 qpm.
+
+  Returns:
+    A list of all Tempo objects used in this score.
+  &#34;&#34;&#34;
+  tempos = []
+
+  if self.parts:
+    part = self.parts[0]  # Use only first part
+    for measure in part.measures:
+      for tempo in measure.tempos:
+        tempos.append(tempo)
+
+  # If no tempos, add a default of 120 at beginning
+  if not tempos:
+    tempo = Tempo(self._state)
+    tempo.qpm = self._state.qpm
+    tempo.time_position = 0
+    tempos.append(tempo)
+
+  return tempos</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLDocument.get_time_signatures"><code class="name flex">
+<span>def <span class="ident">get_time_signatures</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a list of all the time signatures used in this score.</p>
+<p>Does not support polymeter (i.e. assumes all parts have the same
+time signature, such as Part 1 having a time signature of 6/8
+while Part 2 has a simultaneous time signature of 2/4).</p>
+<p>Ignores duplicate time signatures to prevent Magenta duplicate
+time signature error. This happens when multiple parts have the
+same time signature is used in multiple parts at the same time.</p>
+<p>Example: If Part 1 has a time siganture of 4/4 and Part 2 also
+has a time signature of 4/4, then only instance of 4/4 is sent
+to Magenta.</p>
+<h2 id="returns">Returns</h2>
+<p>A list of all TimeSignature objects used in this score.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_time_signatures(self):
+  &#34;&#34;&#34;Return a list of all the time signatures used in this score.
+
+  Does not support polymeter (i.e. assumes all parts have the same
+  time signature, such as Part 1 having a time signature of 6/8
+  while Part 2 has a simultaneous time signature of 2/4).
+
+  Ignores duplicate time signatures to prevent Magenta duplicate
+  time signature error. This happens when multiple parts have the
+  same time signature is used in multiple parts at the same time.
+
+  Example: If Part 1 has a time siganture of 4/4 and Part 2 also
+  has a time signature of 4/4, then only instance of 4/4 is sent
+  to Magenta.
+
+  Returns:
+    A list of all TimeSignature objects used in this score.
+  &#34;&#34;&#34;
+  time_signatures = []
+  for part in self.parts:
+    for measure in part.measures:
+      if measure.time_signature is not None:
+        if measure.time_signature not in time_signatures:
+          # Prevent duplicate time signatures
+          time_signatures.append(measure.time_signature)
+
+  return time_signatures</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLParseError"><code class="flex name class">
+<span>class <span class="ident">MusicXMLParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when the MusicXML contents cannot be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MusicXMLParseError(Exception):
+  &#34;&#34;&#34;Exception thrown when the MusicXML contents cannot be parsed.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.AlternatingTimeSignatureError" href="#note_seq.musicxml_parser.AlternatingTimeSignatureError">AlternatingTimeSignatureError</a></li>
+<li><a title="note_seq.musicxml_parser.ChordSymbolParseError" href="#note_seq.musicxml_parser.ChordSymbolParseError">ChordSymbolParseError</a></li>
+<li><a title="note_seq.musicxml_parser.InvalidNoteDurationTypeError" href="#note_seq.musicxml_parser.InvalidNoteDurationTypeError">InvalidNoteDurationTypeError</a></li>
+<li><a title="note_seq.musicxml_parser.KeyParseError" href="#note_seq.musicxml_parser.KeyParseError">KeyParseError</a></li>
+<li><a title="note_seq.musicxml_parser.MultipleTimeSignatureError" href="#note_seq.musicxml_parser.MultipleTimeSignatureError">MultipleTimeSignatureError</a></li>
+<li><a title="note_seq.musicxml_parser.PitchStepParseError" href="#note_seq.musicxml_parser.PitchStepParseError">PitchStepParseError</a></li>
+<li><a title="note_seq.musicxml_parser.TimeSignatureParseError" href="#note_seq.musicxml_parser.TimeSignatureParseError">TimeSignatureParseError</a></li>
+<li><a title="note_seq.musicxml_parser.UnpitchedNoteError" href="#note_seq.musicxml_parser.UnpitchedNoteError">UnpitchedNoteError</a></li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.MusicXMLParserState"><code class="flex name class">
+<span>class <span class="ident">MusicXMLParserState</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Maintains internal state of the MusicXML parser.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MusicXMLParserState(object):
+  &#34;&#34;&#34;Maintains internal state of the MusicXML parser.&#34;&#34;&#34;
+
+  def __init__(self):
+    # Default to one division per measure
+    # From the MusicXML documentation: &#34;The divisions element indicates
+    # how many divisions per quarter note are used to indicate a note&#39;s
+    # duration. For example, if duration = 1 and divisions = 2,
+    # this is an eighth note duration.&#34;
+    self.divisions = 1
+
+    # Default to a tempo of 120 quarter notes per minute
+    # MusicXML calls this tempo, but Magenta calls this qpm
+    # Therefore, the variable is called qpm, but reads the
+    # MusicXML tempo attribute
+    # (120 qpm is the default tempo according to the
+    # Standard MIDI Files 1.0 Specification)
+    self.qpm = 120
+
+    # Duration of a single quarter note in seconds
+    self.seconds_per_quarter = 0.5
+
+    # Running total of time for the current event in seconds.
+    # Resets to 0 on every part. Affected by &lt;forward&gt; and &lt;backup&gt; elements
+    self.time_position = 0
+
+    # Default to a MIDI velocity of 64 (mf)
+    self.velocity = 64
+
+    # Default MIDI program (0 = grand piano)
+    self.midi_program = DEFAULT_MIDI_PROGRAM
+
+    # Current MIDI channel (usually equal to the part number)
+    self.midi_channel = DEFAULT_MIDI_CHANNEL
+
+    # Keep track of previous note to get chord timing correct
+    # This variable stores an instance of the Note class (defined below)
+    self.previous_note = None
+
+    # Keep track of current transposition level in +/- semitones.
+    self.transpose = 0
+
+    # Keep track of current time signature. Does not support polymeter.
+    self.time_signature = None</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.Note"><code class="flex name class">
+<span>class <span class="ident">Note</span></span>
+<span>(</span><span>xml_note, state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML <note> element.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Note(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML &lt;note&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_note, state):
+    self.xml_note = xml_note
+    self.voice = 1
+    self.is_rest = False
+    self.is_in_chord = False
+    self.is_grace_note = False
+    self.pitch = None               # Tuple (Pitch Name, MIDI number)
+    self.note_duration = NoteDuration(state)
+    self.state = state
+    self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;note&gt; element.&#34;&#34;&#34;
+
+    self.midi_channel = self.state.midi_channel
+    self.midi_program = self.state.midi_program
+    self.velocity = self.state.velocity
+
+    for child in self.xml_note:
+      if child.tag == &#39;chord&#39;:
+        self.is_in_chord = True
+      elif child.tag == &#39;duration&#39;:
+        self.note_duration.parse_duration(self.is_in_chord, self.is_grace_note,
+                                          child.text)
+      elif child.tag == &#39;pitch&#39;:
+        self._parse_pitch(child)
+      elif child.tag == &#39;rest&#39;:
+        self.is_rest = True
+      elif child.tag == &#39;voice&#39;:
+        self.voice = int(child.text)
+      elif child.tag == &#39;dot&#39;:
+        self.note_duration.dots += 1
+      elif child.tag == &#39;type&#39;:
+        self.note_duration.type = child.text
+      elif child.tag == &#39;time-modification&#39;:
+        # A time-modification element represents a tuplet_ratio
+        self._parse_tuplet(child)
+      elif child.tag == &#39;unpitched&#39;:
+        raise UnpitchedNoteError(&#39;Unpitched notes are not supported&#39;)
+      else:
+        # Ignore other tag types because they are not relevant to Magenta.
+        pass
+
+  def _parse_pitch(self, xml_pitch):
+    &#34;&#34;&#34;Parse the MusicXML &lt;pitch&gt; element.&#34;&#34;&#34;
+    step = xml_pitch.find(&#39;step&#39;).text
+    alter_text = &#39;&#39;
+    alter = 0.0
+    if xml_pitch.find(&#39;alter&#39;) is not None:
+      alter_text = xml_pitch.find(&#39;alter&#39;).text
+    octave = xml_pitch.find(&#39;octave&#39;).text
+
+    # Parse alter string to a float (floats represent microtonal alterations)
+    if alter_text:
+      alter = float(alter_text)
+
+    # Check if this is a semitone alter (i.e. an integer) or microtonal (float)
+    alter_semitones = int(alter)  # Number of semitones
+    is_microtonal_alter = (alter != alter_semitones)
+
+    # Visual pitch representation
+    alter_string = &#39;&#39;
+    if alter_semitones == -2:
+      alter_string = &#39;bb&#39;
+    elif alter_semitones == -1:
+      alter_string = &#39;b&#39;
+    elif alter_semitones == 1:
+      alter_string = &#39;#&#39;
+    elif alter_semitones == 2:
+      alter_string = &#39;x&#39;
+
+    if is_microtonal_alter:
+      alter_string += &#39; (+microtones) &#39;
+
+    # N.B. - pitch_string does not account for transposition
+    pitch_string = step + alter_string + octave
+
+    # Compute MIDI pitch number (C4 = 60, C1 = 24, C0 = 12)
+    midi_pitch = self.pitch_to_midi_pitch(step, alter, octave)
+    # Transpose MIDI pitch
+    midi_pitch += self.state.transpose
+    self.pitch = (pitch_string, midi_pitch)
+
+  def _parse_tuplet(self, xml_time_modification):
+    &#34;&#34;&#34;Parses a tuplet ratio.
+
+    Represented in MusicXML by the &lt;time-modification&gt; element.
+
+    Args:
+      xml_time_modification: An xml time-modification element.
+    &#34;&#34;&#34;
+    numerator = int(xml_time_modification.find(&#39;actual-notes&#39;).text)
+    denominator = int(xml_time_modification.find(&#39;normal-notes&#39;).text)
+    self.note_duration.tuplet_ratio = Fraction(numerator, denominator)
+
+  @staticmethod
+  def pitch_to_midi_pitch(step, alter, octave):
+    &#34;&#34;&#34;Convert MusicXML pitch representation to MIDI pitch number.&#34;&#34;&#34;
+    pitch_class = 0
+    if step == &#39;C&#39;:
+      pitch_class = 0
+    elif step == &#39;D&#39;:
+      pitch_class = 2
+    elif step == &#39;E&#39;:
+      pitch_class = 4
+    elif step == &#39;F&#39;:
+      pitch_class = 5
+    elif step == &#39;G&#39;:
+      pitch_class = 7
+    elif step == &#39;A&#39;:
+      pitch_class = 9
+    elif step == &#39;B&#39;:
+      pitch_class = 11
+    else:
+      # Raise exception for unknown step (ex: &#39;Q&#39;)
+      raise PitchStepParseError(&#39;Unable to parse pitch step &#39; + step)
+
+    pitch_class = (pitch_class + int(alter)) % 12
+    midi_pitch = (12 + pitch_class) + (int(octave) * 12)
+    return midi_pitch
+
+  def __str__(self):
+    note_string = &#39;{duration: &#39; + str(self.note_duration.duration)
+    note_string += &#39;, midi_ticks: &#39; + str(self.note_duration.midi_ticks)
+    note_string += &#39;, seconds: &#39; + str(self.note_duration.seconds)
+    if self.is_rest:
+      note_string += &#39;, rest: &#39; + str(self.is_rest)
+    else:
+      note_string += &#39;, pitch: &#39; + self.pitch[0]
+      note_string += &#39;, MIDI pitch: &#39; + str(self.pitch[1])
+
+    note_string += &#39;, voice: &#39; + str(self.voice)
+    note_string += &#39;, velocity: &#39; + str(self.velocity) + &#39;} &#39;
+    note_string += &#39;(@time: &#39; + str(self.note_duration.time_position) + &#39;)&#39;
+    return note_string</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.Note.pitch_to_midi_pitch"><code class="name flex">
+<span>def <span class="ident">pitch_to_midi_pitch</span></span>(<span>step, alter, octave)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert MusicXML pitch representation to MIDI pitch number.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def pitch_to_midi_pitch(step, alter, octave):
+  &#34;&#34;&#34;Convert MusicXML pitch representation to MIDI pitch number.&#34;&#34;&#34;
+  pitch_class = 0
+  if step == &#39;C&#39;:
+    pitch_class = 0
+  elif step == &#39;D&#39;:
+    pitch_class = 2
+  elif step == &#39;E&#39;:
+    pitch_class = 4
+  elif step == &#39;F&#39;:
+    pitch_class = 5
+  elif step == &#39;G&#39;:
+    pitch_class = 7
+  elif step == &#39;A&#39;:
+    pitch_class = 9
+  elif step == &#39;B&#39;:
+    pitch_class = 11
+  else:
+    # Raise exception for unknown step (ex: &#39;Q&#39;)
+    raise PitchStepParseError(&#39;Unable to parse pitch step &#39; + step)
+
+  pitch_class = (pitch_class + int(alter)) % 12
+  midi_pitch = (12 + pitch_class) + (int(octave) * 12)
+  return midi_pitch</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.musicxml_parser.NoteDuration"><code class="flex name class">
+<span>class <span class="ident">NoteDuration</span></span>
+<span>(</span><span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML note's duration properties.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NoteDuration(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML note&#39;s duration properties.&#34;&#34;&#34;
+
+  TYPE_RATIO_MAP = {&#39;maxima&#39;: Fraction(8, 1), &#39;long&#39;: Fraction(4, 1),
+                    &#39;breve&#39;: Fraction(2, 1), &#39;whole&#39;: Fraction(1, 1),
+                    &#39;half&#39;: Fraction(1, 2), &#39;quarter&#39;: Fraction(1, 4),
+                    &#39;eighth&#39;: Fraction(1, 8), &#39;16th&#39;: Fraction(1, 16),
+                    &#39;32nd&#39;: Fraction(1, 32), &#39;64th&#39;: Fraction(1, 64),
+                    &#39;128th&#39;: Fraction(1, 128), &#39;256th&#39;: Fraction(1, 256),
+                    &#39;512th&#39;: Fraction(1, 512), &#39;1024th&#39;: Fraction(1, 1024)}
+
+  def __init__(self, state):
+    self.duration = 0                   # MusicXML duration
+    self.midi_ticks = 0                 # Duration in MIDI ticks
+    self.seconds = 0                    # Duration in seconds
+    self.time_position = 0              # Onset time in seconds
+    self.dots = 0                       # Number of augmentation dots
+    self._type = &#39;quarter&#39;              # MusicXML duration type
+    self.tuplet_ratio = Fraction(1, 1)  # Ratio for tuplets (default to 1)
+    self.is_grace_note = True           # Assume true until not found
+    self.state = state
+
+  def parse_duration(self, is_in_chord, is_grace_note, duration):
+    &#34;&#34;&#34;Parse the duration of a note and compute timings.&#34;&#34;&#34;
+    self.duration = int(duration)
+
+    # Due to an error in Sibelius&#39; export, force this note to have the
+    # duration of the previous note if it is in a chord
+    if is_in_chord:
+      self.duration = self.state.previous_note.note_duration.duration
+
+    self.midi_ticks = self.duration
+    self.midi_ticks *= (constants.STANDARD_PPQ / self.state.divisions)
+
+    self.seconds = (self.midi_ticks / constants.STANDARD_PPQ)
+    self.seconds *= self.state.seconds_per_quarter
+
+    self.time_position = self.state.time_position
+
+    # Not sure how to handle durations of grace notes yet as they
+    # steal time from subsequent notes and they do not have a
+    # &lt;duration&gt; tag in the MusicXML
+    self.is_grace_note = is_grace_note
+
+    if is_in_chord:
+      # If this is a chord, set the time position to the time position
+      # of the previous note (i.e. all the notes in the chord will have
+      # the same time position)
+      self.time_position = self.state.previous_note.note_duration.time_position
+    else:
+      # Only increment time positions once in chord
+      self.state.time_position += self.seconds
+
+  def _convert_type_to_ratio(self):
+    &#34;&#34;&#34;Convert the MusicXML note-type-value to a Python Fraction.
+
+    Examples:
+    - whole = 1/1
+    - half = 1/2
+    - quarter = 1/4
+    - 32nd = 1/32
+
+    Returns:
+      A Fraction object representing the note type.
+    &#34;&#34;&#34;
+    return self.TYPE_RATIO_MAP[self.type]
+
+  def duration_ratio(self):
+    &#34;&#34;&#34;Compute the duration ratio of the note as a Python Fraction.
+
+    Examples:
+    - Whole Note = 1
+    - Quarter Note = 1/4
+    - Dotted Quarter Note = 3/8
+    - Triplet eighth note = 1/12
+
+    Returns:
+      The duration ratio as a Python Fraction.
+    &#34;&#34;&#34;
+    # Get ratio from MusicXML note type
+    duration_ratio = Fraction(1, 1)
+    type_ratio = self._convert_type_to_ratio()
+
+    # Compute tuplet ratio
+    duration_ratio /= self.tuplet_ratio
+    type_ratio /= self.tuplet_ratio
+
+    # Add augmentation dots
+    one_half = Fraction(1, 2)
+    dot_sum = Fraction(0, 1)
+    for dot in range(self.dots):
+      dot_sum += (one_half ** (dot + 1)) * type_ratio
+
+    duration_ratio = type_ratio + dot_sum
+
+    # If the note is a grace note, force its ratio to be 0
+    # because it does not have a &lt;duration&gt; tag
+    if self.is_grace_note:
+      duration_ratio = Fraction(0, 1)
+
+    return duration_ratio
+
+  def duration_float(self):
+    &#34;&#34;&#34;Return the duration ratio as a float.&#34;&#34;&#34;
+    ratio = self.duration_ratio()
+    return ratio.numerator / ratio.denominator
+
+  @property
+  def type(self):
+    return self._type
+
+  @type.setter
+  def type(self, new_type):
+    if new_type not in self.TYPE_RATIO_MAP:
+      raise InvalidNoteDurationTypeError(
+          &#39;Note duration type &#34;{}&#34; is not valid&#39;.format(new_type))
+    self._type = new_type</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.NoteDuration.TYPE_RATIO_MAP"><code class="name">var <span class="ident">TYPE_RATIO_MAP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.NoteDuration.type"><code class="name">var <span class="ident">type</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def type(self):
+  return self._type</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.musicxml_parser.NoteDuration.duration_float"><code class="name flex">
+<span>def <span class="ident">duration_float</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the duration ratio as a float.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def duration_float(self):
+  &#34;&#34;&#34;Return the duration ratio as a float.&#34;&#34;&#34;
+  ratio = self.duration_ratio()
+  return ratio.numerator / ratio.denominator</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.NoteDuration.duration_ratio"><code class="name flex">
+<span>def <span class="ident">duration_ratio</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the duration ratio of the note as a Python Fraction.</p>
+<p>Examples:
+- Whole Note = 1
+- Quarter Note = 1/4
+- Dotted Quarter Note = 3/8
+- Triplet eighth note = 1/12</p>
+<h2 id="returns">Returns</h2>
+<p>The duration ratio as a Python Fraction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def duration_ratio(self):
+  &#34;&#34;&#34;Compute the duration ratio of the note as a Python Fraction.
+
+  Examples:
+  - Whole Note = 1
+  - Quarter Note = 1/4
+  - Dotted Quarter Note = 3/8
+  - Triplet eighth note = 1/12
+
+  Returns:
+    The duration ratio as a Python Fraction.
+  &#34;&#34;&#34;
+  # Get ratio from MusicXML note type
+  duration_ratio = Fraction(1, 1)
+  type_ratio = self._convert_type_to_ratio()
+
+  # Compute tuplet ratio
+  duration_ratio /= self.tuplet_ratio
+  type_ratio /= self.tuplet_ratio
+
+  # Add augmentation dots
+  one_half = Fraction(1, 2)
+  dot_sum = Fraction(0, 1)
+  for dot in range(self.dots):
+    dot_sum += (one_half ** (dot + 1)) * type_ratio
+
+  duration_ratio = type_ratio + dot_sum
+
+  # If the note is a grace note, force its ratio to be 0
+  # because it does not have a &lt;duration&gt; tag
+  if self.is_grace_note:
+    duration_ratio = Fraction(0, 1)
+
+  return duration_ratio</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.NoteDuration.parse_duration"><code class="name flex">
+<span>def <span class="ident">parse_duration</span></span>(<span>self, is_in_chord, is_grace_note, duration)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse the duration of a note and compute timings.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_duration(self, is_in_chord, is_grace_note, duration):
+  &#34;&#34;&#34;Parse the duration of a note and compute timings.&#34;&#34;&#34;
+  self.duration = int(duration)
+
+  # Due to an error in Sibelius&#39; export, force this note to have the
+  # duration of the previous note if it is in a chord
+  if is_in_chord:
+    self.duration = self.state.previous_note.note_duration.duration
+
+  self.midi_ticks = self.duration
+  self.midi_ticks *= (constants.STANDARD_PPQ / self.state.divisions)
+
+  self.seconds = (self.midi_ticks / constants.STANDARD_PPQ)
+  self.seconds *= self.state.seconds_per_quarter
+
+  self.time_position = self.state.time_position
+
+  # Not sure how to handle durations of grace notes yet as they
+  # steal time from subsequent notes and they do not have a
+  # &lt;duration&gt; tag in the MusicXML
+  self.is_grace_note = is_grace_note
+
+  if is_in_chord:
+    # If this is a chord, set the time position to the time position
+    # of the previous note (i.e. all the notes in the chord will have
+    # the same time position)
+    self.time_position = self.state.previous_note.note_duration.time_position
+  else:
+    # Only increment time positions once in chord
+    self.state.time_position += self.seconds</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.musicxml_parser.Part"><code class="flex name class">
+<span>class <span class="ident">Part</span></span>
+<span>(</span><span>xml_part, score_parts, state)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal represention of a MusicXML <part> element.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Part(object):
+  &#34;&#34;&#34;Internal represention of a MusicXML &lt;part&gt; element.&#34;&#34;&#34;
+
+  def __init__(self, xml_part, score_parts, state):
+    self.id = &#39;&#39;
+    self.score_part = None
+    self.measures = []
+    self._state = state
+    self._parse(xml_part, score_parts)
+
+  def _parse(self, xml_part, score_parts):
+    &#34;&#34;&#34;Parse the &lt;part&gt; element.&#34;&#34;&#34;
+    if &#39;id&#39; in xml_part.attrib:
+      self.id = xml_part.attrib[&#39;id&#39;]
+    if self.id in score_parts:
+      self.score_part = score_parts[self.id]
+    else:
+      # If this part references a score-part id that was not found in the file,
+      # construct a default score-part.
+      self.score_part = ScorePart()
+
+    # Reset the time position when parsing each part
+    self._state.time_position = 0
+    self._state.midi_channel = self.score_part.midi_channel
+    self._state.midi_program = self.score_part.midi_program
+    self._state.transpose = 0
+
+    xml_measures = xml_part.findall(&#39;measure&#39;)
+    for measure in xml_measures:
+      # Issue #674: Repair measures that do not contain notes
+      # by inserting a whole measure rest
+      self._repair_empty_measure(measure)
+      parsed_measure = Measure(measure, self._state)
+      self.measures.append(parsed_measure)
+
+  def _repair_empty_measure(self, measure):
+    &#34;&#34;&#34;Repair a measure if it is empty by inserting a whole measure rest.
+
+    If a &lt;measure&gt; only consists of a &lt;forward&gt; element that advances
+    the time cursor, remove the &lt;forward&gt; element and replace
+    with a whole measure rest of the same duration.
+
+    Args:
+      measure: The measure to repair.
+    &#34;&#34;&#34;
+    # Issue #674 - If the &lt;forward&gt; element is in a measure without
+    # any &lt;note&gt; elements, treat it as if it were a whole measure
+    # rest by inserting a rest of that duration
+    forward_count = len(measure.findall(&#39;forward&#39;))
+    note_count = len(measure.findall(&#39;note&#39;))
+    if note_count == 0 and forward_count == 1:
+      # Get the duration of the &lt;forward&gt; element
+      xml_forward = measure.find(&#39;forward&#39;)
+      xml_duration = xml_forward.find(&#39;duration&#39;)
+      forward_duration = int(xml_duration.text)
+
+      # Delete the &lt;forward&gt; element
+      measure.remove(xml_forward)
+
+      # Insert the new note
+      new_note = &#39;&lt;note&gt;&#39;
+      new_note += &#39;&lt;rest /&gt;&lt;duration&gt;&#39; + str(forward_duration) + &#39;&lt;/duration&gt;&#39;
+      new_note += &#39;&lt;voice&gt;1&lt;/voice&gt;&lt;type&gt;whole&lt;/type&gt;&lt;staff&gt;1&lt;/staff&gt;&#39;
+      new_note += &#39;&lt;/note&gt;&#39;
+      new_note_xml = ET.fromstring(new_note)
+      measure.append(new_note_xml)
+
+  def __str__(self):
+    part_str = &#39;Part: &#39; + self.score_part.part_name
+    return part_str</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.PitchStepParseError"><code class="flex name class">
+<span>class <span class="ident">PitchStepParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when a pitch step cannot be parsed.</p>
+<p>Will happen if pitch step is not one of A, B, C, D, E, F, or G</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PitchStepParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when a pitch step cannot be parsed.
+
+  Will happen if pitch step is not one of A, B, C, D, E, F, or G
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.ScorePart"><code class="flex name class">
+<span>class <span class="ident">ScorePart</span></span>
+<span>(</span><span>xml_score_part=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>"Internal representation of a MusicXML <score-part>.</p>
+<p>A <score-part> element contains MIDI program and channel info
+for the <part> elements in the MusicXML document.</p>
+<p>If no MIDI info is found for the part, use the default MIDI channel (0)
+and default to the Grand Piano program (MIDI Program #1).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScorePart(object):
+  &#34;&#34;&#34;&#34;Internal representation of a MusicXML &lt;score-part&gt;.
+
+  A &lt;score-part&gt; element contains MIDI program and channel info
+  for the &lt;part&gt; elements in the MusicXML document.
+
+  If no MIDI info is found for the part, use the default MIDI channel (0)
+  and default to the Grand Piano program (MIDI Program #1).
+  &#34;&#34;&#34;
+
+  def __init__(self, xml_score_part=None):
+    self.id = &#39;&#39;
+    self.part_name = &#39;&#39;
+    self.midi_channel = DEFAULT_MIDI_CHANNEL
+    self.midi_program = DEFAULT_MIDI_PROGRAM
+    if xml_score_part is not None:
+      self._parse(xml_score_part)
+
+  def _parse(self, xml_score_part):
+    &#34;&#34;&#34;Parse the &lt;score-part&gt; element to an in-memory representation.&#34;&#34;&#34;
+    self.id = xml_score_part.attrib[&#39;id&#39;]
+
+    if xml_score_part.find(&#39;part-name&#39;) is not None:
+      self.part_name = xml_score_part.find(&#39;part-name&#39;).text or &#39;&#39;
+
+    xml_midi_instrument = xml_score_part.find(&#39;midi-instrument&#39;)
+    if (xml_midi_instrument is not None and
+        xml_midi_instrument.find(&#39;midi-channel&#39;) is not None and
+        xml_midi_instrument.find(&#39;midi-program&#39;) is not None):
+      self.midi_channel = int(xml_midi_instrument.find(&#39;midi-channel&#39;).text)
+      self.midi_program = int(xml_midi_instrument.find(&#39;midi-program&#39;).text)
+    else:
+      # If no MIDI info, use the default MIDI channel.
+      self.midi_channel = DEFAULT_MIDI_CHANNEL
+      # Use the default MIDI program
+      self.midi_program = DEFAULT_MIDI_PROGRAM
+
+  def __str__(self):
+    score_str = &#39;ScorePart: &#39; + self.part_name
+    score_str += &#39;, Channel: &#39; + str(self.midi_channel)
+    score_str += &#39;, Program: &#39; + str(self.midi_program)
+    return score_str</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.Tempo"><code class="flex name class">
+<span>class <span class="ident">Tempo</span></span>
+<span>(</span><span>state, xml_sound=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML tempo.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tempo(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML tempo.&#34;&#34;&#34;
+
+  def __init__(self, state, xml_sound=None):
+    self.xml_sound = xml_sound
+    self.qpm = -1
+    self.time_position = -1
+    self.state = state
+    if xml_sound is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;sound&gt; element and retrieve the tempo.
+
+    If no tempo is specified, default to DEFAULT_QUARTERS_PER_MINUTE
+    &#34;&#34;&#34;
+    self.qpm = float(self.xml_sound.get(&#39;tempo&#39;))
+    if self.qpm == 0:
+      # If tempo is 0, set it to default
+      self.qpm = constants.DEFAULT_QUARTERS_PER_MINUTE
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    tempo_str = &#39;Tempo: &#39; + str(self.qpm)
+    tempo_str += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return tempo_str</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.TimeSignature"><code class="flex name class">
+<span>class <span class="ident">TimeSignature</span></span>
+<span>(</span><span>state, xml_time=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internal representation of a MusicXML time signature.</p>
+<p>Does not support:
+- Composite time signatures: 3+2/8
+- Alternating time signatures 2/4 + 3/8
+- Senza misura</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeSignature(object):
+  &#34;&#34;&#34;Internal representation of a MusicXML time signature.
+
+  Does not support:
+  - Composite time signatures: 3+2/8
+  - Alternating time signatures 2/4 + 3/8
+  - Senza misura
+  &#34;&#34;&#34;
+
+  def __init__(self, state, xml_time=None):
+    self.xml_time = xml_time
+    self.numerator = -1
+    self.denominator = -1
+    self.time_position = 0
+    self.state = state
+    if xml_time is not None:
+      self._parse()
+
+  def _parse(self):
+    &#34;&#34;&#34;Parse the MusicXML &lt;time&gt; element.&#34;&#34;&#34;
+    if (len(self.xml_time.findall(&#39;beats&#39;)) &gt; 1 or
+        len(self.xml_time.findall(&#39;beat-type&#39;)) &gt; 1):
+      # If more than 1 beats or beat-type found, this time signature is
+      # not supported (ex: alternating meter)
+      raise AlternatingTimeSignatureError(&#39;Alternating Time Signature&#39;)
+
+    beats = self.xml_time.find(&#39;beats&#39;).text
+    beat_type = self.xml_time.find(&#39;beat-type&#39;).text
+    try:
+      self.numerator = int(beats)
+      self.denominator = int(beat_type)
+    except ValueError:
+      raise TimeSignatureParseError(
+          &#39;Could not parse time signature: {}/{}&#39;.format(beats, beat_type))
+    self.time_position = self.state.time_position
+
+  def __str__(self):
+    time_sig_str = str(self.numerator) + &#39;/&#39; + str(self.denominator)
+    time_sig_str += &#39; (@time: &#39; + str(self.time_position) + &#39;)&#39;
+    return time_sig_str
+
+  def __eq__(self, other):
+    isequal = self.numerator == other.numerator
+    isequal = isequal and (self.denominator == other.denominator)
+    isequal = isequal and (self.time_position == other.time_position)
+    return isequal
+
+  def __ne__(self, other):
+    return not self.__eq__(other)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.musicxml_parser.TimeSignatureParseError"><code class="flex name class">
+<span>class <span class="ident">TimeSignatureParseError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when the time signature could not be parsed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeSignatureParseError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when the time signature could not be parsed.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.musicxml_parser.UnpitchedNoteError"><code class="flex name class">
+<span>class <span class="ident">UnpitchedNoteError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Exception thrown when an unpitched note is encountered.</p>
+<p>We do not currently support parsing files with unpitched notes (e.g.,
+percussion scores).</p>
+<p><a href="http://www.musicxml.com/tutorial/percussion/unpitched-notes/">http://www.musicxml.com/tutorial/percussion/unpitched-notes/</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnpitchedNoteError(MusicXMLParseError):
+  &#34;&#34;&#34;Exception thrown when an unpitched note is encountered.
+
+  We do not currently support parsing files with unpitched notes (e.g.,
+  percussion scores).
+
+  http://www.musicxml.com/tutorial/percussion/unpitched-notes/
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.AlternatingTimeSignatureError" href="#note_seq.musicxml_parser.AlternatingTimeSignatureError">AlternatingTimeSignatureError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.ChordSymbol" href="#note_seq.musicxml_parser.ChordSymbol">ChordSymbol</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.musicxml_parser.ChordSymbol.CHORD_KIND_ABBREVIATIONS" href="#note_seq.musicxml_parser.ChordSymbol.CHORD_KIND_ABBREVIATIONS">CHORD_KIND_ABBREVIATIONS</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.ChordSymbol.get_figure_string" href="#note_seq.musicxml_parser.ChordSymbol.get_figure_string">get_figure_string</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.ChordSymbolParseError" href="#note_seq.musicxml_parser.ChordSymbolParseError">ChordSymbolParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.InvalidNoteDurationTypeError" href="#note_seq.musicxml_parser.InvalidNoteDurationTypeError">InvalidNoteDurationTypeError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.KeyParseError" href="#note_seq.musicxml_parser.KeyParseError">KeyParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.KeySignature" href="#note_seq.musicxml_parser.KeySignature">KeySignature</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.Measure" href="#note_seq.musicxml_parser.Measure">Measure</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.MultipleTimeSignatureError" href="#note_seq.musicxml_parser.MultipleTimeSignatureError">MultipleTimeSignatureError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.MusicXMLDocument" href="#note_seq.musicxml_parser.MusicXMLDocument">MusicXMLDocument</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.musicxml_parser.MusicXMLDocument.get_chord_symbols" href="#note_seq.musicxml_parser.MusicXMLDocument.get_chord_symbols">get_chord_symbols</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.MusicXMLDocument.get_key_signatures" href="#note_seq.musicxml_parser.MusicXMLDocument.get_key_signatures">get_key_signatures</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.MusicXMLDocument.get_tempos" href="#note_seq.musicxml_parser.MusicXMLDocument.get_tempos">get_tempos</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.MusicXMLDocument.get_time_signatures" href="#note_seq.musicxml_parser.MusicXMLDocument.get_time_signatures">get_time_signatures</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.MusicXMLParseError" href="#note_seq.musicxml_parser.MusicXMLParseError">MusicXMLParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.MusicXMLParserState" href="#note_seq.musicxml_parser.MusicXMLParserState">MusicXMLParserState</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.Note" href="#note_seq.musicxml_parser.Note">Note</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.musicxml_parser.Note.pitch_to_midi_pitch" href="#note_seq.musicxml_parser.Note.pitch_to_midi_pitch">pitch_to_midi_pitch</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.NoteDuration" href="#note_seq.musicxml_parser.NoteDuration">NoteDuration</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.musicxml_parser.NoteDuration.TYPE_RATIO_MAP" href="#note_seq.musicxml_parser.NoteDuration.TYPE_RATIO_MAP">TYPE_RATIO_MAP</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.NoteDuration.duration_float" href="#note_seq.musicxml_parser.NoteDuration.duration_float">duration_float</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.NoteDuration.duration_ratio" href="#note_seq.musicxml_parser.NoteDuration.duration_ratio">duration_ratio</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.NoteDuration.parse_duration" href="#note_seq.musicxml_parser.NoteDuration.parse_duration">parse_duration</a></code></li>
+<li><code><a title="note_seq.musicxml_parser.NoteDuration.type" href="#note_seq.musicxml_parser.NoteDuration.type">type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.Part" href="#note_seq.musicxml_parser.Part">Part</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.PitchStepParseError" href="#note_seq.musicxml_parser.PitchStepParseError">PitchStepParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.ScorePart" href="#note_seq.musicxml_parser.ScorePart">ScorePart</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.Tempo" href="#note_seq.musicxml_parser.Tempo">Tempo</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.TimeSignature" href="#note_seq.musicxml_parser.TimeSignature">TimeSignature</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.TimeSignatureParseError" href="#note_seq.musicxml_parser.TimeSignatureParseError">TimeSignatureParseError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.musicxml_parser.UnpitchedNoteError" href="#note_seq.musicxml_parser.UnpitchedNoteError">UnpitchedNoteError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

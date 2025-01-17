@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.performance_controls API documentation</title>
+<meta name="description" content="Classes for computing performance control signals." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.performance_controls</code></h1>
+</header>
+<section id="section-intro">
+<p>Classes for computing performance control signals.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Classes for computing performance control signals.&#34;&#34;&#34;
+
+import abc
+import copy
+import numbers
+
+from note_seq import constants
+from note_seq import encoder_decoder
+from note_seq.performance_lib import PerformanceEvent
+
+NOTES_PER_OCTAVE = constants.NOTES_PER_OCTAVE
+DEFAULT_NOTE_DENSITY = 15.0
+DEFAULT_PITCH_HISTOGRAM = [1.0] * NOTES_PER_OCTAVE
+
+
+class PerformanceControlSignal(object):
+  &#34;&#34;&#34;Control signal used for conditional generation of performances.
+
+  The two main components of the control signal (that must be implemented in
+  subclasses) are the `extract` method that extracts the control signal values
+  from a Performance object, and the `encoder` class that transforms these
+  control signal values into model inputs.
+  &#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def name(self):
+    &#34;&#34;&#34;Name of the control signal.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def description(self):
+    &#34;&#34;&#34;Description of the control signal.&#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def validate(self, value):
+    &#34;&#34;&#34;Validate a control signal value.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_value(self):
+    &#34;&#34;&#34;Default value of the (unencoded) control signal.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def encoder(self):
+    &#34;&#34;&#34;Instantiated encoder object for the control signal.&#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def extract(self, performance):
+    &#34;&#34;&#34;Extract a sequence of control values from a Performance object.
+
+    Args:
+      performance: The Performance object from which to extract control signal
+          values.
+
+    Returns:
+      A sequence of control signal values the same length as `performance`.
+    &#34;&#34;&#34;
+    pass
+
+
+class NoteDensityPerformanceControlSignal(PerformanceControlSignal):
+  &#34;&#34;&#34;Note density (notes per second) performance control signal.&#34;&#34;&#34;
+
+  name = &#39;notes_per_second&#39;
+  description = &#39;Desired number of notes per second.&#39;
+
+  def __init__(self, window_size_seconds, density_bin_ranges):
+    &#34;&#34;&#34;Initialize a NoteDensityPerformanceControlSignal.
+
+    Args:
+      window_size_seconds: The size of the window, in seconds, used to compute
+          note density (notes per second).
+      density_bin_ranges: List of note density (notes per second) bin boundaries
+          to use when quantizing. The number of bins will be one larger than the
+          list length.
+    &#34;&#34;&#34;
+    self._window_size_seconds = window_size_seconds
+    self._density_bin_ranges = density_bin_ranges
+    self._encoder = encoder_decoder.OneHotEventSequenceEncoderDecoder(
+        self.NoteDensityOneHotEncoding(density_bin_ranges))
+
+  def validate(self, value):
+    return isinstance(value, numbers.Number) and value &gt;= 0.0
+
+  @property
+  def default_value(self):
+    return DEFAULT_NOTE_DENSITY
+
+  @property
+  def encoder(self):
+    return self._encoder
+
+  def extract(self, performance):
+    &#34;&#34;&#34;Computes note density at every event in a performance.
+
+    Args:
+      performance: A Performance object for which to compute a note density
+          sequence.
+
+    Returns:
+      A list of note densities of the same length as `performance`, with each
+      entry equal to the note density in the window starting at the
+      corresponding performance event time.
+    &#34;&#34;&#34;
+    window_size_steps = int(round(
+        self._window_size_seconds * performance.steps_per_second))
+
+    prev_event_type = None
+    prev_density = 0.0
+
+    density_sequence = []
+
+    for i, event in enumerate(performance):
+      if (prev_event_type is not None and
+          prev_event_type != PerformanceEvent.TIME_SHIFT):
+        # The previous event didn&#39;t move us forward in time, so the note density
+        # here should be the same.
+        density_sequence.append(prev_density)
+        prev_event_type = event.event_type
+        continue
+
+      j = i
+      step_offset = 0
+      note_count = 0
+
+      # Count the number of note-on events within the window.
+      while step_offset &lt; window_size_steps and j &lt; len(performance):
+        if performance[j].event_type == PerformanceEvent.NOTE_ON:
+          note_count += 1
+        elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+          step_offset += performance[j].event_value
+        j += 1
+
+      # If we&#39;re near the end of the performance, part of the window will
+      # necessarily be empty; we don&#39;t include this part of the window when
+      # calculating note density.
+      actual_window_size_steps = min(step_offset, window_size_steps)
+      if actual_window_size_steps &gt; 0:
+        density = (
+            note_count * performance.steps_per_second /
+            actual_window_size_steps)
+      else:
+        density = 0.0
+
+      density_sequence.append(density)
+
+      prev_event_type = event.event_type
+      prev_density = density
+
+    return density_sequence
+
+  class NoteDensityOneHotEncoding(encoder_decoder.OneHotEncoding):
+    &#34;&#34;&#34;One-hot encoding for performance note density events.
+
+    Encodes by quantizing note density events. When decoding, always decodes to
+    the minimum value for each bin. The first bin starts at zero note density.
+    &#34;&#34;&#34;
+
+    def __init__(self, density_bin_ranges):
+      &#34;&#34;&#34;Initialize a NoteDensityOneHotEncoding.
+
+      Args:
+        density_bin_ranges: List of note density (notes per second) bin
+            boundaries to use when quantizing. The number of bins will be one
+            larger than the list length.
+      &#34;&#34;&#34;
+      self._density_bin_ranges = density_bin_ranges
+
+    @property
+    def num_classes(self):
+      return len(self._density_bin_ranges) + 1
+
+    @property
+    def default_event(self):
+      return 0.0
+
+    def encode_event(self, event):
+      for idx, density in enumerate(self._density_bin_ranges):
+        if event &lt; density:
+          return idx
+      return len(self._density_bin_ranges)
+
+    def decode_event(self, index):
+      if index == 0:
+        return 0.0
+      else:
+        return self._density_bin_ranges[index - 1]
+
+
+class PitchHistogramPerformanceControlSignal(PerformanceControlSignal):
+  &#34;&#34;&#34;Pitch class histogram performance control signal.&#34;&#34;&#34;
+
+  name = &#39;pitch_class_histogram&#39;
+  description = &#39;Desired weight for each for each of the 12 pitch classes.&#39;
+
+  def __init__(self, window_size_seconds, prior_count=0.01):
+    &#34;&#34;&#34;Initializes a PitchHistogramPerformanceControlSignal.
+
+    Args:
+      window_size_seconds: The size of the window, in seconds, used to compute
+          each histogram.
+      prior_count: A prior count to smooth the resulting histograms. This value
+          will be added to the actual pitch class counts.
+    &#34;&#34;&#34;
+    self._window_size_seconds = window_size_seconds
+    self._prior_count = prior_count
+    self._encoder = self.PitchHistogramEncoder()
+
+  @property
+  def default_value(self):
+    return DEFAULT_PITCH_HISTOGRAM
+
+  def validate(self, value):
+    return (isinstance(value, list) and len(value) == NOTES_PER_OCTAVE and
+            all(isinstance(a, numbers.Number) for a in value))
+
+  @property
+  def encoder(self):
+    return self._encoder
+
+  def extract(self, performance):
+    &#34;&#34;&#34;Computes local pitch class histogram at every event in a performance.
+
+    Args:
+      performance: A Performance object for which to compute a pitch class
+          histogram sequence.
+
+    Returns:
+      A list of pitch class histograms the same length as `performance`, where
+      each pitch class histogram is a length-12 list of float values summing to
+      one.
+    &#34;&#34;&#34;
+    window_size_steps = int(round(
+        self._window_size_seconds * performance.steps_per_second))
+
+    prev_event_type = None
+    prev_histogram = self.default_value
+
+    base_active_pitches = set()
+    histogram_sequence = []
+
+    for i, event in enumerate(performance):
+      # Maintain the base set of active pitches.
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        base_active_pitches.add(event.event_value)
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        base_active_pitches.discard(event.event_value)
+
+      if (prev_event_type is not None and
+          prev_event_type != PerformanceEvent.TIME_SHIFT):
+        # The previous event didn&#39;t move us forward in time, so the histogram
+        # here should be the same.
+        histogram_sequence.append(prev_histogram)
+        prev_event_type = event.event_type
+        continue
+
+      j = i
+      step_offset = 0
+
+      active_pitches = copy.deepcopy(base_active_pitches)
+      histogram = [self._prior_count] * NOTES_PER_OCTAVE
+
+      # Count the total duration of each pitch class within the window.
+      while step_offset &lt; window_size_steps and j &lt; len(performance):
+        if performance[j].event_type == PerformanceEvent.NOTE_ON:
+          active_pitches.add(performance[j].event_value)
+        elif performance[j].event_type == PerformanceEvent.NOTE_OFF:
+          active_pitches.discard(performance[j].event_value)
+        elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+          for pitch in active_pitches:
+            histogram[pitch % NOTES_PER_OCTAVE] += (
+                performance[j].event_value / performance.steps_per_second)
+          step_offset += performance[j].event_value
+        j += 1
+
+      histogram_sequence.append(histogram)
+
+      prev_event_type = event.event_type
+      prev_histogram = histogram
+
+    return histogram_sequence
+
+  class PitchHistogramEncoder(encoder_decoder.EventSequenceEncoderDecoder):
+    &#34;&#34;&#34;An encoder for pitch class histogram sequences.&#34;&#34;&#34;
+
+    @property
+    def input_size(self):
+      return NOTES_PER_OCTAVE
+
+    @property
+    def num_classes(self):
+      raise NotImplementedError
+
+    @property
+    def default_event_label(self):
+      raise NotImplementedError
+
+    def events_to_input(self, events, position):
+      # Normalize by the total weight.
+      total = sum(events[position])
+      if total &gt; 0:
+        return [count / total for count in events[position]]
+      else:
+        return [1.0 / NOTES_PER_OCTAVE] * NOTES_PER_OCTAVE
+
+    def events_to_label(self, events, position):
+      raise NotImplementedError
+
+    def class_index_to_event(self, class_index, events):
+      raise NotImplementedError
+
+
+# List of performance control signal classes.
+all_performance_control_signals = [
+    NoteDensityPerformanceControlSignal,
+    PitchHistogramPerformanceControlSignal
+]</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.performance_controls.NoteDensityPerformanceControlSignal"><code class="flex name class">
+<span>class <span class="ident">NoteDensityPerformanceControlSignal</span></span>
+<span>(</span><span>window_size_seconds, density_bin_ranges)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Note density (notes per second) performance control signal.</p>
+<p>Initialize a NoteDensityPerformanceControlSignal.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>window_size_seconds</code></strong></dt>
+<dd>The size of the window, in seconds, used to compute
+note density (notes per second).</dd>
+<dt><strong><code>density_bin_ranges</code></strong></dt>
+<dd>List of note density (notes per second) bin boundaries
+to use when quantizing. The number of bins will be one larger than the
+list length.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NoteDensityPerformanceControlSignal(PerformanceControlSignal):
+  &#34;&#34;&#34;Note density (notes per second) performance control signal.&#34;&#34;&#34;
+
+  name = &#39;notes_per_second&#39;
+  description = &#39;Desired number of notes per second.&#39;
+
+  def __init__(self, window_size_seconds, density_bin_ranges):
+    &#34;&#34;&#34;Initialize a NoteDensityPerformanceControlSignal.
+
+    Args:
+      window_size_seconds: The size of the window, in seconds, used to compute
+          note density (notes per second).
+      density_bin_ranges: List of note density (notes per second) bin boundaries
+          to use when quantizing. The number of bins will be one larger than the
+          list length.
+    &#34;&#34;&#34;
+    self._window_size_seconds = window_size_seconds
+    self._density_bin_ranges = density_bin_ranges
+    self._encoder = encoder_decoder.OneHotEventSequenceEncoderDecoder(
+        self.NoteDensityOneHotEncoding(density_bin_ranges))
+
+  def validate(self, value):
+    return isinstance(value, numbers.Number) and value &gt;= 0.0
+
+  @property
+  def default_value(self):
+    return DEFAULT_NOTE_DENSITY
+
+  @property
+  def encoder(self):
+    return self._encoder
+
+  def extract(self, performance):
+    &#34;&#34;&#34;Computes note density at every event in a performance.
+
+    Args:
+      performance: A Performance object for which to compute a note density
+          sequence.
+
+    Returns:
+      A list of note densities of the same length as `performance`, with each
+      entry equal to the note density in the window starting at the
+      corresponding performance event time.
+    &#34;&#34;&#34;
+    window_size_steps = int(round(
+        self._window_size_seconds * performance.steps_per_second))
+
+    prev_event_type = None
+    prev_density = 0.0
+
+    density_sequence = []
+
+    for i, event in enumerate(performance):
+      if (prev_event_type is not None and
+          prev_event_type != PerformanceEvent.TIME_SHIFT):
+        # The previous event didn&#39;t move us forward in time, so the note density
+        # here should be the same.
+        density_sequence.append(prev_density)
+        prev_event_type = event.event_type
+        continue
+
+      j = i
+      step_offset = 0
+      note_count = 0
+
+      # Count the number of note-on events within the window.
+      while step_offset &lt; window_size_steps and j &lt; len(performance):
+        if performance[j].event_type == PerformanceEvent.NOTE_ON:
+          note_count += 1
+        elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+          step_offset += performance[j].event_value
+        j += 1
+
+      # If we&#39;re near the end of the performance, part of the window will
+      # necessarily be empty; we don&#39;t include this part of the window when
+      # calculating note density.
+      actual_window_size_steps = min(step_offset, window_size_steps)
+      if actual_window_size_steps &gt; 0:
+        density = (
+            note_count * performance.steps_per_second /
+            actual_window_size_steps)
+      else:
+        density = 0.0
+
+      density_sequence.append(density)
+
+      prev_event_type = event.event_type
+      prev_density = density
+
+    return density_sequence
+
+  class NoteDensityOneHotEncoding(encoder_decoder.OneHotEncoding):
+    &#34;&#34;&#34;One-hot encoding for performance note density events.
+
+    Encodes by quantizing note density events. When decoding, always decodes to
+    the minimum value for each bin. The first bin starts at zero note density.
+    &#34;&#34;&#34;
+
+    def __init__(self, density_bin_ranges):
+      &#34;&#34;&#34;Initialize a NoteDensityOneHotEncoding.
+
+      Args:
+        density_bin_ranges: List of note density (notes per second) bin
+            boundaries to use when quantizing. The number of bins will be one
+            larger than the list length.
+      &#34;&#34;&#34;
+      self._density_bin_ranges = density_bin_ranges
+
+    @property
+    def num_classes(self):
+      return len(self._density_bin_ranges) + 1
+
+    @property
+    def default_event(self):
+      return 0.0
+
+    def encode_event(self, event):
+      for idx, density in enumerate(self._density_bin_ranges):
+        if event &lt; density:
+          return idx
+      return len(self._density_bin_ranges)
+
+    def decode_event(self, index):
+      if index == 0:
+        return 0.0
+      else:
+        return self._density_bin_ranges[index - 1]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_controls.PerformanceControlSignal" href="#note_seq.performance_controls.PerformanceControlSignal">PerformanceControlSignal</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.performance_controls.NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding"><code class="name">var <span class="ident">NoteDensityOneHotEncoding</span></code></dt>
+<dd>
+<div class="desc"><p>One-hot encoding for performance note density events.</p>
+<p>Encodes by quantizing note density events. When decoding, always decodes to
+the minimum value for each bin. The first bin starts at zero note density.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_controls.NoteDensityPerformanceControlSignal.extract"><code class="name flex">
+<span>def <span class="ident">extract</span></span>(<span>self, performance)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes note density at every event in a performance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>performance</code></strong></dt>
+<dd>A Performance object for which to compute a note density
+sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A list of note densities of the same length as <code>performance</code>, with each
+entry equal to the note density in the window starting at the
+corresponding performance event time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract(self, performance):
+  &#34;&#34;&#34;Computes note density at every event in a performance.
+
+  Args:
+    performance: A Performance object for which to compute a note density
+        sequence.
+
+  Returns:
+    A list of note densities of the same length as `performance`, with each
+    entry equal to the note density in the window starting at the
+    corresponding performance event time.
+  &#34;&#34;&#34;
+  window_size_steps = int(round(
+      self._window_size_seconds * performance.steps_per_second))
+
+  prev_event_type = None
+  prev_density = 0.0
+
+  density_sequence = []
+
+  for i, event in enumerate(performance):
+    if (prev_event_type is not None and
+        prev_event_type != PerformanceEvent.TIME_SHIFT):
+      # The previous event didn&#39;t move us forward in time, so the note density
+      # here should be the same.
+      density_sequence.append(prev_density)
+      prev_event_type = event.event_type
+      continue
+
+    j = i
+    step_offset = 0
+    note_count = 0
+
+    # Count the number of note-on events within the window.
+    while step_offset &lt; window_size_steps and j &lt; len(performance):
+      if performance[j].event_type == PerformanceEvent.NOTE_ON:
+        note_count += 1
+      elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+        step_offset += performance[j].event_value
+      j += 1
+
+    # If we&#39;re near the end of the performance, part of the window will
+    # necessarily be empty; we don&#39;t include this part of the window when
+    # calculating note density.
+    actual_window_size_steps = min(step_offset, window_size_steps)
+    if actual_window_size_steps &gt; 0:
+      density = (
+          note_count * performance.steps_per_second /
+          actual_window_size_steps)
+    else:
+      density = 0.0
+
+    density_sequence.append(density)
+
+    prev_event_type = event.event_type
+    prev_density = density
+
+  return density_sequence</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.performance_controls.PerformanceControlSignal" href="#note_seq.performance_controls.PerformanceControlSignal">PerformanceControlSignal</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.default_value" href="#note_seq.performance_controls.PerformanceControlSignal.default_value">default_value</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.description" href="#note_seq.performance_controls.PerformanceControlSignal.description">description</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.encoder" href="#note_seq.performance_controls.PerformanceControlSignal.encoder">encoder</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.name" href="#note_seq.performance_controls.PerformanceControlSignal.name">name</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.validate" href="#note_seq.performance_controls.PerformanceControlSignal.validate">validate</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.performance_controls.PerformanceControlSignal"><code class="flex name class">
+<span>class <span class="ident">PerformanceControlSignal</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Control signal used for conditional generation of performances.</p>
+<p>The two main components of the control signal (that must be implemented in
+subclasses) are the <code>extract</code> method that extracts the control signal values
+from a Performance object, and the <code>encoder</code> class that transforms these
+control signal values into model inputs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PerformanceControlSignal(object):
+  &#34;&#34;&#34;Control signal used for conditional generation of performances.
+
+  The two main components of the control signal (that must be implemented in
+  subclasses) are the `extract` method that extracts the control signal values
+  from a Performance object, and the `encoder` class that transforms these
+  control signal values into model inputs.
+  &#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def name(self):
+    &#34;&#34;&#34;Name of the control signal.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def description(self):
+    &#34;&#34;&#34;Description of the control signal.&#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def validate(self, value):
+    &#34;&#34;&#34;Validate a control signal value.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_value(self):
+    &#34;&#34;&#34;Default value of the (unencoded) control signal.&#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def encoder(self):
+    &#34;&#34;&#34;Instantiated encoder object for the control signal.&#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def extract(self, performance):
+    &#34;&#34;&#34;Extract a sequence of control values from a Performance object.
+
+    Args:
+      performance: The Performance object from which to extract control signal
+          values.
+
+    Returns:
+      A sequence of control signal values the same length as `performance`.
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_controls.NoteDensityPerformanceControlSignal" href="#note_seq.performance_controls.NoteDensityPerformanceControlSignal">NoteDensityPerformanceControlSignal</a></li>
+<li><a title="note_seq.performance_controls.PitchHistogramPerformanceControlSignal" href="#note_seq.performance_controls.PitchHistogramPerformanceControlSignal">PitchHistogramPerformanceControlSignal</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.default_value"><code class="name">var <span class="ident">default_value</span></code></dt>
+<dd>
+<div class="desc"><p>Default value of the (unencoded) control signal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def default_value(self):
+  &#34;&#34;&#34;Default value of the (unencoded) control signal.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.description"><code class="name">var <span class="ident">description</span></code></dt>
+<dd>
+<div class="desc"><p>Description of the control signal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def description(self):
+  &#34;&#34;&#34;Description of the control signal.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.encoder"><code class="name">var <span class="ident">encoder</span></code></dt>
+<dd>
+<div class="desc"><p>Instantiated encoder object for the control signal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def encoder(self):
+  &#34;&#34;&#34;Instantiated encoder object for the control signal.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Name of the control signal.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def name(self):
+  &#34;&#34;&#34;Name of the control signal.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.extract"><code class="name flex">
+<span>def <span class="ident">extract</span></span>(<span>self, performance)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extract a sequence of control values from a Performance object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>performance</code></strong></dt>
+<dd>The Performance object from which to extract control signal
+values.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A sequence of control signal values the same length as <code>performance</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def extract(self, performance):
+  &#34;&#34;&#34;Extract a sequence of control values from a Performance object.
+
+  Args:
+    performance: The Performance object from which to extract control signal
+        values.
+
+  Returns:
+    A sequence of control signal values the same length as `performance`.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.performance_controls.PerformanceControlSignal.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validate a control signal value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def validate(self, value):
+  &#34;&#34;&#34;Validate a control signal value.&#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.performance_controls.PitchHistogramPerformanceControlSignal"><code class="flex name class">
+<span>class <span class="ident">PitchHistogramPerformanceControlSignal</span></span>
+<span>(</span><span>window_size_seconds, prior_count=0.01)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Pitch class histogram performance control signal.</p>
+<p>Initializes a PitchHistogramPerformanceControlSignal.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>window_size_seconds</code></strong></dt>
+<dd>The size of the window, in seconds, used to compute
+each histogram.</dd>
+<dt><strong><code>prior_count</code></strong></dt>
+<dd>A prior count to smooth the resulting histograms. This value
+will be added to the actual pitch class counts.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PitchHistogramPerformanceControlSignal(PerformanceControlSignal):
+  &#34;&#34;&#34;Pitch class histogram performance control signal.&#34;&#34;&#34;
+
+  name = &#39;pitch_class_histogram&#39;
+  description = &#39;Desired weight for each for each of the 12 pitch classes.&#39;
+
+  def __init__(self, window_size_seconds, prior_count=0.01):
+    &#34;&#34;&#34;Initializes a PitchHistogramPerformanceControlSignal.
+
+    Args:
+      window_size_seconds: The size of the window, in seconds, used to compute
+          each histogram.
+      prior_count: A prior count to smooth the resulting histograms. This value
+          will be added to the actual pitch class counts.
+    &#34;&#34;&#34;
+    self._window_size_seconds = window_size_seconds
+    self._prior_count = prior_count
+    self._encoder = self.PitchHistogramEncoder()
+
+  @property
+  def default_value(self):
+    return DEFAULT_PITCH_HISTOGRAM
+
+  def validate(self, value):
+    return (isinstance(value, list) and len(value) == NOTES_PER_OCTAVE and
+            all(isinstance(a, numbers.Number) for a in value))
+
+  @property
+  def encoder(self):
+    return self._encoder
+
+  def extract(self, performance):
+    &#34;&#34;&#34;Computes local pitch class histogram at every event in a performance.
+
+    Args:
+      performance: A Performance object for which to compute a pitch class
+          histogram sequence.
+
+    Returns:
+      A list of pitch class histograms the same length as `performance`, where
+      each pitch class histogram is a length-12 list of float values summing to
+      one.
+    &#34;&#34;&#34;
+    window_size_steps = int(round(
+        self._window_size_seconds * performance.steps_per_second))
+
+    prev_event_type = None
+    prev_histogram = self.default_value
+
+    base_active_pitches = set()
+    histogram_sequence = []
+
+    for i, event in enumerate(performance):
+      # Maintain the base set of active pitches.
+      if event.event_type == PerformanceEvent.NOTE_ON:
+        base_active_pitches.add(event.event_value)
+      elif event.event_type == PerformanceEvent.NOTE_OFF:
+        base_active_pitches.discard(event.event_value)
+
+      if (prev_event_type is not None and
+          prev_event_type != PerformanceEvent.TIME_SHIFT):
+        # The previous event didn&#39;t move us forward in time, so the histogram
+        # here should be the same.
+        histogram_sequence.append(prev_histogram)
+        prev_event_type = event.event_type
+        continue
+
+      j = i
+      step_offset = 0
+
+      active_pitches = copy.deepcopy(base_active_pitches)
+      histogram = [self._prior_count] * NOTES_PER_OCTAVE
+
+      # Count the total duration of each pitch class within the window.
+      while step_offset &lt; window_size_steps and j &lt; len(performance):
+        if performance[j].event_type == PerformanceEvent.NOTE_ON:
+          active_pitches.add(performance[j].event_value)
+        elif performance[j].event_type == PerformanceEvent.NOTE_OFF:
+          active_pitches.discard(performance[j].event_value)
+        elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+          for pitch in active_pitches:
+            histogram[pitch % NOTES_PER_OCTAVE] += (
+                performance[j].event_value / performance.steps_per_second)
+          step_offset += performance[j].event_value
+        j += 1
+
+      histogram_sequence.append(histogram)
+
+      prev_event_type = event.event_type
+      prev_histogram = histogram
+
+    return histogram_sequence
+
+  class PitchHistogramEncoder(encoder_decoder.EventSequenceEncoderDecoder):
+    &#34;&#34;&#34;An encoder for pitch class histogram sequences.&#34;&#34;&#34;
+
+    @property
+    def input_size(self):
+      return NOTES_PER_OCTAVE
+
+    @property
+    def num_classes(self):
+      raise NotImplementedError
+
+    @property
+    def default_event_label(self):
+      raise NotImplementedError
+
+    def events_to_input(self, events, position):
+      # Normalize by the total weight.
+      total = sum(events[position])
+      if total &gt; 0:
+        return [count / total for count in events[position]]
+      else:
+        return [1.0 / NOTES_PER_OCTAVE] * NOTES_PER_OCTAVE
+
+    def events_to_label(self, events, position):
+      raise NotImplementedError
+
+    def class_index_to_event(self, class_index, events):
+      raise NotImplementedError</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.performance_controls.PerformanceControlSignal" href="#note_seq.performance_controls.PerformanceControlSignal">PerformanceControlSignal</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.performance_controls.PitchHistogramPerformanceControlSignal.PitchHistogramEncoder"><code class="name">var <span class="ident">PitchHistogramEncoder</span></code></dt>
+<dd>
+<div class="desc"><p>An encoder for pitch class histogram sequences.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.performance_controls.PitchHistogramPerformanceControlSignal.extract"><code class="name flex">
+<span>def <span class="ident">extract</span></span>(<span>self, performance)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes local pitch class histogram at every event in a performance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>performance</code></strong></dt>
+<dd>A Performance object for which to compute a pitch class
+histogram sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A list of pitch class histograms the same length as <code>performance</code>, where
+each pitch class histogram is a length-12 list of float values summing to
+one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract(self, performance):
+  &#34;&#34;&#34;Computes local pitch class histogram at every event in a performance.
+
+  Args:
+    performance: A Performance object for which to compute a pitch class
+        histogram sequence.
+
+  Returns:
+    A list of pitch class histograms the same length as `performance`, where
+    each pitch class histogram is a length-12 list of float values summing to
+    one.
+  &#34;&#34;&#34;
+  window_size_steps = int(round(
+      self._window_size_seconds * performance.steps_per_second))
+
+  prev_event_type = None
+  prev_histogram = self.default_value
+
+  base_active_pitches = set()
+  histogram_sequence = []
+
+  for i, event in enumerate(performance):
+    # Maintain the base set of active pitches.
+    if event.event_type == PerformanceEvent.NOTE_ON:
+      base_active_pitches.add(event.event_value)
+    elif event.event_type == PerformanceEvent.NOTE_OFF:
+      base_active_pitches.discard(event.event_value)
+
+    if (prev_event_type is not None and
+        prev_event_type != PerformanceEvent.TIME_SHIFT):
+      # The previous event didn&#39;t move us forward in time, so the histogram
+      # here should be the same.
+      histogram_sequence.append(prev_histogram)
+      prev_event_type = event.event_type
+      continue
+
+    j = i
+    step_offset = 0
+
+    active_pitches = copy.deepcopy(base_active_pitches)
+    histogram = [self._prior_count] * NOTES_PER_OCTAVE
+
+    # Count the total duration of each pitch class within the window.
+    while step_offset &lt; window_size_steps and j &lt; len(performance):
+      if performance[j].event_type == PerformanceEvent.NOTE_ON:
+        active_pitches.add(performance[j].event_value)
+      elif performance[j].event_type == PerformanceEvent.NOTE_OFF:
+        active_pitches.discard(performance[j].event_value)
+      elif performance[j].event_type == PerformanceEvent.TIME_SHIFT:
+        for pitch in active_pitches:
+          histogram[pitch % NOTES_PER_OCTAVE] += (
+              performance[j].event_value / performance.steps_per_second)
+        step_offset += performance[j].event_value
+      j += 1
+
+    histogram_sequence.append(histogram)
+
+    prev_event_type = event.event_type
+    prev_histogram = histogram
+
+  return histogram_sequence</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.performance_controls.PerformanceControlSignal" href="#note_seq.performance_controls.PerformanceControlSignal">PerformanceControlSignal</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.default_value" href="#note_seq.performance_controls.PerformanceControlSignal.default_value">default_value</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.description" href="#note_seq.performance_controls.PerformanceControlSignal.description">description</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.encoder" href="#note_seq.performance_controls.PerformanceControlSignal.encoder">encoder</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.name" href="#note_seq.performance_controls.PerformanceControlSignal.name">name</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.validate" href="#note_seq.performance_controls.PerformanceControlSignal.validate">validate</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.performance_controls.NoteDensityPerformanceControlSignal" href="#note_seq.performance_controls.NoteDensityPerformanceControlSignal">NoteDensityPerformanceControlSignal</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_controls.NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding" href="#note_seq.performance_controls.NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding">NoteDensityOneHotEncoding</a></code></li>
+<li><code><a title="note_seq.performance_controls.NoteDensityPerformanceControlSignal.extract" href="#note_seq.performance_controls.NoteDensityPerformanceControlSignal.extract">extract</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_controls.PerformanceControlSignal" href="#note_seq.performance_controls.PerformanceControlSignal">PerformanceControlSignal</a></code></h4>
+<ul class="two-column">
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.default_value" href="#note_seq.performance_controls.PerformanceControlSignal.default_value">default_value</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.description" href="#note_seq.performance_controls.PerformanceControlSignal.description">description</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.encoder" href="#note_seq.performance_controls.PerformanceControlSignal.encoder">encoder</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.extract" href="#note_seq.performance_controls.PerformanceControlSignal.extract">extract</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.name" href="#note_seq.performance_controls.PerformanceControlSignal.name">name</a></code></li>
+<li><code><a title="note_seq.performance_controls.PerformanceControlSignal.validate" href="#note_seq.performance_controls.PerformanceControlSignal.validate">validate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.performance_controls.PitchHistogramPerformanceControlSignal" href="#note_seq.performance_controls.PitchHistogramPerformanceControlSignal">PitchHistogramPerformanceControlSignal</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.performance_controls.PitchHistogramPerformanceControlSignal.PitchHistogramEncoder" href="#note_seq.performance_controls.PitchHistogramPerformanceControlSignal.PitchHistogramEncoder">PitchHistogramEncoder</a></code></li>
+<li><code><a title="note_seq.performance_controls.PitchHistogramPerformanceControlSignal.extract" href="#note_seq.performance_controls.PitchHistogramPerformanceControlSignal.extract">extract</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
