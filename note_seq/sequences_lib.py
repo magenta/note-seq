@@ -1989,7 +1989,9 @@ def pianoroll_to_note_sequence(frames,
   sequence.ticks_per_quarter = constants.STANDARD_PPQ
 
   pitch_start_step = {}
-  onset_velocities = np.zeros(constants.MAX_MIDI_PITCH+1, dtype=np.int32)
+  onset_velocities = np.full(
+      constants.MAX_MIDI_PITCH + 1, velocity, dtype=np.int32
+  )
 
   # Add silent frame at the end so we can do a final loop and terminate any
   # notes that are still active.
@@ -2035,9 +2037,8 @@ def pianoroll_to_note_sequence(frames,
             onset_velocities[pitch] = _unscale_velocity(
                 velocity_values[i, pitch],
                 scale=velocity_scale,
-                bias=velocity_bias)
-          else:
-            onset_velocities[pitch] = velocity
+                bias=velocity_bias,
+            )
         else:
           # Even though the frame is active, the onset predictor doesn't
           # say there should be an onset, so ignore it.
@@ -2056,9 +2057,8 @@ def pianoroll_to_note_sequence(frames,
             onset_velocities[pitch] = _unscale_velocity(
                 velocity_values[i, pitch],
                 scale=velocity_scale,
-                bias=velocity_bias)
-          else:
-            onset_velocities[pitch] = velocity
+                bias=velocity_bias,
+            )
 
   for i, frame in enumerate(frames):
     for pitch, active in enumerate(frame):
