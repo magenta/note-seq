@@ -1,0 +1,3882 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.encoder_decoder API documentation</title>
+<meta name="description" content="Classes for converting between event sequences and models inputs/outputs …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.encoder_decoder</code></h1>
+</header>
+<section id="section-intro">
+<p>Classes for converting between event sequences and models inputs/outputs.</p>
+<p>OneHotEncoding is an abstract class for specifying a one-hot encoding, i.e.
+how to convert back and forth between an arbitrary event space and integer
+indices between 0 and the number of classes.</p>
+<p>EventSequenceEncoderDecoder is an abstract class for translating event
+<em>sequences</em>, i.e. how to convert event sequences to input vectors and output
+labels to be fed into a model, and how to convert from output labels back to
+events.</p>
+<p>Use EventSequenceEncoderDecoder.encode to convert an event sequence to inputs
+and labels that can be fed into the model during training and evaluation.</p>
+<p>During generation, use EventSequenceEncoderDecoder.get_inputs_batch to convert a
+list of event sequences into an inputs batch which can be fed into the model to
+predict what the next event should be for each sequence. Then use
+EventSequenceEncoderDecoder.extend_event_sequences to extend each of those event
+sequences with an event sampled from the softmax output by the model.</p>
+<p>OneHotEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder that uses a
+OneHotEncoding of individual events. The input vectors are one-hot encodings of
+the most recent event. The output labels are one-hot encodings of the next
+event.</p>
+<p>LookbackEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder that also
+uses a OneHotEncoding of individual events. However, its input and output
+encodings also consider whether the event sequence is repeating, and the input
+encoding includes binary counters for timekeeping.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Classes for converting between event sequences and models inputs/outputs.
+
+OneHotEncoding is an abstract class for specifying a one-hot encoding, i.e.
+how to convert back and forth between an arbitrary event space and integer
+indices between 0 and the number of classes.
+
+EventSequenceEncoderDecoder is an abstract class for translating event
+_sequences_, i.e. how to convert event sequences to input vectors and output
+labels to be fed into a model, and how to convert from output labels back to
+events.
+
+Use EventSequenceEncoderDecoder.encode to convert an event sequence to inputs
+and labels that can be fed into the model during training and evaluation.
+
+During generation, use EventSequenceEncoderDecoder.get_inputs_batch to convert a
+list of event sequences into an inputs batch which can be fed into the model to
+predict what the next event should be for each sequence. Then use
+EventSequenceEncoderDecoder.extend_event_sequences to extend each of those event
+sequences with an event sampled from the softmax output by the model.
+
+OneHotEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder that uses a
+OneHotEncoding of individual events. The input vectors are one-hot encodings of
+the most recent event. The output labels are one-hot encodings of the next
+event.
+
+LookbackEventSequenceEncoderDecoder is an EventSequenceEncoderDecoder that also
+uses a OneHotEncoding of individual events. However, its input and output
+encodings also consider whether the event sequence is repeating, and the input
+encoding includes binary counters for timekeeping.
+&#34;&#34;&#34;
+
+import abc
+import numbers
+
+from note_seq import constants
+import numpy as np
+
+DEFAULT_STEPS_PER_BAR = constants.DEFAULT_STEPS_PER_BAR
+DEFAULT_LOOKBACK_DISTANCES = [DEFAULT_STEPS_PER_BAR, DEFAULT_STEPS_PER_BAR * 2]
+
+
+class OneHotEncoding(object):
+  &#34;&#34;&#34;An interface for specifying a one-hot encoding of individual events.&#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def num_classes(self):
+    &#34;&#34;&#34;The number of distinct event encodings.
+
+    Returns:
+      An int, the range of ints that can be returned by self.encode_event.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_event(self):
+    &#34;&#34;&#34;An event value to use as a default.
+
+    Returns:
+      The default event value.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def encode_event(self, event):
+    &#34;&#34;&#34;Convert from an event value to an encoding integer.
+
+    Args:
+      event: An event value to encode.
+
+    Returns:
+      An integer representing the encoded event, in range [0, self.num_classes).
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def decode_event(self, index):
+    &#34;&#34;&#34;Convert from an encoding integer to an event value.
+
+    Args:
+      index: The encoding, an integer in the range [0, self.num_classes).
+
+    Returns:
+      The decoded event value.
+    &#34;&#34;&#34;
+    pass
+
+  def event_to_num_steps(self, unused_event):
+    &#34;&#34;&#34;Returns the number of time steps corresponding to an event value.
+
+    This is used for normalization when computing metrics. Subclasses with
+    variable step size should override this method.
+
+    Args:
+      unused_event: An event value for which to return the number of steps.
+
+    Returns:
+      The number of steps corresponding to the given event value, defaulting to
+      one.
+    &#34;&#34;&#34;
+    return 1
+
+
+class EventSequenceEncoderDecoder(object):
+  &#34;&#34;&#34;An abstract class for translating between events and model data.
+
+  When building your dataset, the `encode` method takes in an event sequence
+  and returns inputs and labels that can be fed into the model during training
+  and evaluation.
+
+  During generation, the `get_inputs_batch` method takes in a list of the
+  current event sequences and returns an inputs batch which is fed into the
+  model to predict what the next event should be for each sequence. The
+  `extend_event_sequences` method takes in the list of event sequences and the
+  softmax returned by the model and extends each sequence by one step by
+  sampling from the softmax probabilities. This loop (`get_inputs_batch` -&gt;
+  inputs batch is fed through the model to get a softmax -&gt;
+  `extend_event_sequences`) is repeated until the generated event sequences
+  have reached the desired length.
+
+  Properties:
+    input_size: The length of the list returned by self.events_to_input.
+    num_classes: The range of ints that can be returned by
+        self.events_to_label.
+
+  The `input_size`, `num_classes`, `events_to_input`, `events_to_label`, and
+  `class_index_to_event` method must be overwritten to be specific to your
+  model.
+  &#34;&#34;&#34;
+
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def input_size(self):
+    &#34;&#34;&#34;The size of the input vector used by this model.
+
+    Returns:
+        An integer, the length of the list returned by self.events_to_input.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def num_classes(self):
+    &#34;&#34;&#34;The range of labels used by this model.
+
+    Returns:
+        An integer, the range of integers that can be returned by
+            self.events_to_label.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_event_label(self):
+    &#34;&#34;&#34;The class label that represents a default event.
+
+    Returns:
+      An int, the class label that represents a default event.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the sequence.
+
+    Returns:
+      An input vector, a self.input_size length list of floats.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the sequence.
+
+    Returns:
+      A label, an integer in the range [0, self.num_classes).
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    pass
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    This is used for normalization when computing metrics. Subclasses with
+    variable step size should override this method.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, defaulting to one
+      per event.
+    &#34;&#34;&#34;
+    return len(labels)
+
+  def encode(self, events):
+    &#34;&#34;&#34;Returns inputs and labels for the given event sequence.
+
+    Args:
+      events: A list-like sequence of events.
+
+    Returns:
+      The inputs and labels.
+    &#34;&#34;&#34;
+    inputs = []
+    labels = []
+    for i in range(len(events) - 1):
+      inputs.append(self.events_to_input(events, i))
+      labels.append(self.events_to_label(events, i + 1))
+    return inputs, labels
+
+  def get_inputs_batch(self, event_sequences, full_length=False):
+    &#34;&#34;&#34;Returns an inputs batch for the given event sequences.
+
+    Args:
+      event_sequences: A list of list-like event sequences.
+      full_length: If True, the inputs batch will be for the full length of
+          each event sequence. If False, the inputs batch will only be for the
+          last event of each event sequence. A full-length inputs batch is used
+          for the first step of extending the event sequences, since the RNN
+          cell state needs to be initialized with the priming sequence. For
+          subsequent generation steps, only a last-event inputs batch is used.
+
+    Returns:
+      An inputs batch. If `full_length` is True, the shape will be
+      [len(event_sequences), len(event_sequences[0]), INPUT_SIZE]. If
+      `full_length` is False, the shape will be
+      [len(event_sequences), 1, INPUT_SIZE].
+    &#34;&#34;&#34;
+    inputs_batch = []
+    for events in event_sequences:
+      inputs = []
+      if full_length:
+        for i in range(len(events)):
+          inputs.append(self.events_to_input(events, i))
+      else:
+        inputs.append(self.events_to_input(events, len(events) - 1))
+      inputs_batch.append(inputs)
+    return inputs_batch
+
+  def extend_event_sequences(self, event_sequences, softmax):
+    &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+    Args:
+      event_sequences: A list of EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list of chosen class indices, one for each event sequence.
+    &#34;&#34;&#34;
+    chosen_classes = []
+    for i in range(len(event_sequences)):
+      if not isinstance(softmax[0][0][0], numbers.Number):
+        # In this case, softmax is a list of several sub-softmaxes, each
+        # potentially with a different size.
+        # shape: [[beam_size, event_num, softmax_size]]
+        chosen_class = []
+        for sub_softmax in softmax:
+          num_classes = len(sub_softmax[0][0])
+          chosen_class.append(
+              np.random.choice(num_classes, p=sub_softmax[i][-1]))
+      else:
+        # In this case, softmax is just one softmax.
+        # shape: [beam_size, event_num, softmax_size]
+        num_classes = len(softmax[0][0])
+        chosen_class = np.random.choice(num_classes, p=softmax[i][-1])
+      event = self.class_index_to_event(chosen_class, event_sequences[i])
+      event_sequences[i].append(event)
+      chosen_classes.append(chosen_class)
+    return chosen_classes
+
+  def evaluate_log_likelihood(self, event_sequences, softmax):
+    &#34;&#34;&#34;Evaluate the log likelihood of multiple event sequences.
+
+    Each event sequence is evaluated from the end. If the size of the
+    corresponding softmax vector is 1 less than the number of events, the entire
+    event sequence will be evaluated (other than the first event, whose
+    distribution is not modeled). If the softmax vector is shorter than this,
+    only the events at the end of the sequence will be evaluated.
+
+    Args:
+      event_sequences: A list of EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list containing the log likelihood of each event sequence.
+
+    Raises:
+      ValueError: If one of the event sequences is too long with respect to the
+          corresponding softmax vectors.
+    &#34;&#34;&#34;
+    all_loglik = []
+    for i in range(len(event_sequences)):
+      if len(softmax[i]) &gt;= len(event_sequences[i]):
+        raise ValueError(
+            &#39;event sequence must be longer than softmax vector (%d events but &#39;
+            &#39;softmax vector has length %d)&#39; % (len(event_sequences[i]),
+                                               len(softmax[i])))
+      end_pos = len(event_sequences[i])
+      start_pos = end_pos - len(softmax[i])
+      loglik = 0.0
+      for softmax_pos, position in enumerate(range(start_pos, end_pos)):
+        index = self.events_to_label(event_sequences[i], position)
+        if isinstance(index, numbers.Number):
+          loglik += np.log(softmax[i][softmax_pos][index])
+        else:
+          for sub_softmax_i in range(len(index)):
+            loglik += np.log(
+                softmax[i][softmax_pos][sub_softmax_i][index[sub_softmax_i]])
+      all_loglik.append(loglik)
+    return all_loglik
+
+
+class OneHotEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that produces a one-hot encoding.&#34;&#34;&#34;
+
+  def __init__(self, one_hot_encoding):
+    &#34;&#34;&#34;Initialize a OneHotEventSequenceEncoderDecoder object.
+
+    Args:
+      one_hot_encoding: A OneHotEncoding object that transforms events to and
+          from integer indices.
+    &#34;&#34;&#34;
+    self._one_hot_encoding = one_hot_encoding
+
+  @property
+  def input_size(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a one-hot vector for the given position in the event sequence, as
+    determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    input_[self._one_hot_encoding.encode_event(events[position])] = 1.0
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns the zero-based index value for the given position in the event
+    sequence, as determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events. This object is not used in this
+          implementation.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)
+
+
+class OneHotIndexEventSequenceEncoderDecoder(OneHotEventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that produces one-hot indices.&#34;&#34;&#34;
+
+  @property
+  def input_size(self):
+    return 1
+
+  @property
+  def input_depth(self):
+    return self._one_hot_encoding.num_classes
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the one-hot index for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An integer input event index.
+    &#34;&#34;&#34;
+    return [self._one_hot_encoding.encode_event(events[position])]
+
+
+class LookbackEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that encodes repeated events and meter.&#34;&#34;&#34;
+
+  def __init__(self, one_hot_encoding, lookback_distances=None,
+               binary_counter_bits=5):
+    &#34;&#34;&#34;Initializes the LookbackEventSequenceEncoderDecoder.
+
+    Args:
+      one_hot_encoding: A OneHotEncoding object that transforms events to and
+         from integer indices.
+      lookback_distances: A list of step intervals to look back in history to
+         encode both the following event and whether the current step is a
+         repeat. If None, use default lookback distances.
+      binary_counter_bits: The number of input bits to use as a counter for the
+         metric position of the next event.
+    &#34;&#34;&#34;
+    self._one_hot_encoding = one_hot_encoding
+    if lookback_distances is None:
+      self._lookback_distances = DEFAULT_LOOKBACK_DISTANCES
+    else:
+      self._lookback_distances = lookback_distances
+    self._binary_counter_bits = binary_counter_bits
+
+  @property
+  def input_size(self):
+    one_hot_size = self._one_hot_encoding.num_classes
+    num_lookbacks = len(self._lookback_distances)
+    return (one_hot_size +                  # current event
+            num_lookbacks * one_hot_size +  # next event for each lookback
+            self._binary_counter_bits +     # binary counters
+            num_lookbacks)                  # whether event matches lookbacks
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes + len(self._lookback_distances)
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a self.input_size length list of floats. Assuming a one-hot
+    encoding with 38 classes, two lookback distances, and five binary counters,
+    self.input_size will = 121. Each index represents a different input signal
+    to the model.
+
+    Indices [0, 120]:
+    [0, 37]: Event of current step.
+    [38, 75]: Event of next step for first lookback.
+    [76, 113]: Event of next step for second lookback.
+    114: 16th note binary counter.
+    115: 8th note binary counter.
+    116: 4th note binary counter.
+    117: Half note binary counter.
+    118: Whole note binary counter.
+    119: The current step is repeating (first lookback).
+    120: The current step is repeating (second lookback).
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer position in the event sequence.
+
+    Returns:
+      An input vector, an self.input_size length list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    offset = 0
+
+    # Last event.
+    index = self._one_hot_encoding.encode_event(events[position])
+    input_[index] = 1.0
+    offset += self._one_hot_encoding.num_classes
+
+    # Next event if repeating N positions ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance + 1
+      if lookback_position &lt; 0:
+        event = self._one_hot_encoding.default_event
+      else:
+        event = events[lookback_position]
+      index = self._one_hot_encoding.encode_event(event)
+      input_[offset + index] = 1.0
+      offset += self._one_hot_encoding.num_classes
+
+    # Binary time counter giving the metric location of the *next* event.
+    n = position + 1
+    for i in range(self._binary_counter_bits):
+      input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+      offset += 1
+
+    # Last event is repeating N bars ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        input_[offset] = 1.0
+      offset += 1
+
+    assert offset == self.input_size
+
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns an integer in the range [0, self.num_classes). Indices in the range
+    [0, self._one_hot_encoding.num_classes) map to standard events. Indices
+    self._one_hot_encoding.num_classes and self._one_hot_encoding.num_classes +
+    1 are signals to repeat events from earlier in the sequence. More distant
+    repeats are selected first and standard events are selected last.
+
+    Assuming a one-hot encoding with 38 classes and two lookback distances,
+    self.num_classes = 40 and the values will be as follows.
+
+    Values [0, 39]:
+      [0, 37]: Event of the last step in the event sequence, if not repeating
+               any of the lookbacks.
+      38: If the last event is repeating the first lookback, if not also
+          repeating the second lookback.
+      39: If the last event is repeating the second lookback.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    if (self._lookback_distances and
+        position &lt; self._lookback_distances[-1] and
+        events[position] == self._one_hot_encoding.default_event):
+      return (self._one_hot_encoding.num_classes +
+              len(self._lookback_distances) - 1)
+
+    # If last step repeated N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        return self._one_hot_encoding.num_classes + i
+
+    # If last step didn&#39;t repeat at one of the lookback positions, use the
+    # specific event.
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An int in the range [0, self.num_classes).
+      events: The current event sequence.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    # Repeat N bar ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      if class_index == self._one_hot_encoding.num_classes + i:
+        if len(events) &lt; lookback_distance:
+          return self._one_hot_encoding.default_event
+        return events[-lookback_distance]
+
+    # Return the event for that class index.
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    This method assumes the event sequence begins with the event corresponding
+    to the first label, which is inconsistent with the `encode` method in
+    EventSequenceEncoderDecoder that uses the second event as the first label.
+    Therefore, if the label sequence includes a lookback to the very first event
+    and that event is a different number of time steps than the default event,
+    this method will give an incorrect answer.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)
+
+
+class ConditionalEventSequenceEncoderDecoder(object):
+  &#34;&#34;&#34;An encoder/decoder for conditional event sequences.
+
+  This class is similar to an EventSequenceEncoderDecoder but operates on
+  *conditional* event sequences, where there is both a control event sequence
+  and a target event sequence. The target sequence consists of events that are
+  directly generated by the model, while the control sequence, known in advance,
+  affects the inputs provided to the model. The event types of the two sequences
+  can be different.
+
+  Model inputs are determined by both control and target sequences, and are
+  formed by concatenating the encoded control and target input vectors. Model
+  outputs are determined by the target sequence only.
+
+  This implementation assumes that the control event at position `i` is known
+  when the target event at position `i` is to be generated.
+
+  Properties:
+    input_size: The length of the list returned by self.events_to_input.
+    num_classes: The range of ints that can be returned by
+        self.events_to_label.
+  &#34;&#34;&#34;
+
+  def __init__(self, control_encoder_decoder, target_encoder_decoder):
+    &#34;&#34;&#34;Initialize a ConditionalEventSequenceEncoderDecoder object.
+
+    Args:
+      control_encoder_decoder: The EventSequenceEncoderDecoder to encode/decode
+          the control sequence.
+      target_encoder_decoder: The EventSequenceEncoderDecoder to encode/decode
+          the target sequence.
+    &#34;&#34;&#34;
+    self._control_encoder_decoder = control_encoder_decoder
+    self._target_encoder_decoder = target_encoder_decoder
+
+  @property
+  def input_size(self):
+    &#34;&#34;&#34;The size of the concatenated control and target input vectors.
+
+    Returns:
+        An integer, the size of an input vector.
+    &#34;&#34;&#34;
+    return (self._control_encoder_decoder.input_size +
+            self._target_encoder_decoder.input_size)
+
+  @property
+  def num_classes(self):
+    &#34;&#34;&#34;The range of target labels used by this model.
+
+    Returns:
+        An integer, the range of integers that can be returned by
+            self.events_to_label.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.num_classes
+
+  @property
+  def default_event_label(self):
+    &#34;&#34;&#34;The class label that represents a default target event.
+
+    Returns:
+      An integer, the class label that represents a default target event.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.default_event_label
+
+  def events_to_input(self, control_events, target_events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the sequence pair.
+
+    Returns the vector formed by concatenating the input vector for the control
+    sequence and the input vector for the target sequence.
+
+    Args:
+      control_events: A list-like sequence of control events.
+      target_events: A list-like sequence of target events.
+      position: An integer event position in the event sequences. When
+          predicting the target label at position `i + 1`, the input vector is
+          the concatenation of the control input vector at position `i + 1` and
+          the target input vector at position `i`.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    return (
+        self._control_encoder_decoder.events_to_input(
+            control_events, position + 1) +
+        self._target_encoder_decoder.events_to_input(target_events, position))
+
+  def events_to_label(self, target_events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the target event sequence.
+
+    Args:
+      target_events: A list-like sequence of target events.
+      position: An integer event position in the target event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.events_to_label(target_events, position)
+
+  def class_index_to_event(self, class_index, target_events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      target_events: A list-like sequence of target events.
+
+    Returns:
+      A target event value.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.class_index_to_event(
+        class_index, target_events)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the target encoder/decoder.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.labels_to_num_steps(labels)
+
+  def encode(self, control_events, target_events):
+    &#34;&#34;&#34;Returns inputs and labels for the given event sequence pair.
+
+    Args:
+      control_events: A list-like sequence of control events.
+      target_events: A list-like sequence of target events, the same length as
+          `control_events`.
+
+    Returns:
+      Inputs and labels.
+
+    Raises:
+      ValueError: If the control and target event sequences have different
+          length.
+    &#34;&#34;&#34;
+    if len(control_events) != len(target_events):
+      raise ValueError(&#39;must have the same number of control and target events &#39;
+                       &#39;(%d control events but %d target events)&#39; % (
+                           len(control_events), len(target_events)))
+
+    inputs = []
+    labels = []
+    for i in range(len(target_events) - 1):
+      inputs.append(self.events_to_input(control_events, target_events, i))
+      labels.append(self.events_to_label(target_events, i + 1))
+    return inputs, labels
+
+  def get_inputs_batch(self, control_event_sequences, target_event_sequences,
+                       full_length=False):
+    &#34;&#34;&#34;Returns an inputs batch for the given control and target event sequences.
+
+    Args:
+      control_event_sequences: A list of list-like control event sequences.
+      target_event_sequences: A list of list-like target event sequences, the
+          same length as `control_event_sequences`. Each target event sequence
+          must be shorter than the corresponding control event sequence.
+      full_length: If True, the inputs batch will be for the full length of
+          each control/target event sequence pair. If False, the inputs batch
+          will only be for the last event of each target event sequence. A full-
+          length inputs batch is used for the first step of extending the target
+          event sequences, since the RNN cell state needs to be initialized with
+          the priming target sequence. For subsequent generation steps, only a
+          last-event inputs batch is used.
+
+    Returns:
+      An inputs batch. If `full_length` is True, the shape will be
+      [len(target_event_sequences), len(target_event_sequences[0]), INPUT_SIZE].
+      If `full_length` is False, the shape will be
+      [len(target_event_sequences), 1, INPUT_SIZE].
+
+    Raises:
+      ValueError: If there are a different number of control and target event
+          sequences, or if one of the control event sequences is not shorter
+          than the corresponding control event sequence.
+    &#34;&#34;&#34;
+    if len(control_event_sequences) != len(target_event_sequences):
+      raise ValueError(
+          &#39;%d control event sequences but %d target event sequences&#39; %
+          (len(control_event_sequences, len(target_event_sequences))))
+
+    inputs_batch = []
+    for control_events, target_events in zip(
+        control_event_sequences, target_event_sequences):
+      if len(control_events) &lt;= len(target_events):
+        raise ValueError(&#39;control event sequence must be longer than target &#39;
+                         &#39;event sequence (%d control events but %d target &#39;
+                         &#39;events)&#39; % (len(control_events), len(target_events)))
+      inputs = []
+      if full_length:
+        for i in range(len(target_events)):
+          inputs.append(self.events_to_input(control_events, target_events, i))
+      else:
+        inputs.append(self.events_to_input(
+            control_events, target_events, len(target_events) - 1))
+      inputs_batch.append(inputs)
+    return inputs_batch
+
+  def extend_event_sequences(self, target_event_sequences, softmax):
+    &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+    Args:
+      target_event_sequences: A list of target EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list of chosen class indices, one for each target event sequence.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.extend_event_sequences(
+        target_event_sequences, softmax)
+
+  def evaluate_log_likelihood(self, target_event_sequences, softmax):
+    &#34;&#34;&#34;Evaluate the log likelihood of multiple target event sequences.
+
+    Args:
+      target_event_sequences: A list of target EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of target event sequences. The
+          softmax vectors are assumed to have been generated by a full-length
+          inputs batch.
+
+    Returns:
+      A Python list containing the log likelihood of each target event sequence.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.evaluate_log_likelihood(
+        target_event_sequences, softmax)
+
+
+class OptionalEventSequenceEncoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An encoder that augments a base encoder with a disable flag.
+
+  This encoder encodes event sequences consisting of tuples where the first
+  element is a disable flag. When set, the encoding consists of a 1 followed by
+  a zero-encoding the size of the base encoder&#39;s input. When unset, the encoding
+  consists of a 0 followed by the base encoder&#39;s encoding.
+  &#34;&#34;&#34;
+
+  def __init__(self, encoder):
+    &#34;&#34;&#34;Initialize an OptionalEventSequenceEncoder object.
+
+    Args:
+      encoder: The base EventSequenceEncoderDecoder to use.
+    &#34;&#34;&#34;
+    self._encoder = encoder
+
+  @property
+  def input_size(self):
+    return 1 + self._encoder.input_size
+
+  @property
+  def num_classes(self):
+    raise NotImplementedError
+
+  @property
+  def default_event_label(self):
+    raise NotImplementedError
+
+  def events_to_input(self, events, position):
+    # The event sequence is a list of tuples where the first element is a
+    # disable flag.
+    disable, _ = events[position]
+    if disable:
+      return [1.0] + [0.0] * self._encoder.input_size
+    else:
+      return [0.0] + self._encoder.events_to_input(
+          [event for _, event in events], position)
+
+  def events_to_label(self, events, position):
+    raise NotImplementedError
+
+  def class_index_to_event(self, class_index, events):
+    raise NotImplementedError
+
+
+class MultipleEventSequenceEncoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An encoder that concatenates multiple component encoders.
+
+  This class, largely intended for use with control sequences for conditional
+  encoder/decoders, encodes event sequences with multiple encoders and
+  concatenates the encodings.
+
+  Despite being an EventSequenceEncoderDecoder this class does not decode.
+  &#34;&#34;&#34;
+
+  def __init__(self, encoders, encode_single_sequence=False):
+    &#34;&#34;&#34;Initialize a MultipleEventSequenceEncoder object.
+
+    Args:
+      encoders: A list of component EventSequenceEncoderDecoder objects whose
+          output will be concatenated.
+      encode_single_sequence: If True, at encoding time all of the encoders will
+          be applied to a single event sequence. If False, each event of the
+          event sequence should be a tuple with size the same as the number of
+          encoders, each of which will be applied to the events in the
+          corresponding position in the tuple, i.e. the first encoder will be
+          applied to the first element of each event tuple, the second encoder
+          will be applied to the second element, etc.
+    &#34;&#34;&#34;
+    self._encoders = encoders
+    self._encode_single_sequence = encode_single_sequence
+
+  @property
+  def input_size(self):
+    return sum(encoder.input_size for encoder in self._encoders)
+
+  @property
+  def num_classes(self):
+    raise NotImplementedError
+
+  @property
+  def default_event_label(self):
+    raise NotImplementedError
+
+  def events_to_input(self, events, position):
+    input_ = []
+    if self._encode_single_sequence:
+      # Apply all encoders to the event sequence.
+      for encoder in self._encoders:
+        input_ += encoder.events_to_input(events, position)
+    else:
+      # The event sequence is a list of tuples. Apply each encoder to the
+      # elements in the corresponding tuple position.
+      event_sequences = list(zip(*events))
+      if len(event_sequences) != len(self._encoders):
+        raise ValueError(
+            &#39;Event tuple size must be the same as the number of encoders.&#39;)
+      for encoder, event_sequence in zip(self._encoders, event_sequences):
+        input_ += encoder.events_to_input(event_sequence, position)
+    return input_
+
+  def events_to_label(self, events, position):
+    raise NotImplementedError
+
+  def class_index_to_event(self, class_index, events):
+    raise NotImplementedError</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">ConditionalEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>control_encoder_decoder, target_encoder_decoder)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An encoder/decoder for conditional event sequences.</p>
+<p>This class is similar to an EventSequenceEncoderDecoder but operates on
+<em>conditional</em> event sequences, where there is both a control event sequence
+and a target event sequence. The target sequence consists of events that are
+directly generated by the model, while the control sequence, known in advance,
+affects the inputs provided to the model. The event types of the two sequences
+can be different.</p>
+<p>Model inputs are determined by both control and target sequences, and are
+formed by concatenating the encoded control and target input vectors. Model
+outputs are determined by the target sequence only.</p>
+<p>This implementation assumes that the control event at position <code>i</code> is known
+when the target event at position <code>i</code> is to be generated.</p>
+<h2 id="properties">Properties</h2>
+<p>input_size: The length of the list returned by self.events_to_input.
+num_classes: The range of ints that can be returned by
+self.events_to_label.</p>
+<p>Initialize a ConditionalEventSequenceEncoderDecoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>control_encoder_decoder</code></strong></dt>
+<dd>The EventSequenceEncoderDecoder to encode/decode
+the control sequence.</dd>
+<dt><strong><code>target_encoder_decoder</code></strong></dt>
+<dd>The EventSequenceEncoderDecoder to encode/decode
+the target sequence.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditionalEventSequenceEncoderDecoder(object):
+  &#34;&#34;&#34;An encoder/decoder for conditional event sequences.
+
+  This class is similar to an EventSequenceEncoderDecoder but operates on
+  *conditional* event sequences, where there is both a control event sequence
+  and a target event sequence. The target sequence consists of events that are
+  directly generated by the model, while the control sequence, known in advance,
+  affects the inputs provided to the model. The event types of the two sequences
+  can be different.
+
+  Model inputs are determined by both control and target sequences, and are
+  formed by concatenating the encoded control and target input vectors. Model
+  outputs are determined by the target sequence only.
+
+  This implementation assumes that the control event at position `i` is known
+  when the target event at position `i` is to be generated.
+
+  Properties:
+    input_size: The length of the list returned by self.events_to_input.
+    num_classes: The range of ints that can be returned by
+        self.events_to_label.
+  &#34;&#34;&#34;
+
+  def __init__(self, control_encoder_decoder, target_encoder_decoder):
+    &#34;&#34;&#34;Initialize a ConditionalEventSequenceEncoderDecoder object.
+
+    Args:
+      control_encoder_decoder: The EventSequenceEncoderDecoder to encode/decode
+          the control sequence.
+      target_encoder_decoder: The EventSequenceEncoderDecoder to encode/decode
+          the target sequence.
+    &#34;&#34;&#34;
+    self._control_encoder_decoder = control_encoder_decoder
+    self._target_encoder_decoder = target_encoder_decoder
+
+  @property
+  def input_size(self):
+    &#34;&#34;&#34;The size of the concatenated control and target input vectors.
+
+    Returns:
+        An integer, the size of an input vector.
+    &#34;&#34;&#34;
+    return (self._control_encoder_decoder.input_size +
+            self._target_encoder_decoder.input_size)
+
+  @property
+  def num_classes(self):
+    &#34;&#34;&#34;The range of target labels used by this model.
+
+    Returns:
+        An integer, the range of integers that can be returned by
+            self.events_to_label.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.num_classes
+
+  @property
+  def default_event_label(self):
+    &#34;&#34;&#34;The class label that represents a default target event.
+
+    Returns:
+      An integer, the class label that represents a default target event.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.default_event_label
+
+  def events_to_input(self, control_events, target_events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the sequence pair.
+
+    Returns the vector formed by concatenating the input vector for the control
+    sequence and the input vector for the target sequence.
+
+    Args:
+      control_events: A list-like sequence of control events.
+      target_events: A list-like sequence of target events.
+      position: An integer event position in the event sequences. When
+          predicting the target label at position `i + 1`, the input vector is
+          the concatenation of the control input vector at position `i + 1` and
+          the target input vector at position `i`.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    return (
+        self._control_encoder_decoder.events_to_input(
+            control_events, position + 1) +
+        self._target_encoder_decoder.events_to_input(target_events, position))
+
+  def events_to_label(self, target_events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the target event sequence.
+
+    Args:
+      target_events: A list-like sequence of target events.
+      position: An integer event position in the target event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.events_to_label(target_events, position)
+
+  def class_index_to_event(self, class_index, target_events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      target_events: A list-like sequence of target events.
+
+    Returns:
+      A target event value.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.class_index_to_event(
+        class_index, target_events)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the target encoder/decoder.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.labels_to_num_steps(labels)
+
+  def encode(self, control_events, target_events):
+    &#34;&#34;&#34;Returns inputs and labels for the given event sequence pair.
+
+    Args:
+      control_events: A list-like sequence of control events.
+      target_events: A list-like sequence of target events, the same length as
+          `control_events`.
+
+    Returns:
+      Inputs and labels.
+
+    Raises:
+      ValueError: If the control and target event sequences have different
+          length.
+    &#34;&#34;&#34;
+    if len(control_events) != len(target_events):
+      raise ValueError(&#39;must have the same number of control and target events &#39;
+                       &#39;(%d control events but %d target events)&#39; % (
+                           len(control_events), len(target_events)))
+
+    inputs = []
+    labels = []
+    for i in range(len(target_events) - 1):
+      inputs.append(self.events_to_input(control_events, target_events, i))
+      labels.append(self.events_to_label(target_events, i + 1))
+    return inputs, labels
+
+  def get_inputs_batch(self, control_event_sequences, target_event_sequences,
+                       full_length=False):
+    &#34;&#34;&#34;Returns an inputs batch for the given control and target event sequences.
+
+    Args:
+      control_event_sequences: A list of list-like control event sequences.
+      target_event_sequences: A list of list-like target event sequences, the
+          same length as `control_event_sequences`. Each target event sequence
+          must be shorter than the corresponding control event sequence.
+      full_length: If True, the inputs batch will be for the full length of
+          each control/target event sequence pair. If False, the inputs batch
+          will only be for the last event of each target event sequence. A full-
+          length inputs batch is used for the first step of extending the target
+          event sequences, since the RNN cell state needs to be initialized with
+          the priming target sequence. For subsequent generation steps, only a
+          last-event inputs batch is used.
+
+    Returns:
+      An inputs batch. If `full_length` is True, the shape will be
+      [len(target_event_sequences), len(target_event_sequences[0]), INPUT_SIZE].
+      If `full_length` is False, the shape will be
+      [len(target_event_sequences), 1, INPUT_SIZE].
+
+    Raises:
+      ValueError: If there are a different number of control and target event
+          sequences, or if one of the control event sequences is not shorter
+          than the corresponding control event sequence.
+    &#34;&#34;&#34;
+    if len(control_event_sequences) != len(target_event_sequences):
+      raise ValueError(
+          &#39;%d control event sequences but %d target event sequences&#39; %
+          (len(control_event_sequences, len(target_event_sequences))))
+
+    inputs_batch = []
+    for control_events, target_events in zip(
+        control_event_sequences, target_event_sequences):
+      if len(control_events) &lt;= len(target_events):
+        raise ValueError(&#39;control event sequence must be longer than target &#39;
+                         &#39;event sequence (%d control events but %d target &#39;
+                         &#39;events)&#39; % (len(control_events), len(target_events)))
+      inputs = []
+      if full_length:
+        for i in range(len(target_events)):
+          inputs.append(self.events_to_input(control_events, target_events, i))
+      else:
+        inputs.append(self.events_to_input(
+            control_events, target_events, len(target_events) - 1))
+      inputs_batch.append(inputs)
+    return inputs_batch
+
+  def extend_event_sequences(self, target_event_sequences, softmax):
+    &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+    Args:
+      target_event_sequences: A list of target EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list of chosen class indices, one for each target event sequence.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.extend_event_sequences(
+        target_event_sequences, softmax)
+
+  def evaluate_log_likelihood(self, target_event_sequences, softmax):
+    &#34;&#34;&#34;Evaluate the log likelihood of multiple target event sequences.
+
+    Args:
+      target_event_sequences: A list of target EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of target event sequences. The
+          softmax vectors are assumed to have been generated by a full-length
+          inputs batch.
+
+    Returns:
+      A Python list containing the log likelihood of each target event sequence.
+    &#34;&#34;&#34;
+    return self._target_encoder_decoder.evaluate_log_likelihood(
+        target_event_sequences, softmax)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.default_event_label"><code class="name">var <span class="ident">default_event_label</span></code></dt>
+<dd>
+<div class="desc"><p>The class label that represents a default target event.</p>
+<h2 id="returns">Returns</h2>
+<p>An integer, the class label that represents a default target event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def default_event_label(self):
+  &#34;&#34;&#34;The class label that represents a default target event.
+
+  Returns:
+    An integer, the class label that represents a default target event.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.default_event_label</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.input_size"><code class="name">var <span class="ident">input_size</span></code></dt>
+<dd>
+<div class="desc"><p>The size of the concatenated control and target input vectors.</p>
+<h2 id="returns">Returns</h2>
+<p>An integer, the size of an input vector.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def input_size(self):
+  &#34;&#34;&#34;The size of the concatenated control and target input vectors.
+
+  Returns:
+      An integer, the size of an input vector.
+  &#34;&#34;&#34;
+  return (self._control_encoder_decoder.input_size +
+          self._target_encoder_decoder.input_size)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.num_classes"><code class="name">var <span class="ident">num_classes</span></code></dt>
+<dd>
+<div class="desc"><p>The range of target labels used by this model.</p>
+<h2 id="returns">Returns</h2>
+<p>An integer, the range of integers that can be returned by
+self.events_to_label.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def num_classes(self):
+  &#34;&#34;&#34;The range of target labels used by this model.
+
+  Returns:
+      An integer, the range of integers that can be returned by
+          self.events_to_label.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.num_classes</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, target_events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An integer in the range [0, self.num_classes).</dd>
+<dt><strong><code>target_events</code></strong></dt>
+<dd>A list-like sequence of target events.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A target event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_index_to_event(self, class_index, target_events):
+  &#34;&#34;&#34;Returns the event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An integer in the range [0, self.num_classes).
+    target_events: A list-like sequence of target events.
+
+  Returns:
+    A target event value.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.class_index_to_event(
+      class_index, target_events)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.encode"><code class="name flex">
+<span>def <span class="ident">encode</span></span>(<span>self, control_events, target_events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns inputs and labels for the given event sequence pair.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>control_events</code></strong></dt>
+<dd>A list-like sequence of control events.</dd>
+<dt><strong><code>target_events</code></strong></dt>
+<dd>A list-like sequence of target events, the same length as
+<code>control_events</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Inputs and labels.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the control and target event sequences have different
+length.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode(self, control_events, target_events):
+  &#34;&#34;&#34;Returns inputs and labels for the given event sequence pair.
+
+  Args:
+    control_events: A list-like sequence of control events.
+    target_events: A list-like sequence of target events, the same length as
+        `control_events`.
+
+  Returns:
+    Inputs and labels.
+
+  Raises:
+    ValueError: If the control and target event sequences have different
+        length.
+  &#34;&#34;&#34;
+  if len(control_events) != len(target_events):
+    raise ValueError(&#39;must have the same number of control and target events &#39;
+                     &#39;(%d control events but %d target events)&#39; % (
+                         len(control_events), len(target_events)))
+
+  inputs = []
+  labels = []
+  for i in range(len(target_events) - 1):
+    inputs.append(self.events_to_input(control_events, target_events, i))
+    labels.append(self.events_to_label(target_events, i + 1))
+  return inputs, labels</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.evaluate_log_likelihood"><code class="name flex">
+<span>def <span class="ident">evaluate_log_likelihood</span></span>(<span>self, target_event_sequences, softmax)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluate the log likelihood of multiple target event sequences.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>target_event_sequences</code></strong></dt>
+<dd>A list of target EventSequence objects.</dd>
+<dt><strong><code>softmax</code></strong></dt>
+<dd>A list of softmax probability vectors. The list of softmaxes
+should be the same length as the list of target event sequences. The
+softmax vectors are assumed to have been generated by a full-length
+inputs batch.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Python list containing the log likelihood of each target event sequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate_log_likelihood(self, target_event_sequences, softmax):
+  &#34;&#34;&#34;Evaluate the log likelihood of multiple target event sequences.
+
+  Args:
+    target_event_sequences: A list of target EventSequence objects.
+    softmax: A list of softmax probability vectors. The list of softmaxes
+        should be the same length as the list of target event sequences. The
+        softmax vectors are assumed to have been generated by a full-length
+        inputs batch.
+
+  Returns:
+    A Python list containing the log likelihood of each target event sequence.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.evaluate_log_likelihood(
+      target_event_sequences, softmax)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, control_events, target_events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the given position in the sequence pair.</p>
+<p>Returns the vector formed by concatenating the input vector for the control
+sequence and the input vector for the target sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>control_events</code></strong></dt>
+<dd>A list-like sequence of control events.</dd>
+<dt><strong><code>target_events</code></strong></dt>
+<dd>A list-like sequence of target events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequences. When
+predicting the target label at position <code>i + 1</code>, the input vector is
+the concatenation of the control input vector at position <code>i + 1</code> and
+the target input vector at position <code>i</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, a list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, control_events, target_events, position):
+  &#34;&#34;&#34;Returns the input vector for the given position in the sequence pair.
+
+  Returns the vector formed by concatenating the input vector for the control
+  sequence and the input vector for the target sequence.
+
+  Args:
+    control_events: A list-like sequence of control events.
+    target_events: A list-like sequence of target events.
+    position: An integer event position in the event sequences. When
+        predicting the target label at position `i + 1`, the input vector is
+        the concatenation of the control input vector at position `i + 1` and
+        the target input vector at position `i`.
+
+  Returns:
+    An input vector, a list of floats.
+  &#34;&#34;&#34;
+  return (
+      self._control_encoder_decoder.events_to_input(
+          control_events, position + 1) +
+      self._target_encoder_decoder.events_to_input(target_events, position))</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, target_events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the given position in the target event sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>target_events</code></strong></dt>
+<dd>A list-like sequence of target events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the target event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_label(self, target_events, position):
+  &#34;&#34;&#34;Returns the label for the given position in the target event sequence.
+
+  Args:
+    target_events: A list-like sequence of target events.
+    position: An integer event position in the target event sequence.
+
+  Returns:
+    A label, an integer.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.events_to_label(target_events, position)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.extend_event_sequences"><code class="name flex">
+<span>def <span class="ident">extend_event_sequences</span></span>(<span>self, target_event_sequences, softmax)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extends the event sequences by sampling the softmax probabilities.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>target_event_sequences</code></strong></dt>
+<dd>A list of target EventSequence objects.</dd>
+<dt><strong><code>softmax</code></strong></dt>
+<dd>A list of softmax probability vectors. The list of softmaxes
+should be the same length as the list of event sequences.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Python list of chosen class indices, one for each target event sequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extend_event_sequences(self, target_event_sequences, softmax):
+  &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+  Args:
+    target_event_sequences: A list of target EventSequence objects.
+    softmax: A list of softmax probability vectors. The list of softmaxes
+        should be the same length as the list of event sequences.
+
+  Returns:
+    A Python list of chosen class indices, one for each target event sequence.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.extend_event_sequences(
+      target_event_sequences, softmax)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.get_inputs_batch"><code class="name flex">
+<span>def <span class="ident">get_inputs_batch</span></span>(<span>self, control_event_sequences, target_event_sequences, full_length=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns an inputs batch for the given control and target event sequences.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>control_event_sequences</code></strong></dt>
+<dd>A list of list-like control event sequences.</dd>
+<dt><strong><code>target_event_sequences</code></strong></dt>
+<dd>A list of list-like target event sequences, the
+same length as <code>control_event_sequences</code>. Each target event sequence
+must be shorter than the corresponding control event sequence.</dd>
+<dt><strong><code>full_length</code></strong></dt>
+<dd>If True, the inputs batch will be for the full length of
+each control/target event sequence pair. If False, the inputs batch
+will only be for the last event of each target event sequence. A full-
+length inputs batch is used for the first step of extending the target
+event sequences, since the RNN cell state needs to be initialized with
+the priming target sequence. For subsequent generation steps, only a
+last-event inputs batch is used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An inputs batch. If <code>full_length</code> is True, the shape will be
+[len(target_event_sequences), len(target_event_sequences[0]), INPUT_SIZE].
+If <code>full_length</code> is False, the shape will be
+[len(target_event_sequences), 1, INPUT_SIZE].</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If there are a different number of control and target event
+sequences, or if one of the control event sequences is not shorter
+than the corresponding control event sequence.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_inputs_batch(self, control_event_sequences, target_event_sequences,
+                     full_length=False):
+  &#34;&#34;&#34;Returns an inputs batch for the given control and target event sequences.
+
+  Args:
+    control_event_sequences: A list of list-like control event sequences.
+    target_event_sequences: A list of list-like target event sequences, the
+        same length as `control_event_sequences`. Each target event sequence
+        must be shorter than the corresponding control event sequence.
+    full_length: If True, the inputs batch will be for the full length of
+        each control/target event sequence pair. If False, the inputs batch
+        will only be for the last event of each target event sequence. A full-
+        length inputs batch is used for the first step of extending the target
+        event sequences, since the RNN cell state needs to be initialized with
+        the priming target sequence. For subsequent generation steps, only a
+        last-event inputs batch is used.
+
+  Returns:
+    An inputs batch. If `full_length` is True, the shape will be
+    [len(target_event_sequences), len(target_event_sequences[0]), INPUT_SIZE].
+    If `full_length` is False, the shape will be
+    [len(target_event_sequences), 1, INPUT_SIZE].
+
+  Raises:
+    ValueError: If there are a different number of control and target event
+        sequences, or if one of the control event sequences is not shorter
+        than the corresponding control event sequence.
+  &#34;&#34;&#34;
+  if len(control_event_sequences) != len(target_event_sequences):
+    raise ValueError(
+        &#39;%d control event sequences but %d target event sequences&#39; %
+        (len(control_event_sequences, len(target_event_sequences))))
+
+  inputs_batch = []
+  for control_events, target_events in zip(
+      control_event_sequences, target_event_sequences):
+    if len(control_events) &lt;= len(target_events):
+      raise ValueError(&#39;control event sequence must be longer than target &#39;
+                       &#39;event sequence (%d control events but %d target &#39;
+                       &#39;events)&#39; % (len(control_events), len(target_events)))
+    inputs = []
+    if full_length:
+      for i in range(len(target_events)):
+        inputs.append(self.events_to_input(control_events, target_events, i))
+    else:
+      inputs.append(self.events_to_input(
+          control_events, target_events, len(target_events) - 1))
+    inputs_batch.append(inputs)
+  return inputs_batch</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.labels_to_num_steps"><code class="name flex">
+<span>def <span class="ident">labels_to_num_steps</span></span>(<span>self, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the total number of time steps for a sequence of class labels.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>labels</code></strong></dt>
+<dd>A list-like sequence of integers in the range
+[0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The total number of time steps for the label sequence, as determined by
+the target encoder/decoder.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def labels_to_num_steps(self, labels):
+  &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+  Args:
+    labels: A list-like sequence of integers in the range
+        [0, self.num_classes).
+
+  Returns:
+    The total number of time steps for the label sequence, as determined by
+    the target encoder/decoder.
+  &#34;&#34;&#34;
+  return self._target_encoder_decoder.labels_to_num_steps(labels)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">EventSequenceEncoderDecoder</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>An abstract class for translating between events and model data.</p>
+<p>When building your dataset, the <code>encode</code> method takes in an event sequence
+and returns inputs and labels that can be fed into the model during training
+and evaluation.</p>
+<p>During generation, the <code>get_inputs_batch</code> method takes in a list of the
+current event sequences and returns an inputs batch which is fed into the
+model to predict what the next event should be for each sequence. The
+<code>extend_event_sequences</code> method takes in the list of event sequences and the
+softmax returned by the model and extends each sequence by one step by
+sampling from the softmax probabilities. This loop (<code>get_inputs_batch</code> -&gt;
+inputs batch is fed through the model to get a softmax -&gt;
+<code>extend_event_sequences</code>) is repeated until the generated event sequences
+have reached the desired length.</p>
+<h2 id="properties">Properties</h2>
+<p>input_size: The length of the list returned by self.events_to_input.
+num_classes: The range of ints that can be returned by
+self.events_to_label.</p>
+<p>The <code>input_size</code>, <code>num_classes</code>, <code>events_to_input</code>, <code>events_to_label</code>, and
+<code>class_index_to_event</code> method must be overwritten to be specific to your
+model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EventSequenceEncoderDecoder(object):
+  &#34;&#34;&#34;An abstract class for translating between events and model data.
+
+  When building your dataset, the `encode` method takes in an event sequence
+  and returns inputs and labels that can be fed into the model during training
+  and evaluation.
+
+  During generation, the `get_inputs_batch` method takes in a list of the
+  current event sequences and returns an inputs batch which is fed into the
+  model to predict what the next event should be for each sequence. The
+  `extend_event_sequences` method takes in the list of event sequences and the
+  softmax returned by the model and extends each sequence by one step by
+  sampling from the softmax probabilities. This loop (`get_inputs_batch` -&gt;
+  inputs batch is fed through the model to get a softmax -&gt;
+  `extend_event_sequences`) is repeated until the generated event sequences
+  have reached the desired length.
+
+  Properties:
+    input_size: The length of the list returned by self.events_to_input.
+    num_classes: The range of ints that can be returned by
+        self.events_to_label.
+
+  The `input_size`, `num_classes`, `events_to_input`, `events_to_label`, and
+  `class_index_to_event` method must be overwritten to be specific to your
+  model.
+  &#34;&#34;&#34;
+
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def input_size(self):
+    &#34;&#34;&#34;The size of the input vector used by this model.
+
+    Returns:
+        An integer, the length of the list returned by self.events_to_input.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def num_classes(self):
+    &#34;&#34;&#34;The range of labels used by this model.
+
+    Returns:
+        An integer, the range of integers that can be returned by
+            self.events_to_label.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_event_label(self):
+    &#34;&#34;&#34;The class label that represents a default event.
+
+    Returns:
+      An int, the class label that represents a default event.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the sequence.
+
+    Returns:
+      An input vector, a self.input_size length list of floats.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the sequence.
+
+    Returns:
+      A label, an integer in the range [0, self.num_classes).
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    pass
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    This is used for normalization when computing metrics. Subclasses with
+    variable step size should override this method.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, defaulting to one
+      per event.
+    &#34;&#34;&#34;
+    return len(labels)
+
+  def encode(self, events):
+    &#34;&#34;&#34;Returns inputs and labels for the given event sequence.
+
+    Args:
+      events: A list-like sequence of events.
+
+    Returns:
+      The inputs and labels.
+    &#34;&#34;&#34;
+    inputs = []
+    labels = []
+    for i in range(len(events) - 1):
+      inputs.append(self.events_to_input(events, i))
+      labels.append(self.events_to_label(events, i + 1))
+    return inputs, labels
+
+  def get_inputs_batch(self, event_sequences, full_length=False):
+    &#34;&#34;&#34;Returns an inputs batch for the given event sequences.
+
+    Args:
+      event_sequences: A list of list-like event sequences.
+      full_length: If True, the inputs batch will be for the full length of
+          each event sequence. If False, the inputs batch will only be for the
+          last event of each event sequence. A full-length inputs batch is used
+          for the first step of extending the event sequences, since the RNN
+          cell state needs to be initialized with the priming sequence. For
+          subsequent generation steps, only a last-event inputs batch is used.
+
+    Returns:
+      An inputs batch. If `full_length` is True, the shape will be
+      [len(event_sequences), len(event_sequences[0]), INPUT_SIZE]. If
+      `full_length` is False, the shape will be
+      [len(event_sequences), 1, INPUT_SIZE].
+    &#34;&#34;&#34;
+    inputs_batch = []
+    for events in event_sequences:
+      inputs = []
+      if full_length:
+        for i in range(len(events)):
+          inputs.append(self.events_to_input(events, i))
+      else:
+        inputs.append(self.events_to_input(events, len(events) - 1))
+      inputs_batch.append(inputs)
+    return inputs_batch
+
+  def extend_event_sequences(self, event_sequences, softmax):
+    &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+    Args:
+      event_sequences: A list of EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list of chosen class indices, one for each event sequence.
+    &#34;&#34;&#34;
+    chosen_classes = []
+    for i in range(len(event_sequences)):
+      if not isinstance(softmax[0][0][0], numbers.Number):
+        # In this case, softmax is a list of several sub-softmaxes, each
+        # potentially with a different size.
+        # shape: [[beam_size, event_num, softmax_size]]
+        chosen_class = []
+        for sub_softmax in softmax:
+          num_classes = len(sub_softmax[0][0])
+          chosen_class.append(
+              np.random.choice(num_classes, p=sub_softmax[i][-1]))
+      else:
+        # In this case, softmax is just one softmax.
+        # shape: [beam_size, event_num, softmax_size]
+        num_classes = len(softmax[0][0])
+        chosen_class = np.random.choice(num_classes, p=softmax[i][-1])
+      event = self.class_index_to_event(chosen_class, event_sequences[i])
+      event_sequences[i].append(event)
+      chosen_classes.append(chosen_class)
+    return chosen_classes
+
+  def evaluate_log_likelihood(self, event_sequences, softmax):
+    &#34;&#34;&#34;Evaluate the log likelihood of multiple event sequences.
+
+    Each event sequence is evaluated from the end. If the size of the
+    corresponding softmax vector is 1 less than the number of events, the entire
+    event sequence will be evaluated (other than the first event, whose
+    distribution is not modeled). If the softmax vector is shorter than this,
+    only the events at the end of the sequence will be evaluated.
+
+    Args:
+      event_sequences: A list of EventSequence objects.
+      softmax: A list of softmax probability vectors. The list of softmaxes
+          should be the same length as the list of event sequences.
+
+    Returns:
+      A Python list containing the log likelihood of each event sequence.
+
+    Raises:
+      ValueError: If one of the event sequences is too long with respect to the
+          corresponding softmax vectors.
+    &#34;&#34;&#34;
+    all_loglik = []
+    for i in range(len(event_sequences)):
+      if len(softmax[i]) &gt;= len(event_sequences[i]):
+        raise ValueError(
+            &#39;event sequence must be longer than softmax vector (%d events but &#39;
+            &#39;softmax vector has length %d)&#39; % (len(event_sequences[i]),
+                                               len(softmax[i])))
+      end_pos = len(event_sequences[i])
+      start_pos = end_pos - len(softmax[i])
+      loglik = 0.0
+      for softmax_pos, position in enumerate(range(start_pos, end_pos)):
+        index = self.events_to_label(event_sequences[i], position)
+        if isinstance(index, numbers.Number):
+          loglik += np.log(softmax[i][softmax_pos][index])
+        else:
+          for sub_softmax_i in range(len(index)):
+            loglik += np.log(
+                softmax[i][softmax_pos][sub_softmax_i][index[sub_softmax_i]])
+      all_loglik.append(loglik)
+    return all_loglik</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.chords_encoder_decoder.PitchChordsEncoderDecoder" href="chords_encoder_decoder.html#note_seq.chords_encoder_decoder.PitchChordsEncoderDecoder">PitchChordsEncoderDecoder</a></li>
+<li><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder">LookbackEventSequenceEncoderDecoder</a></li>
+<li><a title="note_seq.encoder_decoder.MultipleEventSequenceEncoder" href="#note_seq.encoder_decoder.MultipleEventSequenceEncoder">MultipleEventSequenceEncoder</a></li>
+<li><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder">OneHotEventSequenceEncoderDecoder</a></li>
+<li><a title="note_seq.encoder_decoder.OptionalEventSequenceEncoder" href="#note_seq.encoder_decoder.OptionalEventSequenceEncoder">OptionalEventSequenceEncoder</a></li>
+<li><a title="note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder" href="melody_encoder_decoder.html#note_seq.melody_encoder_decoder.KeyMelodyEncoderDecoder">KeyMelodyEncoderDecoder</a></li>
+<li><a title="note_seq.performance_controls.PitchHistogramPerformanceControlSignal.PitchHistogramEncoder" href="performance_controls.html#note_seq.performance_controls.PitchHistogramPerformanceControlSignal.PitchHistogramEncoder">PitchHistogramPerformanceControlSignal.PitchHistogramEncoder</a></li>
+<li><a title="note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder" href="performance_encoder_decoder.html#note_seq.performance_encoder_decoder.ModuloPerformanceEventSequenceEncoderDecoder">ModuloPerformanceEventSequenceEncoderDecoder</a></li>
+<li><a title="note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder" href="performance_encoder_decoder.html#note_seq.performance_encoder_decoder.NotePerformanceEventSequenceEncoderDecoder">NotePerformanceEventSequenceEncoderDecoder</a></li>
+<li><a title="note_seq.pianoroll_encoder_decoder.PianorollEncoderDecoder" href="pianoroll_encoder_decoder.html#note_seq.pianoroll_encoder_decoder.PianorollEncoderDecoder">PianorollEncoderDecoder</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label"><code class="name">var <span class="ident">default_event_label</span></code></dt>
+<dd>
+<div class="desc"><p>The class label that represents a default event.</p>
+<h2 id="returns">Returns</h2>
+<p>An int, the class label that represents a default event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def default_event_label(self):
+  &#34;&#34;&#34;The class label that represents a default event.
+
+  Returns:
+    An int, the class label that represents a default event.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size"><code class="name">var <span class="ident">input_size</span></code></dt>
+<dd>
+<div class="desc"><p>The size of the input vector used by this model.</p>
+<h2 id="returns">Returns</h2>
+<p>An integer, the length of the list returned by self.events_to_input.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def input_size(self):
+  &#34;&#34;&#34;The size of the input vector used by this model.
+
+  Returns:
+      An integer, the length of the list returned by self.events_to_input.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes"><code class="name">var <span class="ident">num_classes</span></code></dt>
+<dd>
+<div class="desc"><p>The range of labels used by this model.</p>
+<h2 id="returns">Returns</h2>
+<p>An integer, the range of integers that can be returned by
+self.events_to_label.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def num_classes(self):
+  &#34;&#34;&#34;The range of labels used by this model.
+
+  Returns:
+      An integer, the range of integers that can be returned by
+          self.events_to_label.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An integer in the range [0, self.num_classes).</dd>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def class_index_to_event(self, class_index, events):
+  &#34;&#34;&#34;Returns the event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An integer in the range [0, self.num_classes).
+    events: A list-like sequence of events.
+
+  Returns:
+    An event value.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode"><code class="name flex">
+<span>def <span class="ident">encode</span></span>(<span>self, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns inputs and labels for the given event sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The inputs and labels.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode(self, events):
+  &#34;&#34;&#34;Returns inputs and labels for the given event sequence.
+
+  Args:
+    events: A list-like sequence of events.
+
+  Returns:
+    The inputs and labels.
+  &#34;&#34;&#34;
+  inputs = []
+  labels = []
+  for i in range(len(events) - 1):
+    inputs.append(self.events_to_input(events, i))
+    labels.append(self.events_to_label(events, i + 1))
+  return inputs, labels</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood"><code class="name flex">
+<span>def <span class="ident">evaluate_log_likelihood</span></span>(<span>self, event_sequences, softmax)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluate the log likelihood of multiple event sequences.</p>
+<p>Each event sequence is evaluated from the end. If the size of the
+corresponding softmax vector is 1 less than the number of events, the entire
+event sequence will be evaluated (other than the first event, whose
+distribution is not modeled). If the softmax vector is shorter than this,
+only the events at the end of the sequence will be evaluated.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event_sequences</code></strong></dt>
+<dd>A list of EventSequence objects.</dd>
+<dt><strong><code>softmax</code></strong></dt>
+<dd>A list of softmax probability vectors. The list of softmaxes
+should be the same length as the list of event sequences.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Python list containing the log likelihood of each event sequence.</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If one of the event sequences is too long with respect to the
+corresponding softmax vectors.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate_log_likelihood(self, event_sequences, softmax):
+  &#34;&#34;&#34;Evaluate the log likelihood of multiple event sequences.
+
+  Each event sequence is evaluated from the end. If the size of the
+  corresponding softmax vector is 1 less than the number of events, the entire
+  event sequence will be evaluated (other than the first event, whose
+  distribution is not modeled). If the softmax vector is shorter than this,
+  only the events at the end of the sequence will be evaluated.
+
+  Args:
+    event_sequences: A list of EventSequence objects.
+    softmax: A list of softmax probability vectors. The list of softmaxes
+        should be the same length as the list of event sequences.
+
+  Returns:
+    A Python list containing the log likelihood of each event sequence.
+
+  Raises:
+    ValueError: If one of the event sequences is too long with respect to the
+        corresponding softmax vectors.
+  &#34;&#34;&#34;
+  all_loglik = []
+  for i in range(len(event_sequences)):
+    if len(softmax[i]) &gt;= len(event_sequences[i]):
+      raise ValueError(
+          &#39;event sequence must be longer than softmax vector (%d events but &#39;
+          &#39;softmax vector has length %d)&#39; % (len(event_sequences[i]),
+                                             len(softmax[i])))
+    end_pos = len(event_sequences[i])
+    start_pos = end_pos - len(softmax[i])
+    loglik = 0.0
+    for softmax_pos, position in enumerate(range(start_pos, end_pos)):
+      index = self.events_to_label(event_sequences[i], position)
+      if isinstance(index, numbers.Number):
+        loglik += np.log(softmax[i][softmax_pos][index])
+      else:
+        for sub_softmax_i in range(len(index)):
+          loglik += np.log(
+              softmax[i][softmax_pos][sub_softmax_i][index[sub_softmax_i]])
+    all_loglik.append(loglik)
+  return all_loglik</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the event at the given position.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, a self.input_size length list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the input vector for the event at the given position.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the sequence.
+
+  Returns:
+    An input vector, a self.input_size length list of floats.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the event at the given position.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer in the range [0, self.num_classes).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def events_to_label(self, events, position):
+  &#34;&#34;&#34;Returns the label for the event at the given position.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the sequence.
+
+  Returns:
+    A label, an integer in the range [0, self.num_classes).
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences"><code class="name flex">
+<span>def <span class="ident">extend_event_sequences</span></span>(<span>self, event_sequences, softmax)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extends the event sequences by sampling the softmax probabilities.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event_sequences</code></strong></dt>
+<dd>A list of EventSequence objects.</dd>
+<dt><strong><code>softmax</code></strong></dt>
+<dd>A list of softmax probability vectors. The list of softmaxes
+should be the same length as the list of event sequences.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A Python list of chosen class indices, one for each event sequence.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extend_event_sequences(self, event_sequences, softmax):
+  &#34;&#34;&#34;Extends the event sequences by sampling the softmax probabilities.
+
+  Args:
+    event_sequences: A list of EventSequence objects.
+    softmax: A list of softmax probability vectors. The list of softmaxes
+        should be the same length as the list of event sequences.
+
+  Returns:
+    A Python list of chosen class indices, one for each event sequence.
+  &#34;&#34;&#34;
+  chosen_classes = []
+  for i in range(len(event_sequences)):
+    if not isinstance(softmax[0][0][0], numbers.Number):
+      # In this case, softmax is a list of several sub-softmaxes, each
+      # potentially with a different size.
+      # shape: [[beam_size, event_num, softmax_size]]
+      chosen_class = []
+      for sub_softmax in softmax:
+        num_classes = len(sub_softmax[0][0])
+        chosen_class.append(
+            np.random.choice(num_classes, p=sub_softmax[i][-1]))
+    else:
+      # In this case, softmax is just one softmax.
+      # shape: [beam_size, event_num, softmax_size]
+      num_classes = len(softmax[0][0])
+      chosen_class = np.random.choice(num_classes, p=softmax[i][-1])
+    event = self.class_index_to_event(chosen_class, event_sequences[i])
+    event_sequences[i].append(event)
+    chosen_classes.append(chosen_class)
+  return chosen_classes</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch"><code class="name flex">
+<span>def <span class="ident">get_inputs_batch</span></span>(<span>self, event_sequences, full_length=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns an inputs batch for the given event sequences.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event_sequences</code></strong></dt>
+<dd>A list of list-like event sequences.</dd>
+<dt><strong><code>full_length</code></strong></dt>
+<dd>If True, the inputs batch will be for the full length of
+each event sequence. If False, the inputs batch will only be for the
+last event of each event sequence. A full-length inputs batch is used
+for the first step of extending the event sequences, since the RNN
+cell state needs to be initialized with the priming sequence. For
+subsequent generation steps, only a last-event inputs batch is used.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An inputs batch. If <code>full_length</code> is True, the shape will be
+[len(event_sequences), len(event_sequences[0]), INPUT_SIZE]. If
+<code>full_length</code> is False, the shape will be
+[len(event_sequences), 1, INPUT_SIZE].</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_inputs_batch(self, event_sequences, full_length=False):
+  &#34;&#34;&#34;Returns an inputs batch for the given event sequences.
+
+  Args:
+    event_sequences: A list of list-like event sequences.
+    full_length: If True, the inputs batch will be for the full length of
+        each event sequence. If False, the inputs batch will only be for the
+        last event of each event sequence. A full-length inputs batch is used
+        for the first step of extending the event sequences, since the RNN
+        cell state needs to be initialized with the priming sequence. For
+        subsequent generation steps, only a last-event inputs batch is used.
+
+  Returns:
+    An inputs batch. If `full_length` is True, the shape will be
+    [len(event_sequences), len(event_sequences[0]), INPUT_SIZE]. If
+    `full_length` is False, the shape will be
+    [len(event_sequences), 1, INPUT_SIZE].
+  &#34;&#34;&#34;
+  inputs_batch = []
+  for events in event_sequences:
+    inputs = []
+    if full_length:
+      for i in range(len(events)):
+        inputs.append(self.events_to_input(events, i))
+    else:
+      inputs.append(self.events_to_input(events, len(events) - 1))
+    inputs_batch.append(inputs)
+  return inputs_batch</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps"><code class="name flex">
+<span>def <span class="ident">labels_to_num_steps</span></span>(<span>self, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the total number of time steps for a sequence of class labels.</p>
+<p>This is used for normalization when computing metrics. Subclasses with
+variable step size should override this method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>labels</code></strong></dt>
+<dd>A list-like sequence of integers in the range
+[0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The total number of time steps for the label sequence, defaulting to one
+per event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def labels_to_num_steps(self, labels):
+  &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+  This is used for normalization when computing metrics. Subclasses with
+  variable step size should override this method.
+
+  Args:
+    labels: A list-like sequence of integers in the range
+        [0, self.num_classes).
+
+  Returns:
+    The total number of time steps for the label sequence, defaulting to one
+    per event.
+  &#34;&#34;&#34;
+  return len(labels)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">LookbackEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>one_hot_encoding, lookback_distances=None, binary_counter_bits=5)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An EventSequenceEncoderDecoder that encodes repeated events and meter.</p>
+<p>Initializes the LookbackEventSequenceEncoderDecoder.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>one_hot_encoding</code></strong></dt>
+<dd>A OneHotEncoding object that transforms events to and
+from integer indices.</dd>
+<dt><strong><code>lookback_distances</code></strong></dt>
+<dd>A list of step intervals to look back in history to
+encode both the following event and whether the current step is a
+repeat. If None, use default lookback distances.</dd>
+<dt><strong><code>binary_counter_bits</code></strong></dt>
+<dd>The number of input bits to use as a counter for the
+metric position of the next event.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LookbackEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that encodes repeated events and meter.&#34;&#34;&#34;
+
+  def __init__(self, one_hot_encoding, lookback_distances=None,
+               binary_counter_bits=5):
+    &#34;&#34;&#34;Initializes the LookbackEventSequenceEncoderDecoder.
+
+    Args:
+      one_hot_encoding: A OneHotEncoding object that transforms events to and
+         from integer indices.
+      lookback_distances: A list of step intervals to look back in history to
+         encode both the following event and whether the current step is a
+         repeat. If None, use default lookback distances.
+      binary_counter_bits: The number of input bits to use as a counter for the
+         metric position of the next event.
+    &#34;&#34;&#34;
+    self._one_hot_encoding = one_hot_encoding
+    if lookback_distances is None:
+      self._lookback_distances = DEFAULT_LOOKBACK_DISTANCES
+    else:
+      self._lookback_distances = lookback_distances
+    self._binary_counter_bits = binary_counter_bits
+
+  @property
+  def input_size(self):
+    one_hot_size = self._one_hot_encoding.num_classes
+    num_lookbacks = len(self._lookback_distances)
+    return (one_hot_size +                  # current event
+            num_lookbacks * one_hot_size +  # next event for each lookback
+            self._binary_counter_bits +     # binary counters
+            num_lookbacks)                  # whether event matches lookbacks
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes + len(self._lookback_distances)
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a self.input_size length list of floats. Assuming a one-hot
+    encoding with 38 classes, two lookback distances, and five binary counters,
+    self.input_size will = 121. Each index represents a different input signal
+    to the model.
+
+    Indices [0, 120]:
+    [0, 37]: Event of current step.
+    [38, 75]: Event of next step for first lookback.
+    [76, 113]: Event of next step for second lookback.
+    114: 16th note binary counter.
+    115: 8th note binary counter.
+    116: 4th note binary counter.
+    117: Half note binary counter.
+    118: Whole note binary counter.
+    119: The current step is repeating (first lookback).
+    120: The current step is repeating (second lookback).
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer position in the event sequence.
+
+    Returns:
+      An input vector, an self.input_size length list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    offset = 0
+
+    # Last event.
+    index = self._one_hot_encoding.encode_event(events[position])
+    input_[index] = 1.0
+    offset += self._one_hot_encoding.num_classes
+
+    # Next event if repeating N positions ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance + 1
+      if lookback_position &lt; 0:
+        event = self._one_hot_encoding.default_event
+      else:
+        event = events[lookback_position]
+      index = self._one_hot_encoding.encode_event(event)
+      input_[offset + index] = 1.0
+      offset += self._one_hot_encoding.num_classes
+
+    # Binary time counter giving the metric location of the *next* event.
+    n = position + 1
+    for i in range(self._binary_counter_bits):
+      input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+      offset += 1
+
+    # Last event is repeating N bars ago.
+    for i, lookback_distance in enumerate(self._lookback_distances):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        input_[offset] = 1.0
+      offset += 1
+
+    assert offset == self.input_size
+
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns an integer in the range [0, self.num_classes). Indices in the range
+    [0, self._one_hot_encoding.num_classes) map to standard events. Indices
+    self._one_hot_encoding.num_classes and self._one_hot_encoding.num_classes +
+    1 are signals to repeat events from earlier in the sequence. More distant
+    repeats are selected first and standard events are selected last.
+
+    Assuming a one-hot encoding with 38 classes and two lookback distances,
+    self.num_classes = 40 and the values will be as follows.
+
+    Values [0, 39]:
+      [0, 37]: Event of the last step in the event sequence, if not repeating
+               any of the lookbacks.
+      38: If the last event is repeating the first lookback, if not also
+          repeating the second lookback.
+      39: If the last event is repeating the second lookback.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    if (self._lookback_distances and
+        position &lt; self._lookback_distances[-1] and
+        events[position] == self._one_hot_encoding.default_event):
+      return (self._one_hot_encoding.num_classes +
+              len(self._lookback_distances) - 1)
+
+    # If last step repeated N bars ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      lookback_position = position - lookback_distance
+      if (lookback_position &gt;= 0 and
+          events[position] == events[lookback_position]):
+        return self._one_hot_encoding.num_classes + i
+
+    # If last step didn&#39;t repeat at one of the lookback positions, use the
+    # specific event.
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An int in the range [0, self.num_classes).
+      events: The current event sequence.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    # Repeat N bar ago.
+    for i, lookback_distance in reversed(
+        list(enumerate(self._lookback_distances))):
+      if class_index == self._one_hot_encoding.num_classes + i:
+        if len(events) &lt; lookback_distance:
+          return self._one_hot_encoding.default_event
+        return events[-lookback_distance]
+
+    # Return the event for that class index.
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    This method assumes the event sequence begins with the event corresponding
+    to the first label, which is inconsistent with the `encode` method in
+    EventSequenceEncoderDecoder that uses the second event as the first label.
+    Therefore, if the label sequence includes a lookback to the very first event
+    and that event is a different number of time steps than the default event,
+    this method will give an incorrect answer.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An int in the range [0, self.num_classes).</dd>
+<dt><strong><code>events</code></strong></dt>
+<dd>The current event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_index_to_event(self, class_index, events):
+  &#34;&#34;&#34;Returns the event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An int in the range [0, self.num_classes).
+    events: The current event sequence.
+
+  Returns:
+    An event value.
+  &#34;&#34;&#34;
+  # Repeat N bar ago.
+  for i, lookback_distance in reversed(
+      list(enumerate(self._lookback_distances))):
+    if class_index == self._one_hot_encoding.num_classes + i:
+      if len(events) &lt; lookback_distance:
+        return self._one_hot_encoding.default_event
+      return events[-lookback_distance]
+
+  # Return the event for that class index.
+  return self._one_hot_encoding.decode_event(class_index)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the given position in the event sequence.</p>
+<p>Returns a self.input_size length list of floats. Assuming a one-hot
+encoding with 38 classes, two lookback distances, and five binary counters,
+self.input_size will = 121. Each index represents a different input signal
+to the model.</p>
+<p>Indices [0, 120]:
+[0, 37]: Event of current step.
+[38, 75]: Event of next step for first lookback.
+[76, 113]: Event of next step for second lookback.
+114: 16th note binary counter.
+115: 8th note binary counter.
+116: 4th note binary counter.
+117: Half note binary counter.
+118: Whole note binary counter.
+119: The current step is repeating (first lookback).
+120: The current step is repeating (second lookback).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, an self.input_size length list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+  Returns a self.input_size length list of floats. Assuming a one-hot
+  encoding with 38 classes, two lookback distances, and five binary counters,
+  self.input_size will = 121. Each index represents a different input signal
+  to the model.
+
+  Indices [0, 120]:
+  [0, 37]: Event of current step.
+  [38, 75]: Event of next step for first lookback.
+  [76, 113]: Event of next step for second lookback.
+  114: 16th note binary counter.
+  115: 8th note binary counter.
+  116: 4th note binary counter.
+  117: Half note binary counter.
+  118: Whole note binary counter.
+  119: The current step is repeating (first lookback).
+  120: The current step is repeating (second lookback).
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer position in the event sequence.
+
+  Returns:
+    An input vector, an self.input_size length list of floats.
+  &#34;&#34;&#34;
+  input_ = [0.0] * self.input_size
+  offset = 0
+
+  # Last event.
+  index = self._one_hot_encoding.encode_event(events[position])
+  input_[index] = 1.0
+  offset += self._one_hot_encoding.num_classes
+
+  # Next event if repeating N positions ago.
+  for i, lookback_distance in enumerate(self._lookback_distances):
+    lookback_position = position - lookback_distance + 1
+    if lookback_position &lt; 0:
+      event = self._one_hot_encoding.default_event
+    else:
+      event = events[lookback_position]
+    index = self._one_hot_encoding.encode_event(event)
+    input_[offset + index] = 1.0
+    offset += self._one_hot_encoding.num_classes
+
+  # Binary time counter giving the metric location of the *next* event.
+  n = position + 1
+  for i in range(self._binary_counter_bits):
+    input_[offset] = 1.0 if (n // 2 ** i) % 2 else -1.0
+    offset += 1
+
+  # Last event is repeating N bars ago.
+  for i, lookback_distance in enumerate(self._lookback_distances):
+    lookback_position = position - lookback_distance
+    if (lookback_position &gt;= 0 and
+        events[position] == events[lookback_position]):
+      input_[offset] = 1.0
+    offset += 1
+
+  assert offset == self.input_size
+
+  return input_</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the given position in the event sequence.</p>
+<p>Returns an integer in the range [0, self.num_classes). Indices in the range
+[0, self._one_hot_encoding.num_classes) map to standard events. Indices
+self._one_hot_encoding.num_classes and self._one_hot_encoding.num_classes +
+1 are signals to repeat events from earlier in the sequence. More distant
+repeats are selected first and standard events are selected last.</p>
+<p>Assuming a one-hot encoding with 38 classes and two lookback distances,
+self.num_classes = 40 and the values will be as follows.</p>
+<p>Values [0, 39]:
+[0, 37]: Event of the last step in the event sequence, if not repeating
+any of the lookbacks.
+38: If the last event is repeating the first lookback, if not also
+repeating the second lookback.
+39: If the last event is repeating the second lookback.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_label(self, events, position):
+  &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+  Returns an integer in the range [0, self.num_classes). Indices in the range
+  [0, self._one_hot_encoding.num_classes) map to standard events. Indices
+  self._one_hot_encoding.num_classes and self._one_hot_encoding.num_classes +
+  1 are signals to repeat events from earlier in the sequence. More distant
+  repeats are selected first and standard events are selected last.
+
+  Assuming a one-hot encoding with 38 classes and two lookback distances,
+  self.num_classes = 40 and the values will be as follows.
+
+  Values [0, 39]:
+    [0, 37]: Event of the last step in the event sequence, if not repeating
+             any of the lookbacks.
+    38: If the last event is repeating the first lookback, if not also
+        repeating the second lookback.
+    39: If the last event is repeating the second lookback.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer position in the event sequence.
+
+  Returns:
+    A label, an integer.
+  &#34;&#34;&#34;
+  if (self._lookback_distances and
+      position &lt; self._lookback_distances[-1] and
+      events[position] == self._one_hot_encoding.default_event):
+    return (self._one_hot_encoding.num_classes +
+            len(self._lookback_distances) - 1)
+
+  # If last step repeated N bars ago.
+  for i, lookback_distance in reversed(
+      list(enumerate(self._lookback_distances))):
+    lookback_position = position - lookback_distance
+    if (lookback_position &gt;= 0 and
+        events[position] == events[lookback_position]):
+      return self._one_hot_encoding.num_classes + i
+
+  # If last step didn&#39;t repeat at one of the lookback positions, use the
+  # specific event.
+  return self._one_hot_encoding.encode_event(events[position])</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.labels_to_num_steps"><code class="name flex">
+<span>def <span class="ident">labels_to_num_steps</span></span>(<span>self, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the total number of time steps for a sequence of class labels.</p>
+<p>This method assumes the event sequence begins with the event corresponding
+to the first label, which is inconsistent with the <code>encode</code> method in
+EventSequenceEncoderDecoder that uses the second event as the first label.
+Therefore, if the label sequence includes a lookback to the very first event
+and that event is a different number of time steps than the default event,
+this method will give an incorrect answer.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>labels</code></strong></dt>
+<dd>A list-like sequence of integers in the range
+[0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The total number of time steps for the label sequence, as determined by
+the one-hot encoding.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def labels_to_num_steps(self, labels):
+  &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+  This method assumes the event sequence begins with the event corresponding
+  to the first label, which is inconsistent with the `encode` method in
+  EventSequenceEncoderDecoder that uses the second event as the first label.
+  Therefore, if the label sequence includes a lookback to the very first event
+  and that event is a different number of time steps than the default event,
+  this method will give an incorrect answer.
+
+  Args:
+    labels: A list-like sequence of integers in the range
+        [0, self.num_classes).
+
+  Returns:
+    The total number of time steps for the label sequence, as determined by
+    the one-hot encoding.
+  &#34;&#34;&#34;
+  events = []
+  for label in labels:
+    events.append(self.class_index_to_event(label, events))
+  return sum(self._one_hot_encoding.event_to_num_steps(event)
+             for event in events)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.encoder_decoder.MultipleEventSequenceEncoder"><code class="flex name class">
+<span>class <span class="ident">MultipleEventSequenceEncoder</span></span>
+<span>(</span><span>encoders, encode_single_sequence=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An encoder that concatenates multiple component encoders.</p>
+<p>This class, largely intended for use with control sequences for conditional
+encoder/decoders, encodes event sequences with multiple encoders and
+concatenates the encodings.</p>
+<p>Despite being an EventSequenceEncoderDecoder this class does not decode.</p>
+<p>Initialize a MultipleEventSequenceEncoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>encoders</code></strong></dt>
+<dd>A list of component EventSequenceEncoderDecoder objects whose
+output will be concatenated.</dd>
+<dt><strong><code>encode_single_sequence</code></strong></dt>
+<dd>If True, at encoding time all of the encoders will
+be applied to a single event sequence. If False, each event of the
+event sequence should be a tuple with size the same as the number of
+encoders, each of which will be applied to the events in the
+corresponding position in the tuple, i.e. the first encoder will be
+applied to the first element of each event tuple, the second encoder
+will be applied to the second element, etc.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultipleEventSequenceEncoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An encoder that concatenates multiple component encoders.
+
+  This class, largely intended for use with control sequences for conditional
+  encoder/decoders, encodes event sequences with multiple encoders and
+  concatenates the encodings.
+
+  Despite being an EventSequenceEncoderDecoder this class does not decode.
+  &#34;&#34;&#34;
+
+  def __init__(self, encoders, encode_single_sequence=False):
+    &#34;&#34;&#34;Initialize a MultipleEventSequenceEncoder object.
+
+    Args:
+      encoders: A list of component EventSequenceEncoderDecoder objects whose
+          output will be concatenated.
+      encode_single_sequence: If True, at encoding time all of the encoders will
+          be applied to a single event sequence. If False, each event of the
+          event sequence should be a tuple with size the same as the number of
+          encoders, each of which will be applied to the events in the
+          corresponding position in the tuple, i.e. the first encoder will be
+          applied to the first element of each event tuple, the second encoder
+          will be applied to the second element, etc.
+    &#34;&#34;&#34;
+    self._encoders = encoders
+    self._encode_single_sequence = encode_single_sequence
+
+  @property
+  def input_size(self):
+    return sum(encoder.input_size for encoder in self._encoders)
+
+  @property
+  def num_classes(self):
+    raise NotImplementedError
+
+  @property
+  def default_event_label(self):
+    raise NotImplementedError
+
+  def events_to_input(self, events, position):
+    input_ = []
+    if self._encode_single_sequence:
+      # Apply all encoders to the event sequence.
+      for encoder in self._encoders:
+        input_ += encoder.events_to_input(events, position)
+    else:
+      # The event sequence is a list of tuples. Apply each encoder to the
+      # elements in the corresponding tuple position.
+      event_sequences = list(zip(*events))
+      if len(event_sequences) != len(self._encoders):
+        raise ValueError(
+            &#39;Event tuple size must be the same as the number of encoders.&#39;)
+      for encoder, event_sequence in zip(self._encoders, event_sequences):
+        input_ += encoder.events_to_input(event_sequence, position)
+    return input_
+
+  def events_to_label(self, events, position):
+    raise NotImplementedError
+
+  def class_index_to_event(self, class_index, events):
+    raise NotImplementedError</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEncoding"><code class="flex name class">
+<span>class <span class="ident">OneHotEncoding</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>An interface for specifying a one-hot encoding of individual events.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneHotEncoding(object):
+  &#34;&#34;&#34;An interface for specifying a one-hot encoding of individual events.&#34;&#34;&#34;
+  __metaclass__ = abc.ABCMeta
+
+  @property
+  @abc.abstractmethod
+  def num_classes(self):
+    &#34;&#34;&#34;The number of distinct event encodings.
+
+    Returns:
+      An int, the range of ints that can be returned by self.encode_event.
+    &#34;&#34;&#34;
+    pass
+
+  @property
+  @abc.abstractmethod
+  def default_event(self):
+    &#34;&#34;&#34;An event value to use as a default.
+
+    Returns:
+      The default event value.
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def encode_event(self, event):
+    &#34;&#34;&#34;Convert from an event value to an encoding integer.
+
+    Args:
+      event: An event value to encode.
+
+    Returns:
+      An integer representing the encoded event, in range [0, self.num_classes).
+    &#34;&#34;&#34;
+    pass
+
+  @abc.abstractmethod
+  def decode_event(self, index):
+    &#34;&#34;&#34;Convert from an encoding integer to an event value.
+
+    Args:
+      index: The encoding, an integer in the range [0, self.num_classes).
+
+    Returns:
+      The decoded event value.
+    &#34;&#34;&#34;
+    pass
+
+  def event_to_num_steps(self, unused_event):
+    &#34;&#34;&#34;Returns the number of time steps corresponding to an event value.
+
+    This is used for normalization when computing metrics. Subclasses with
+    variable step size should override this method.
+
+    Args:
+      unused_event: An event value for which to return the number of steps.
+
+    Returns:
+      The number of steps corresponding to the given event value, defaulting to
+      one.
+    &#34;&#34;&#34;
+    return 1</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.chords_encoder_decoder.MajorMinorChordOneHotEncoding" href="chords_encoder_decoder.html#note_seq.chords_encoder_decoder.MajorMinorChordOneHotEncoding">MajorMinorChordOneHotEncoding</a></li>
+<li><a title="note_seq.chords_encoder_decoder.TriadChordOneHotEncoding" href="chords_encoder_decoder.html#note_seq.chords_encoder_decoder.TriadChordOneHotEncoding">TriadChordOneHotEncoding</a></li>
+<li><a title="note_seq.drums_encoder_decoder.MultiDrumOneHotEncoding" href="drums_encoder_decoder.html#note_seq.drums_encoder_decoder.MultiDrumOneHotEncoding">MultiDrumOneHotEncoding</a></li>
+<li><a title="note_seq.melody_encoder_decoder.MelodyOneHotEncoding" href="melody_encoder_decoder.html#note_seq.melody_encoder_decoder.MelodyOneHotEncoding">MelodyOneHotEncoding</a></li>
+<li><a title="note_seq.performance_controls.NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding" href="performance_controls.html#note_seq.performance_controls.NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding">NoteDensityPerformanceControlSignal.NoteDensityOneHotEncoding</a></li>
+<li><a title="note_seq.performance_encoder_decoder.PerformanceOneHotEncoding" href="performance_encoder_decoder.html#note_seq.performance_encoder_decoder.PerformanceOneHotEncoding">PerformanceOneHotEncoding</a></li>
+<li><a title="note_seq.testing_lib.TrivialOneHotEncoding" href="testing_lib.html#note_seq.testing_lib.TrivialOneHotEncoding">TrivialOneHotEncoding</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.OneHotEncoding.default_event"><code class="name">var <span class="ident">default_event</span></code></dt>
+<dd>
+<div class="desc"><p>An event value to use as a default.</p>
+<h2 id="returns">Returns</h2>
+<p>The default event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def default_event(self):
+  &#34;&#34;&#34;An event value to use as a default.
+
+  Returns:
+    The default event value.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEncoding.num_classes"><code class="name">var <span class="ident">num_classes</span></code></dt>
+<dd>
+<div class="desc"><p>The number of distinct event encodings.</p>
+<h2 id="returns">Returns</h2>
+<p>An int, the range of ints that can be returned by self.encode_event.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+@abc.abstractmethod
+def num_classes(self):
+  &#34;&#34;&#34;The number of distinct event encodings.
+
+  Returns:
+    An int, the range of ints that can be returned by self.encode_event.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.OneHotEncoding.decode_event"><code class="name flex">
+<span>def <span class="ident">decode_event</span></span>(<span>self, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert from an encoding integer to an event value.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>index</code></strong></dt>
+<dd>The encoding, an integer in the range [0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The decoded event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def decode_event(self, index):
+  &#34;&#34;&#34;Convert from an encoding integer to an event value.
+
+  Args:
+    index: The encoding, an integer in the range [0, self.num_classes).
+
+  Returns:
+    The decoded event value.
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEncoding.encode_event"><code class="name flex">
+<span>def <span class="ident">encode_event</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert from an event value to an encoding integer.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>An event value to encode.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An integer representing the encoded event, in range [0, self.num_classes).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def encode_event(self, event):
+  &#34;&#34;&#34;Convert from an event value to an encoding integer.
+
+  Args:
+    event: An event value to encode.
+
+  Returns:
+    An integer representing the encoded event, in range [0, self.num_classes).
+  &#34;&#34;&#34;
+  pass</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps"><code class="name flex">
+<span>def <span class="ident">event_to_num_steps</span></span>(<span>self, unused_event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the number of time steps corresponding to an event value.</p>
+<p>This is used for normalization when computing metrics. Subclasses with
+variable step size should override this method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>unused_event</code></strong></dt>
+<dd>An event value for which to return the number of steps.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The number of steps corresponding to the given event value, defaulting to
+one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def event_to_num_steps(self, unused_event):
+  &#34;&#34;&#34;Returns the number of time steps corresponding to an event value.
+
+  This is used for normalization when computing metrics. Subclasses with
+  variable step size should override this method.
+
+  Args:
+    unused_event: An event value for which to return the number of steps.
+
+  Returns:
+    The number of steps corresponding to the given event value, defaulting to
+    one.
+  &#34;&#34;&#34;
+  return 1</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">OneHotEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>one_hot_encoding)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An EventSequenceEncoderDecoder that produces a one-hot encoding.</p>
+<p>Initialize a OneHotEventSequenceEncoderDecoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>one_hot_encoding</code></strong></dt>
+<dd>A OneHotEncoding object that transforms events to and
+from integer indices.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneHotEventSequenceEncoderDecoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that produces a one-hot encoding.&#34;&#34;&#34;
+
+  def __init__(self, one_hot_encoding):
+    &#34;&#34;&#34;Initialize a OneHotEventSequenceEncoderDecoder object.
+
+    Args:
+      one_hot_encoding: A OneHotEncoding object that transforms events to and
+          from integer indices.
+    &#34;&#34;&#34;
+    self._one_hot_encoding = one_hot_encoding
+
+  @property
+  def input_size(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def num_classes(self):
+    return self._one_hot_encoding.num_classes
+
+  @property
+  def default_event_label(self):
+    return self._one_hot_encoding.encode_event(
+        self._one_hot_encoding.default_event)
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+    Returns a one-hot vector for the given position in the event sequence, as
+    determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An input vector, a list of floats.
+    &#34;&#34;&#34;
+    input_ = [0.0] * self.input_size
+    input_[self._one_hot_encoding.encode_event(events[position])] = 1.0
+    return input_
+
+  def events_to_label(self, events, position):
+    &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+    Returns the zero-based index value for the given position in the event
+    sequence, as determined by the one hot encoding.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      A label, an integer.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.encode_event(events[position])
+
+  def class_index_to_event(self, class_index, events):
+    &#34;&#34;&#34;Returns the event for the given class index.
+
+    This is the reverse process of the self.events_to_label method.
+
+    Args:
+      class_index: An integer in the range [0, self.num_classes).
+      events: A list-like sequence of events. This object is not used in this
+          implementation.
+
+    Returns:
+      An event value.
+    &#34;&#34;&#34;
+    return self._one_hot_encoding.decode_event(class_index)
+
+  def labels_to_num_steps(self, labels):
+    &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+    Args:
+      labels: A list-like sequence of integers in the range
+          [0, self.num_classes).
+
+    Returns:
+      The total number of time steps for the label sequence, as determined by
+      the one-hot encoding.
+    &#34;&#34;&#34;
+    events = []
+    for label in labels:
+      events.append(self.class_index_to_event(label, events))
+    return sum(self._one_hot_encoding.event_to_num_steps(event)
+               for event in events)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder">OneHotIndexEventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.class_index_to_event"><code class="name flex">
+<span>def <span class="ident">class_index_to_event</span></span>(<span>self, class_index, events)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the event for the given class index.</p>
+<p>This is the reverse process of the self.events_to_label method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>class_index</code></strong></dt>
+<dd>An integer in the range [0, self.num_classes).</dd>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events. This object is not used in this
+implementation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An event value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def class_index_to_event(self, class_index, events):
+  &#34;&#34;&#34;Returns the event for the given class index.
+
+  This is the reverse process of the self.events_to_label method.
+
+  Args:
+    class_index: An integer in the range [0, self.num_classes).
+    events: A list-like sequence of events. This object is not used in this
+        implementation.
+
+  Returns:
+    An event value.
+  &#34;&#34;&#34;
+  return self._one_hot_encoding.decode_event(class_index)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the input vector for the given position in the event sequence.</p>
+<p>Returns a one-hot vector for the given position in the event sequence, as
+determined by the one hot encoding.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An input vector, a list of floats.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the input vector for the given position in the event sequence.
+
+  Returns a one-hot vector for the given position in the event sequence, as
+  determined by the one hot encoding.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the event sequence.
+
+  Returns:
+    An input vector, a list of floats.
+  &#34;&#34;&#34;
+  input_ = [0.0] * self.input_size
+  input_[self._one_hot_encoding.encode_event(events[position])] = 1.0
+  return input_</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_label"><code class="name flex">
+<span>def <span class="ident">events_to_label</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the label for the given position in the event sequence.</p>
+<p>Returns the zero-based index value for the given position in the event
+sequence, as determined by the one hot encoding.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A label, an integer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_label(self, events, position):
+  &#34;&#34;&#34;Returns the label for the given position in the event sequence.
+
+  Returns the zero-based index value for the given position in the event
+  sequence, as determined by the one hot encoding.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the event sequence.
+
+  Returns:
+    A label, an integer.
+  &#34;&#34;&#34;
+  return self._one_hot_encoding.encode_event(events[position])</code></pre>
+</details>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.labels_to_num_steps"><code class="name flex">
+<span>def <span class="ident">labels_to_num_steps</span></span>(<span>self, labels)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the total number of time steps for a sequence of class labels.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>labels</code></strong></dt>
+<dd>A list-like sequence of integers in the range
+[0, self.num_classes).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The total number of time steps for the label sequence, as determined by
+the one-hot encoding.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def labels_to_num_steps(self, labels):
+  &#34;&#34;&#34;Returns the total number of time steps for a sequence of class labels.
+
+  Args:
+    labels: A list-like sequence of integers in the range
+        [0, self.num_classes).
+
+  Returns:
+    The total number of time steps for the label sequence, as determined by
+    the one-hot encoding.
+  &#34;&#34;&#34;
+  events = []
+  for label in labels:
+    events.append(self.class_index_to_event(label, events))
+  return sum(self._one_hot_encoding.event_to_num_steps(event)
+             for event in events)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder"><code class="flex name class">
+<span>class <span class="ident">OneHotIndexEventSequenceEncoderDecoder</span></span>
+<span>(</span><span>one_hot_encoding)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An EventSequenceEncoderDecoder that produces one-hot indices.</p>
+<p>Initialize a OneHotEventSequenceEncoderDecoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>one_hot_encoding</code></strong></dt>
+<dd>A OneHotEncoding object that transforms events to and
+from integer indices.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneHotIndexEventSequenceEncoderDecoder(OneHotEventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An EventSequenceEncoderDecoder that produces one-hot indices.&#34;&#34;&#34;
+
+  @property
+  def input_size(self):
+    return 1
+
+  @property
+  def input_depth(self):
+    return self._one_hot_encoding.num_classes
+
+  def events_to_input(self, events, position):
+    &#34;&#34;&#34;Returns the one-hot index for the event at the given position.
+
+    Args:
+      events: A list-like sequence of events.
+      position: An integer event position in the event sequence.
+
+    Returns:
+      An integer input event index.
+    &#34;&#34;&#34;
+    return [self._one_hot_encoding.encode_event(events[position])]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder">OneHotEventSequenceEncoderDecoder</a></li>
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.input_depth"><code class="name">var <span class="ident">input_depth</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def input_depth(self):
+  return self._one_hot_encoding.num_classes</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.events_to_input"><code class="name flex">
+<span>def <span class="ident">events_to_input</span></span>(<span>self, events, position)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the one-hot index for the event at the given position.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>events</code></strong></dt>
+<dd>A list-like sequence of events.</dd>
+<dt><strong><code>position</code></strong></dt>
+<dd>An integer event position in the event sequence.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>An integer input event index.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def events_to_input(self, events, position):
+  &#34;&#34;&#34;Returns the one-hot index for the event at the given position.
+
+  Args:
+    events: A list-like sequence of events.
+    position: An integer event position in the event sequence.
+
+  Returns:
+    An integer input event index.
+  &#34;&#34;&#34;
+  return [self._one_hot_encoding.encode_event(events[position])]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder">OneHotEventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="note_seq.encoder_decoder.OptionalEventSequenceEncoder"><code class="flex name class">
+<span>class <span class="ident">OptionalEventSequenceEncoder</span></span>
+<span>(</span><span>encoder)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An encoder that augments a base encoder with a disable flag.</p>
+<p>This encoder encodes event sequences consisting of tuples where the first
+element is a disable flag. When set, the encoding consists of a 1 followed by
+a zero-encoding the size of the base encoder's input. When unset, the encoding
+consists of a 0 followed by the base encoder's encoding.</p>
+<p>Initialize an OptionalEventSequenceEncoder object.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>encoder</code></strong></dt>
+<dd>The base EventSequenceEncoderDecoder to use.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OptionalEventSequenceEncoder(EventSequenceEncoderDecoder):
+  &#34;&#34;&#34;An encoder that augments a base encoder with a disable flag.
+
+  This encoder encodes event sequences consisting of tuples where the first
+  element is a disable flag. When set, the encoding consists of a 1 followed by
+  a zero-encoding the size of the base encoder&#39;s input. When unset, the encoding
+  consists of a 0 followed by the base encoder&#39;s encoding.
+  &#34;&#34;&#34;
+
+  def __init__(self, encoder):
+    &#34;&#34;&#34;Initialize an OptionalEventSequenceEncoder object.
+
+    Args:
+      encoder: The base EventSequenceEncoderDecoder to use.
+    &#34;&#34;&#34;
+    self._encoder = encoder
+
+  @property
+  def input_size(self):
+    return 1 + self._encoder.input_size
+
+  @property
+  def num_classes(self):
+    raise NotImplementedError
+
+  @property
+  def default_event_label(self):
+    raise NotImplementedError
+
+  def events_to_input(self, events, position):
+    # The event sequence is a list of tuples where the first element is a
+    # disable flag.
+    disable, _ = events[position]
+    if disable:
+      return [1.0] + [0.0] * self._encoder.input_size
+    else:
+      return [0.0] + self._encoder.events_to_input(
+          [event for _, event in events], position)
+
+  def events_to_label(self, events, position):
+    raise NotImplementedError
+
+  def class_index_to_event(self, class_index, events):
+    raise NotImplementedError</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder">ConditionalEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.ConditionalEventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder">EventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.default_event_label">default_event_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.encode">encode</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.evaluate_log_likelihood">evaluate_log_likelihood</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.extend_event_sequences">extend_event_sequences</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.get_inputs_batch">get_inputs_batch</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.input_size">input_size</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes" href="#note_seq.encoder_decoder.EventSequenceEncoderDecoder.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder">LookbackEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.LookbackEventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.MultipleEventSequenceEncoder" href="#note_seq.encoder_decoder.MultipleEventSequenceEncoder">MultipleEventSequenceEncoder</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.OneHotEncoding" href="#note_seq.encoder_decoder.OneHotEncoding">OneHotEncoding</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.decode_event" href="#note_seq.encoder_decoder.OneHotEncoding.decode_event">decode_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.default_event" href="#note_seq.encoder_decoder.OneHotEncoding.default_event">default_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.encode_event" href="#note_seq.encoder_decoder.OneHotEncoding.encode_event">encode_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps" href="#note_seq.encoder_decoder.OneHotEncoding.event_to_num_steps">event_to_num_steps</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEncoding.num_classes" href="#note_seq.encoder_decoder.OneHotEncoding.num_classes">num_classes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder">OneHotEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.class_index_to_event" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.class_index_to_event">class_index_to_event</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_label" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.events_to_label">events_to_label</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.labels_to_num_steps" href="#note_seq.encoder_decoder.OneHotEventSequenceEncoderDecoder.labels_to_num_steps">labels_to_num_steps</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder" href="#note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder">OneHotIndexEventSequenceEncoderDecoder</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.events_to_input" href="#note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.events_to_input">events_to_input</a></code></li>
+<li><code><a title="note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.input_depth" href="#note_seq.encoder_decoder.OneHotIndexEventSequenceEncoderDecoder.input_depth">input_depth</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.encoder_decoder.OptionalEventSequenceEncoder" href="#note_seq.encoder_decoder.OptionalEventSequenceEncoder">OptionalEventSequenceEncoder</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

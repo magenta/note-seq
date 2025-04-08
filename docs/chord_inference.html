@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.chord_inference API documentation</title>
+<meta name="description" content="Chord inference for NoteSequences." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.chord_inference</code></h1>
+</header>
+<section id="section-intro">
+<p>Chord inference for NoteSequences.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Chord inference for NoteSequences.&#34;&#34;&#34;
+import bisect
+import itertools
+import math
+import numbers
+
+from absl import logging
+from note_seq import constants
+from note_seq import sequences_lib
+from note_seq.protobuf import music_pb2
+import numpy as np
+
+# Names of pitch classes to use (mostly ignoring spelling).
+_PITCH_CLASS_NAMES = [
+    &#39;C&#39;, &#39;C#&#39;, &#39;D&#39;, &#39;Eb&#39;, &#39;E&#39;, &#39;F&#39;, &#39;F#&#39;, &#39;G&#39;, &#39;Ab&#39;, &#39;A&#39;, &#39;Bb&#39;, &#39;B&#39;]
+
+# Pitch classes in a key (rooted at zero).
+_KEY_PITCHES = [0, 2, 4, 5, 7, 9, 11]
+
+# Pitch classes in each chord kind (rooted at zero).
+_CHORD_KIND_PITCHES = {
+    &#39;&#39;: [0, 4, 7],
+    &#39;m&#39;: [0, 3, 7],
+    &#39;+&#39;: [0, 4, 8],
+    &#39;dim&#39;: [0, 3, 6],
+    &#39;7&#39;: [0, 4, 7, 10],
+    &#39;maj7&#39;: [0, 4, 7, 11],
+    &#39;m7&#39;: [0, 3, 7, 10],
+    &#39;m7b5&#39;: [0, 3, 6, 10],
+}
+_CHORD_KINDS = _CHORD_KIND_PITCHES.keys()
+
+# All usable chords, including no-chord.
+_CHORDS = [constants.NO_CHORD] + list(
+    itertools.product(range(12), _CHORD_KINDS))
+
+# All key-chord pairs.
+_KEY_CHORDS = list(itertools.product(range(12), _CHORDS))
+
+# Maximum length of chord sequence to infer.
+_MAX_NUM_CHORDS = 1000
+
+# Mapping from time signature to number of chords to infer per bar.
+_DEFAULT_TIME_SIGNATURE_CHORDS_PER_BAR = {
+    (2, 2): 1,
+    (2, 4): 1,
+    (3, 4): 1,
+    (4, 4): 2,
+    (6, 8): 2,
+}
+
+
+def _key_chord_distribution(chord_pitch_out_of_key_prob):
+  &#34;&#34;&#34;Probability distribution over chords for each key.&#34;&#34;&#34;
+  num_pitches_in_key = np.zeros([12, len(_CHORDS)], dtype=np.int32)
+  num_pitches_out_of_key = np.zeros([12, len(_CHORDS)], dtype=np.int32)
+
+  # For each key and chord, compute the number of chord notes in the key and the
+  # number of chord notes outside the key.
+  for key in range(12):
+    key_pitches = set((key + offset) % 12 for offset in _KEY_PITCHES)
+    for i, chord in enumerate(_CHORDS[1:]):
+      root, kind = chord
+      chord_pitches = set((root + offset) % 12
+                          for offset in _CHORD_KIND_PITCHES[kind])
+      num_pitches_in_key[key, i + 1] = len(chord_pitches &amp; key_pitches)
+      num_pitches_out_of_key[key, i + 1] = len(chord_pitches - key_pitches)
+
+  # Compute the probability of each chord under each key, normalizing to sum to
+  # one for each key.
+  mat = ((1 - chord_pitch_out_of_key_prob) ** num_pitches_in_key *
+         chord_pitch_out_of_key_prob ** num_pitches_out_of_key)
+  mat /= mat.sum(axis=1)[:, np.newaxis]
+  return mat
+
+
+def _key_chord_transition_distribution(
+    key_chord_distribution, key_change_prob, chord_change_prob):
+  &#34;&#34;&#34;Transition distribution between key-chord pairs.&#34;&#34;&#34;
+  mat = np.zeros([len(_KEY_CHORDS), len(_KEY_CHORDS)])
+
+  for i, key_chord_1 in enumerate(_KEY_CHORDS):
+    key_1, chord_1 = key_chord_1
+    chord_index_1 = i % len(_CHORDS)
+
+    for j, key_chord_2 in enumerate(_KEY_CHORDS):
+      key_2, chord_2 = key_chord_2
+      chord_index_2 = j % len(_CHORDS)
+
+      if key_1 != key_2:
+        # Key change. Chord probability depends only on key and not previous
+        # chord.
+        mat[i, j] = (key_change_prob / 11)
+        mat[i, j] *= key_chord_distribution[key_2, chord_index_2]
+
+      else:
+        # No key change.
+        mat[i, j] = 1 - key_change_prob
+        if chord_1 != chord_2:
+          # Chord probability depends on key, but we have to redistribute the
+          # probability mass on the previous chord since we know the chord
+          # changed.
+          mat[i, j] *= (
+              chord_change_prob * (
+                  key_chord_distribution[key_2, chord_index_2] +
+                  key_chord_distribution[key_2, chord_index_1] / (len(_CHORDS) -
+                                                                  1)))
+        else:
+          # No chord change.
+          mat[i, j] *= 1 - chord_change_prob
+
+  return mat
+
+
+def _chord_pitch_vectors():
+  &#34;&#34;&#34;Unit vectors over pitch classes for all chords.&#34;&#34;&#34;
+  x = np.zeros([len(_CHORDS), 12])
+  for i, chord in enumerate(_CHORDS[1:]):
+    root, kind = chord
+    for offset in _CHORD_KIND_PITCHES[kind]:
+      x[i + 1, (root + offset) % 12] = 1
+  x[1:, :] /= np.linalg.norm(x[1:, :], axis=1)[:, np.newaxis]
+  return x
+
+
+def sequence_note_pitch_vectors(sequence, seconds_per_frame):
+  &#34;&#34;&#34;Compute pitch class vectors for temporal frames across a sequence.
+
+  Args:
+    sequence: The NoteSequence for which to compute pitch class vectors.
+    seconds_per_frame: The size of the frame corresponding to each pitch class
+        vector, in seconds. Alternatively, a list of frame boundary times in
+        seconds (not including initial start time and final end time).
+
+  Returns:
+    A numpy array with shape `[num_frames, 12]` where each row is a unit-
+    normalized pitch class vector for the corresponding frame in `sequence`.
+  &#34;&#34;&#34;
+  if isinstance(seconds_per_frame, numbers.Number):
+    # Construct array of frame boundary times.
+    num_frames = int(math.ceil(sequence.total_time / seconds_per_frame))
+    frame_boundaries = seconds_per_frame * np.arange(1, num_frames)
+  else:
+    frame_boundaries = sorted(seconds_per_frame)
+    num_frames = len(frame_boundaries) + 1
+
+  x = np.zeros([num_frames, 12])
+
+  for note in sequence.notes:
+    if note.is_drum:
+      continue
+    if note.program in constants.UNPITCHED_PROGRAMS:
+      continue
+
+    start_frame = bisect.bisect_right(frame_boundaries, note.start_time)
+    end_frame = bisect.bisect_left(frame_boundaries, note.end_time)
+    pitch_class = note.pitch % 12
+
+    if start_frame &gt;= end_frame:
+      x[start_frame, pitch_class] += note.end_time - note.start_time
+    else:
+      x[start_frame, pitch_class] += (
+          frame_boundaries[start_frame] - note.start_time)
+      for frame in range(start_frame + 1, end_frame):
+        x[frame, pitch_class] += (
+            frame_boundaries[frame] - frame_boundaries[frame - 1])
+      x[end_frame, pitch_class] += (
+          note.end_time - frame_boundaries[end_frame - 1])
+
+  x_norm = np.linalg.norm(x, axis=1)
+  nonzero_frames = x_norm &gt; 0
+  x[nonzero_frames, :] /= x_norm[nonzero_frames, np.newaxis]
+
+  return x
+
+
+def _chord_frame_log_likelihood(note_pitch_vectors, chord_note_concentration):
+  &#34;&#34;&#34;Log-likelihood of observing each frame of note pitches under each chord.&#34;&#34;&#34;
+  return chord_note_concentration * np.dot(note_pitch_vectors,
+                                           _chord_pitch_vectors().T)
+
+
+def _key_chord_viterbi(chord_frame_loglik,
+                       key_chord_loglik,
+                       key_chord_transition_loglik):
+  &#34;&#34;&#34;Use the Viterbi algorithm to infer a sequence of key-chord pairs.&#34;&#34;&#34;
+  num_frames, num_chords = chord_frame_loglik.shape
+  num_key_chords = len(key_chord_transition_loglik)
+
+  loglik_matrix = np.zeros([num_frames, num_key_chords])
+  path_matrix = np.zeros([num_frames, num_key_chords], dtype=np.int32)
+
+  # Initialize with a uniform distribution over keys.
+  for i, key_chord in enumerate(_KEY_CHORDS):
+    key, unused_chord = key_chord
+    chord_index = i % len(_CHORDS)
+    loglik_matrix[0, i] = (
+        -np.log(12) + key_chord_loglik[key, chord_index] +
+        chord_frame_loglik[0, chord_index])
+
+  for frame in range(1, num_frames):
+    # At each frame, store the log-likelihood of the best sequence ending in
+    # each key-chord pair, along with the index of the parent key-chord pair
+    # from the previous frame.
+    mat = (np.tile(loglik_matrix[frame - 1][:, np.newaxis],
+                   [1, num_key_chords]) +
+           key_chord_transition_loglik)
+    path_matrix[frame, :] = mat.argmax(axis=0)
+    loglik_matrix[frame, :] = (
+        mat[path_matrix[frame, :], range(num_key_chords)] +
+        np.tile(chord_frame_loglik[frame], 12))
+
+  # Reconstruct the most likely sequence of key-chord pairs.
+  path = [np.argmax(loglik_matrix[-1])]
+  for frame in range(num_frames, 1, -1):
+    path.append(path_matrix[frame - 1, path[-1]])
+
+  return [(index // num_chords, _CHORDS[index % num_chords])
+          for index in path[::-1]]
+
+
+class ChordInferenceError(Exception):  # pylint:disable=g-bad-exception-name
+  pass
+
+
+class SequenceAlreadyHasChordsError(ChordInferenceError):
+  pass
+
+
+class UncommonTimeSignatureError(ChordInferenceError):
+  pass
+
+
+class NonIntegerStepsPerChordError(ChordInferenceError):
+  pass
+
+
+class EmptySequenceError(ChordInferenceError):
+  pass
+
+
+class SequenceTooLongError(ChordInferenceError):
+  pass
+
+
+def infer_chords_for_sequence(sequence,
+                              chords_per_bar=None,
+                              key_change_prob=0.001,
+                              chord_change_prob=0.5,
+                              chord_pitch_out_of_key_prob=0.01,
+                              chord_note_concentration=100.0,
+                              add_key_signatures=False):
+  &#34;&#34;&#34;Infer chords for a NoteSequence using the Viterbi algorithm.
+
+  This uses some heuristics to infer chords for a quantized NoteSequence. At
+  each chord position a key and chord will be inferred, and the chords will be
+  added (as text annotations) to the sequence.
+
+  If the sequence is quantized relative to meter, a fixed number of chords per
+  bar will be inferred. Otherwise, the sequence is expected to have beat
+  annotations and one chord will be inferred per beat.
+
+  Args:
+    sequence: The NoteSequence for which to infer chords. This NoteSequence will
+        be modified in place.
+    chords_per_bar: If `sequence` is quantized, the number of chords per bar to
+        infer. If None, use a default number of chords based on the time
+        signature of `sequence`.
+    key_change_prob: Probability of a key change between two adjacent frames.
+    chord_change_prob: Probability of a chord change between two adjacent
+        frames.
+    chord_pitch_out_of_key_prob: Probability of a pitch in a chord not belonging
+        to the current key.
+    chord_note_concentration: Concentration parameter for the distribution of
+        observed pitches played over a chord. At zero, all pitches are equally
+        likely. As concentration increases, observed pitches must match the
+        chord pitches more closely.
+    add_key_signatures: If True, also add inferred key signatures to
+        `quantized_sequence` (and remove any existing key signatures).
+
+  Raises:
+    SequenceAlreadyHasChordsError: If `sequence` already has chords.
+    QuantizationStatusError: If `sequence` is not quantized relative to
+        meter but `chords_per_bar` is specified or no beat annotations are
+        present.
+    UncommonTimeSignatureError: If `chords_per_bar` is not specified and
+        `sequence` is quantized and has an uncommon time signature.
+    NonIntegerStepsPerChordError: If the number of quantized steps per chord
+        is not an integer.
+    EmptySequenceError: If `sequence` is empty.
+    SequenceTooLongError: If the number of chords to be inferred is too
+        large.
+  &#34;&#34;&#34;
+  for ta in sequence.text_annotations:
+    if ta.annotation_type == music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL:
+      raise SequenceAlreadyHasChordsError(
+          &#39;NoteSequence already has chord(s): %s&#39; % ta.text)
+
+  if sequences_lib.is_relative_quantized_sequence(sequence):
+    # Infer a fixed number of chords per bar.
+    if chords_per_bar is None:
+      time_signature = (sequence.time_signatures[0].numerator,
+                        sequence.time_signatures[0].denominator)
+      if time_signature not in _DEFAULT_TIME_SIGNATURE_CHORDS_PER_BAR:
+        raise UncommonTimeSignatureError(
+            &#39;No default chords per bar for time signature: (%d, %d)&#39; %
+            time_signature)
+      chords_per_bar = _DEFAULT_TIME_SIGNATURE_CHORDS_PER_BAR[time_signature]
+
+    # Determine the number of seconds (and steps) each chord is held.
+    steps_per_bar_float = sequences_lib.steps_per_bar_in_quantized_sequence(
+        sequence)
+    steps_per_chord_float = steps_per_bar_float / chords_per_bar
+    if steps_per_chord_float != round(steps_per_chord_float):
+      raise NonIntegerStepsPerChordError(
+          &#39;Non-integer number of steps per chord: %f&#39; % steps_per_chord_float)
+    steps_per_chord = int(steps_per_chord_float)
+    steps_per_second = sequences_lib.steps_per_quarter_to_steps_per_second(
+        sequence.quantization_info.steps_per_quarter, sequence.tempos[0].qpm)
+    seconds_per_chord = steps_per_chord / steps_per_second
+
+    num_chords = int(math.ceil(sequence.total_time / seconds_per_chord))
+    if num_chords == 0:
+      raise EmptySequenceError(&#39;NoteSequence is empty.&#39;)
+
+  else:
+    # Sequence is not quantized relative to meter; chord changes will happen at
+    # annotated beat times.
+    if chords_per_bar is not None:
+      raise sequences_lib.QuantizationStatusError(
+          &#39;Sequence must be quantized to infer fixed number of chords per bar.&#39;)
+    beats = [
+        ta for ta in sequence.text_annotations
+        if ta.annotation_type == music_pb2.NoteSequence.TextAnnotation.BEAT
+    ]
+    if not beats:
+      raise sequences_lib.QuantizationStatusError(
+          &#39;Sequence must be quantized to infer chords without annotated beats.&#39;)
+
+    # Only keep unique beats in the interior of the sequence. The first chord
+    # always starts at time zero, the last chord always ends at
+    # `sequence.total_time`, and we don&#39;t want any zero-length chords.
+    sorted_beats = sorted(
+        [beat for beat in beats if 0.0 &lt; beat.time &lt; sequence.total_time],
+        key=lambda beat: beat.time)
+    unique_sorted_beats = [sorted_beats[i] for i in range(len(sorted_beats))
+                           if i == 0
+                           or sorted_beats[i].time &gt; sorted_beats[i - 1].time]
+
+    num_chords = len(unique_sorted_beats) + 1
+    sorted_beat_times = [beat.time for beat in unique_sorted_beats]
+    if sequences_lib.is_quantized_sequence(sequence):
+      sorted_beat_steps = [beat.quantized_step for beat in unique_sorted_beats]
+
+  if num_chords &gt; _MAX_NUM_CHORDS:
+    raise SequenceTooLongError(
+        &#39;NoteSequence too long for chord inference: %d frames&#39; % num_chords)
+
+  # Compute pitch vectors for each chord frame, then compute log-likelihood of
+  # observing those pitch vectors under each possible chord.
+  note_pitch_vectors = sequence_note_pitch_vectors(
+      sequence,
+      seconds_per_chord if chords_per_bar is not None else sorted_beat_times)
+  chord_frame_loglik = _chord_frame_log_likelihood(
+      note_pitch_vectors, chord_note_concentration)
+
+  # Compute distribution over chords for each key, and transition distribution
+  # between key-chord pairs.
+  key_chord_distribution = _key_chord_distribution(
+      chord_pitch_out_of_key_prob=chord_pitch_out_of_key_prob)
+  key_chord_transition_distribution = _key_chord_transition_distribution(
+      key_chord_distribution,
+      key_change_prob=key_change_prob,
+      chord_change_prob=chord_change_prob)
+  key_chord_loglik = np.log(key_chord_distribution)
+  key_chord_transition_loglik = np.log(key_chord_transition_distribution)
+
+  key_chords = _key_chord_viterbi(
+      chord_frame_loglik, key_chord_loglik, key_chord_transition_loglik)
+
+  if add_key_signatures:
+    del sequence.key_signatures[:]
+
+  # Add the inferred chord changes to the sequence, optionally adding key
+  # signature(s) as well.
+  current_key_name = None
+  current_chord_name = None
+  for frame, (key, chord) in enumerate(key_chords):
+    if chords_per_bar is not None:
+      time = frame * seconds_per_chord
+    else:
+      time = 0.0 if frame == 0 else sorted_beat_times[frame - 1]
+
+    if _PITCH_CLASS_NAMES[key] != current_key_name:
+      # A key change was inferred.
+      if add_key_signatures:
+        ks = sequence.key_signatures.add()
+        ks.time = time
+        ks.key = key
+      else:
+        if current_key_name is not None:
+          logging.info(
+              &#39;Sequence has key change from %s to %s at %f seconds.&#39;,
+              current_key_name, _PITCH_CLASS_NAMES[key], time)
+
+      current_key_name = _PITCH_CLASS_NAMES[key]
+
+    if chord == constants.NO_CHORD:
+      figure = constants.NO_CHORD
+    else:
+      root, kind = chord
+      figure = &#39;%s%s&#39; % (_PITCH_CLASS_NAMES[root], kind)
+
+    if figure != current_chord_name:
+      ta = sequence.text_annotations.add()
+      ta.time = time
+      if sequences_lib.is_quantized_sequence(sequence):
+        if chords_per_bar is not None:
+          ta.quantized_step = frame * steps_per_chord
+        else:
+          ta.quantized_step = 0 if frame == 0 else sorted_beat_steps[frame - 1]
+      ta.text = figure
+      ta.annotation_type = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
+      current_chord_name = figure</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="note_seq.chord_inference.infer_chords_for_sequence"><code class="name flex">
+<span>def <span class="ident">infer_chords_for_sequence</span></span>(<span>sequence, chords_per_bar=None, key_change_prob=0.001, chord_change_prob=0.5, chord_pitch_out_of_key_prob=0.01, chord_note_concentration=100.0, add_key_signatures=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Infer chords for a NoteSequence using the Viterbi algorithm.</p>
+<p>This uses some heuristics to infer chords for a quantized NoteSequence. At
+each chord position a key and chord will be inferred, and the chords will be
+added (as text annotations) to the sequence.</p>
+<p>If the sequence is quantized relative to meter, a fixed number of chords per
+bar will be inferred. Otherwise, the sequence is expected to have beat
+annotations and one chord will be inferred per beat.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sequence</code></strong></dt>
+<dd>The NoteSequence for which to infer chords. This NoteSequence will
+be modified in place.</dd>
+<dt><strong><code>chords_per_bar</code></strong></dt>
+<dd>If <code>sequence</code> is quantized, the number of chords per bar to
+infer. If None, use a default number of chords based on the time
+signature of <code>sequence</code>.</dd>
+<dt><strong><code>key_change_prob</code></strong></dt>
+<dd>Probability of a key change between two adjacent frames.</dd>
+<dt><strong><code>chord_change_prob</code></strong></dt>
+<dd>Probability of a chord change between two adjacent
+frames.</dd>
+<dt><strong><code>chord_pitch_out_of_key_prob</code></strong></dt>
+<dd>Probability of a pitch in a chord not belonging
+to the current key.</dd>
+<dt><strong><code>chord_note_concentration</code></strong></dt>
+<dd>Concentration parameter for the distribution of
+observed pitches played over a chord. At zero, all pitches are equally
+likely. As concentration increases, observed pitches must match the
+chord pitches more closely.</dd>
+<dt><strong><code>add_key_signatures</code></strong></dt>
+<dd>If True, also add inferred key signatures to
+<code>quantized_sequence</code> (and remove any existing key signatures).</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="note_seq.chord_inference.SequenceAlreadyHasChordsError" href="#note_seq.chord_inference.SequenceAlreadyHasChordsError">SequenceAlreadyHasChordsError</a></code></dt>
+<dd>If <code>sequence</code> already has chords.</dd>
+<dt><code>QuantizationStatusError</code></dt>
+<dd>If <code>sequence</code> is not quantized relative to
+meter but <code>chords_per_bar</code> is specified or no beat annotations are
+present.</dd>
+<dt><code><a title="note_seq.chord_inference.UncommonTimeSignatureError" href="#note_seq.chord_inference.UncommonTimeSignatureError">UncommonTimeSignatureError</a></code></dt>
+<dd>If <code>chords_per_bar</code> is not specified and
+<code>sequence</code> is quantized and has an uncommon time signature.</dd>
+<dt><code><a title="note_seq.chord_inference.NonIntegerStepsPerChordError" href="#note_seq.chord_inference.NonIntegerStepsPerChordError">NonIntegerStepsPerChordError</a></code></dt>
+<dd>If the number of quantized steps per chord
+is not an integer.</dd>
+<dt><code><a title="note_seq.chord_inference.EmptySequenceError" href="#note_seq.chord_inference.EmptySequenceError">EmptySequenceError</a></code></dt>
+<dd>If <code>sequence</code> is empty.</dd>
+<dt><code><a title="note_seq.chord_inference.SequenceTooLongError" href="#note_seq.chord_inference.SequenceTooLongError">SequenceTooLongError</a></code></dt>
+<dd>If the number of chords to be inferred is too
+large.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def infer_chords_for_sequence(sequence,
+                              chords_per_bar=None,
+                              key_change_prob=0.001,
+                              chord_change_prob=0.5,
+                              chord_pitch_out_of_key_prob=0.01,
+                              chord_note_concentration=100.0,
+                              add_key_signatures=False):
+  &#34;&#34;&#34;Infer chords for a NoteSequence using the Viterbi algorithm.
+
+  This uses some heuristics to infer chords for a quantized NoteSequence. At
+  each chord position a key and chord will be inferred, and the chords will be
+  added (as text annotations) to the sequence.
+
+  If the sequence is quantized relative to meter, a fixed number of chords per
+  bar will be inferred. Otherwise, the sequence is expected to have beat
+  annotations and one chord will be inferred per beat.
+
+  Args:
+    sequence: The NoteSequence for which to infer chords. This NoteSequence will
+        be modified in place.
+    chords_per_bar: If `sequence` is quantized, the number of chords per bar to
+        infer. If None, use a default number of chords based on the time
+        signature of `sequence`.
+    key_change_prob: Probability of a key change between two adjacent frames.
+    chord_change_prob: Probability of a chord change between two adjacent
+        frames.
+    chord_pitch_out_of_key_prob: Probability of a pitch in a chord not belonging
+        to the current key.
+    chord_note_concentration: Concentration parameter for the distribution of
+        observed pitches played over a chord. At zero, all pitches are equally
+        likely. As concentration increases, observed pitches must match the
+        chord pitches more closely.
+    add_key_signatures: If True, also add inferred key signatures to
+        `quantized_sequence` (and remove any existing key signatures).
+
+  Raises:
+    SequenceAlreadyHasChordsError: If `sequence` already has chords.
+    QuantizationStatusError: If `sequence` is not quantized relative to
+        meter but `chords_per_bar` is specified or no beat annotations are
+        present.
+    UncommonTimeSignatureError: If `chords_per_bar` is not specified and
+        `sequence` is quantized and has an uncommon time signature.
+    NonIntegerStepsPerChordError: If the number of quantized steps per chord
+        is not an integer.
+    EmptySequenceError: If `sequence` is empty.
+    SequenceTooLongError: If the number of chords to be inferred is too
+        large.
+  &#34;&#34;&#34;
+  for ta in sequence.text_annotations:
+    if ta.annotation_type == music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL:
+      raise SequenceAlreadyHasChordsError(
+          &#39;NoteSequence already has chord(s): %s&#39; % ta.text)
+
+  if sequences_lib.is_relative_quantized_sequence(sequence):
+    # Infer a fixed number of chords per bar.
+    if chords_per_bar is None:
+      time_signature = (sequence.time_signatures[0].numerator,
+                        sequence.time_signatures[0].denominator)
+      if time_signature not in _DEFAULT_TIME_SIGNATURE_CHORDS_PER_BAR:
+        raise UncommonTimeSignatureError(
+            &#39;No default chords per bar for time signature: (%d, %d)&#39; %
+            time_signature)
+      chords_per_bar = _DEFAULT_TIME_SIGNATURE_CHORDS_PER_BAR[time_signature]
+
+    # Determine the number of seconds (and steps) each chord is held.
+    steps_per_bar_float = sequences_lib.steps_per_bar_in_quantized_sequence(
+        sequence)
+    steps_per_chord_float = steps_per_bar_float / chords_per_bar
+    if steps_per_chord_float != round(steps_per_chord_float):
+      raise NonIntegerStepsPerChordError(
+          &#39;Non-integer number of steps per chord: %f&#39; % steps_per_chord_float)
+    steps_per_chord = int(steps_per_chord_float)
+    steps_per_second = sequences_lib.steps_per_quarter_to_steps_per_second(
+        sequence.quantization_info.steps_per_quarter, sequence.tempos[0].qpm)
+    seconds_per_chord = steps_per_chord / steps_per_second
+
+    num_chords = int(math.ceil(sequence.total_time / seconds_per_chord))
+    if num_chords == 0:
+      raise EmptySequenceError(&#39;NoteSequence is empty.&#39;)
+
+  else:
+    # Sequence is not quantized relative to meter; chord changes will happen at
+    # annotated beat times.
+    if chords_per_bar is not None:
+      raise sequences_lib.QuantizationStatusError(
+          &#39;Sequence must be quantized to infer fixed number of chords per bar.&#39;)
+    beats = [
+        ta for ta in sequence.text_annotations
+        if ta.annotation_type == music_pb2.NoteSequence.TextAnnotation.BEAT
+    ]
+    if not beats:
+      raise sequences_lib.QuantizationStatusError(
+          &#39;Sequence must be quantized to infer chords without annotated beats.&#39;)
+
+    # Only keep unique beats in the interior of the sequence. The first chord
+    # always starts at time zero, the last chord always ends at
+    # `sequence.total_time`, and we don&#39;t want any zero-length chords.
+    sorted_beats = sorted(
+        [beat for beat in beats if 0.0 &lt; beat.time &lt; sequence.total_time],
+        key=lambda beat: beat.time)
+    unique_sorted_beats = [sorted_beats[i] for i in range(len(sorted_beats))
+                           if i == 0
+                           or sorted_beats[i].time &gt; sorted_beats[i - 1].time]
+
+    num_chords = len(unique_sorted_beats) + 1
+    sorted_beat_times = [beat.time for beat in unique_sorted_beats]
+    if sequences_lib.is_quantized_sequence(sequence):
+      sorted_beat_steps = [beat.quantized_step for beat in unique_sorted_beats]
+
+  if num_chords &gt; _MAX_NUM_CHORDS:
+    raise SequenceTooLongError(
+        &#39;NoteSequence too long for chord inference: %d frames&#39; % num_chords)
+
+  # Compute pitch vectors for each chord frame, then compute log-likelihood of
+  # observing those pitch vectors under each possible chord.
+  note_pitch_vectors = sequence_note_pitch_vectors(
+      sequence,
+      seconds_per_chord if chords_per_bar is not None else sorted_beat_times)
+  chord_frame_loglik = _chord_frame_log_likelihood(
+      note_pitch_vectors, chord_note_concentration)
+
+  # Compute distribution over chords for each key, and transition distribution
+  # between key-chord pairs.
+  key_chord_distribution = _key_chord_distribution(
+      chord_pitch_out_of_key_prob=chord_pitch_out_of_key_prob)
+  key_chord_transition_distribution = _key_chord_transition_distribution(
+      key_chord_distribution,
+      key_change_prob=key_change_prob,
+      chord_change_prob=chord_change_prob)
+  key_chord_loglik = np.log(key_chord_distribution)
+  key_chord_transition_loglik = np.log(key_chord_transition_distribution)
+
+  key_chords = _key_chord_viterbi(
+      chord_frame_loglik, key_chord_loglik, key_chord_transition_loglik)
+
+  if add_key_signatures:
+    del sequence.key_signatures[:]
+
+  # Add the inferred chord changes to the sequence, optionally adding key
+  # signature(s) as well.
+  current_key_name = None
+  current_chord_name = None
+  for frame, (key, chord) in enumerate(key_chords):
+    if chords_per_bar is not None:
+      time = frame * seconds_per_chord
+    else:
+      time = 0.0 if frame == 0 else sorted_beat_times[frame - 1]
+
+    if _PITCH_CLASS_NAMES[key] != current_key_name:
+      # A key change was inferred.
+      if add_key_signatures:
+        ks = sequence.key_signatures.add()
+        ks.time = time
+        ks.key = key
+      else:
+        if current_key_name is not None:
+          logging.info(
+              &#39;Sequence has key change from %s to %s at %f seconds.&#39;,
+              current_key_name, _PITCH_CLASS_NAMES[key], time)
+
+      current_key_name = _PITCH_CLASS_NAMES[key]
+
+    if chord == constants.NO_CHORD:
+      figure = constants.NO_CHORD
+    else:
+      root, kind = chord
+      figure = &#39;%s%s&#39; % (_PITCH_CLASS_NAMES[root], kind)
+
+    if figure != current_chord_name:
+      ta = sequence.text_annotations.add()
+      ta.time = time
+      if sequences_lib.is_quantized_sequence(sequence):
+        if chords_per_bar is not None:
+          ta.quantized_step = frame * steps_per_chord
+        else:
+          ta.quantized_step = 0 if frame == 0 else sorted_beat_steps[frame - 1]
+      ta.text = figure
+      ta.annotation_type = music_pb2.NoteSequence.TextAnnotation.CHORD_SYMBOL
+      current_chord_name = figure</code></pre>
+</details>
+</dd>
+<dt id="note_seq.chord_inference.sequence_note_pitch_vectors"><code class="name flex">
+<span>def <span class="ident">sequence_note_pitch_vectors</span></span>(<span>sequence, seconds_per_frame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute pitch class vectors for temporal frames across a sequence.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sequence</code></strong></dt>
+<dd>The NoteSequence for which to compute pitch class vectors.</dd>
+<dt><strong><code>seconds_per_frame</code></strong></dt>
+<dd>The size of the frame corresponding to each pitch class
+vector, in seconds. Alternatively, a list of frame boundary times in
+seconds (not including initial start time and final end time).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A numpy array with shape <code>[num_frames, 12]</code> where each row is a unit-
+normalized pitch class vector for the corresponding frame in <code>sequence</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sequence_note_pitch_vectors(sequence, seconds_per_frame):
+  &#34;&#34;&#34;Compute pitch class vectors for temporal frames across a sequence.
+
+  Args:
+    sequence: The NoteSequence for which to compute pitch class vectors.
+    seconds_per_frame: The size of the frame corresponding to each pitch class
+        vector, in seconds. Alternatively, a list of frame boundary times in
+        seconds (not including initial start time and final end time).
+
+  Returns:
+    A numpy array with shape `[num_frames, 12]` where each row is a unit-
+    normalized pitch class vector for the corresponding frame in `sequence`.
+  &#34;&#34;&#34;
+  if isinstance(seconds_per_frame, numbers.Number):
+    # Construct array of frame boundary times.
+    num_frames = int(math.ceil(sequence.total_time / seconds_per_frame))
+    frame_boundaries = seconds_per_frame * np.arange(1, num_frames)
+  else:
+    frame_boundaries = sorted(seconds_per_frame)
+    num_frames = len(frame_boundaries) + 1
+
+  x = np.zeros([num_frames, 12])
+
+  for note in sequence.notes:
+    if note.is_drum:
+      continue
+    if note.program in constants.UNPITCHED_PROGRAMS:
+      continue
+
+    start_frame = bisect.bisect_right(frame_boundaries, note.start_time)
+    end_frame = bisect.bisect_left(frame_boundaries, note.end_time)
+    pitch_class = note.pitch % 12
+
+    if start_frame &gt;= end_frame:
+      x[start_frame, pitch_class] += note.end_time - note.start_time
+    else:
+      x[start_frame, pitch_class] += (
+          frame_boundaries[start_frame] - note.start_time)
+      for frame in range(start_frame + 1, end_frame):
+        x[frame, pitch_class] += (
+            frame_boundaries[frame] - frame_boundaries[frame - 1])
+      x[end_frame, pitch_class] += (
+          note.end_time - frame_boundaries[end_frame - 1])
+
+  x_norm = np.linalg.norm(x, axis=1)
+  nonzero_frames = x_norm &gt; 0
+  x[nonzero_frames, :] /= x_norm[nonzero_frames, np.newaxis]
+
+  return x</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.chord_inference.ChordInferenceError"><code class="flex name class">
+<span>class <span class="ident">ChordInferenceError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChordInferenceError(Exception):  # pylint:disable=g-bad-exception-name
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.EmptySequenceError" href="#note_seq.chord_inference.EmptySequenceError">EmptySequenceError</a></li>
+<li><a title="note_seq.chord_inference.NonIntegerStepsPerChordError" href="#note_seq.chord_inference.NonIntegerStepsPerChordError">NonIntegerStepsPerChordError</a></li>
+<li><a title="note_seq.chord_inference.SequenceAlreadyHasChordsError" href="#note_seq.chord_inference.SequenceAlreadyHasChordsError">SequenceAlreadyHasChordsError</a></li>
+<li><a title="note_seq.chord_inference.SequenceTooLongError" href="#note_seq.chord_inference.SequenceTooLongError">SequenceTooLongError</a></li>
+<li><a title="note_seq.chord_inference.UncommonTimeSignatureError" href="#note_seq.chord_inference.UncommonTimeSignatureError">UncommonTimeSignatureError</a></li>
+</ul>
+</dd>
+<dt id="note_seq.chord_inference.EmptySequenceError"><code class="flex name class">
+<span>class <span class="ident">EmptySequenceError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EmptySequenceError(ChordInferenceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.chord_inference.NonIntegerStepsPerChordError"><code class="flex name class">
+<span>class <span class="ident">NonIntegerStepsPerChordError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NonIntegerStepsPerChordError(ChordInferenceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.chord_inference.SequenceAlreadyHasChordsError"><code class="flex name class">
+<span>class <span class="ident">SequenceAlreadyHasChordsError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SequenceAlreadyHasChordsError(ChordInferenceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.chord_inference.SequenceTooLongError"><code class="flex name class">
+<span>class <span class="ident">SequenceTooLongError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SequenceTooLongError(ChordInferenceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="note_seq.chord_inference.UncommonTimeSignatureError"><code class="flex name class">
+<span>class <span class="ident">UncommonTimeSignatureError</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Common base class for all non-exit exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UncommonTimeSignatureError(ChordInferenceError):
+  pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="note_seq.chord_inference.infer_chords_for_sequence" href="#note_seq.chord_inference.infer_chords_for_sequence">infer_chords_for_sequence</a></code></li>
+<li><code><a title="note_seq.chord_inference.sequence_note_pitch_vectors" href="#note_seq.chord_inference.sequence_note_pitch_vectors">sequence_note_pitch_vectors</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.chord_inference.ChordInferenceError" href="#note_seq.chord_inference.ChordInferenceError">ChordInferenceError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.chord_inference.EmptySequenceError" href="#note_seq.chord_inference.EmptySequenceError">EmptySequenceError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.chord_inference.NonIntegerStepsPerChordError" href="#note_seq.chord_inference.NonIntegerStepsPerChordError">NonIntegerStepsPerChordError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.chord_inference.SequenceAlreadyHasChordsError" href="#note_seq.chord_inference.SequenceAlreadyHasChordsError">SequenceAlreadyHasChordsError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.chord_inference.SequenceTooLongError" href="#note_seq.chord_inference.SequenceTooLongError">SequenceTooLongError</a></code></h4>
+</li>
+<li>
+<h4><code><a title="note_seq.chord_inference.UncommonTimeSignatureError" href="#note_seq.chord_inference.UncommonTimeSignatureError">UncommonTimeSignatureError</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

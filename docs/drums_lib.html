@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.drums_lib API documentation</title>
+<meta name="description" content="Utility functions for working with drums …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.drums_lib</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions for working with drums.</p>
+<p>Use extract_drum_tracks to extract drum tracks from a quantized NoteSequence.</p>
+<p>Use DrumTrack.to_sequence to write a drum track to a NoteSequence proto. Then
+use midi_io.sequence_proto_to_midi_file to write that NoteSequence to a midi
+file.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+&#34;&#34;&#34;Utility functions for working with drums.
+
+Use extract_drum_tracks to extract drum tracks from a quantized NoteSequence.
+
+Use DrumTrack.to_sequence to write a drum track to a NoteSequence proto. Then
+use midi_io.sequence_proto_to_midi_file to write that NoteSequence to a midi
+file.
+&#34;&#34;&#34;
+
+import collections
+import operator
+
+from note_seq import constants
+from note_seq import events_lib
+from note_seq import midi_io
+from note_seq import sequences_lib
+from note_seq.protobuf import music_pb2
+
+MIN_MIDI_PITCH = constants.MIN_MIDI_PITCH
+MAX_MIDI_PITCH = constants.MAX_MIDI_PITCH
+DEFAULT_STEPS_PER_BAR = constants.DEFAULT_STEPS_PER_BAR
+DEFAULT_STEPS_PER_QUARTER = constants.DEFAULT_STEPS_PER_QUARTER
+STANDARD_PPQ = constants.STANDARD_PPQ
+
+
+class DrumTrack(events_lib.SimpleEventSequence):
+  &#34;&#34;&#34;Stores a quantized stream of drum events.
+
+  DrumTrack is an intermediate representation that all drum models can use.
+  Quantized sequence to DrumTrack code will do work to align drum notes and
+  extract drum tracks. Model-specific code then needs to convert DrumTrack
+  to SequenceExample protos for TensorFlow.
+
+  DrumTrack implements an iterable object. Simply iterate to retrieve the drum
+  events.
+
+  DrumTrack events are Python frozensets of simultaneous MIDI drum &#34;pitches&#34;,
+  where each pitch indicates a type of drum. An empty frozenset indicates no
+  drum notes. Unlike melody notes, drum notes are not considered to have
+  durations.
+
+  Drum tracks can start at any non-negative time, and are shifted left so that
+  the bar containing the first drum event is the first bar.
+
+  Attributes:
+    start_step: The offset of the first step of the drum track relative to the
+        beginning of the source sequence. Will always be the first step of a
+        bar.
+    end_step: The offset to the beginning of the bar following the last step
+       of the drum track relative the beginning of the source sequence. Will
+       always be the first step of a bar.
+    steps_per_quarter: Number of steps in in a quarter note.
+    steps_per_bar: Number of steps in a bar (measure) of music.
+  &#34;&#34;&#34;
+
+  def __init__(self, events=None, **kwargs):
+    &#34;&#34;&#34;Construct a DrumTrack.&#34;&#34;&#34;
+    if &#39;pad_event&#39; in kwargs:
+      del kwargs[&#39;pad_event&#39;]
+    super(DrumTrack, self).__init__(pad_event=frozenset(),
+                                    events=events, **kwargs)
+
+  def _from_event_list(self, events, start_step=0,
+                       steps_per_bar=DEFAULT_STEPS_PER_BAR,
+                       steps_per_quarter=DEFAULT_STEPS_PER_QUARTER):
+    &#34;&#34;&#34;Initializes with a list of event values and sets attributes.
+
+    Args:
+      events: List of drum events to set drum track to.
+      start_step: The integer starting step offset.
+      steps_per_bar: The number of steps in a bar.
+      steps_per_quarter: The number of steps in a quarter note.
+
+    Raises:
+      ValueError: If `events` contains an event that is not a valid drum event.
+    &#34;&#34;&#34;
+    for event in events:
+      if not isinstance(event, frozenset):
+        raise ValueError(&#39;Invalid drum event: %s&#39; % event)
+      if not all(MIN_MIDI_PITCH &lt;= drum &lt;= MAX_MIDI_PITCH for drum in event):
+        raise ValueError(&#39;Drum event contains invalid note: %s&#39; % event)
+    super(DrumTrack, self)._from_event_list(
+        events, start_step=start_step, steps_per_bar=steps_per_bar,
+        steps_per_quarter=steps_per_quarter)
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the drums and increments the end step.
+
+    Args:
+      event: The drum event to append to the end.
+    Raises:
+      ValueError: If `event` is not a valid drum event.
+    &#34;&#34;&#34;
+    if not isinstance(event, frozenset):
+      raise ValueError(&#39;Invalid drum event: %s&#39; % event)
+    if not all(MIN_MIDI_PITCH &lt;= drum &lt;= MAX_MIDI_PITCH for drum in event):
+      raise ValueError(&#39;Drum event contains invalid note: %s&#39; % event)
+    super(DrumTrack, self).append(event)
+
+  def from_quantized_sequence(self,
+                              quantized_sequence,
+                              search_start_step=0,
+                              gap_bars=1,
+                              pad_end=False,
+                              ignore_is_drum=False):
+    &#34;&#34;&#34;Populate self with drums from the given quantized NoteSequence object.
+
+    A drum track is extracted from the given quantized sequence starting at time
+    step `start_step`. `start_step` can be used to drive extraction of multiple
+    drum tracks from the same quantized sequence. The end step of the extracted
+    drum track will be stored in `self._end_step`.
+
+    0 velocity notes are ignored. The drum extraction is ended when there are
+    no drums for a time stretch of `gap_bars` in bars (measures) of music. The
+    number of time steps per bar is computed from the time signature in
+    `quantized_sequence`.
+
+    Each drum event is a Python frozenset of simultaneous (after quantization)
+    drum &#34;pitches&#34;, or an empty frozenset to indicate no drums are played.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      search_start_step: Start searching for drums at this time step. Assumed to
+          be the beginning of a bar.
+      gap_bars: If this many bars or more follow a non-empty drum event, the
+          drum track is ended.
+      pad_end: If True, the end of the drums will be padded with empty events so
+          that it will end at a bar boundary.
+      ignore_is_drum: Whether accept notes where `is_drum` is False.
+
+    Raises:
+      NonIntegerStepsPerBarError: If `quantized_sequence`&#39;s bar length
+          (derived from its time signature) is not an integer number of time
+          steps.
+    &#34;&#34;&#34;
+    sequences_lib.assert_is_relative_quantized_sequence(quantized_sequence)
+    self._reset()
+
+    steps_per_bar_float = sequences_lib.steps_per_bar_in_quantized_sequence(
+        quantized_sequence)
+    if steps_per_bar_float % 1 != 0:
+      raise events_lib.NonIntegerStepsPerBarError(
+          &#39;There are %f timesteps per bar. Time signature: %d/%d&#39; %
+          (steps_per_bar_float, quantized_sequence.time_signatures[0].numerator,
+           quantized_sequence.time_signatures[0].denominator))
+    self._steps_per_bar = steps_per_bar = int(steps_per_bar_float)
+    self._steps_per_quarter = (
+        quantized_sequence.quantization_info.steps_per_quarter)
+
+    # Group all drum notes that start at the same step.
+    all_notes = [note for note in quantized_sequence.notes
+                 if ((note.is_drum or ignore_is_drum)  # drums only
+                     and note.velocity  # no zero-velocity notes
+                     # after start_step only
+                     and note.quantized_start_step &gt;= search_start_step)]
+    grouped_notes = collections.defaultdict(list)
+    for note in all_notes:
+      grouped_notes[note.quantized_start_step].append(note)
+
+    # Sort by note start times.
+    notes = sorted(grouped_notes.items(), key=operator.itemgetter(0))
+
+    if not notes:
+      return
+
+    gap_start_index = 0
+
+    track_start_step = (
+        notes[0][0] - (notes[0][0] - search_start_step) % steps_per_bar)
+    for start, group in notes:
+
+      start_index = start - track_start_step
+      pitches = frozenset(note.pitch for note in group)
+
+      # If a gap of `gap` or more steps is found, end the drum track.
+      note_distance = start_index - gap_start_index
+      if len(self) and note_distance &gt;= gap_bars * steps_per_bar:  # pylint:disable=len-as-condition
+        break
+
+      # Add a drum event, a set of drum &#34;pitches&#34;.
+      self.set_length(start_index + 1)
+      self._events[start_index] = pitches
+
+      gap_start_index = start_index + 1
+
+    if not self._events:
+      # If no drum events were added, don&#39;t set `_start_step` and `_end_step`.
+      return
+
+    self._start_step = track_start_step
+
+    length = len(self)
+    # Optionally round up `_end_step` to a multiple of `steps_per_bar`.
+    if pad_end:
+      length += -len(self) % steps_per_bar
+    self.set_length(length)
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=9,
+                  program=0,
+                  sequence_start_time=0.0,
+                  qpm=120.0):
+    &#34;&#34;&#34;Converts the DrumTrack to NoteSequence proto.
+
+    Args:
+      velocity: Midi velocity to give each note. Between 1 and 127 (inclusive).
+      instrument: Midi instrument to give each note.
+      program: Midi program to give each note.
+      sequence_start_time: A time in seconds (float) that the first event in the
+          sequence will land on.
+      qpm: Quarter notes per minute (float).
+
+    Returns:
+      A NoteSequence proto encoding the given drum track.
+    &#34;&#34;&#34;
+    seconds_per_step = 60.0 / qpm / self.steps_per_quarter
+
+    sequence = music_pb2.NoteSequence()
+    sequence.tempos.add().qpm = qpm
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    sequence_start_time += self.start_step * seconds_per_step
+    for step, event in enumerate(self):
+      for pitch in event:
+        # Add a note. All drum notes last a single step.
+        note = sequence.notes.add()
+        note.start_time = step * seconds_per_step + sequence_start_time
+        note.end_time = (step + 1) * seconds_per_step + sequence_start_time
+        note.pitch = pitch
+        note.velocity = velocity
+        note.instrument = instrument
+        note.program = program
+        note.is_drum = True
+
+    if sequence.notes:
+      sequence.total_time = sequence.notes[-1].end_time
+
+    return sequence
+
+  def increase_resolution(self, k):
+    &#34;&#34;&#34;Increase the resolution of a DrumTrack.
+
+    Increases the resolution of a DrumTrack object by a factor of `k`. This uses
+    empty events to extend each event in the drum track to be `k` steps long.
+
+    Args:
+      k: An integer, the factor by which to increase the resolution of the
+          drum track.
+    &#34;&#34;&#34;
+    super(DrumTrack, self).increase_resolution(
+        k, fill_event=frozenset())
+
+
+def midi_file_to_drum_track(midi_file, steps_per_quarter=4):
+  &#34;&#34;&#34;Loads a drum track from a MIDI file.
+
+  Args:
+    midi_file: Absolute path to MIDI file.
+    steps_per_quarter: Quantization of DrumTrack. For example, 4 = 16th notes.
+
+  Returns:
+    A DrumTrack object extracted from the MIDI file.
+  &#34;&#34;&#34;
+  sequence = midi_io.midi_file_to_sequence_proto(midi_file)
+  quantized_sequence = sequences_lib.quantize_note_sequence(
+      sequence, steps_per_quarter=steps_per_quarter)
+  drum_track = DrumTrack()
+  drum_track.from_quantized_sequence(quantized_sequence)
+  return drum_track</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="note_seq.drums_lib.midi_file_to_drum_track"><code class="name flex">
+<span>def <span class="ident">midi_file_to_drum_track</span></span>(<span>midi_file, steps_per_quarter=4)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads a drum track from a MIDI file.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>midi_file</code></strong></dt>
+<dd>Absolute path to MIDI file.</dd>
+<dt><strong><code>steps_per_quarter</code></strong></dt>
+<dd>Quantization of DrumTrack. For example, 4 = 16th notes.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A DrumTrack object extracted from the MIDI file.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def midi_file_to_drum_track(midi_file, steps_per_quarter=4):
+  &#34;&#34;&#34;Loads a drum track from a MIDI file.
+
+  Args:
+    midi_file: Absolute path to MIDI file.
+    steps_per_quarter: Quantization of DrumTrack. For example, 4 = 16th notes.
+
+  Returns:
+    A DrumTrack object extracted from the MIDI file.
+  &#34;&#34;&#34;
+  sequence = midi_io.midi_file_to_sequence_proto(midi_file)
+  quantized_sequence = sequences_lib.quantize_note_sequence(
+      sequence, steps_per_quarter=steps_per_quarter)
+  drum_track = DrumTrack()
+  drum_track.from_quantized_sequence(quantized_sequence)
+  return drum_track</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.drums_lib.DrumTrack"><code class="flex name class">
+<span>class <span class="ident">DrumTrack</span></span>
+<span>(</span><span>events=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stores a quantized stream of drum events.</p>
+<p>DrumTrack is an intermediate representation that all drum models can use.
+Quantized sequence to DrumTrack code will do work to align drum notes and
+extract drum tracks. Model-specific code then needs to convert DrumTrack
+to SequenceExample protos for TensorFlow.</p>
+<p>DrumTrack implements an iterable object. Simply iterate to retrieve the drum
+events.</p>
+<p>DrumTrack events are Python frozensets of simultaneous MIDI drum "pitches",
+where each pitch indicates a type of drum. An empty frozenset indicates no
+drum notes. Unlike melody notes, drum notes are not considered to have
+durations.</p>
+<p>Drum tracks can start at any non-negative time, and are shifted left so that
+the bar containing the first drum event is the first bar.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>start_step</code></strong></dt>
+<dd>The offset of the first step of the drum track relative to the
+beginning of the source sequence. Will always be the first step of a
+bar.</dd>
+<dt><strong><code>end_step</code></strong></dt>
+<dd>The offset to the beginning of the bar following the last step
+of the drum track relative the beginning of the source sequence. Will
+always be the first step of a bar.</dd>
+<dt><strong><code>steps_per_quarter</code></strong></dt>
+<dd>Number of steps in in a quarter note.</dd>
+<dt><strong><code>steps_per_bar</code></strong></dt>
+<dd>Number of steps in a bar (measure) of music.</dd>
+</dl>
+<p>Construct a DrumTrack.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DrumTrack(events_lib.SimpleEventSequence):
+  &#34;&#34;&#34;Stores a quantized stream of drum events.
+
+  DrumTrack is an intermediate representation that all drum models can use.
+  Quantized sequence to DrumTrack code will do work to align drum notes and
+  extract drum tracks. Model-specific code then needs to convert DrumTrack
+  to SequenceExample protos for TensorFlow.
+
+  DrumTrack implements an iterable object. Simply iterate to retrieve the drum
+  events.
+
+  DrumTrack events are Python frozensets of simultaneous MIDI drum &#34;pitches&#34;,
+  where each pitch indicates a type of drum. An empty frozenset indicates no
+  drum notes. Unlike melody notes, drum notes are not considered to have
+  durations.
+
+  Drum tracks can start at any non-negative time, and are shifted left so that
+  the bar containing the first drum event is the first bar.
+
+  Attributes:
+    start_step: The offset of the first step of the drum track relative to the
+        beginning of the source sequence. Will always be the first step of a
+        bar.
+    end_step: The offset to the beginning of the bar following the last step
+       of the drum track relative the beginning of the source sequence. Will
+       always be the first step of a bar.
+    steps_per_quarter: Number of steps in in a quarter note.
+    steps_per_bar: Number of steps in a bar (measure) of music.
+  &#34;&#34;&#34;
+
+  def __init__(self, events=None, **kwargs):
+    &#34;&#34;&#34;Construct a DrumTrack.&#34;&#34;&#34;
+    if &#39;pad_event&#39; in kwargs:
+      del kwargs[&#39;pad_event&#39;]
+    super(DrumTrack, self).__init__(pad_event=frozenset(),
+                                    events=events, **kwargs)
+
+  def _from_event_list(self, events, start_step=0,
+                       steps_per_bar=DEFAULT_STEPS_PER_BAR,
+                       steps_per_quarter=DEFAULT_STEPS_PER_QUARTER):
+    &#34;&#34;&#34;Initializes with a list of event values and sets attributes.
+
+    Args:
+      events: List of drum events to set drum track to.
+      start_step: The integer starting step offset.
+      steps_per_bar: The number of steps in a bar.
+      steps_per_quarter: The number of steps in a quarter note.
+
+    Raises:
+      ValueError: If `events` contains an event that is not a valid drum event.
+    &#34;&#34;&#34;
+    for event in events:
+      if not isinstance(event, frozenset):
+        raise ValueError(&#39;Invalid drum event: %s&#39; % event)
+      if not all(MIN_MIDI_PITCH &lt;= drum &lt;= MAX_MIDI_PITCH for drum in event):
+        raise ValueError(&#39;Drum event contains invalid note: %s&#39; % event)
+    super(DrumTrack, self)._from_event_list(
+        events, start_step=start_step, steps_per_bar=steps_per_bar,
+        steps_per_quarter=steps_per_quarter)
+
+  def append(self, event):
+    &#34;&#34;&#34;Appends the event to the end of the drums and increments the end step.
+
+    Args:
+      event: The drum event to append to the end.
+    Raises:
+      ValueError: If `event` is not a valid drum event.
+    &#34;&#34;&#34;
+    if not isinstance(event, frozenset):
+      raise ValueError(&#39;Invalid drum event: %s&#39; % event)
+    if not all(MIN_MIDI_PITCH &lt;= drum &lt;= MAX_MIDI_PITCH for drum in event):
+      raise ValueError(&#39;Drum event contains invalid note: %s&#39; % event)
+    super(DrumTrack, self).append(event)
+
+  def from_quantized_sequence(self,
+                              quantized_sequence,
+                              search_start_step=0,
+                              gap_bars=1,
+                              pad_end=False,
+                              ignore_is_drum=False):
+    &#34;&#34;&#34;Populate self with drums from the given quantized NoteSequence object.
+
+    A drum track is extracted from the given quantized sequence starting at time
+    step `start_step`. `start_step` can be used to drive extraction of multiple
+    drum tracks from the same quantized sequence. The end step of the extracted
+    drum track will be stored in `self._end_step`.
+
+    0 velocity notes are ignored. The drum extraction is ended when there are
+    no drums for a time stretch of `gap_bars` in bars (measures) of music. The
+    number of time steps per bar is computed from the time signature in
+    `quantized_sequence`.
+
+    Each drum event is a Python frozenset of simultaneous (after quantization)
+    drum &#34;pitches&#34;, or an empty frozenset to indicate no drums are played.
+
+    Args:
+      quantized_sequence: A quantized NoteSequence instance.
+      search_start_step: Start searching for drums at this time step. Assumed to
+          be the beginning of a bar.
+      gap_bars: If this many bars or more follow a non-empty drum event, the
+          drum track is ended.
+      pad_end: If True, the end of the drums will be padded with empty events so
+          that it will end at a bar boundary.
+      ignore_is_drum: Whether accept notes where `is_drum` is False.
+
+    Raises:
+      NonIntegerStepsPerBarError: If `quantized_sequence`&#39;s bar length
+          (derived from its time signature) is not an integer number of time
+          steps.
+    &#34;&#34;&#34;
+    sequences_lib.assert_is_relative_quantized_sequence(quantized_sequence)
+    self._reset()
+
+    steps_per_bar_float = sequences_lib.steps_per_bar_in_quantized_sequence(
+        quantized_sequence)
+    if steps_per_bar_float % 1 != 0:
+      raise events_lib.NonIntegerStepsPerBarError(
+          &#39;There are %f timesteps per bar. Time signature: %d/%d&#39; %
+          (steps_per_bar_float, quantized_sequence.time_signatures[0].numerator,
+           quantized_sequence.time_signatures[0].denominator))
+    self._steps_per_bar = steps_per_bar = int(steps_per_bar_float)
+    self._steps_per_quarter = (
+        quantized_sequence.quantization_info.steps_per_quarter)
+
+    # Group all drum notes that start at the same step.
+    all_notes = [note for note in quantized_sequence.notes
+                 if ((note.is_drum or ignore_is_drum)  # drums only
+                     and note.velocity  # no zero-velocity notes
+                     # after start_step only
+                     and note.quantized_start_step &gt;= search_start_step)]
+    grouped_notes = collections.defaultdict(list)
+    for note in all_notes:
+      grouped_notes[note.quantized_start_step].append(note)
+
+    # Sort by note start times.
+    notes = sorted(grouped_notes.items(), key=operator.itemgetter(0))
+
+    if not notes:
+      return
+
+    gap_start_index = 0
+
+    track_start_step = (
+        notes[0][0] - (notes[0][0] - search_start_step) % steps_per_bar)
+    for start, group in notes:
+
+      start_index = start - track_start_step
+      pitches = frozenset(note.pitch for note in group)
+
+      # If a gap of `gap` or more steps is found, end the drum track.
+      note_distance = start_index - gap_start_index
+      if len(self) and note_distance &gt;= gap_bars * steps_per_bar:  # pylint:disable=len-as-condition
+        break
+
+      # Add a drum event, a set of drum &#34;pitches&#34;.
+      self.set_length(start_index + 1)
+      self._events[start_index] = pitches
+
+      gap_start_index = start_index + 1
+
+    if not self._events:
+      # If no drum events were added, don&#39;t set `_start_step` and `_end_step`.
+      return
+
+    self._start_step = track_start_step
+
+    length = len(self)
+    # Optionally round up `_end_step` to a multiple of `steps_per_bar`.
+    if pad_end:
+      length += -len(self) % steps_per_bar
+    self.set_length(length)
+
+  def to_sequence(self,
+                  velocity=100,
+                  instrument=9,
+                  program=0,
+                  sequence_start_time=0.0,
+                  qpm=120.0):
+    &#34;&#34;&#34;Converts the DrumTrack to NoteSequence proto.
+
+    Args:
+      velocity: Midi velocity to give each note. Between 1 and 127 (inclusive).
+      instrument: Midi instrument to give each note.
+      program: Midi program to give each note.
+      sequence_start_time: A time in seconds (float) that the first event in the
+          sequence will land on.
+      qpm: Quarter notes per minute (float).
+
+    Returns:
+      A NoteSequence proto encoding the given drum track.
+    &#34;&#34;&#34;
+    seconds_per_step = 60.0 / qpm / self.steps_per_quarter
+
+    sequence = music_pb2.NoteSequence()
+    sequence.tempos.add().qpm = qpm
+    sequence.ticks_per_quarter = STANDARD_PPQ
+
+    sequence_start_time += self.start_step * seconds_per_step
+    for step, event in enumerate(self):
+      for pitch in event:
+        # Add a note. All drum notes last a single step.
+        note = sequence.notes.add()
+        note.start_time = step * seconds_per_step + sequence_start_time
+        note.end_time = (step + 1) * seconds_per_step + sequence_start_time
+        note.pitch = pitch
+        note.velocity = velocity
+        note.instrument = instrument
+        note.program = program
+        note.is_drum = True
+
+    if sequence.notes:
+      sequence.total_time = sequence.notes[-1].end_time
+
+    return sequence
+
+  def increase_resolution(self, k):
+    &#34;&#34;&#34;Increase the resolution of a DrumTrack.
+
+    Increases the resolution of a DrumTrack object by a factor of `k`. This uses
+    empty events to extend each event in the drum track to be `k` steps long.
+
+    Args:
+      k: An integer, the factor by which to increase the resolution of the
+          drum track.
+    &#34;&#34;&#34;
+    super(DrumTrack, self).increase_resolution(
+        k, fill_event=frozenset())</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="note_seq.events_lib.SimpleEventSequence" href="events_lib.html#note_seq.events_lib.SimpleEventSequence">SimpleEventSequence</a></li>
+<li><a title="note_seq.events_lib.EventSequence" href="events_lib.html#note_seq.events_lib.EventSequence">EventSequence</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="note_seq.drums_lib.DrumTrack.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, event)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Appends the event to the end of the drums and increments the end step.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>event</code></strong></dt>
+<dd>The drum event to append to the end.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>event</code> is not a valid drum event.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, event):
+  &#34;&#34;&#34;Appends the event to the end of the drums and increments the end step.
+
+  Args:
+    event: The drum event to append to the end.
+  Raises:
+    ValueError: If `event` is not a valid drum event.
+  &#34;&#34;&#34;
+  if not isinstance(event, frozenset):
+    raise ValueError(&#39;Invalid drum event: %s&#39; % event)
+  if not all(MIN_MIDI_PITCH &lt;= drum &lt;= MAX_MIDI_PITCH for drum in event):
+    raise ValueError(&#39;Drum event contains invalid note: %s&#39; % event)
+  super(DrumTrack, self).append(event)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.drums_lib.DrumTrack.from_quantized_sequence"><code class="name flex">
+<span>def <span class="ident">from_quantized_sequence</span></span>(<span>self, quantized_sequence, search_start_step=0, gap_bars=1, pad_end=False, ignore_is_drum=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Populate self with drums from the given quantized NoteSequence object.</p>
+<p>A drum track is extracted from the given quantized sequence starting at time
+step <code>start_step</code>. <code>start_step</code> can be used to drive extraction of multiple
+drum tracks from the same quantized sequence. The end step of the extracted
+drum track will be stored in <code>self._end_step</code>.</p>
+<p>0 velocity notes are ignored. The drum extraction is ended when there are
+no drums for a time stretch of <code>gap_bars</code> in bars (measures) of music. The
+number of time steps per bar is computed from the time signature in
+<code>quantized_sequence</code>.</p>
+<p>Each drum event is a Python frozenset of simultaneous (after quantization)
+drum "pitches", or an empty frozenset to indicate no drums are played.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>quantized_sequence</code></strong></dt>
+<dd>A quantized NoteSequence instance.</dd>
+<dt><strong><code>search_start_step</code></strong></dt>
+<dd>Start searching for drums at this time step. Assumed to
+be the beginning of a bar.</dd>
+<dt><strong><code>gap_bars</code></strong></dt>
+<dd>If this many bars or more follow a non-empty drum event, the
+drum track is ended.</dd>
+<dt><strong><code>pad_end</code></strong></dt>
+<dd>If True, the end of the drums will be padded with empty events so
+that it will end at a bar boundary.</dd>
+<dt><strong><code>ignore_is_drum</code></strong></dt>
+<dd>Whether accept notes where <code>is_drum</code> is False.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>NonIntegerStepsPerBarError</code></dt>
+<dd>If <code>quantized_sequence</code>'s bar length
+(derived from its time signature) is not an integer number of time
+steps.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from_quantized_sequence(self,
+                            quantized_sequence,
+                            search_start_step=0,
+                            gap_bars=1,
+                            pad_end=False,
+                            ignore_is_drum=False):
+  &#34;&#34;&#34;Populate self with drums from the given quantized NoteSequence object.
+
+  A drum track is extracted from the given quantized sequence starting at time
+  step `start_step`. `start_step` can be used to drive extraction of multiple
+  drum tracks from the same quantized sequence. The end step of the extracted
+  drum track will be stored in `self._end_step`.
+
+  0 velocity notes are ignored. The drum extraction is ended when there are
+  no drums for a time stretch of `gap_bars` in bars (measures) of music. The
+  number of time steps per bar is computed from the time signature in
+  `quantized_sequence`.
+
+  Each drum event is a Python frozenset of simultaneous (after quantization)
+  drum &#34;pitches&#34;, or an empty frozenset to indicate no drums are played.
+
+  Args:
+    quantized_sequence: A quantized NoteSequence instance.
+    search_start_step: Start searching for drums at this time step. Assumed to
+        be the beginning of a bar.
+    gap_bars: If this many bars or more follow a non-empty drum event, the
+        drum track is ended.
+    pad_end: If True, the end of the drums will be padded with empty events so
+        that it will end at a bar boundary.
+    ignore_is_drum: Whether accept notes where `is_drum` is False.
+
+  Raises:
+    NonIntegerStepsPerBarError: If `quantized_sequence`&#39;s bar length
+        (derived from its time signature) is not an integer number of time
+        steps.
+  &#34;&#34;&#34;
+  sequences_lib.assert_is_relative_quantized_sequence(quantized_sequence)
+  self._reset()
+
+  steps_per_bar_float = sequences_lib.steps_per_bar_in_quantized_sequence(
+      quantized_sequence)
+  if steps_per_bar_float % 1 != 0:
+    raise events_lib.NonIntegerStepsPerBarError(
+        &#39;There are %f timesteps per bar. Time signature: %d/%d&#39; %
+        (steps_per_bar_float, quantized_sequence.time_signatures[0].numerator,
+         quantized_sequence.time_signatures[0].denominator))
+  self._steps_per_bar = steps_per_bar = int(steps_per_bar_float)
+  self._steps_per_quarter = (
+      quantized_sequence.quantization_info.steps_per_quarter)
+
+  # Group all drum notes that start at the same step.
+  all_notes = [note for note in quantized_sequence.notes
+               if ((note.is_drum or ignore_is_drum)  # drums only
+                   and note.velocity  # no zero-velocity notes
+                   # after start_step only
+                   and note.quantized_start_step &gt;= search_start_step)]
+  grouped_notes = collections.defaultdict(list)
+  for note in all_notes:
+    grouped_notes[note.quantized_start_step].append(note)
+
+  # Sort by note start times.
+  notes = sorted(grouped_notes.items(), key=operator.itemgetter(0))
+
+  if not notes:
+    return
+
+  gap_start_index = 0
+
+  track_start_step = (
+      notes[0][0] - (notes[0][0] - search_start_step) % steps_per_bar)
+  for start, group in notes:
+
+    start_index = start - track_start_step
+    pitches = frozenset(note.pitch for note in group)
+
+    # If a gap of `gap` or more steps is found, end the drum track.
+    note_distance = start_index - gap_start_index
+    if len(self) and note_distance &gt;= gap_bars * steps_per_bar:  # pylint:disable=len-as-condition
+      break
+
+    # Add a drum event, a set of drum &#34;pitches&#34;.
+    self.set_length(start_index + 1)
+    self._events[start_index] = pitches
+
+    gap_start_index = start_index + 1
+
+  if not self._events:
+    # If no drum events were added, don&#39;t set `_start_step` and `_end_step`.
+    return
+
+  self._start_step = track_start_step
+
+  length = len(self)
+  # Optionally round up `_end_step` to a multiple of `steps_per_bar`.
+  if pad_end:
+    length += -len(self) % steps_per_bar
+  self.set_length(length)</code></pre>
+</details>
+</dd>
+<dt id="note_seq.drums_lib.DrumTrack.increase_resolution"><code class="name flex">
+<span>def <span class="ident">increase_resolution</span></span>(<span>self, k)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Increase the resolution of a DrumTrack.</p>
+<p>Increases the resolution of a DrumTrack object by a factor of <code>k</code>. This uses
+empty events to extend each event in the drum track to be <code>k</code> steps long.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>k</code></strong></dt>
+<dd>An integer, the factor by which to increase the resolution of the
+drum track.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def increase_resolution(self, k):
+  &#34;&#34;&#34;Increase the resolution of a DrumTrack.
+
+  Increases the resolution of a DrumTrack object by a factor of `k`. This uses
+  empty events to extend each event in the drum track to be `k` steps long.
+
+  Args:
+    k: An integer, the factor by which to increase the resolution of the
+        drum track.
+  &#34;&#34;&#34;
+  super(DrumTrack, self).increase_resolution(
+      k, fill_event=frozenset())</code></pre>
+</details>
+</dd>
+<dt id="note_seq.drums_lib.DrumTrack.to_sequence"><code class="name flex">
+<span>def <span class="ident">to_sequence</span></span>(<span>self, velocity=100, instrument=9, program=0, sequence_start_time=0.0, qpm=120.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts the DrumTrack to NoteSequence proto.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>velocity</code></strong></dt>
+<dd>Midi velocity to give each note. Between 1 and 127 (inclusive).</dd>
+<dt><strong><code>instrument</code></strong></dt>
+<dd>Midi instrument to give each note.</dd>
+<dt><strong><code>program</code></strong></dt>
+<dd>Midi program to give each note.</dd>
+<dt><strong><code>sequence_start_time</code></strong></dt>
+<dd>A time in seconds (float) that the first event in the
+sequence will land on.</dd>
+<dt><strong><code>qpm</code></strong></dt>
+<dd>Quarter notes per minute (float).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>A NoteSequence proto encoding the given drum track.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_sequence(self,
+                velocity=100,
+                instrument=9,
+                program=0,
+                sequence_start_time=0.0,
+                qpm=120.0):
+  &#34;&#34;&#34;Converts the DrumTrack to NoteSequence proto.
+
+  Args:
+    velocity: Midi velocity to give each note. Between 1 and 127 (inclusive).
+    instrument: Midi instrument to give each note.
+    program: Midi program to give each note.
+    sequence_start_time: A time in seconds (float) that the first event in the
+        sequence will land on.
+    qpm: Quarter notes per minute (float).
+
+  Returns:
+    A NoteSequence proto encoding the given drum track.
+  &#34;&#34;&#34;
+  seconds_per_step = 60.0 / qpm / self.steps_per_quarter
+
+  sequence = music_pb2.NoteSequence()
+  sequence.tempos.add().qpm = qpm
+  sequence.ticks_per_quarter = STANDARD_PPQ
+
+  sequence_start_time += self.start_step * seconds_per_step
+  for step, event in enumerate(self):
+    for pitch in event:
+      # Add a note. All drum notes last a single step.
+      note = sequence.notes.add()
+      note.start_time = step * seconds_per_step + sequence_start_time
+      note.end_time = (step + 1) * seconds_per_step + sequence_start_time
+      note.pitch = pitch
+      note.velocity = velocity
+      note.instrument = instrument
+      note.program = program
+      note.is_drum = True
+
+  if sequence.notes:
+    sequence.total_time = sequence.notes[-1].end_time
+
+  return sequence</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="note_seq.events_lib.SimpleEventSequence" href="events_lib.html#note_seq.events_lib.SimpleEventSequence">SimpleEventSequence</a></b></code>:
+<ul class="hlist">
+<li><code><a title="note_seq.events_lib.SimpleEventSequence.set_length" href="events_lib.html#note_seq.events_lib.SimpleEventSequence.set_length">set_length</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq" href="index.html">note_seq</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="note_seq.drums_lib.midi_file_to_drum_track" href="#note_seq.drums_lib.midi_file_to_drum_track">midi_file_to_drum_track</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.drums_lib.DrumTrack" href="#note_seq.drums_lib.DrumTrack">DrumTrack</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.drums_lib.DrumTrack.append" href="#note_seq.drums_lib.DrumTrack.append">append</a></code></li>
+<li><code><a title="note_seq.drums_lib.DrumTrack.from_quantized_sequence" href="#note_seq.drums_lib.DrumTrack.from_quantized_sequence">from_quantized_sequence</a></code></li>
+<li><code><a title="note_seq.drums_lib.DrumTrack.increase_resolution" href="#note_seq.drums_lib.DrumTrack.increase_resolution">increase_resolution</a></code></li>
+<li><code><a title="note_seq.drums_lib.DrumTrack.to_sequence" href="#note_seq.drums_lib.DrumTrack.to_sequence">to_sequence</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

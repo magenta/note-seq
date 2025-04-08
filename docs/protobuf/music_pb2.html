@@ -1,0 +1,2222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>note_seq.protobuf.music_pb2 API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>note_seq.protobuf.music_pb2</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright 2021 The Magenta Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# pylint: skip-file
+# Generated by the protocol buffer compiler.  DO NOT EDIT!
+# source: note_seq/protobuf/music.proto
+
+import sys
+_b=sys.version_info[0]&lt;3 and (lambda x:x) or (lambda x:x.encode(&#39;latin1&#39;))
+from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
+from google.protobuf import symbol_database as _symbol_database
+# @@protoc_insertion_point(imports)
+
+_sym_db = _symbol_database.Default()
+
+
+
+
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name=&#39;note_seq/protobuf/music.proto&#39;,
+  package=&#39;magenta&#39;,
+  syntax=&#39;proto3&#39;,
+  serialized_options=None,
+  serialized_pb=_b(&#39;\n\x1dnote_seq/protobuf/music.proto\x12\x07magenta\&#34;\xd3\x1e\n\x0cNoteSequence\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08\x66ilename\x18\x02 \x01(\t\x12\x18\n\x10reference_number\x18\x12 \x01(\x03\x12\x17\n\x0f\x63ollection_name\x18\x03 \x01(\t\x12\x19\n\x11ticks_per_quarter\x18\x04 \x01(\x05\x12&lt;\n\x0ftime_signatures\x18\x05 \x03(\x0b\x32#.magenta.NoteSequence.TimeSignature\x12:\n\x0ekey_signatures\x18\x06 \x03(\x0b\x32\&#34;.magenta.NoteSequence.KeySignature\x12+\n\x06tempos\x18\x07 \x03(\x0b\x32\x1b.magenta.NoteSequence.Tempo\x12)\n\x05notes\x18\x08 \x03(\x0b\x32\x1a.magenta.NoteSequence.Note\x12\x12\n\ntotal_time\x18\t \x01(\x01\x12\x1d\n\x15total_quantized_steps\x18\x10 \x01(\x03\x12\x34\n\x0bpitch_bends\x18\n \x03(\x0b\x32\x1f.magenta.NoteSequence.PitchBend\x12&lt;\n\x0f\x63ontrol_changes\x18\x0b \x03(\x0b\x32#.magenta.NoteSequence.ControlChange\x12\x32\n\npart_infos\x18\x0c \x03(\x0b\x32\x1e.magenta.NoteSequence.PartInfo\x12\x35\n\x0bsource_info\x18\r \x01(\x0b\x32 .magenta.NoteSequence.SourceInfo\x12&gt;\n\x10text_annotations\x18\x0e \x03(\x0b\x32$.magenta.NoteSequence.TextAnnotation\x12\x44\n\x13section_annotations\x18\x14 \x03(\x0b\x32\&#39;.magenta.NoteSequence.SectionAnnotation\x12:\n\x0esection_groups\x18\x15 \x03(\x0b\x32\&#34;.magenta.NoteSequence.SectionGroup\x12\x41\n\x11quantization_info\x18\x0f \x01(\x0b\x32&amp;.magenta.NoteSequence.QuantizationInfo\x12?\n\x10subsequence_info\x18\x11 \x01(\x0b\x32%.magenta.NoteSequence.SubsequenceInfo\x12\x34\n\x11sequence_metadata\x18\x13 \x01(\x0b\x32\x19.magenta.SequenceMetadata\x12&gt;\n\x10instrument_infos\x18\x17 \x03(\x0b\x32$.magenta.NoteSequence.InstrumentInfo\x1a\xb7\x02\n\x04Note\x12\r\n\x05pitch\x18\x01 \x01(\x05\x12\x33\n\npitch_name\x18\x0b \x01(\x0e\x32\x1f.magenta.NoteSequence.PitchName\x12\x10\n\x08velocity\x18\x02 \x01(\x05\x12\x12\n\nstart_time\x18\x03 \x01(\x01\x12\x1c\n\x14quantized_start_step\x18\r \x01(\x03\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\x01\x12\x1a\n\x12quantized_end_step\x18\x0e \x01(\x03\x12\x11\n\tnumerator\x18\x05 \x01(\x05\x12\x13\n\x0b\x64\x65nominator\x18\x06 \x01(\x05\x12\x12\n\ninstrument\x18\x07 \x01(\x05\x12\x0f\n\x07program\x18\x08 \x01(\x05\x12\x0f\n\x07is_drum\x18\t \x01(\x08\x12\x0c\n\x04part\x18\n \x01(\x05\x12\r\n\x05voice\x18\x0c \x01(\x05\x1a\x45\n\rTimeSignature\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x11\n\tnumerator\x18\x02 \x01(\x05\x12\x13\n\x0b\x64\x65nominator\x18\x03 \x01(\x05\x1a\xb6\x03\n\x0cKeySignature\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x33\n\x03key\x18\x02 \x01(\x0e\x32&amp;.magenta.NoteSequence.KeySignature.Key\x12\x35\n\x04mode\x18\x03 \x01(\x0e\x32\&#39;.magenta.NoteSequence.KeySignature.Mode\&#34;\xb7\x01\n\x03Key\x12\x05\n\x01\x43\x10\x00\x12\x0b\n\x07\x43_SHARP\x10\x01\x12\n\n\x06\x44_FLAT\x10\x01\x12\x05\n\x01\x44\x10\x02\x12\x0b\n\x07\x44_SHARP\x10\x03\x12\n\n\x06\x45_FLAT\x10\x03\x12\x05\n\x01\x45\x10\x04\x12\x05\n\x01\x46\x10\x05\x12\x0b\n\x07\x46_SHARP\x10\x06\x12\n\n\x06G_FLAT\x10\x06\x12\x05\n\x01G\x10\x07\x12\x0b\n\x07G_SHARP\x10\x08\x12\n\n\x06\x41_FLAT\x10\x08\x12\x05\n\x01\x41\x10\t\x12\x0b\n\x07\x41_SHARP\x10\n\x12\n\n\x06\x42_FLAT\x10\n\x12\x05\n\x01\x42\x10\x0b\x1a\x02\x10\x01\&#34;r\n\x04Mode\x12\t\n\x05MAJOR\x10\x00\x12\t\n\x05MINOR\x10\x01\x12\x11\n\rNOT_SPECIFIED\x10\x02\x12\x0e\n\nMIXOLYDIAN\x10\x03\x12\n\n\x06\x44ORIAN\x10\x04\x12\x0c\n\x08PHRYGIAN\x10\x05\x12\n\n\x06LYDIAN\x10\x06\x12\x0b\n\x07LOCRIAN\x10\x07\x1a\&#34;\n\x05Tempo\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x0b\n\x03qpm\x18\x02 \x01(\x01\x1a]\n\tPitchBend\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x0c\n\x04\x62\x65nd\x18\x02 \x01(\x05\x12\x12\n\ninstrument\x18\x03 \x01(\x05\x12\x0f\n\x07program\x18\x04 \x01(\x05\x12\x0f\n\x07is_drum\x18\x05 \x01(\x08\x1a\x9a\x01\n\rControlChange\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x16\n\x0equantized_step\x18\x07 \x01(\x03\x12\x16\n\x0e\x63ontrol_number\x18\x02 \x01(\x05\x12\x15\n\rcontrol_value\x18\x03 \x01(\x05\x12\x12\n\ninstrument\x18\x04 \x01(\x05\x12\x0f\n\x07program\x18\x05 \x01(\x05\x12\x0f\n\x07is_drum\x18\x06 \x01(\x08\x1a&amp;\n\x08PartInfo\x12\x0c\n\x04part\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x1a\x32\n\x0eInstrumentInfo\x12\x12\n\ninstrument\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x1a\x8b\x04\n\nSourceInfo\x12@\n\x0bsource_type\x18\x01 \x01(\x0e\x32+.magenta.NoteSequence.SourceInfo.SourceType\x12\x44\n\rencoding_type\x18\x02 \x01(\x0e\x32-.magenta.NoteSequence.SourceInfo.EncodingType\x12\x37\n\x06parser\x18\x03 \x01(\x0e\x32\&#39;.magenta.NoteSequence.SourceInfo.Parser\&#34;M\n\nSourceType\x12\x17\n\x13UNKNOWN_SOURCE_TYPE\x10\x00\x12\x0f\n\x0bSCORE_BASED\x10\x01\x12\x15\n\x11PERFORMANCE_BASED\x10\x02\&#34;Y\n\x0c\x45ncodingType\x12\x19\n\x15UNKNOWN_ENCODING_TYPE\x10\x00\x12\r\n\tMUSIC_XML\x10\x01\x12\x07\n\x03\x41\x42\x43\x10\x02\x12\x08\n\x04MIDI\x10\x03\x12\x0c\n\x08MUSICNET\x10\x04\&#34;\x91\x01\n\x06Parser\x12\x12\n\x0eUNKNOWN_PARSER\x10\x00\x12\x0b\n\x07MUSIC21\x10\x01\x12\x0f\n\x0bPRETTY_MIDI\x10\x02\x12\x15\n\x11MAGENTA_MUSIC_XML\x10\x03\x12\x14\n\x10MAGENTA_MUSICNET\x10\x04\x12\x0f\n\x0bMAGENTA_ABC\x10\x05\x12\x17\n\x13TONEJS_MIDI_CONVERT\x10\x06\x1a\xd5\x01\n\x0eTextAnnotation\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x16\n\x0equantized_step\x18\x04 \x01(\x03\x12\x0c\n\x04text\x18\x02 \x01(\t\x12P\n\x0f\x61nnotation_type\x18\x03 \x01(\x0e\x32\x37.magenta.NoteSequence.TextAnnotation.TextAnnotationType\&#34;=\n\x12TextAnnotationType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x10\n\x0c\x43HORD_SYMBOL\x10\x01\x12\x08\n\x04\x42\x45\x41T\x10\x02\x1aY\n\x10QuantizationInfo\x12\x1b\n\x11steps_per_quarter\x18\x01 \x01(\x05H\x00\x12\x1a\n\x10steps_per_second\x18\x02 \x01(\x05H\x00\x42\x0c\n\nresolution\x1a\x45\n\x0fSubsequenceInfo\x12\x19\n\x11start_time_offset\x18\x01 \x01(\x01\x12\x17\n\x0f\x65nd_time_offset\x18\x02 \x01(\x01\x1a\x35\n\x11SectionAnnotation\x12\x0c\n\x04time\x18\x01 \x01(\x01\x12\x12\n\nsection_id\x18\x04 \x01(\x03\x1al\n\x07Section\x12\x14\n\nsection_id\x18\x01 \x01(\x03H\x00\x12;\n\rsection_group\x18\x02 \x01(\x0b\x32\&#34;.magenta.NoteSequence.SectionGroupH\x00\x42\x0e\n\x0csection_type\x1aR\n\x0cSectionGroup\x12/\n\x08sections\x18\x01 \x03(\x0b\x32\x1d.magenta.NoteSequence.Section\x12\x11\n\tnum_times\x18\x02 \x01(\x05\&#34;\xff\x03\n\tPitchName\x12\x16\n\x12UNKNOWN_PITCH_NAME\x10\x00\x12\x0f\n\x0b\x46_FLAT_FLAT\x10\x01\x12\x0f\n\x0b\x43_FLAT_FLAT\x10\x02\x12\x0f\n\x0bG_FLAT_FLAT\x10\x03\x12\x0f\n\x0b\x44_FLAT_FLAT\x10\x04\x12\x0f\n\x0b\x41_FLAT_FLAT\x10\x05\x12\x0f\n\x0b\x45_FLAT_FLAT\x10\x06\x12\x0f\n\x0b\x42_FLAT_FLAT\x10\x07\x12\n\n\x06\x46_FLAT\x10\x08\x12\n\n\x06\x43_FLAT\x10\t\x12\n\n\x06G_FLAT\x10\n\x12\n\n\x06\x44_FLAT\x10\x0b\x12\n\n\x06\x41_FLAT\x10\x0c\x12\n\n\x06\x45_FLAT\x10\r\x12\n\n\x06\x42_FLAT\x10\x0e\x12\x05\n\x01\x46\x10\x0f\x12\x05\n\x01\x43\x10\x10\x12\x05\n\x01G\x10\x11\x12\x05\n\x01\x44\x10\x12\x12\x05\n\x01\x41\x10\x13\x12\x05\n\x01\x45\x10\x14\x12\x05\n\x01\x42\x10\x15\x12\x0b\n\x07\x46_SHARP\x10\x16\x12\x0b\n\x07\x43_SHARP\x10\x17\x12\x0b\n\x07G_SHARP\x10\x18\x12\x0b\n\x07\x44_SHARP\x10\x19\x12\x0b\n\x07\x41_SHARP\x10\x1a\x12\x0b\n\x07\x45_SHARP\x10\x1b\x12\x0b\n\x07\x42_SHARP\x10\x1c\x12\x11\n\rF_SHARP_SHARP\x10\x1d\x12\x11\n\rC_SHARP_SHARP\x10\x1e\x12\x11\n\rG_SHARP_SHARP\x10\x1f\x12\x11\n\rD_SHARP_SHARP\x10 \x12\x11\n\rA_SHARP_SHARP\x10!\x12\x11\n\rE_SHARP_SHARP\x10\&#34;\x12\x11\n\rB_SHARP_SHARP\x10#\&#34;S\n\x10SequenceMetadata\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0e\n\x06\x61rtist\x18\x02 \x01(\t\x12\r\n\x05genre\x18\x03 \x03(\t\x12\x11\n\tcomposers\x18\x04 \x03(\t\&#34;)\n\rVelocityRange\x12\x0b\n\x03min\x18\x01 \x01(\x05\x12\x0b\n\x03max\x18\x02 \x01(\x05\x62\x06proto3&#39;)
+)
+
+
+
+_NOTESEQUENCE_KEYSIGNATURE_KEY = _descriptor.EnumDescriptor(
+  name=&#39;Key&#39;,
+  full_name=&#39;magenta.NoteSequence.KeySignature.Key&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C_SHARP&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_FLAT&#39;, index=2, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D&#39;, index=3, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_SHARP&#39;, index=4, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E_FLAT&#39;, index=5, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E&#39;, index=6, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F&#39;, index=7, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F_SHARP&#39;, index=8, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_FLAT&#39;, index=9, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G&#39;, index=10, number=7,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_SHARP&#39;, index=11, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_FLAT&#39;, index=12, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A&#39;, index=13, number=9,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_SHARP&#39;, index=14, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B_FLAT&#39;, index=15, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B&#39;, index=16, number=11,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=_b(&#39;\020\001&#39;),
+  serialized_start=1620,
+  serialized_end=1803,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_KEYSIGNATURE_KEY)
+
+_NOTESEQUENCE_KEYSIGNATURE_MODE = _descriptor.EnumDescriptor(
+  name=&#39;Mode&#39;,
+  full_name=&#39;magenta.NoteSequence.KeySignature.Mode&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MAJOR&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MINOR&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;NOT_SPECIFIED&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MIXOLYDIAN&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;DORIAN&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;PHRYGIAN&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;LYDIAN&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;LOCRIAN&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1805,
+  serialized_end=1919,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_KEYSIGNATURE_MODE)
+
+_NOTESEQUENCE_SOURCEINFO_SOURCETYPE = _descriptor.EnumDescriptor(
+  name=&#39;SourceType&#39;,
+  full_name=&#39;magenta.NoteSequence.SourceInfo.SourceType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN_SOURCE_TYPE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;SCORE_BASED&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;PERFORMANCE_BASED&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2509,
+  serialized_end=2586,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_SOURCEINFO_SOURCETYPE)
+
+_NOTESEQUENCE_SOURCEINFO_ENCODINGTYPE = _descriptor.EnumDescriptor(
+  name=&#39;EncodingType&#39;,
+  full_name=&#39;magenta.NoteSequence.SourceInfo.EncodingType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN_ENCODING_TYPE&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MUSIC_XML&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;ABC&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MIDI&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MUSICNET&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2588,
+  serialized_end=2677,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_SOURCEINFO_ENCODINGTYPE)
+
+_NOTESEQUENCE_SOURCEINFO_PARSER = _descriptor.EnumDescriptor(
+  name=&#39;Parser&#39;,
+  full_name=&#39;magenta.NoteSequence.SourceInfo.Parser&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN_PARSER&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MUSIC21&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;PRETTY_MIDI&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MAGENTA_MUSIC_XML&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MAGENTA_MUSICNET&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;MAGENTA_ABC&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;TONEJS_MIDI_CONVERT&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2680,
+  serialized_end=2825,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_SOURCEINFO_PARSER)
+
+_NOTESEQUENCE_TEXTANNOTATION_TEXTANNOTATIONTYPE = _descriptor.EnumDescriptor(
+  name=&#39;TextAnnotationType&#39;,
+  full_name=&#39;magenta.NoteSequence.TextAnnotation.TextAnnotationType&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;CHORD_SYMBOL&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;BEAT&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=2980,
+  serialized_end=3041,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_TEXTANNOTATION_TEXTANNOTATIONTYPE)
+
+_NOTESEQUENCE_PITCHNAME = _descriptor.EnumDescriptor(
+  name=&#39;PitchName&#39;,
+  full_name=&#39;magenta.NoteSequence.PitchName&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name=&#39;UNKNOWN_PITCH_NAME&#39;, index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F_FLAT_FLAT&#39;, index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C_FLAT_FLAT&#39;, index=2, number=2,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_FLAT_FLAT&#39;, index=3, number=3,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_FLAT_FLAT&#39;, index=4, number=4,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_FLAT_FLAT&#39;, index=5, number=5,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E_FLAT_FLAT&#39;, index=6, number=6,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B_FLAT_FLAT&#39;, index=7, number=7,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F_FLAT&#39;, index=8, number=8,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C_FLAT&#39;, index=9, number=9,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_FLAT&#39;, index=10, number=10,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_FLAT&#39;, index=11, number=11,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_FLAT&#39;, index=12, number=12,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E_FLAT&#39;, index=13, number=13,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B_FLAT&#39;, index=14, number=14,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F&#39;, index=15, number=15,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C&#39;, index=16, number=16,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G&#39;, index=17, number=17,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D&#39;, index=18, number=18,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A&#39;, index=19, number=19,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E&#39;, index=20, number=20,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B&#39;, index=21, number=21,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F_SHARP&#39;, index=22, number=22,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C_SHARP&#39;, index=23, number=23,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_SHARP&#39;, index=24, number=24,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_SHARP&#39;, index=25, number=25,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_SHARP&#39;, index=26, number=26,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E_SHARP&#39;, index=27, number=27,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B_SHARP&#39;, index=28, number=28,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;F_SHARP_SHARP&#39;, index=29, number=29,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;C_SHARP_SHARP&#39;, index=30, number=30,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;G_SHARP_SHARP&#39;, index=31, number=31,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;D_SHARP_SHARP&#39;, index=32, number=32,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;A_SHARP_SHARP&#39;, index=33, number=33,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;E_SHARP_SHARP&#39;, index=34, number=34,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name=&#39;B_SHARP_SHARP&#39;, index=35, number=35,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=3455,
+  serialized_end=3966,
+)
+_sym_db.RegisterEnumDescriptor(_NOTESEQUENCE_PITCHNAME)
+
+
+_NOTESEQUENCE_NOTE = _descriptor.Descriptor(
+  name=&#39;Note&#39;,
+  full_name=&#39;magenta.NoteSequence.Note&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;pitch&#39;, full_name=&#39;magenta.NoteSequence.Note.pitch&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;pitch_name&#39;, full_name=&#39;magenta.NoteSequence.Note.pitch_name&#39;, index=1,
+      number=11, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;velocity&#39;, full_name=&#39;magenta.NoteSequence.Note.velocity&#39;, index=2,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;start_time&#39;, full_name=&#39;magenta.NoteSequence.Note.start_time&#39;, index=3,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;quantized_start_step&#39;, full_name=&#39;magenta.NoteSequence.Note.quantized_start_step&#39;, index=4,
+      number=13, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;end_time&#39;, full_name=&#39;magenta.NoteSequence.Note.end_time&#39;, index=5,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;quantized_end_step&#39;, full_name=&#39;magenta.NoteSequence.Note.quantized_end_step&#39;, index=6,
+      number=14, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;numerator&#39;, full_name=&#39;magenta.NoteSequence.Note.numerator&#39;, index=7,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;denominator&#39;, full_name=&#39;magenta.NoteSequence.Note.denominator&#39;, index=8,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;instrument&#39;, full_name=&#39;magenta.NoteSequence.Note.instrument&#39;, index=9,
+      number=7, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;program&#39;, full_name=&#39;magenta.NoteSequence.Note.program&#39;, index=10,
+      number=8, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;is_drum&#39;, full_name=&#39;magenta.NoteSequence.Note.is_drum&#39;, index=11,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;part&#39;, full_name=&#39;magenta.NoteSequence.Note.part&#39;, index=12,
+      number=10, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;voice&#39;, full_name=&#39;magenta.NoteSequence.Note.voice&#39;, index=13,
+      number=12, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1096,
+  serialized_end=1407,
+)
+
+_NOTESEQUENCE_TIMESIGNATURE = _descriptor.Descriptor(
+  name=&#39;TimeSignature&#39;,
+  full_name=&#39;magenta.NoteSequence.TimeSignature&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.TimeSignature.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;numerator&#39;, full_name=&#39;magenta.NoteSequence.TimeSignature.numerator&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;denominator&#39;, full_name=&#39;magenta.NoteSequence.TimeSignature.denominator&#39;, index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1409,
+  serialized_end=1478,
+)
+
+_NOTESEQUENCE_KEYSIGNATURE = _descriptor.Descriptor(
+  name=&#39;KeySignature&#39;,
+  full_name=&#39;magenta.NoteSequence.KeySignature&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.KeySignature.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;key&#39;, full_name=&#39;magenta.NoteSequence.KeySignature.key&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;mode&#39;, full_name=&#39;magenta.NoteSequence.KeySignature.mode&#39;, index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _NOTESEQUENCE_KEYSIGNATURE_KEY,
+    _NOTESEQUENCE_KEYSIGNATURE_MODE,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1481,
+  serialized_end=1919,
+)
+
+_NOTESEQUENCE_TEMPO = _descriptor.Descriptor(
+  name=&#39;Tempo&#39;,
+  full_name=&#39;magenta.NoteSequence.Tempo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.Tempo.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;qpm&#39;, full_name=&#39;magenta.NoteSequence.Tempo.qpm&#39;, index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1921,
+  serialized_end=1955,
+)
+
+_NOTESEQUENCE_PITCHBEND = _descriptor.Descriptor(
+  name=&#39;PitchBend&#39;,
+  full_name=&#39;magenta.NoteSequence.PitchBend&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.PitchBend.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;bend&#39;, full_name=&#39;magenta.NoteSequence.PitchBend.bend&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;instrument&#39;, full_name=&#39;magenta.NoteSequence.PitchBend.instrument&#39;, index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;program&#39;, full_name=&#39;magenta.NoteSequence.PitchBend.program&#39;, index=3,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;is_drum&#39;, full_name=&#39;magenta.NoteSequence.PitchBend.is_drum&#39;, index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1957,
+  serialized_end=2050,
+)
+
+_NOTESEQUENCE_CONTROLCHANGE = _descriptor.Descriptor(
+  name=&#39;ControlChange&#39;,
+  full_name=&#39;magenta.NoteSequence.ControlChange&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;quantized_step&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.quantized_step&#39;, index=1,
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;control_number&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.control_number&#39;, index=2,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;control_value&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.control_value&#39;, index=3,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;instrument&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.instrument&#39;, index=4,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;program&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.program&#39;, index=5,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;is_drum&#39;, full_name=&#39;magenta.NoteSequence.ControlChange.is_drum&#39;, index=6,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2053,
+  serialized_end=2207,
+)
+
+_NOTESEQUENCE_PARTINFO = _descriptor.Descriptor(
+  name=&#39;PartInfo&#39;,
+  full_name=&#39;magenta.NoteSequence.PartInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;part&#39;, full_name=&#39;magenta.NoteSequence.PartInfo.part&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;magenta.NoteSequence.PartInfo.name&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2209,
+  serialized_end=2247,
+)
+
+_NOTESEQUENCE_INSTRUMENTINFO = _descriptor.Descriptor(
+  name=&#39;InstrumentInfo&#39;,
+  full_name=&#39;magenta.NoteSequence.InstrumentInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;instrument&#39;, full_name=&#39;magenta.NoteSequence.InstrumentInfo.instrument&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;name&#39;, full_name=&#39;magenta.NoteSequence.InstrumentInfo.name&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2249,
+  serialized_end=2299,
+)
+
+_NOTESEQUENCE_SOURCEINFO = _descriptor.Descriptor(
+  name=&#39;SourceInfo&#39;,
+  full_name=&#39;magenta.NoteSequence.SourceInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;source_type&#39;, full_name=&#39;magenta.NoteSequence.SourceInfo.source_type&#39;, index=0,
+      number=1, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;encoding_type&#39;, full_name=&#39;magenta.NoteSequence.SourceInfo.encoding_type&#39;, index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;parser&#39;, full_name=&#39;magenta.NoteSequence.SourceInfo.parser&#39;, index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _NOTESEQUENCE_SOURCEINFO_SOURCETYPE,
+    _NOTESEQUENCE_SOURCEINFO_ENCODINGTYPE,
+    _NOTESEQUENCE_SOURCEINFO_PARSER,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2302,
+  serialized_end=2825,
+)
+
+_NOTESEQUENCE_TEXTANNOTATION = _descriptor.Descriptor(
+  name=&#39;TextAnnotation&#39;,
+  full_name=&#39;magenta.NoteSequence.TextAnnotation&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.TextAnnotation.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;quantized_step&#39;, full_name=&#39;magenta.NoteSequence.TextAnnotation.quantized_step&#39;, index=1,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;text&#39;, full_name=&#39;magenta.NoteSequence.TextAnnotation.text&#39;, index=2,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;annotation_type&#39;, full_name=&#39;magenta.NoteSequence.TextAnnotation.annotation_type&#39;, index=3,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+    _NOTESEQUENCE_TEXTANNOTATION_TEXTANNOTATIONTYPE,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2828,
+  serialized_end=3041,
+)
+
+_NOTESEQUENCE_QUANTIZATIONINFO = _descriptor.Descriptor(
+  name=&#39;QuantizationInfo&#39;,
+  full_name=&#39;magenta.NoteSequence.QuantizationInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;steps_per_quarter&#39;, full_name=&#39;magenta.NoteSequence.QuantizationInfo.steps_per_quarter&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;steps_per_second&#39;, full_name=&#39;magenta.NoteSequence.QuantizationInfo.steps_per_second&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name=&#39;resolution&#39;, full_name=&#39;magenta.NoteSequence.QuantizationInfo.resolution&#39;,
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=3043,
+  serialized_end=3132,
+)
+
+_NOTESEQUENCE_SUBSEQUENCEINFO = _descriptor.Descriptor(
+  name=&#39;SubsequenceInfo&#39;,
+  full_name=&#39;magenta.NoteSequence.SubsequenceInfo&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;start_time_offset&#39;, full_name=&#39;magenta.NoteSequence.SubsequenceInfo.start_time_offset&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;end_time_offset&#39;, full_name=&#39;magenta.NoteSequence.SubsequenceInfo.end_time_offset&#39;, index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3134,
+  serialized_end=3203,
+)
+
+_NOTESEQUENCE_SECTIONANNOTATION = _descriptor.Descriptor(
+  name=&#39;SectionAnnotation&#39;,
+  full_name=&#39;magenta.NoteSequence.SectionAnnotation&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;time&#39;, full_name=&#39;magenta.NoteSequence.SectionAnnotation.time&#39;, index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;section_id&#39;, full_name=&#39;magenta.NoteSequence.SectionAnnotation.section_id&#39;, index=1,
+      number=4, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3205,
+  serialized_end=3258,
+)
+
+_NOTESEQUENCE_SECTION = _descriptor.Descriptor(
+  name=&#39;Section&#39;,
+  full_name=&#39;magenta.NoteSequence.Section&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;section_id&#39;, full_name=&#39;magenta.NoteSequence.Section.section_id&#39;, index=0,
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;section_group&#39;, full_name=&#39;magenta.NoteSequence.Section.section_group&#39;, index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name=&#39;section_type&#39;, full_name=&#39;magenta.NoteSequence.Section.section_type&#39;,
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=3260,
+  serialized_end=3368,
+)
+
+_NOTESEQUENCE_SECTIONGROUP = _descriptor.Descriptor(
+  name=&#39;SectionGroup&#39;,
+  full_name=&#39;magenta.NoteSequence.SectionGroup&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;sections&#39;, full_name=&#39;magenta.NoteSequence.SectionGroup.sections&#39;, index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;num_times&#39;, full_name=&#39;magenta.NoteSequence.SectionGroup.num_times&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3370,
+  serialized_end=3452,
+)
+
+_NOTESEQUENCE = _descriptor.Descriptor(
+  name=&#39;NoteSequence&#39;,
+  full_name=&#39;magenta.NoteSequence&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;id&#39;, full_name=&#39;magenta.NoteSequence.id&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;filename&#39;, full_name=&#39;magenta.NoteSequence.filename&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;reference_number&#39;, full_name=&#39;magenta.NoteSequence.reference_number&#39;, index=2,
+      number=18, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;collection_name&#39;, full_name=&#39;magenta.NoteSequence.collection_name&#39;, index=3,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;ticks_per_quarter&#39;, full_name=&#39;magenta.NoteSequence.ticks_per_quarter&#39;, index=4,
+      number=4, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;time_signatures&#39;, full_name=&#39;magenta.NoteSequence.time_signatures&#39;, index=5,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;key_signatures&#39;, full_name=&#39;magenta.NoteSequence.key_signatures&#39;, index=6,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;tempos&#39;, full_name=&#39;magenta.NoteSequence.tempos&#39;, index=7,
+      number=7, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;notes&#39;, full_name=&#39;magenta.NoteSequence.notes&#39;, index=8,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;total_time&#39;, full_name=&#39;magenta.NoteSequence.total_time&#39;, index=9,
+      number=9, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;total_quantized_steps&#39;, full_name=&#39;magenta.NoteSequence.total_quantized_steps&#39;, index=10,
+      number=16, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;pitch_bends&#39;, full_name=&#39;magenta.NoteSequence.pitch_bends&#39;, index=11,
+      number=10, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;control_changes&#39;, full_name=&#39;magenta.NoteSequence.control_changes&#39;, index=12,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;part_infos&#39;, full_name=&#39;magenta.NoteSequence.part_infos&#39;, index=13,
+      number=12, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;source_info&#39;, full_name=&#39;magenta.NoteSequence.source_info&#39;, index=14,
+      number=13, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;text_annotations&#39;, full_name=&#39;magenta.NoteSequence.text_annotations&#39;, index=15,
+      number=14, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;section_annotations&#39;, full_name=&#39;magenta.NoteSequence.section_annotations&#39;, index=16,
+      number=20, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;section_groups&#39;, full_name=&#39;magenta.NoteSequence.section_groups&#39;, index=17,
+      number=21, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;quantization_info&#39;, full_name=&#39;magenta.NoteSequence.quantization_info&#39;, index=18,
+      number=15, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;subsequence_info&#39;, full_name=&#39;magenta.NoteSequence.subsequence_info&#39;, index=19,
+      number=17, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;sequence_metadata&#39;, full_name=&#39;magenta.NoteSequence.sequence_metadata&#39;, index=20,
+      number=19, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;instrument_infos&#39;, full_name=&#39;magenta.NoteSequence.instrument_infos&#39;, index=21,
+      number=23, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_NOTESEQUENCE_NOTE, _NOTESEQUENCE_TIMESIGNATURE, _NOTESEQUENCE_KEYSIGNATURE, _NOTESEQUENCE_TEMPO, _NOTESEQUENCE_PITCHBEND, _NOTESEQUENCE_CONTROLCHANGE, _NOTESEQUENCE_PARTINFO, _NOTESEQUENCE_INSTRUMENTINFO, _NOTESEQUENCE_SOURCEINFO, _NOTESEQUENCE_TEXTANNOTATION, _NOTESEQUENCE_QUANTIZATIONINFO, _NOTESEQUENCE_SUBSEQUENCEINFO, _NOTESEQUENCE_SECTIONANNOTATION, _NOTESEQUENCE_SECTION, _NOTESEQUENCE_SECTIONGROUP, ],
+  enum_types=[
+    _NOTESEQUENCE_PITCHNAME,
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=43,
+  serialized_end=3966,
+)
+
+
+_SEQUENCEMETADATA = _descriptor.Descriptor(
+  name=&#39;SequenceMetadata&#39;,
+  full_name=&#39;magenta.SequenceMetadata&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;title&#39;, full_name=&#39;magenta.SequenceMetadata.title&#39;, index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;artist&#39;, full_name=&#39;magenta.SequenceMetadata.artist&#39;, index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(&#34;&#34;).decode(&#39;utf-8&#39;),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;genre&#39;, full_name=&#39;magenta.SequenceMetadata.genre&#39;, index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;composers&#39;, full_name=&#39;magenta.SequenceMetadata.composers&#39;, index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3968,
+  serialized_end=4051,
+)
+
+
+_VELOCITYRANGE = _descriptor.Descriptor(
+  name=&#39;VelocityRange&#39;,
+  full_name=&#39;magenta.VelocityRange&#39;,
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name=&#39;min&#39;, full_name=&#39;magenta.VelocityRange.min&#39;, index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name=&#39;max&#39;, full_name=&#39;magenta.VelocityRange.max&#39;, index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax=&#39;proto3&#39;,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=4053,
+  serialized_end=4094,
+)
+
+_NOTESEQUENCE_NOTE.fields_by_name[&#39;pitch_name&#39;].enum_type = _NOTESEQUENCE_PITCHNAME
+_NOTESEQUENCE_NOTE.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_TIMESIGNATURE.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_KEYSIGNATURE.fields_by_name[&#39;key&#39;].enum_type = _NOTESEQUENCE_KEYSIGNATURE_KEY
+_NOTESEQUENCE_KEYSIGNATURE.fields_by_name[&#39;mode&#39;].enum_type = _NOTESEQUENCE_KEYSIGNATURE_MODE
+_NOTESEQUENCE_KEYSIGNATURE.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_KEYSIGNATURE_KEY.containing_type = _NOTESEQUENCE_KEYSIGNATURE
+_NOTESEQUENCE_KEYSIGNATURE_MODE.containing_type = _NOTESEQUENCE_KEYSIGNATURE
+_NOTESEQUENCE_TEMPO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_PITCHBEND.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_CONTROLCHANGE.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_PARTINFO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_INSTRUMENTINFO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_SOURCEINFO.fields_by_name[&#39;source_type&#39;].enum_type = _NOTESEQUENCE_SOURCEINFO_SOURCETYPE
+_NOTESEQUENCE_SOURCEINFO.fields_by_name[&#39;encoding_type&#39;].enum_type = _NOTESEQUENCE_SOURCEINFO_ENCODINGTYPE
+_NOTESEQUENCE_SOURCEINFO.fields_by_name[&#39;parser&#39;].enum_type = _NOTESEQUENCE_SOURCEINFO_PARSER
+_NOTESEQUENCE_SOURCEINFO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_SOURCEINFO_SOURCETYPE.containing_type = _NOTESEQUENCE_SOURCEINFO
+_NOTESEQUENCE_SOURCEINFO_ENCODINGTYPE.containing_type = _NOTESEQUENCE_SOURCEINFO
+_NOTESEQUENCE_SOURCEINFO_PARSER.containing_type = _NOTESEQUENCE_SOURCEINFO
+_NOTESEQUENCE_TEXTANNOTATION.fields_by_name[&#39;annotation_type&#39;].enum_type = _NOTESEQUENCE_TEXTANNOTATION_TEXTANNOTATIONTYPE
+_NOTESEQUENCE_TEXTANNOTATION.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_TEXTANNOTATION_TEXTANNOTATIONTYPE.containing_type = _NOTESEQUENCE_TEXTANNOTATION
+_NOTESEQUENCE_QUANTIZATIONINFO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_QUANTIZATIONINFO.oneofs_by_name[&#39;resolution&#39;].fields.append(
+  _NOTESEQUENCE_QUANTIZATIONINFO.fields_by_name[&#39;steps_per_quarter&#39;])
+_NOTESEQUENCE_QUANTIZATIONINFO.fields_by_name[&#39;steps_per_quarter&#39;].containing_oneof = _NOTESEQUENCE_QUANTIZATIONINFO.oneofs_by_name[&#39;resolution&#39;]
+_NOTESEQUENCE_QUANTIZATIONINFO.oneofs_by_name[&#39;resolution&#39;].fields.append(
+  _NOTESEQUENCE_QUANTIZATIONINFO.fields_by_name[&#39;steps_per_second&#39;])
+_NOTESEQUENCE_QUANTIZATIONINFO.fields_by_name[&#39;steps_per_second&#39;].containing_oneof = _NOTESEQUENCE_QUANTIZATIONINFO.oneofs_by_name[&#39;resolution&#39;]
+_NOTESEQUENCE_SUBSEQUENCEINFO.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_SECTIONANNOTATION.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_SECTION.fields_by_name[&#39;section_group&#39;].message_type = _NOTESEQUENCE_SECTIONGROUP
+_NOTESEQUENCE_SECTION.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE_SECTION.oneofs_by_name[&#39;section_type&#39;].fields.append(
+  _NOTESEQUENCE_SECTION.fields_by_name[&#39;section_id&#39;])
+_NOTESEQUENCE_SECTION.fields_by_name[&#39;section_id&#39;].containing_oneof = _NOTESEQUENCE_SECTION.oneofs_by_name[&#39;section_type&#39;]
+_NOTESEQUENCE_SECTION.oneofs_by_name[&#39;section_type&#39;].fields.append(
+  _NOTESEQUENCE_SECTION.fields_by_name[&#39;section_group&#39;])
+_NOTESEQUENCE_SECTION.fields_by_name[&#39;section_group&#39;].containing_oneof = _NOTESEQUENCE_SECTION.oneofs_by_name[&#39;section_type&#39;]
+_NOTESEQUENCE_SECTIONGROUP.fields_by_name[&#39;sections&#39;].message_type = _NOTESEQUENCE_SECTION
+_NOTESEQUENCE_SECTIONGROUP.containing_type = _NOTESEQUENCE
+_NOTESEQUENCE.fields_by_name[&#39;time_signatures&#39;].message_type = _NOTESEQUENCE_TIMESIGNATURE
+_NOTESEQUENCE.fields_by_name[&#39;key_signatures&#39;].message_type = _NOTESEQUENCE_KEYSIGNATURE
+_NOTESEQUENCE.fields_by_name[&#39;tempos&#39;].message_type = _NOTESEQUENCE_TEMPO
+_NOTESEQUENCE.fields_by_name[&#39;notes&#39;].message_type = _NOTESEQUENCE_NOTE
+_NOTESEQUENCE.fields_by_name[&#39;pitch_bends&#39;].message_type = _NOTESEQUENCE_PITCHBEND
+_NOTESEQUENCE.fields_by_name[&#39;control_changes&#39;].message_type = _NOTESEQUENCE_CONTROLCHANGE
+_NOTESEQUENCE.fields_by_name[&#39;part_infos&#39;].message_type = _NOTESEQUENCE_PARTINFO
+_NOTESEQUENCE.fields_by_name[&#39;source_info&#39;].message_type = _NOTESEQUENCE_SOURCEINFO
+_NOTESEQUENCE.fields_by_name[&#39;text_annotations&#39;].message_type = _NOTESEQUENCE_TEXTANNOTATION
+_NOTESEQUENCE.fields_by_name[&#39;section_annotations&#39;].message_type = _NOTESEQUENCE_SECTIONANNOTATION
+_NOTESEQUENCE.fields_by_name[&#39;section_groups&#39;].message_type = _NOTESEQUENCE_SECTIONGROUP
+_NOTESEQUENCE.fields_by_name[&#39;quantization_info&#39;].message_type = _NOTESEQUENCE_QUANTIZATIONINFO
+_NOTESEQUENCE.fields_by_name[&#39;subsequence_info&#39;].message_type = _NOTESEQUENCE_SUBSEQUENCEINFO
+_NOTESEQUENCE.fields_by_name[&#39;sequence_metadata&#39;].message_type = _SEQUENCEMETADATA
+_NOTESEQUENCE.fields_by_name[&#39;instrument_infos&#39;].message_type = _NOTESEQUENCE_INSTRUMENTINFO
+_NOTESEQUENCE_PITCHNAME.containing_type = _NOTESEQUENCE
+DESCRIPTOR.message_types_by_name[&#39;NoteSequence&#39;] = _NOTESEQUENCE
+DESCRIPTOR.message_types_by_name[&#39;SequenceMetadata&#39;] = _SEQUENCEMETADATA
+DESCRIPTOR.message_types_by_name[&#39;VelocityRange&#39;] = _VELOCITYRANGE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+NoteSequence = _reflection.GeneratedProtocolMessageType(&#39;NoteSequence&#39;, (_message.Message,), dict(
+
+  Note = _reflection.GeneratedProtocolMessageType(&#39;Note&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_NOTE,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.Note)
+    ))
+  ,
+
+  TimeSignature = _reflection.GeneratedProtocolMessageType(&#39;TimeSignature&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_TIMESIGNATURE,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.TimeSignature)
+    ))
+  ,
+
+  KeySignature = _reflection.GeneratedProtocolMessageType(&#39;KeySignature&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_KEYSIGNATURE,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.KeySignature)
+    ))
+  ,
+
+  Tempo = _reflection.GeneratedProtocolMessageType(&#39;Tempo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_TEMPO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.Tempo)
+    ))
+  ,
+
+  PitchBend = _reflection.GeneratedProtocolMessageType(&#39;PitchBend&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_PITCHBEND,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.PitchBend)
+    ))
+  ,
+
+  ControlChange = _reflection.GeneratedProtocolMessageType(&#39;ControlChange&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_CONTROLCHANGE,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.ControlChange)
+    ))
+  ,
+
+  PartInfo = _reflection.GeneratedProtocolMessageType(&#39;PartInfo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_PARTINFO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.PartInfo)
+    ))
+  ,
+
+  InstrumentInfo = _reflection.GeneratedProtocolMessageType(&#39;InstrumentInfo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_INSTRUMENTINFO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.InstrumentInfo)
+    ))
+  ,
+
+  SourceInfo = _reflection.GeneratedProtocolMessageType(&#39;SourceInfo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_SOURCEINFO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.SourceInfo)
+    ))
+  ,
+
+  TextAnnotation = _reflection.GeneratedProtocolMessageType(&#39;TextAnnotation&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_TEXTANNOTATION,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.TextAnnotation)
+    ))
+  ,
+
+  QuantizationInfo = _reflection.GeneratedProtocolMessageType(&#39;QuantizationInfo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_QUANTIZATIONINFO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.QuantizationInfo)
+    ))
+  ,
+
+  SubsequenceInfo = _reflection.GeneratedProtocolMessageType(&#39;SubsequenceInfo&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_SUBSEQUENCEINFO,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.SubsequenceInfo)
+    ))
+  ,
+
+  SectionAnnotation = _reflection.GeneratedProtocolMessageType(&#39;SectionAnnotation&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_SECTIONANNOTATION,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.SectionAnnotation)
+    ))
+  ,
+
+  Section = _reflection.GeneratedProtocolMessageType(&#39;Section&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_SECTION,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.Section)
+    ))
+  ,
+
+  SectionGroup = _reflection.GeneratedProtocolMessageType(&#39;SectionGroup&#39;, (_message.Message,), dict(
+    DESCRIPTOR = _NOTESEQUENCE_SECTIONGROUP,
+    __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+    # @@protoc_insertion_point(class_scope:magenta.NoteSequence.SectionGroup)
+    ))
+  ,
+  DESCRIPTOR = _NOTESEQUENCE,
+  __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.NoteSequence)
+  ))
+_sym_db.RegisterMessage(NoteSequence)
+_sym_db.RegisterMessage(NoteSequence.Note)
+_sym_db.RegisterMessage(NoteSequence.TimeSignature)
+_sym_db.RegisterMessage(NoteSequence.KeySignature)
+_sym_db.RegisterMessage(NoteSequence.Tempo)
+_sym_db.RegisterMessage(NoteSequence.PitchBend)
+_sym_db.RegisterMessage(NoteSequence.ControlChange)
+_sym_db.RegisterMessage(NoteSequence.PartInfo)
+_sym_db.RegisterMessage(NoteSequence.InstrumentInfo)
+_sym_db.RegisterMessage(NoteSequence.SourceInfo)
+_sym_db.RegisterMessage(NoteSequence.TextAnnotation)
+_sym_db.RegisterMessage(NoteSequence.QuantizationInfo)
+_sym_db.RegisterMessage(NoteSequence.SubsequenceInfo)
+_sym_db.RegisterMessage(NoteSequence.SectionAnnotation)
+_sym_db.RegisterMessage(NoteSequence.Section)
+_sym_db.RegisterMessage(NoteSequence.SectionGroup)
+
+SequenceMetadata = _reflection.GeneratedProtocolMessageType(&#39;SequenceMetadata&#39;, (_message.Message,), dict(
+  DESCRIPTOR = _SEQUENCEMETADATA,
+  __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.SequenceMetadata)
+  ))
+_sym_db.RegisterMessage(SequenceMetadata)
+
+VelocityRange = _reflection.GeneratedProtocolMessageType(&#39;VelocityRange&#39;, (_message.Message,), dict(
+  DESCRIPTOR = _VELOCITYRANGE,
+  __module__ = &#39;note_seq.protobuf.music_pb2&#39;
+  # @@protoc_insertion_point(class_scope:magenta.VelocityRange)
+  ))
+_sym_db.RegisterMessage(VelocityRange)
+
+
+_NOTESEQUENCE_KEYSIGNATURE_KEY._options = None
+# @@protoc_insertion_point(module_scope)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence"><code class="flex name class">
+<span>class <span class="ident">NoteSequence</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.A"><code class="name">var <span class="ident">A</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.A_FLAT"><code class="name">var <span class="ident">A_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.A_FLAT_FLAT"><code class="name">var <span class="ident">A_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.A_SHARP"><code class="name">var <span class="ident">A_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.A_SHARP_SHARP"><code class="name">var <span class="ident">A_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.B"><code class="name">var <span class="ident">B</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.B_FLAT"><code class="name">var <span class="ident">B_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.B_FLAT_FLAT"><code class="name">var <span class="ident">B_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.B_SHARP"><code class="name">var <span class="ident">B_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.B_SHARP_SHARP"><code class="name">var <span class="ident">B_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.C"><code class="name">var <span class="ident">C</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.C_FLAT"><code class="name">var <span class="ident">C_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.C_FLAT_FLAT"><code class="name">var <span class="ident">C_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.C_SHARP"><code class="name">var <span class="ident">C_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.C_SHARP_SHARP"><code class="name">var <span class="ident">C_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.ControlChange"><code class="name">var <span class="ident">ControlChange</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.D"><code class="name">var <span class="ident">D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.D_FLAT"><code class="name">var <span class="ident">D_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.D_FLAT_FLAT"><code class="name">var <span class="ident">D_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.D_SHARP"><code class="name">var <span class="ident">D_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.D_SHARP_SHARP"><code class="name">var <span class="ident">D_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.E"><code class="name">var <span class="ident">E</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.E_FLAT"><code class="name">var <span class="ident">E_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.E_FLAT_FLAT"><code class="name">var <span class="ident">E_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.E_SHARP"><code class="name">var <span class="ident">E_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.E_SHARP_SHARP"><code class="name">var <span class="ident">E_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.F"><code class="name">var <span class="ident">F</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.F_FLAT"><code class="name">var <span class="ident">F_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.F_FLAT_FLAT"><code class="name">var <span class="ident">F_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.F_SHARP"><code class="name">var <span class="ident">F_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.F_SHARP_SHARP"><code class="name">var <span class="ident">F_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.G"><code class="name">var <span class="ident">G</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.G_FLAT"><code class="name">var <span class="ident">G_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.G_FLAT_FLAT"><code class="name">var <span class="ident">G_FLAT_FLAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.G_SHARP"><code class="name">var <span class="ident">G_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.G_SHARP_SHARP"><code class="name">var <span class="ident">G_SHARP_SHARP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.InstrumentInfo"><code class="name">var <span class="ident">InstrumentInfo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.KeySignature"><code class="name">var <span class="ident">KeySignature</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.Note"><code class="name">var <span class="ident">Note</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.PartInfo"><code class="name">var <span class="ident">PartInfo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.PitchBend"><code class="name">var <span class="ident">PitchBend</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.PitchName"><code class="name">var <span class="ident">PitchName</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.QuantizationInfo"><code class="name">var <span class="ident">QuantizationInfo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.Section"><code class="name">var <span class="ident">Section</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.SectionAnnotation"><code class="name">var <span class="ident">SectionAnnotation</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.SectionGroup"><code class="name">var <span class="ident">SectionGroup</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.SourceInfo"><code class="name">var <span class="ident">SourceInfo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.SubsequenceInfo"><code class="name">var <span class="ident">SubsequenceInfo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.Tempo"><code class="name">var <span class="ident">Tempo</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.TextAnnotation"><code class="name">var <span class="ident">TextAnnotation</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.TimeSignature"><code class="name">var <span class="ident">TimeSignature</span></code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.UNKNOWN_PITCH_NAME"><code class="name">var <span class="ident">UNKNOWN_PITCH_NAME</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.collection_name"><code class="name">var <span class="ident">collection_name</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.collection_name</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.control_changes"><code class="name">var <span class="ident">control_changes</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.control_changes</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.filename"><code class="name">var <span class="ident">filename</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.filename</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.id"><code class="name">var <span class="ident">id</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.id</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.instrument_infos"><code class="name">var <span class="ident">instrument_infos</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.instrument_infos</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.key_signatures"><code class="name">var <span class="ident">key_signatures</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.key_signatures</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.notes"><code class="name">var <span class="ident">notes</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.notes</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.part_infos"><code class="name">var <span class="ident">part_infos</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.part_infos</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.pitch_bends"><code class="name">var <span class="ident">pitch_bends</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.pitch_bends</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.quantization_info"><code class="name">var <span class="ident">quantization_info</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.quantization_info</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.reference_number"><code class="name">var <span class="ident">reference_number</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.reference_number</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.section_annotations"><code class="name">var <span class="ident">section_annotations</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.section_annotations</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.section_groups"><code class="name">var <span class="ident">section_groups</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.section_groups</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.sequence_metadata"><code class="name">var <span class="ident">sequence_metadata</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.sequence_metadata</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.source_info"><code class="name">var <span class="ident">source_info</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.source_info</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.subsequence_info"><code class="name">var <span class="ident">subsequence_info</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.subsequence_info</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.tempos"><code class="name">var <span class="ident">tempos</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.tempos</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.text_annotations"><code class="name">var <span class="ident">text_annotations</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.text_annotations</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.ticks_per_quarter"><code class="name">var <span class="ident">ticks_per_quarter</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.ticks_per_quarter</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.time_signatures"><code class="name">var <span class="ident">time_signatures</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.time_signatures</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.total_quantized_steps"><code class="name">var <span class="ident">total_quantized_steps</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.total_quantized_steps</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.NoteSequence.total_time"><code class="name">var <span class="ident">total_time</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.NoteSequence.total_time</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata"><code class="flex name class">
+<span>class <span class="ident">SequenceMetadata</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata.artist"><code class="name">var <span class="ident">artist</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.SequenceMetadata.artist</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata.composers"><code class="name">var <span class="ident">composers</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.SequenceMetadata.composers</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata.genre"><code class="name">var <span class="ident">genre</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.SequenceMetadata.genre</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.SequenceMetadata.title"><code class="name">var <span class="ident">title</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.SequenceMetadata.title</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.VelocityRange"><code class="flex name class">
+<span>class <span class="ident">VelocityRange</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A ProtocolMessage</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>google.protobuf.pyext._message.CMessage</li>
+<li>google.protobuf.message.Message</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.VelocityRange.DESCRIPTOR"><code class="name">var <span class="ident">DESCRIPTOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="note_seq.protobuf.music_pb2.VelocityRange.max"><code class="name">var <span class="ident">max</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.VelocityRange.max</p></div>
+</dd>
+<dt id="note_seq.protobuf.music_pb2.VelocityRange.min"><code class="name">var <span class="ident">min</span></code></dt>
+<dd>
+<div class="desc"><p>Field magenta.VelocityRange.min</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="note_seq.protobuf" href="index.html">note_seq.protobuf</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="note_seq.protobuf.music_pb2.NoteSequence" href="#note_seq.protobuf.music_pb2.NoteSequence">NoteSequence</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.A" href="#note_seq.protobuf.music_pb2.NoteSequence.A">A</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.A_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.A_FLAT">A_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.A_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.A_FLAT_FLAT">A_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.A_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.A_SHARP">A_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.A_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.A_SHARP_SHARP">A_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.B" href="#note_seq.protobuf.music_pb2.NoteSequence.B">B</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.B_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.B_FLAT">B_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.B_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.B_FLAT_FLAT">B_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.B_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.B_SHARP">B_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.B_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.B_SHARP_SHARP">B_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.C" href="#note_seq.protobuf.music_pb2.NoteSequence.C">C</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.C_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.C_FLAT">C_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.C_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.C_FLAT_FLAT">C_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.C_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.C_SHARP">C_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.C_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.C_SHARP_SHARP">C_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.ControlChange" href="#note_seq.protobuf.music_pb2.NoteSequence.ControlChange">ControlChange</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.D" href="#note_seq.protobuf.music_pb2.NoteSequence.D">D</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.DESCRIPTOR" href="#note_seq.protobuf.music_pb2.NoteSequence.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.D_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.D_FLAT">D_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.D_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.D_FLAT_FLAT">D_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.D_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.D_SHARP">D_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.D_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.D_SHARP_SHARP">D_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.E" href="#note_seq.protobuf.music_pb2.NoteSequence.E">E</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.E_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.E_FLAT">E_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.E_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.E_FLAT_FLAT">E_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.E_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.E_SHARP">E_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.E_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.E_SHARP_SHARP">E_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.F" href="#note_seq.protobuf.music_pb2.NoteSequence.F">F</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.F_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.F_FLAT">F_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.F_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.F_FLAT_FLAT">F_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.F_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.F_SHARP">F_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.F_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.F_SHARP_SHARP">F_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.G" href="#note_seq.protobuf.music_pb2.NoteSequence.G">G</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.G_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.G_FLAT">G_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.G_FLAT_FLAT" href="#note_seq.protobuf.music_pb2.NoteSequence.G_FLAT_FLAT">G_FLAT_FLAT</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.G_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.G_SHARP">G_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.G_SHARP_SHARP" href="#note_seq.protobuf.music_pb2.NoteSequence.G_SHARP_SHARP">G_SHARP_SHARP</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.InstrumentInfo" href="#note_seq.protobuf.music_pb2.NoteSequence.InstrumentInfo">InstrumentInfo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.KeySignature" href="#note_seq.protobuf.music_pb2.NoteSequence.KeySignature">KeySignature</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.Note" href="#note_seq.protobuf.music_pb2.NoteSequence.Note">Note</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.PartInfo" href="#note_seq.protobuf.music_pb2.NoteSequence.PartInfo">PartInfo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.PitchBend" href="#note_seq.protobuf.music_pb2.NoteSequence.PitchBend">PitchBend</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.PitchName" href="#note_seq.protobuf.music_pb2.NoteSequence.PitchName">PitchName</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.QuantizationInfo" href="#note_seq.protobuf.music_pb2.NoteSequence.QuantizationInfo">QuantizationInfo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.Section" href="#note_seq.protobuf.music_pb2.NoteSequence.Section">Section</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.SectionAnnotation" href="#note_seq.protobuf.music_pb2.NoteSequence.SectionAnnotation">SectionAnnotation</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.SectionGroup" href="#note_seq.protobuf.music_pb2.NoteSequence.SectionGroup">SectionGroup</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.SourceInfo" href="#note_seq.protobuf.music_pb2.NoteSequence.SourceInfo">SourceInfo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.SubsequenceInfo" href="#note_seq.protobuf.music_pb2.NoteSequence.SubsequenceInfo">SubsequenceInfo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.Tempo" href="#note_seq.protobuf.music_pb2.NoteSequence.Tempo">Tempo</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.TextAnnotation" href="#note_seq.protobuf.music_pb2.NoteSequence.TextAnnotation">TextAnnotation</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.TimeSignature" href="#note_seq.protobuf.music_pb2.NoteSequence.TimeSignature">TimeSignature</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.UNKNOWN_PITCH_NAME" href="#note_seq.protobuf.music_pb2.NoteSequence.UNKNOWN_PITCH_NAME">UNKNOWN_PITCH_NAME</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.collection_name" href="#note_seq.protobuf.music_pb2.NoteSequence.collection_name">collection_name</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.control_changes" href="#note_seq.protobuf.music_pb2.NoteSequence.control_changes">control_changes</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.filename" href="#note_seq.protobuf.music_pb2.NoteSequence.filename">filename</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.id" href="#note_seq.protobuf.music_pb2.NoteSequence.id">id</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.instrument_infos" href="#note_seq.protobuf.music_pb2.NoteSequence.instrument_infos">instrument_infos</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.key_signatures" href="#note_seq.protobuf.music_pb2.NoteSequence.key_signatures">key_signatures</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.notes" href="#note_seq.protobuf.music_pb2.NoteSequence.notes">notes</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.part_infos" href="#note_seq.protobuf.music_pb2.NoteSequence.part_infos">part_infos</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.pitch_bends" href="#note_seq.protobuf.music_pb2.NoteSequence.pitch_bends">pitch_bends</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.quantization_info" href="#note_seq.protobuf.music_pb2.NoteSequence.quantization_info">quantization_info</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.reference_number" href="#note_seq.protobuf.music_pb2.NoteSequence.reference_number">reference_number</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.section_annotations" href="#note_seq.protobuf.music_pb2.NoteSequence.section_annotations">section_annotations</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.section_groups" href="#note_seq.protobuf.music_pb2.NoteSequence.section_groups">section_groups</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.sequence_metadata" href="#note_seq.protobuf.music_pb2.NoteSequence.sequence_metadata">sequence_metadata</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.source_info" href="#note_seq.protobuf.music_pb2.NoteSequence.source_info">source_info</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.subsequence_info" href="#note_seq.protobuf.music_pb2.NoteSequence.subsequence_info">subsequence_info</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.tempos" href="#note_seq.protobuf.music_pb2.NoteSequence.tempos">tempos</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.text_annotations" href="#note_seq.protobuf.music_pb2.NoteSequence.text_annotations">text_annotations</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.ticks_per_quarter" href="#note_seq.protobuf.music_pb2.NoteSequence.ticks_per_quarter">ticks_per_quarter</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.time_signatures" href="#note_seq.protobuf.music_pb2.NoteSequence.time_signatures">time_signatures</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.total_quantized_steps" href="#note_seq.protobuf.music_pb2.NoteSequence.total_quantized_steps">total_quantized_steps</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.NoteSequence.total_time" href="#note_seq.protobuf.music_pb2.NoteSequence.total_time">total_time</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata" href="#note_seq.protobuf.music_pb2.SequenceMetadata">SequenceMetadata</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata.DESCRIPTOR" href="#note_seq.protobuf.music_pb2.SequenceMetadata.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata.artist" href="#note_seq.protobuf.music_pb2.SequenceMetadata.artist">artist</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata.composers" href="#note_seq.protobuf.music_pb2.SequenceMetadata.composers">composers</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata.genre" href="#note_seq.protobuf.music_pb2.SequenceMetadata.genre">genre</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.SequenceMetadata.title" href="#note_seq.protobuf.music_pb2.SequenceMetadata.title">title</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="note_seq.protobuf.music_pb2.VelocityRange" href="#note_seq.protobuf.music_pb2.VelocityRange">VelocityRange</a></code></h4>
+<ul class="">
+<li><code><a title="note_seq.protobuf.music_pb2.VelocityRange.DESCRIPTOR" href="#note_seq.protobuf.music_pb2.VelocityRange.DESCRIPTOR">DESCRIPTOR</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.VelocityRange.max" href="#note_seq.protobuf.music_pb2.VelocityRange.max">max</a></code></li>
+<li><code><a title="note_seq.protobuf.music_pb2.VelocityRange.min" href="#note_seq.protobuf.music_pb2.VelocityRange.min">min</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
